@@ -24,15 +24,18 @@ import json
 import os
 import re
 import sys
+import tempfile
 import zipfile
 from datetime import datetime, timezone
 
+import certifi
 import requests
 
 UA = {"User-Agent": "Mozilla/5.0 (compatible; tw-macro-dashboard/1.0; +https://github.com)"}
 TIMEOUT = 30
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH = os.path.join(ROOT, "data", "dashboard.json")
+GRCA_CERT_PATH = os.path.join(ROOT, "scripts", "certs", "GRCA.pem")
 
 FINMIND_URL = "https://api.finmindtrade.com/api/v4/data"
 CIER_LIST_URL = "https://www.cier.edu.tw/focus-ch/"
@@ -42,7 +45,30 @@ def log(msg):
     print(f"[fetch] {msg}", file=sys.stderr, flush=True)
 
 
+_CA_BUNDLE_CACHE = None
+
+
+def ca_bundle():
+    """certifi 的預設信任清單未收錄台灣「政府憑證管理中心(GRCA)」根憑證，
+    導致 *.gov.tw 網站（例如 ws.dgbas.gov.tw）在 Linux/CI 環境下 TLS 驗證失敗
+    （Windows／瀏覽器則因作業系統層級另有信任清單而不受影響，因此本機不易察覺）。
+    這裡疊加官方 GRCA 根憑證（https://grca.nat.gov.tw/repository/Certs/GRCA.cer）
+    到 certifi 的信任清單，而非關閉憑證驗證。"""
+    global _CA_BUNDLE_CACHE
+    if _CA_BUNDLE_CACHE and os.path.exists(_CA_BUNDLE_CACHE):
+        return _CA_BUNDLE_CACHE
+    combined = os.path.join(tempfile.gettempdir(), "tw-macro-ca-bundle.pem")
+    with open(combined, "wb") as out, open(certifi.where(), "rb") as base:
+        out.write(base.read())
+        if os.path.exists(GRCA_CERT_PATH):
+            out.write(b"\n")
+            out.write(open(GRCA_CERT_PATH, "rb").read())
+    _CA_BUNDLE_CACHE = combined
+    return combined
+
+
 def safe_get(url, **kw):
+    kw.setdefault("verify", ca_bundle())
     r = requests.get(url, headers=UA, timeout=TIMEOUT, **kw)
     r.raise_for_status()
     return r

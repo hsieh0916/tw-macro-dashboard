@@ -40,8 +40,20 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git diff --quiet -- data/dashboard.json; then
             echo "No data changes."
-          else
-            git add data/dashboard.json
-            git commit -m "chore: update macro data ($(date -u +'%Y-%m-%d %H:%M UTC'))"
-            git push
+            exit 0
           fi
+          git add data/dashboard.json
+          git commit -m "chore: update macro data ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+          # 若剛好與其他觸發的執行序列競速（例如 push 與 workflow_dispatch 同時觸發），
+          # rebase 到最新遠端狀態後重試，避免 non-fast-forward 被拒絕。
+          for i in 1 2 3 4 5; do
+            if git push; then
+              exit 0
+            fi
+            echo "Push rejected, rebasing onto latest origin/main and retrying (attempt $i)..."
+            git fetch origin main
+            git rebase origin/main
+            sleep $((i * 5))
+          done
+          echo "::error::Failed to push data update after retries."
+          exit 1
