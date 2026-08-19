@@ -1,0 +1,17 @@
+name: TLS diag
+on:
+  workflow_dispatch: {}
+jobs:
+  diag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump chain
+        run: |
+          echo | openssl s_client -connect ws.dgbas.gov.tw:443 -servername ws.dgbas.gov.tw -showcerts 2>&1 | head -100
+          echo "=== subjects/issuers ==="
+          echo | openssl s_client -connect ws.dgbas.gov.tw:443 -servername ws.dgbas.gov.tw -showcerts 2>/dev/null > /tmp/full.txt
+          awk 'BEGIN{n=0} /-----BEGIN CERTIFICATE-----/{n++; f="/tmp/cert"n".pem"} {if(f) print > f} /-----END CERTIFICATE-----/{f=""}' /tmp/full.txt
+          for f in /tmp/cert*.pem; do
+            echo "--- $f ---"
+            openssl x509 -in "$f" -noout -subject -issuer
+          done
