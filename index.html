@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>台灣總經儀表板｜景氣指標與台股連動</title>
+<meta name="description" content="彙整台灣GDP年增率、景氣對策信號、領先指標、製造業PMI、M1B/M2貨幣供給等總體經濟指標，並與台股加權指數對照，資料每日自動更新。" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📈</text></svg>" />
+<link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+<button class="theme-toggle" id="theme-toggle">🖥️ 系統</button>
+
+<div class="page">
+
+  <header class="site-header">
+    <h1>台灣總經儀表板</h1>
+    <p>彙整台灣主要總體經濟指標，並與台股加權指數（TAIEX）對照，協助觀察景氣循環位置與股市資金環境。資料每日自動從政府與公開資料源擷取更新。</p>
+    <div class="header-meta">
+      <span>📅 資料最後更新：<strong id="generated-at">載入中…</strong></span>
+      <span>🔄 每日自動更新（GitHub Actions 排程）</span>
+      <span>📊 圖表可切換「顯示資料表」檢視原始數值</span>
+    </div>
+    <div class="banner">
+      <b>免責聲明：</b>本頁面僅彙整並視覺化公開總體經濟統計資料，供總體經濟走勢參考與教育用途，<b>不構成任何投資建議或買賣訊號</b>。歷史指標與股市的關聯性不代表未來必然重演，投資決策請自行審慎評估並承擔風險。
+    </div>
+    <div class="banner warn" id="data-warnings" hidden></div>
+  </header>
+
+  <section class="kpi-row" id="kpi-row">
+    <div class="stat-tile"><div class="label">載入中…</div></div>
+  </section>
+
+  <!-- 景氣對策信號 -->
+  <section class="chart-card" id="card-signal">
+    <h2>景氣對策信號 <span class="tag">國發會・每月</span></h2>
+    <p class="card-desc">
+      由 9 項金融面與生產面指標整合而成，以「燈號」呈現景氣所處階段：
+      <b style="color:var(--light-blue)">藍燈</b>（低迷）→
+      <b style="color:var(--light-yellowblue)">黃藍燈</b>（轉向低迷）→
+      <b style="color:var(--light-green)">綠燈</b>（穩定）→
+      <b style="color:var(--light-yellowred)">黃紅燈</b>（轉向熱絡）→
+      <b style="color:var(--light-red)">紅燈</b>（過熱）。
+      綜合判斷分數介於 9～45 分，分數與股市資金氣氛通常同步：燈號轉紅、分數走高時，市場資金動能往往較旺；轉藍、分數走低則反映景氣趨緩、資金轉趨保守。
+    </p>
+    <div class="signal-legend">
+      <span class="item"><span class="swatch" style="background:var(--light-blue)"></span>藍燈 9–16分</span>
+      <span class="item"><span class="swatch" style="background:var(--light-yellowblue)"></span>黃藍燈 17–22分</span>
+      <span class="item"><span class="swatch" style="background:var(--light-green)"></span>綠燈 23–31分</span>
+      <span class="item"><span class="swatch" style="background:var(--light-yellowred)"></span>黃紅燈 32–37分</span>
+      <span class="item"><span class="swatch" style="background:var(--light-red)"></span>紅燈 38–45分</span>
+    </div>
+    <h3 style="font-size:13px;color:var(--text-secondary);margin:0 0 8px;">近 12 個月燈號</h3>
+    <div class="signal-strip" id="signal-strip"></div>
+
+    <div class="chart-grid two-col">
+      <div class="chart-block">
+        <h3>綜合判斷分數走勢（近 10 年）</h3>
+        <div class="chart-wrap"><canvas id="chart-signal-score"></canvas></div>
+      </div>
+      <div class="chart-block">
+        <h3>對照台股加權指數（兩者皆指數化，起始月=100）</h3>
+        <div class="chart-wrap"><canvas id="chart-signal-vs-taiex"></canvas></div>
+      </div>
+    </div>
+    <p class="chart-note">指數化比較：將兩個量級不同的數列各自除以「窗口起始值」再乘以100，使其在同一張圖、同一縱軸上以相對變動幅度比較，而非直接比較絕對數值（避免雙縱軸圖表造成的誤導）。</p>
+
+    <button class="table-toggle" id="toggle-signal">顯示資料表</button>
+    <div class="data-table-wrap" id="table-signal" hidden></div>
+  </section>
+
+  <!-- 領先指標 -->
+  <section class="chart-card" id="card-leading">
+    <h2>景氣領先指標 <span class="tag">國發會・每月</span></h2>
+    <p class="card-desc">
+      由外銷訂單動向指數、M1B貨幣總計數、股價指數、工業及服務業受僱員工淨進入率、建築物開工樓地板面積、半導體設備進口等 6 項具領先性的項目組成，用以預測未來 3～6 個月的景氣走向。
+      <b>不含趨勢指數</b>以 100 為分界：高於 100 代表景氣動能相對強勁、低於 100 則相對疲弱。由於股價指數本身即為領先指標成分之一，兩者走勢通常高度連動。
+    </p>
+    <div class="chart-grid two-col">
+      <div class="chart-block">
+        <h3>領先指標不含趨勢指數（近 10 年）</h3>
+        <div class="chart-wrap"><canvas id="chart-leading"></canvas></div>
+      </div>
+      <div class="chart-block">
+        <h3>對照台股加權指數（指數化=100）</h3>
+        <div class="chart-wrap"><canvas id="chart-leading-vs-taiex"></canvas></div>
+      </div>
+    </div>
+    <button class="table-toggle" id="toggle-leading">顯示資料表</button>
+    <div class="data-table-wrap" id="table-leading" hidden></div>
+  </section>
+
+  <!-- PMI -->
+  <section class="chart-card" id="card-pmi">
+    <h2>製造業採購經理人指數 PMI <span class="tag">中經院／國發會・每月</span></h2>
+    <p class="card-desc">
+      以 50 為榮枯分水嶺：高於 50 代表多數採購經理人認為當月景氣較上月擴張，低於 50 代表緊縮。PMI 是觀察製造業（尤其電子科技業占比高的台灣）短期景氣轉折最即時的領先指標之一，與台股電子權值股表現連動密切。下方另附中經院問卷中「製造業未來六個月展望指數」，反映廠商對半年後景氣的主觀展望（此欄位無公開結構化資料，採每日自動解析中經院新聞稿之最佳努力擷取，若當月未能成功解析將沿用前值）。
+    </p>
+    <div class="chart-block">
+      <h3>製造業 PMI 與非製造業 NMI（近 5 年）</h3>
+      <div class="chart-wrap"><canvas id="chart-pmi"></canvas></div>
+    </div>
+    <div class="chart-block" id="pmi-outlook-wrap" style="margin-top:18px;">
+      <h3>製造業未來六個月展望指數</h3>
+      <div class="chart-wrap short"><canvas id="chart-pmi-outlook"></canvas></div>
+    </div>
+    <button class="table-toggle" id="toggle-pmi">顯示資料表</button>
+    <div class="data-table-wrap" id="table-pmi" hidden></div>
+  </section>
+
+  <!-- M1B / M2 -->
+  <section class="chart-card" id="card-money">
+    <h2>貨幣總計數 M1B／M2 <span class="tag">中央銀行・每月</span></h2>
+    <p class="card-desc">
+      M1B（通貨＋支票存款＋活期存款＋活期儲蓄存款）流動性最高，常被視為<b>股市資金動能</b>的觀察指標；M2 則涵蓋定存等準貨幣，反映整體資金總量。當 <b>M1B 年增率高於 M2 年增率</b>（黃金交叉）時，代表資金轉趨活潑、偏好流入股市等風險性資產；反之 <b>M1B 低於 M2</b>（死亡交叉）則反映資金轉向保守、停泊在定存等低流動性部位。
+    </p>
+    <div class="chart-grid two-col">
+      <div class="chart-block">
+        <h3>M1B／M2 年增率（近 10 年）</h3>
+        <div class="chart-wrap"><canvas id="chart-money"></canvas></div>
+      </div>
+      <div class="chart-block">
+        <h3>M1B－M2 年增率差（正值＝資金偏多，黃金交叉）</h3>
+        <div class="chart-wrap"><canvas id="chart-money-vs-taiex"></canvas></div>
+      </div>
+    </div>
+    <button class="table-toggle" id="toggle-money">顯示資料表</button>
+    <div class="data-table-wrap" id="table-money" hidden></div>
+  </section>
+
+  <!-- GDP -->
+  <section class="chart-card" id="card-gdp">
+    <h2>GDP 經濟成長率（年增率） <span class="tag">主計總處・每季</span></h2>
+    <p class="card-desc">
+      每季公布的實質GDP年增率，是最具權威性但發布落後（約落後當季結束 1 個月公布概估值）的落後兼確認性指標，適合用來驗證景氣對策信號、PMI 等領先指標先前釋放的訊號是否兌現。下方並列同期台股加權指數（季底收盤）走勢，觀察兩者是否同步。
+    </p>
+    <div class="chart-block">
+      <h3>GDP 經濟成長率（年增率，近 10 年季資料）</h3>
+      <div class="chart-wrap"><canvas id="chart-gdp"></canvas></div>
+    </div>
+    <div class="chart-grid two-col" style="margin-top:18px;">
+      <div class="chart-block">
+        <h3>對照：台股加權指數（季底收盤）</h3>
+        <div class="chart-wrap"><canvas id="chart-gdp-taiex-panel"></canvas></div>
+      </div>
+      <div class="chart-block">
+        <h3>GDP 年增率（同一時間軸，便於對齊比對）</h3>
+        <div class="chart-wrap"><canvas id="chart-gdp-vs-taiex"></canvas></div>
+      </div>
+    </div>
+    <p class="chart-note">GDP年增率可能為負值，不適合以「指數化」方式與股價比較，因此改採上下並列、共用時間軸的方式，方便直接比對轉折點是否同步。</p>
+    <button class="table-toggle" id="toggle-gdp">顯示資料表</button>
+    <div class="data-table-wrap" id="table-gdp" hidden></div>
+  </section>
+
+  <!-- 其他股市連動指標 -->
+  <section class="chart-card" id="card-others">
+    <h2>其他與台股高度連動的指標</h2>
+    <p class="card-desc">
+      <b>外資買賣超</b>是台股最主要的邊際資金力量，外資由於部位龐大，其買賣方向常與加權指數短中期走勢高度一致；<b>美元／新台幣匯率</b>則反映資金流向與出口企業獲利換算效果——新台幣升值期間往往伴隨外資匯入及股市資金行情，貶值則可能反映資金外流壓力。
+    </p>
+    <div class="chart-block">
+      <h3>台股加權指數（月收盤，近 10 年）</h3>
+      <div class="chart-wrap"><canvas id="chart-taiex"></canvas></div>
+    </div>
+    <div class="chart-block" style="margin-top:18px;">
+      <h3>外資買賣超（每月合計，新台幣億元；正值＝買超）</h3>
+      <div class="chart-wrap"><canvas id="chart-foreign-flow"></canvas></div>
+    </div>
+    <div class="chart-block" style="margin-top:18px;">
+      <h3>美元／新台幣即期匯率（月均值）</h3>
+      <div class="chart-wrap"><canvas id="chart-fx"></canvas></div>
+    </div>
+    <button class="table-toggle" id="toggle-others">顯示資料表</button>
+    <div class="data-table-wrap" id="table-others" hidden></div>
+  </section>
+
+  <footer class="site-footer">
+    <p><b>資料來源</b></p>
+    <ul class="source-list">
+      <li>行政院主計總處—國民所得統計常用資料(季)</li>
+      <li>國家發展委員會—景氣指標及燈號</li>
+      <li>國家發展委員會／中華經濟研究院—台灣採購經理人指數</li>
+      <li>中華經濟研究院—PMI新聞稿（未來六個月展望指數）</li>
+      <li>中央銀行—貨幣總計數</li>
+      <li>台灣證券交易所發行量加權股價指數、三大法人買賣金額統計、銀行牌告匯率（經 FinMind 公開API）</li>
+    </ul>
+    <p>本網站為靜態彙整頁面，程式碼與資料擷取腳本公開於 <a href="https://github.com" id="repo-link" target="_blank" rel="noopener">GitHub</a>，歡迎檢視或回報資料異常。所有資料均取自政府公開資料平台（data.gov.tw）與各機關官方發布之公開資訊，並以 FinMind 公開 API 取得台股市場資料。</p>
+    <p>© <span id="footer-year"></span> 台灣總經儀表板。資料每日自動更新，僅供參考，不構成投資建議。</p>
+  </footer>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script>document.getElementById("footer-year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

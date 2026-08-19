@@ -1,0 +1,47 @@
+name: Update macro data
+
+on:
+  schedule:
+    # 每日 09:00 UTC ＝ 台北時間 17:00（台股收盤後、多數政府統計於當日上午發布後）
+    - cron: "0 9 * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths:
+      - "scripts/fetch_data.py"
+      - ".github/workflows/update-data.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch latest macro data
+        run: python scripts/fetch_data.py
+
+      - name: Commit & push if data changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- data/dashboard.json; then
+            echo "No data changes."
+          else
+            git add data/dashboard.json
+            git commit -m "chore: update macro data ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+            git push
+          fi
