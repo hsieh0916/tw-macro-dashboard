@@ -35,7 +35,7 @@ UA = {"User-Agent": "Mozilla/5.0 (compatible; tw-macro-dashboard/1.0; +https://g
 TIMEOUT = 30
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_PATH = os.path.join(ROOT, "data", "dashboard.json")
-GRCA_CERT_PATH = os.path.join(ROOT, "scripts", "certs", "GRCA.pem")
+EXTRA_CERTS_DIR = os.path.join(ROOT, "scripts", "certs")
 
 FINMIND_URL = "https://api.finmindtrade.com/api/v4/data"
 CIER_LIST_URL = "https://www.cier.edu.tw/focus-ch/"
@@ -49,20 +49,23 @@ _CA_BUNDLE_CACHE = None
 
 
 def ca_bundle():
-    """certifi 的預設信任清單未收錄台灣「政府憑證管理中心(GRCA)」根憑證，
-    導致 *.gov.tw 網站（例如 ws.dgbas.gov.tw）在 Linux/CI 環境下 TLS 驗證失敗
-    （Windows／瀏覽器則因作業系統層級另有信任清單而不受影響，因此本機不易察覺）。
-    這裡疊加官方 GRCA 根憑證（https://grca.nat.gov.tw/repository/Certs/GRCA.cer）
-    到 certifi 的信任清單，而非關閉憑證驗證。"""
+    """某些 .gov.tw 站台（例如 ws.dgbas.gov.tw，其憑證由 TWCA Secure SSL
+    Certification Authority 簽發）伺服器端未附上完整的中繼憑證，導致
+    certifi 預設信任清單在 Linux/CI 環境下 TLS 驗證失敗——瀏覽器與 Windows
+    通常會自動補上缺漏的中繼憑證（AIA chasing），因此本機不易察覺此問題。
+    這裡把 scripts/certs/ 內手動蒐集、來自憑證機關官方網站的中繼／根憑證
+    疊加到 certifi 的信任清單上，補齊該站的憑證鏈，而非關閉憑證驗證。"""
     global _CA_BUNDLE_CACHE
     if _CA_BUNDLE_CACHE and os.path.exists(_CA_BUNDLE_CACHE):
         return _CA_BUNDLE_CACHE
     combined = os.path.join(tempfile.gettempdir(), "tw-macro-ca-bundle.pem")
     with open(combined, "wb") as out, open(certifi.where(), "rb") as base:
         out.write(base.read())
-        if os.path.exists(GRCA_CERT_PATH):
-            out.write(b"\n")
-            out.write(open(GRCA_CERT_PATH, "rb").read())
+        if os.path.isdir(EXTRA_CERTS_DIR):
+            for name in sorted(os.listdir(EXTRA_CERTS_DIR)):
+                if name.endswith(".pem"):
+                    out.write(b"\n")
+                    out.write(open(os.path.join(EXTRA_CERTS_DIR, name), "rb").read())
     _CA_BUNDLE_CACHE = combined
     return combined
 
