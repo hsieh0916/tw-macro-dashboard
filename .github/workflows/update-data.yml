@@ -29,30 +29,34 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install requests
+        run: pip install requests certifi
 
-      - name: Fetch latest macro data
-        run: python scripts/fetch_data.py
-
-      - name: Commit & push if data changed
+      - name: Fetch, commit & push (retried as a unit to survive concurrent runs)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- data/dashboard.json; then
-            echo "No data changes."
-            exit 0
-          fi
-          git add data/dashboard.json
-          git commit -m "chore: update macro data ($(date -u +'%Y-%m-%d %H:%M UTC'))"
-          # 若剛好與其他觸發的執行序列競速（例如 push 與 workflow_dispatch 同時觸發），
-          # rebase 到最新遠端狀態後重試，避免 non-fast-forward 被拒絕。
+
           for i in 1 2 3 4 5; do
+            python scripts/fetch_data.py
+
+            if git diff --quiet -- data/dashboard.json; then
+              echo "No data changes."
+              exit 0
+            fi
+
+            git add data/dashboard.json
+            git commit -m "chore: update macro data ($(date -u +'%Y-%m-%d %H:%M UTC'))"
+
             if git push; then
               exit 0
             fi
-            echo "Push rejected, rebasing onto latest origin/main and retrying (attempt $i)..."
+
+            # 與其他同時觸發的執行序列競速（例如手動 dispatch 剛好碰上排程或另一次 push）
+            # 時才會走到這裡：捨棄本地這個 commit，重新對齊遠端最新狀態後，
+            # 重跑一次擷取腳本再重試，而非嘗試合併兩份彼此獨立產生的 JSON diff。
+            echo "Push rejected (attempt $i), resetting onto latest origin/main and retrying..."
             git fetch origin main
-            git rebase origin/main
+            git reset --hard origin/main
             sleep $((i * 5))
           done
           echo "::error::Failed to push data update after retries."
