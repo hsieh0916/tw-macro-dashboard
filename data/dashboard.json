@@ -14849,7 +14849,7 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-08-19T14:21:40Z",
+    "generated_at": "2026-08-19T14:28:32Z",
     "warnings": [
       "gdp 擷取失敗，沿用舊資料：HTTPSConnectionPool(host='ws.dgbas.gov.tw', port=443): Max retries exceeded with url: /001/Upload/461/relfile/11525/230514/na8101a1q.xml (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))"
     ],
