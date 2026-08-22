@@ -10,6 +10,7 @@
   - PMI 未來六個月展望指數（最佳努力擷取）        中華經濟研究院新聞稿
   - 貨幣總計數 M1A / M1B / M2 年增率            中央銀行
   - 台股加權指數、外資買賣超、美元兌台幣匯率      FinMind 公開 API
+  - CNN Fear & Greed Index（美股市場情緒對照）    CNN Business（非官方端點）
 
 設計原則：任何單一來源擷取失敗都不應讓整個流程中斷；失敗時沿用上次寫入的舊資料，
 並把警告訊息記錄在 meta.warnings，方便從網頁或 Actions log 察覺問題。
@@ -39,6 +40,12 @@ EXTRA_CERTS_DIR = os.path.join(ROOT, "scripts", "certs")
 
 FINMIND_URL = "https://api.finmindtrade.com/api/v4/data"
 CIER_LIST_URL = "https://www.cier.edu.tw/focus-ch/"
+CNN_FNG_URL = "https://production.dataviz.cnn.io/index/fearandgreed/graphdata"
+CNN_HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+    "Accept": "application/json, text/plain, */*",
+    "Referer": "https://edition.cnn.com/markets/fear-and-greed",
+}
 
 
 def log(msg):
@@ -331,6 +338,58 @@ def fetch_pmi_outlook(existing):
 
 
 # ---------------------------------------------------------------------------
+# CNN Business Fear & Greed Index —— 美股市場情緒對照（非官方 JSON 端點，
+# 需附上瀏覽器 User-Agent 與 CNN 站內 Referer 才會回應，否則回傳 418；
+# 此端點未經 CNN 正式公告為公開 API，長期穩定性不如政府開放資料，僅作為
+# 美股情緒參考面板，不影響頁面其餘台灣指標的運作）
+# ---------------------------------------------------------------------------
+def fetch_cnn_fear_greed():
+    log("fetching CNN Fear & Greed Index (unofficial endpoint, US market reference)")
+    r = requests.get(CNN_FNG_URL, headers=CNN_HEADERS, timeout=TIMEOUT, verify=ca_bundle())
+    r.raise_for_status()
+    j = r.json()
+    fg = j["fear_and_greed"]
+
+    def comp(key):
+        c = j.get(key)
+        if not c or c.get("score") is None:
+            return None
+        return {"score": round(c["score"], 1), "rating": c["rating"]}
+
+    components = {
+        "market_momentum": comp("market_momentum_sp125"),
+        "stock_price_strength": comp("stock_price_strength"),
+        "stock_price_breadth": comp("stock_price_breadth"),
+        "put_call_options": comp("put_call_options"),
+        "junk_bond_demand": comp("junk_bond_demand"),
+        "market_volatility": comp("market_volatility_vix"),
+        "safe_haven_demand": comp("safe_haven_demand"),
+    }
+
+    historical = []
+    for pt in j.get("fear_and_greed_historical", {}).get("data", [])[-365:]:
+        try:
+            date = datetime.fromtimestamp(pt["x"] / 1000, tz=timezone.utc).strftime("%Y-%m-%d")
+            historical.append({"date": date, "score": round(pt["y"], 1)})
+        except Exception:
+            continue
+
+    out = {
+        "score": round(fg["score"], 1),
+        "rating": fg["rating"],
+        "timestamp": fg["timestamp"],
+        "previous_close": round(fg["previous_close"], 1) if fg.get("previous_close") is not None else None,
+        "previous_1_week": round(fg["previous_1_week"], 1) if fg.get("previous_1_week") is not None else None,
+        "previous_1_month": round(fg["previous_1_month"], 1) if fg.get("previous_1_month") is not None else None,
+        "previous_1_year": round(fg["previous_1_year"], 1) if fg.get("previous_1_year") is not None else None,
+        "components": components,
+        "historical": historical,
+    }
+    log(f"  -> score={out['score']} ({out['rating']}), {len(historical)} historical days")
+    return out
+
+
+# ---------------------------------------------------------------------------
 def main():
     existing = {}
     if os.path.exists(DATA_PATH):
@@ -351,7 +410,9 @@ def main():
         ("taiex", fetch_taiex),
         ("foreign_flow", fetch_foreign_flow),
         ("fx_usdtwd", fetch_fx),
+        ("cnn_fear_greed", fetch_cnn_fear_greed),
     ]
+    empty_defaults = {"taiex": {"monthly": [], "daily_recent": []}, "cnn_fear_greed": {}}
     for key, fn in fetchers:
         try:
             result[key] = fn()
@@ -359,7 +420,7 @@ def main():
             log(f"ERROR fetching {key}: {e}")
             warnings.append(f"{key} 擷取失敗，沿用舊資料：{e}")
             if key not in result:
-                result[key] = {"monthly": [], "daily_recent": []} if key == "taiex" else []
+                result[key] = empty_defaults.get(key, [])
 
     outlook, outlook_warning = fetch_pmi_outlook(existing.get("pmi_outlook", []))
     result["pmi_outlook"] = outlook
@@ -378,6 +439,7 @@ def main():
             "taiex": {"name": "台灣證券交易所發行量加權股價指數（經 FinMind 開放API）", "url": "https://finmindtrade.com/"},
             "foreign_flow": {"name": "三大法人買賣金額統計—外資（經 FinMind 開放API）", "url": "https://finmindtrade.com/"},
             "fx_usdtwd": {"name": "銀行牌告美元／新台幣即期匯率（經 FinMind 開放API）", "url": "https://finmindtrade.com/"},
+            "cnn_fear_greed": {"name": "CNN Business Fear & Greed Index（美股市場情緒，非官方端點）", "url": "https://edition.cnn.com/markets/fear-and-greed"},
         },
     }
 

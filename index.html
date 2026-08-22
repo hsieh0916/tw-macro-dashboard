@@ -187,6 +187,35 @@
     <div class="data-table-wrap" id="table-others" hidden></div>
   </section>
 
+  <!-- CNN Fear & Greed（美股市場情緒對照） -->
+  <section class="chart-card" id="card-cnn-fng">
+    <h2>美股 Fear &amp; Greed 指數對照 <span class="tag">CNN Business・每日（非官方端點）</span></h2>
+    <p class="card-desc">
+      CNN Business 編製的美股市場情緒指標，綜合<b>股價動能、強度、廣度、選擇權賣買權比、垃圾債需求、波動度（VIX）、避險需求</b>等 7 項訊號，反映投資人此刻是「恐慌」還是「貪婪」——常被當作反指標參考：極度恐慌時市場往往已超賣，極度貪婪時則需留意過熱風險。
+      此區塊呈現的是<b>美股</b>市場情緒，作為與上方台灣景氣指標的跨市場對照，並非台股本身的指標；資料來自 CNN 非正式公開端點，穩定性可能不如政府開放資料，若暫時無法更新不影響頁面其餘台灣指標。
+    </p>
+
+    <div class="fng-summary">
+      <div class="fng-score">
+        <div class="fng-score-value" id="fng-score-value">—</div>
+        <div class="fng-score-rating" id="fng-score-rating">載入中…</div>
+      </div>
+      <div class="fng-meter-wrap">
+        <div class="fng-meter"><div class="fng-meter-marker" id="fng-meter-main-marker" style="left:50%"></div></div>
+        <div class="fng-meter-scale"><span>0・極度恐慌</span><span>50・中性</span><span>100・極度貪婪</span></div>
+      </div>
+      <div class="fng-deltas" id="fng-deltas"></div>
+    </div>
+
+    <h3 style="font-size:13px;color:var(--text-secondary);margin:0 0 10px;">7 項細分指標（美股，CNN 原始分類）</h3>
+    <div class="fng-components" id="fng-components"></div>
+
+    <div class="chart-block" style="margin-top:20px;">
+      <h3>綜合指數歷史走勢（近一年，每日）</h3>
+      <div class="chart-wrap"><canvas id="chart-fng-history"></canvas></div>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <p><b>資料來源</b></p>
     <ul class="source-list">
@@ -196,6 +225,7 @@
       <li>中華經濟研究院—PMI新聞稿（未來六個月展望指數）</li>
       <li>中央銀行—貨幣總計數</li>
       <li>台灣證券交易所發行量加權股價指數、三大法人買賣金額統計、銀行牌告匯率（經 FinMind 公開API）</li>
+      <li>CNN Business—Fear &amp; Greed Index（美股市場情緒，非官方端點）</li>
     </ul>
     <p>本網站為靜態彙整頁面，程式碼與資料擷取腳本公開於 <a href="https://github.com" id="repo-link" target="_blank" rel="noopener">GitHub</a>，歡迎檢視或回報資料異常。所有資料均取自政府公開資料平台（data.gov.tw）與各機關官方發布之公開資訊，並以 FinMind 公開 API 取得台股市場資料。</p>
     <p>© <span id="footer-year"></span> 台灣總經儀表板。資料每日自動更新，僅供參考，不構成投資建議。</p>
