@@ -76,16 +76,12 @@
       由外銷訂單動向指數、M1B貨幣總計數、股價指數、工業及服務業受僱員工淨進入率、建築物開工樓地板面積、半導體設備進口等 6 項具領先性的項目組成，用以預測未來 3～6 個月的景氣走向。
       <b>不含趨勢指數</b>以 100 為分界：高於 100 代表景氣動能相對強勁、低於 100 則相對疲弱。由於股價指數本身即為領先指標成分之一，兩者走勢通常高度連動。
     </p>
-    <div class="chart-grid two-col">
-      <div class="chart-block">
-        <h3>領先指標不含趨勢指數（近 10 年）</h3>
-        <div class="chart-wrap"><canvas id="chart-leading"></canvas></div>
-      </div>
-      <div class="chart-block">
-        <h3>對照台股加權指數（指數化=100）</h3>
-        <div class="chart-wrap"><canvas id="chart-leading-vs-taiex"></canvas></div>
-      </div>
+    <div class="chart-block chart-stack">
+      <h3>領先指標不含趨勢指數 vs. 台股加權指數（近 10 年・同一時間軸、各自原始刻度）</h3>
+      <div class="chart-wrap short"><canvas id="chart-leading"></canvas></div>
+      <div class="chart-wrap short"><canvas id="chart-leading-taiex-panel"></canvas></div>
     </div>
+    <p class="chart-note">兩者量級差異大（指標約 90～110，加權指數上萬點），疊在同一軸上指數化比較容易因起點選取而誇大或掩蓋相關性，因此改為上下並列、各自刻度、共用時間軸，直接比對轉折點是否同步或領先。</p>
     <button class="table-toggle" id="toggle-leading">顯示資料表</button>
     <div class="data-table-wrap" id="table-leading" hidden></div>
   </section>

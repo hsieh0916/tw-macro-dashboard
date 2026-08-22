@@ -198,22 +198,33 @@
     return arr.length > n ? arr.slice(arr.length - n) : arr.slice();
   }
 
-  function rebaseIndexed(seriesA, seriesB, valueKeyA, valueKeyB, windowN) {
+  // 兩序列僅取雙方皆有值的共同月份／季別，保留原始數值（不指數化），
+  // 供上下並列、各自刻度的雙圖使用同一組 labels 以確保轉折點左右對齊。
+  function alignSeries(seriesA, seriesB, valueKeyA, valueKeyB, windowN) {
+    const mapA = new Map(seriesA.map((d) => [d.period, d[valueKeyA]]));
     const mapB = new Map(seriesB.map((d) => [d.period, d[valueKeyB]]));
     const periods = seriesA
       .map((d) => d.period)
-      .filter((p) => mapB.has(p) && mapB.get(p) != null);
-    const mapA = new Map(seriesA.map((d) => [d.period, d[valueKeyA]]));
-    const usable = periods.filter((p) => mapA.get(p) != null);
-    const windowed = lastN(usable, windowN);
+      .filter((p) => mapA.get(p) != null && mapB.has(p) && mapB.get(p) != null);
+    const windowed = lastN(periods, windowN);
     if (!windowed.length) return null;
-    const base0A = mapA.get(windowed[0]);
-    const base0B = mapB.get(windowed[0]);
-    if (!base0A || !base0B) return null;
     return {
       labels: windowed,
-      a: windowed.map((p) => +((mapA.get(p) / base0A) * 100).toFixed(2)),
-      b: windowed.map((p) => +((mapB.get(p) / base0B) * 100).toFixed(2)),
+      a: windowed.map((p) => mapA.get(p)),
+      b: windowed.map((p) => mapB.get(p)),
+    };
+  }
+
+  function rebaseIndexed(seriesA, seriesB, valueKeyA, valueKeyB, windowN) {
+    const aligned = alignSeries(seriesA, seriesB, valueKeyA, valueKeyB, windowN);
+    if (!aligned) return null;
+    const base0A = aligned.a[0];
+    const base0B = aligned.b[0];
+    if (!base0A || !base0B) return null;
+    return {
+      labels: aligned.labels,
+      a: aligned.a.map((v) => +((v / base0A) * 100).toFixed(2)),
+      b: aligned.b.map((v) => +((v / base0B) * 100).toFixed(2)),
     };
   }
 
@@ -397,22 +408,26 @@
   function renderLeading(data) {
     const full = data.business_signal.filter((d) => d.leading_index_notrend != null);
     const windowed = lastN(full, MONTH_WINDOW);
+
+    // 兩圖改為上下並列、各自原始刻度、共用同一組月份 labels，
+    // 而非把兩者指數化疊在同一軸上——後者的對齊起點是任意的，
+    // 容易讓人誤以為兩條線的相關性比實際更強或更弱。
+    const aligned = alignSeries(full, data.taiex.monthly, "leading_index_notrend", "close", MONTH_WINDOW);
+    const leadingLabels = aligned ? aligned.labels : windowed.map((d) => d.period);
+    const leadingValues = aligned ? aligned.a : windowed.map((d) => d.leading_index_notrend);
+
     makeLineChart("chart-leading", {
-      labels: windowed.map((d) => d.period),
+      labels: leadingLabels,
       datasets: [
-        { label: "領先指標不含趨勢指數", data: windowed.map((d) => d.leading_index_notrend), color: css("--series-blue") },
+        { label: "領先指標不含趨勢指數", data: leadingValues, color: css("--series-blue") },
       ],
       yFormat: (v) => fmtNum(v, 0),
     });
 
-    const cmp = rebaseIndexed(full, data.taiex.monthly, "leading_index_notrend", "close", MONTH_WINDOW);
-    if (cmp) {
-      makeLineChart("chart-leading-vs-taiex", {
-        labels: cmp.labels,
-        datasets: [
-          { label: "領先指標不含趨勢（指數化=100）", data: cmp.a, color: css("--series-blue") },
-          { label: "台股加權指數（指數化=100）", data: cmp.b, color: css("--series-violet") },
-        ],
+    if (aligned) {
+      makeLineChart("chart-leading-taiex-panel", {
+        labels: aligned.labels,
+        datasets: [{ label: "台股加權指數（月收盤）", data: aligned.b, color: css("--series-violet") }],
         yFormat: (v) => fmtInt(v),
       });
     }
