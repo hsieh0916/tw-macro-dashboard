@@ -109,6 +109,42 @@ html, body {
 
 a { color: var(--series-blue); }
 
+/* ---------- range filter (single row, scopes every chart/table/KPI below it) ---------- */
+.range-filter {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 4px 4px 22px;
+}
+.range-filter .range-label {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+.range-btns {
+  display: inline-flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface-1);
+}
+.range-btns button {
+  font-size: 12.5px;
+  font-family: inherit;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  border-radius: 999px;
+  padding: 5px 13px;
+  cursor: pointer;
+}
+.range-btns button:hover { color: var(--text-primary); }
+.range-btns button[aria-pressed="true"] {
+  background: var(--series-blue);
+  color: #fff;
+}
+
 /* ---------- header ---------- */
 .site-header {
   padding: 28px 4px 8px;

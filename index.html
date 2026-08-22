@@ -27,6 +27,17 @@
     <div class="banner warn" id="data-warnings" hidden></div>
   </header>
 
+  <div class="range-filter" role="group" aria-label="時間範圍篩選">
+    <span class="range-label">時間範圍</span>
+    <div class="range-btns" id="range-btns">
+      <button type="button" data-range="1">近 1 年</button>
+      <button type="button" data-range="3">近 3 年</button>
+      <button type="button" data-range="5">近 5 年</button>
+      <button type="button" data-range="10" aria-pressed="true">近 10 年</button>
+      <button type="button" data-range="all">全部</button>
+    </div>
+  </div>
+
   <section class="kpi-row" id="kpi-row">
     <div class="stat-tile"><div class="label">載入中…</div></div>
   </section>
@@ -53,17 +64,12 @@
     <h3 style="font-size:13px;color:var(--text-secondary);margin:0 0 8px;">近 12 個月燈號</h3>
     <div class="signal-strip" id="signal-strip"></div>
 
-    <div class="chart-grid two-col">
-      <div class="chart-block">
-        <h3>綜合判斷分數走勢（近 10 年）</h3>
-        <div class="chart-wrap"><canvas id="chart-signal-score"></canvas></div>
-      </div>
-      <div class="chart-block">
-        <h3>對照台股加權指數（兩者皆指數化，起始月=100）</h3>
-        <div class="chart-wrap"><canvas id="chart-signal-vs-taiex"></canvas></div>
-      </div>
+    <div class="chart-block chart-stack">
+      <h3>綜合判斷分數 vs. 台股加權指數（同一時間軸、各自原始刻度）</h3>
+      <div class="chart-wrap short"><canvas id="chart-signal-score"></canvas></div>
+      <div class="chart-wrap short"><canvas id="chart-signal-taiex-panel"></canvas></div>
     </div>
-    <p class="chart-note">指數化比較：將兩個量級不同的數列各自除以「窗口起始值」再乘以100，使其在同一張圖、同一縱軸上以相對變動幅度比較，而非直接比較絕對數值（避免雙縱軸圖表造成的誤導）。</p>
+    <p class="chart-note">兩者量級差異大（分數介於 9～45，加權指數上萬點），疊在同一軸上指數化比較容易因起點選取而誇大或掩蓋相關性，因此改為上下並列、各自刻度、共用時間軸，直接比對轉折點是否同步或領先。</p>
 
     <button class="table-toggle" id="toggle-signal">顯示資料表</button>
     <div class="data-table-wrap" id="table-signal" hidden></div>
@@ -77,7 +83,7 @@
       <b>不含趨勢指數</b>以 100 為分界：高於 100 代表景氣動能相對強勁、低於 100 則相對疲弱。由於股價指數本身即為領先指標成分之一，兩者走勢通常高度連動。
     </p>
     <div class="chart-block chart-stack">
-      <h3>領先指標不含趨勢指數 vs. 台股加權指數（近 10 年・同一時間軸、各自原始刻度）</h3>
+      <h3>領先指標不含趨勢指數 vs. 台股加權指數（同一時間軸、各自原始刻度）</h3>
       <div class="chart-wrap short"><canvas id="chart-leading"></canvas></div>
       <div class="chart-wrap short"><canvas id="chart-leading-taiex-panel"></canvas></div>
     </div>
@@ -93,7 +99,7 @@
       以 50 為榮枯分水嶺：高於 50 代表多數採購經理人認為當月景氣較上月擴張，低於 50 代表緊縮。PMI 是觀察製造業（尤其電子科技業占比高的台灣）短期景氣轉折最即時的領先指標之一，與台股電子權值股表現連動密切。下方另附中經院問卷中「製造業未來六個月展望指數」，反映廠商對半年後景氣的主觀展望（此欄位無公開結構化資料，採每日自動解析中經院新聞稿之最佳努力擷取，若當月未能成功解析將沿用前值）。
     </p>
     <div class="chart-block">
-      <h3>製造業 PMI 與非製造業 NMI（近 5 年）</h3>
+      <h3>製造業 PMI 與非製造業 NMI</h3>
       <div class="chart-wrap"><canvas id="chart-pmi"></canvas></div>
     </div>
     <div class="chart-block" id="pmi-outlook-wrap" style="margin-top:18px;">
@@ -112,7 +118,7 @@
     </p>
     <div class="chart-grid two-col">
       <div class="chart-block">
-        <h3>M1B／M2 年增率（近 10 年）</h3>
+        <h3>M1B／M2 年增率</h3>
         <div class="chart-wrap"><canvas id="chart-money"></canvas></div>
       </div>
       <div class="chart-block">
@@ -131,7 +137,7 @@
       每季公布的實質GDP年增率，是最具權威性但發布落後（約落後當季結束 1 個月公布概估值）的落後兼確認性指標，適合用來驗證景氣對策信號、PMI 等領先指標先前釋放的訊號是否兌現。下方並列同期台股加權指數（季底收盤）走勢，觀察兩者是否同步。
     </p>
     <div class="chart-block">
-      <h3>GDP 經濟成長率（年增率，近 10 年季資料）</h3>
+      <h3>GDP 經濟成長率（年增率，季資料）</h3>
       <div class="chart-wrap"><canvas id="chart-gdp"></canvas></div>
     </div>
     <div class="chart-grid two-col" style="margin-top:18px;">
@@ -156,7 +162,7 @@
       <b>外資買賣超</b>是台股最主要的邊際資金力量，外資由於部位龐大，其買賣方向常與加權指數短中期走勢高度一致；<b>美元／新台幣匯率</b>則反映資金流向與出口企業獲利換算效果——新台幣升值期間往往伴隨外資匯入及股市資金行情，貶值則可能反映資金外流壓力。
     </p>
     <div class="chart-block">
-      <h3>台股加權指數（月收盤，近 10 年）</h3>
+      <h3>台股加權指數（月收盤）</h3>
       <div class="chart-wrap"><canvas id="chart-taiex"></canvas></div>
     </div>
     <div class="chart-block" style="margin-top:18px;">

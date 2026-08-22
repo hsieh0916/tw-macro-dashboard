@@ -7,8 +7,21 @@
   "use strict";
 
   const DATA_URL = "data/dashboard.json?t=" + Date.now(); // 避免 GitHub Pages CDN 快取舊資料
-  const MONTH_WINDOW = 120; // 月資料預設顯示近 10 年
-  const QUARTER_WINDOW = 40; // 季資料預設顯示近 10 年
+
+  // ---------- 時間範圍篩選（單一列，套用到下方所有圖表，數字一律連動） ----------
+  let MONTH_WINDOW = 120; // 月資料視窗（可被下方篩選器覆寫）
+  let QUARTER_WINDOW = 40; // 季資料視窗（可被下方篩選器覆寫）
+  const RANGE_PRESETS = { "1": 1, "3": 3, "5": 5, "10": 10, all: null };
+  function applyRangeYears(years) {
+    MONTH_WINDOW = years == null ? Infinity : years * 12;
+    QUARTER_WINDOW = years == null ? Infinity : years * 4;
+  }
+  const savedRangeKey = (() => {
+    const urlRange = new URLSearchParams(location.search).get("range");
+    const saved = urlRange || localStorage.getItem("tw-macro-range");
+    return Object.prototype.hasOwnProperty.call(RANGE_PRESETS, saved) ? saved : "10";
+  })();
+  applyRangeYears(RANGE_PRESETS[savedRangeKey]);
 
   // ---------- theme ----------
   const root = document.documentElement;
@@ -377,20 +390,19 @@
       .join("");
 
     const windowed = lastN(full, MONTH_WINDOW);
+    const aligned = alignSeries(full, data.taiex.monthly, "score", "close", MONTH_WINDOW);
+    const scoreLabels = aligned ? aligned.labels : windowed.map((d) => d.period);
+    const scoreValues = aligned ? aligned.a : windowed.map((d) => d.score);
     makeLineChart("chart-signal-score", {
-      labels: windowed.map((d) => d.period),
-      datasets: [{ label: "景氣對策信號綜合分數", data: windowed.map((d) => d.score), color: css("--series-blue") }],
+      labels: scoreLabels,
+      datasets: [{ label: "景氣對策信號綜合分數", data: scoreValues, color: css("--series-blue") }],
       yFormat: (v) => v,
     });
 
-    const cmp = rebaseIndexed(full, data.taiex.monthly, "score", "close", MONTH_WINDOW);
-    if (cmp) {
-      makeLineChart("chart-signal-vs-taiex", {
-        labels: cmp.labels,
-        datasets: [
-          { label: "景氣對策信號分數（指數化=100）", data: cmp.a, color: css("--series-blue") },
-          { label: "台股加權指數（指數化=100）", data: cmp.b, color: css("--series-violet") },
-        ],
+    if (aligned) {
+      makeLineChart("chart-signal-taiex-panel", {
+        labels: aligned.labels,
+        datasets: [{ label: "台股加權指數（月收盤）", data: aligned.b, color: css("--series-violet") }],
         yFormat: (v) => fmtInt(v),
       });
     }
@@ -442,7 +454,7 @@
   // ---------- PMI / NMI ----------
   function renderPMI(data) {
     const full = data.pmi.filter((d) => d.pmi != null);
-    const windowed = lastN(full, 60);
+    const windowed = lastN(full, MONTH_WINDOW);
     makeLineChart("chart-pmi", {
       labels: windowed.map((d) => d.period),
       datasets: [
@@ -619,6 +631,22 @@
   }
 
   document.addEventListener("DOMContentLoaded", boot);
+
+  // range filter row（單一篩選列，改動後整頁重繪，所有圖表與 KPI 數字同步套用同一時間範圍）
+  document.addEventListener("DOMContentLoaded", () => {
+    const wrap = document.getElementById("range-btns");
+    if (!wrap) return;
+    const buttons = Array.from(wrap.querySelectorAll("button[data-range]"));
+    buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.range === savedRangeKey)));
+    wrap.addEventListener("click", (e) => {
+      const btn = e.target.closest("button[data-range]");
+      if (!btn || !Object.prototype.hasOwnProperty.call(RANGE_PRESETS, btn.dataset.range)) return;
+      applyRangeYears(RANGE_PRESETS[btn.dataset.range]);
+      localStorage.setItem("tw-macro-range", btn.dataset.range);
+      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+      if (LAST_DATA) renderAll(LAST_DATA);
+    });
+  });
 
   // theme toggle button
   document.addEventListener("DOMContentLoaded", () => {
