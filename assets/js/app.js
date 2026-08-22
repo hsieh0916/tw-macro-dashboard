@@ -8,20 +8,34 @@
 
   const DATA_URL = "data/dashboard.json?t=" + Date.now(); // 避免 GitHub Pages CDN 快取舊資料
 
-  // ---------- 時間範圍篩選（單一列，套用到下方所有圖表，數字一律連動） ----------
-  let MONTH_WINDOW = 120; // 月資料視窗（可被下方篩選器覆寫）
-  let QUARTER_WINDOW = 40; // 季資料視窗（可被下方篩選器覆寫）
+  // ---------- 時間範圍篩選（單一列＋雙滑桿，套用到下方所有圖表，數字一律連動） ----------
+  // 以「月索引」(year*12+month) 當作月資料與季資料共用的單一時間軸座標：
+  // 季資料 YYYY-Qn 換算成該季最後一個月（Q1→03），即可與月資料直接比較、篩選。
   const RANGE_PRESETS = { "1": 1, "3": 3, "5": 5, "10": 10, all: null };
-  function applyRangeYears(years) {
-    MONTH_WINDOW = years == null ? Infinity : years * 12;
-    QUARTER_WINDOW = years == null ? Infinity : years * 4;
+  let RANGE_START_IDX = 0;
+  let RANGE_END_IDX = 0;
+  let TIMELINE_MIN = 0;
+  let TIMELINE_MAX = 0;
+
+  function periodToIndex(period) {
+    const q = /^(\d{4})-Q([1-4])$/.exec(period);
+    if (q) return (+q[1]) * 12 + (+q[2]) * 3;
+    const m = /^(\d{4})-(\d{2})$/.exec(period);
+    if (m) return (+m[1]) * 12 + (+m[2]);
+    return null;
   }
-  const savedRangeKey = (() => {
-    const urlRange = new URLSearchParams(location.search).get("range");
-    const saved = urlRange || localStorage.getItem("tw-macro-range");
-    return Object.prototype.hasOwnProperty.call(RANGE_PRESETS, saved) ? saved : "10";
-  })();
-  applyRangeYears(RANGE_PRESETS[savedRangeKey]);
+  function indexToPeriod(idx) {
+    idx = Math.round(idx);
+    const y = Math.floor((idx - 1) / 12);
+    const m = idx - y * 12;
+    return `${y}-${String(m).padStart(2, "0")}`;
+  }
+  function filterRange(arr, startIdx, endIdx) {
+    return arr.filter((d) => {
+      const idx = periodToIndex(d.period);
+      return idx != null && idx >= startIdx && idx <= endIdx;
+    });
+  }
 
   // ---------- theme ----------
   const root = document.documentElement;
@@ -213,13 +227,13 @@
 
   // 兩序列僅取雙方皆有值的共同月份／季別，保留原始數值（不指數化），
   // 供上下並列、各自刻度的雙圖使用同一組 labels 以確保轉折點左右對齊。
-  function alignSeries(seriesA, seriesB, valueKeyA, valueKeyB, windowN) {
+  function alignSeries(seriesA, seriesB, valueKeyA, valueKeyB, startIdx, endIdx) {
     const mapA = new Map(seriesA.map((d) => [d.period, d[valueKeyA]]));
     const mapB = new Map(seriesB.map((d) => [d.period, d[valueKeyB]]));
     const periods = seriesA
       .map((d) => d.period)
       .filter((p) => mapA.get(p) != null && mapB.has(p) && mapB.get(p) != null);
-    const windowed = lastN(periods, windowN);
+    const windowed = filterRange(periods.map((p) => ({ period: p })), startIdx, endIdx).map((d) => d.period);
     if (!windowed.length) return null;
     return {
       labels: windowed,
@@ -228,8 +242,8 @@
     };
   }
 
-  function rebaseIndexed(seriesA, seriesB, valueKeyA, valueKeyB, windowN) {
-    const aligned = alignSeries(seriesA, seriesB, valueKeyA, valueKeyB, windowN);
+  function rebaseIndexed(seriesA, seriesB, valueKeyA, valueKeyB, startIdx, endIdx) {
+    const aligned = alignSeries(seriesA, seriesB, valueKeyA, valueKeyB, startIdx, endIdx);
     if (!aligned) return null;
     const base0A = aligned.a[0];
     const base0B = aligned.b[0];
@@ -389,8 +403,8 @@
       })
       .join("");
 
-    const windowed = lastN(full, MONTH_WINDOW);
-    const aligned = alignSeries(full, data.taiex.monthly, "score", "close", MONTH_WINDOW);
+    const windowed = filterRange(full, RANGE_START_IDX, RANGE_END_IDX);
+    const aligned = alignSeries(full, data.taiex.monthly, "score", "close", RANGE_START_IDX, RANGE_END_IDX);
     const scoreLabels = aligned ? aligned.labels : windowed.map((d) => d.period);
     const scoreValues = aligned ? aligned.a : windowed.map((d) => d.score);
     makeLineChart("chart-signal-score", {
@@ -419,12 +433,12 @@
   // ---------- 領先指標 ----------
   function renderLeading(data) {
     const full = data.business_signal.filter((d) => d.leading_index_notrend != null);
-    const windowed = lastN(full, MONTH_WINDOW);
+    const windowed = filterRange(full, RANGE_START_IDX, RANGE_END_IDX);
 
     // 兩圖改為上下並列、各自原始刻度、共用同一組月份 labels，
     // 而非把兩者指數化疊在同一軸上——後者的對齊起點是任意的，
     // 容易讓人誤以為兩條線的相關性比實際更強或更弱。
-    const aligned = alignSeries(full, data.taiex.monthly, "leading_index_notrend", "close", MONTH_WINDOW);
+    const aligned = alignSeries(full, data.taiex.monthly, "leading_index_notrend", "close", RANGE_START_IDX, RANGE_END_IDX);
     const leadingLabels = aligned ? aligned.labels : windowed.map((d) => d.period);
     const leadingValues = aligned ? aligned.a : windowed.map((d) => d.leading_index_notrend);
 
@@ -454,7 +468,7 @@
   // ---------- PMI / NMI ----------
   function renderPMI(data) {
     const full = data.pmi.filter((d) => d.pmi != null);
-    const windowed = lastN(full, MONTH_WINDOW);
+    const windowed = filterRange(full, RANGE_START_IDX, RANGE_END_IDX);
     makeLineChart("chart-pmi", {
       labels: windowed.map((d) => d.period),
       datasets: [
@@ -486,7 +500,7 @@
   // ---------- M1B / M2 ----------
   function renderMoneySupply(data) {
     const full = data.money_supply.filter((d) => d.m1b_yoy != null && d.m2_yoy != null);
-    const windowed = lastN(full, MONTH_WINDOW);
+    const windowed = filterRange(full, RANGE_START_IDX, RANGE_END_IDX);
     makeLineChart("chart-money", {
       labels: windowed.map((d) => d.period),
       datasets: [
@@ -496,12 +510,10 @@
       yFormat: (v) => fmtNum(v, 1) + "%",
     });
 
-    const cmp = rebaseIndexed(full, data.taiex.monthly, "m1b_yoy", "close", MONTH_WINDOW);
     // m1b_yoy 可能出現負值，不適合指數化(除以基期可能為負)；改用原始年增率並排比較走勢時間軸一致即可
-    const gapWindowed = windowed;
     makeLineChart("chart-money-vs-taiex", {
-      labels: gapWindowed.map((d) => d.period),
-      datasets: [{ label: "M1B－M2 年增率差（pp）", data: gapWindowed.map((d) => d.m1b_m2_gap), color: css("--series-blue") }],
+      labels: windowed.map((d) => d.period),
+      datasets: [{ label: "M1B－M2 年增率差（pp）", data: windowed.map((d) => d.m1b_m2_gap), color: css("--series-blue") }],
       yFormat: (v) => fmtNum(v, 1),
     });
 
@@ -517,7 +529,7 @@
   // ---------- GDP ----------
   function renderGDP(data) {
     const full = data.gdp;
-    const windowed = lastN(full, QUARTER_WINDOW);
+    const windowed = filterRange(full, RANGE_START_IDX, RANGE_END_IDX);
     makeBarChart("chart-gdp", {
       labels: windowed.map((d) => d.period),
       data: windowed.map((d) => d.yoy_pct),
@@ -527,9 +539,8 @@
     });
 
     const taiexQ = taiexQuarterly(data.taiex.monthly);
-    const cmp = rebaseIndexed(full, taiexQ, "yoy_pct", "close", QUARTER_WINDOW);
     // GDP 年增率本身已是變動率、可能為負，不適用指數化比較；改為雙折線並列同一張圖以顯示轉折點是否同步
-    if (cmp) {
+    if (windowed.length) {
       makeLineChart("chart-gdp-vs-taiex", {
         labels: windowed.map((d) => d.period),
         datasets: [
@@ -537,7 +548,7 @@
         ],
         yFormat: (v) => fmtNum(v, 1) + "%",
       });
-      const taiexQWindowed = lastN(taiexQ, QUARTER_WINDOW);
+      const taiexQWindowed = filterRange(taiexQ, RANGE_START_IDX, RANGE_END_IDX);
       makeLineChart("chart-gdp-taiex-panel", {
         labels: taiexQWindowed.map((d) => d.period),
         datasets: [{ label: "台股加權指數（季底收盤）", data: taiexQWindowed.map((d) => d.close), color: css("--series-violet") }],
@@ -553,7 +564,7 @@
 
   // ---------- 其他股市連動指標：外資買賣超 + 匯率 ----------
   function renderOthers(data) {
-    const taiexM = lastN(data.taiex.monthly, MONTH_WINDOW);
+    const taiexM = filterRange(data.taiex.monthly, RANGE_START_IDX, RANGE_END_IDX);
     makeLineChart("chart-taiex", {
       labels: taiexM.map((d) => d.period),
       datasets: [{ label: "台股加權指數（月收盤）", data: taiexM.map((d) => d.close), color: css("--series-violet") }],
@@ -561,7 +572,7 @@
     });
 
     const flow = data.foreign_flow.filter((d) => d.net_ntd_100m != null);
-    const flowWindowed = lastN(flow, MONTH_WINDOW);
+    const flowWindowed = filterRange(flow, RANGE_START_IDX, RANGE_END_IDX);
     makeBarChart("chart-foreign-flow", {
       labels: flowWindowed.map((d) => d.period),
       data: flowWindowed.map((d) => d.net_ntd_100m),
@@ -570,7 +581,7 @@
       yFormat: (v) => fmtInt(v) + " 億元",
     });
 
-    const fx = lastN(data.fx_usdtwd, MONTH_WINDOW);
+    const fx = filterRange(data.fx_usdtwd, RANGE_START_IDX, RANGE_END_IDX);
     makeLineChart("chart-fx", {
       labels: fx.map((d) => d.period),
       datasets: [{ label: "美元／新台幣即期匯率", data: fx.map((d) => d.usdtwd), color: css("--series-yellow") }],
@@ -621,6 +632,7 @@
       .then((r) => r.json())
       .then((data) => {
         LAST_DATA = data;
+        initRangeControl(data);
         renderAll(data);
       })
       .catch((err) => {
@@ -632,21 +644,130 @@
 
   document.addEventListener("DOMContentLoaded", boot);
 
-  // range filter row（單一篩選列，改動後整頁重繪，所有圖表與 KPI 數字同步套用同一時間範圍）
-  document.addEventListener("DOMContentLoaded", () => {
+  // ---------- range filter row：預設區間按鈕 ＋ 雙滑桿可自由拖曳任意起訖區間 ----------
+  // 單一資料來源（RANGE_START_IDX / RANGE_END_IDX），改動後整頁重繪，
+  // 所有圖表、資料表、KPI 一律套用同一時間範圍（滑桿拖曳中僅更新視覺，放開才重繪圖表）。
+  function setRange(startIdx, endIdx, opts = {}) {
+    const { persist = true, rerender = true } = opts;
+    startIdx = Math.max(TIMELINE_MIN, Math.min(startIdx, TIMELINE_MAX));
+    endIdx = Math.max(TIMELINE_MIN, Math.min(endIdx, TIMELINE_MAX));
+    if (startIdx > endIdx) { const t = startIdx; startIdx = endIdx; endIdx = t; }
+    RANGE_START_IDX = startIdx;
+    RANGE_END_IDX = endIdx;
+
+    const startInput = document.getElementById("range-start");
+    const endInput = document.getElementById("range-end");
+    if (startInput && endInput) {
+      startInput.max = TIMELINE_MAX; // 先放寬互鎖限制，避免卡住新值
+      endInput.min = TIMELINE_MIN;
+      startInput.value = startIdx;
+      endInput.value = endIdx;
+      startInput.max = endIdx; // 再收緊：兩個把手不能互相跨過
+      endInput.min = startIdx;
+    }
+    updateRangeVisual();
+    if (persist) localStorage.setItem("tw-macro-range", JSON.stringify([indexToPeriod(startIdx), indexToPeriod(endIdx)]));
+    if (rerender && LAST_DATA) renderAll(LAST_DATA);
+  }
+
+  function updateRangeVisual() {
+    const fill = document.getElementById("range-slider-fill");
+    const label = document.getElementById("range-slider-label");
+    const span = (TIMELINE_MAX - TIMELINE_MIN) || 1;
+    if (fill) {
+      fill.style.left = (((RANGE_START_IDX - TIMELINE_MIN) / span) * 100) + "%";
+      fill.style.right = (((TIMELINE_MAX - RANGE_END_IDX) / span) * 100) + "%";
+    }
+    if (label) label.textContent = `${indexToPeriod(RANGE_START_IDX)} ～ ${indexToPeriod(RANGE_END_IDX)}`;
+
     const wrap = document.getElementById("range-btns");
-    if (!wrap) return;
-    const buttons = Array.from(wrap.querySelectorAll("button[data-range]"));
-    buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.range === savedRangeKey)));
-    wrap.addEventListener("click", (e) => {
-      const btn = e.target.closest("button[data-range]");
-      if (!btn || !Object.prototype.hasOwnProperty.call(RANGE_PRESETS, btn.dataset.range)) return;
-      applyRangeYears(RANGE_PRESETS[btn.dataset.range]);
-      localStorage.setItem("tw-macro-range", btn.dataset.range);
-      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
-      if (LAST_DATA) renderAll(LAST_DATA);
-    });
-  });
+    if (wrap) {
+      wrap.querySelectorAll("button[data-range]").forEach((b) => {
+        const years = RANGE_PRESETS[b.dataset.range];
+        const expectedStart = years == null ? TIMELINE_MIN : Math.max(TIMELINE_MIN, TIMELINE_MAX - years * 12);
+        const match = RANGE_END_IDX === TIMELINE_MAX && RANGE_START_IDX === expectedStart;
+        b.setAttribute("aria-pressed", String(match));
+      });
+    }
+  }
+
+  function initRangeControl(data) {
+    const allPeriods = [
+      ...data.business_signal.map((d) => d.period),
+      ...data.taiex.monthly.map((d) => d.period),
+      ...data.money_supply.map((d) => d.period),
+      ...data.pmi.map((d) => d.period),
+      ...data.fx_usdtwd.map((d) => d.period),
+      ...data.foreign_flow.map((d) => d.period),
+      ...data.gdp.map((d) => d.period),
+    ];
+    const idxs = allPeriods.map(periodToIndex).filter((v) => v != null);
+    TIMELINE_MIN = Math.min(...idxs);
+    TIMELINE_MAX = Math.max(...idxs);
+
+    const startInput = document.getElementById("range-start");
+    const endInput = document.getElementById("range-end");
+    const wrap = document.getElementById("range-btns");
+    if (startInput && endInput) {
+      startInput.min = endInput.min = TIMELINE_MIN;
+      startInput.max = endInput.max = TIMELINE_MAX;
+    }
+
+    // 還原上次選取區間：優先看網址 ?range=（起訖月份或年數皆可），其次 localStorage，都沒有則預設近 10 年
+    let startIdx, endIdx;
+    const urlRange = new URLSearchParams(location.search).get("range");
+    if (urlRange) {
+      const parts = urlRange.split(",");
+      if (parts.length === 2) {
+        startIdx = periodToIndex(parts[0].trim());
+        endIdx = periodToIndex(parts[1].trim());
+      } else if (/^\d+$/.test(urlRange.trim())) {
+        endIdx = TIMELINE_MAX;
+        startIdx = TIMELINE_MAX - (+urlRange) * 12;
+      }
+    }
+    if (startIdx == null || endIdx == null) {
+      try {
+        const saved = JSON.parse(localStorage.getItem("tw-macro-range"));
+        if (Array.isArray(saved) && saved.length === 2) {
+          startIdx = periodToIndex(saved[0]);
+          endIdx = periodToIndex(saved[1]);
+        }
+      } catch { /* 忽略壞掉的 localStorage 內容，改用預設值 */ }
+    }
+    if (startIdx == null || endIdx == null || isNaN(startIdx) || isNaN(endIdx)) {
+      endIdx = TIMELINE_MAX;
+      startIdx = TIMELINE_MAX - 120; // 預設近 10 年
+    }
+    setRange(startIdx, endIdx, { persist: false, rerender: false });
+
+    if (startInput && endInput) {
+      startInput.addEventListener("input", () => {
+        RANGE_START_IDX = +startInput.value;
+        endInput.min = RANGE_START_IDX;
+        updateRangeVisual();
+      });
+      endInput.addEventListener("input", () => {
+        RANGE_END_IDX = +endInput.value;
+        startInput.max = RANGE_END_IDX;
+        updateRangeVisual();
+      });
+      const commit = () => setRange(RANGE_START_IDX, RANGE_END_IDX);
+      startInput.addEventListener("change", commit);
+      endInput.addEventListener("change", commit);
+    }
+
+    if (wrap) {
+      wrap.addEventListener("click", (e) => {
+        const btn = e.target.closest("button[data-range]");
+        if (!btn || !Object.prototype.hasOwnProperty.call(RANGE_PRESETS, btn.dataset.range)) return;
+        const years = RANGE_PRESETS[btn.dataset.range];
+        const endIdx2 = TIMELINE_MAX;
+        const startIdx2 = years == null ? TIMELINE_MIN : Math.max(TIMELINE_MIN, TIMELINE_MAX - years * 12);
+        setRange(startIdx2, endIdx2);
+      });
+    }
+  }
 
   // theme toggle button
   document.addEventListener("DOMContentLoaded", () => {

@@ -109,17 +109,34 @@ html, body {
 
 a { color: var(--series-blue); }
 
-/* ---------- range filter (single row, scopes every chart/table/KPI below it) ---------- */
+/* ---------- range filter (scopes every chart/table/KPI below it) ---------- */
+/* 上排：常用區間按鈕（快速跳轉）。下排以一條分隔線隔開：雙滑桿可用滑鼠拖曳任意起訖區間，
+   兩者共用同一份狀態（RANGE_START_IDX/RANGE_END_IDX），操作其一另一邊會同步反映。 */
 .range-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 4px 4px 22px;
+}
+.range-filter-row {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 4px 4px 22px;
+  gap: 12px;
+}
+.range-filter-custom {
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
 }
 .range-filter .range-label {
   font-size: 12.5px;
   color: var(--text-muted);
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.range-slider-readout {
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
 }
 .range-btns {
   display: inline-flex;
@@ -143,6 +160,79 @@ a { color: var(--series-blue); }
 .range-btns button[aria-pressed="true"] {
   background: var(--series-blue);
   color: #fff;
+}
+
+/* 雙滑桿：兩個原生 range input 疊在同一軌道上，各自只有滑鈕可互動
+   （pointer-events:none 蓋住整條軌道，只在 thumb 偽元素開回 auto），
+   避免其中一個 input 的完整軌道熱區擋住另一個滑鈕的拖曳。 */
+.range-slider {
+  position: relative;
+  flex: 1;
+  min-width: 240px;
+  height: 24px;
+}
+.range-slider-track {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  background: var(--gridline);
+  border-radius: 2px;
+}
+.range-slider-fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: var(--series-blue);
+  border-radius: 2px;
+}
+.range-slider input[type="range"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 24px;
+  margin: 0;
+  background: none;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.range-slider input[type="range"]::-webkit-slider-runnable-track {
+  background: transparent;
+  height: 24px;
+}
+.range-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: var(--series-blue);
+  border: 2px solid var(--surface-1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  cursor: grab;
+}
+.range-slider input[type="range"]:active::-webkit-slider-thumb { cursor: grabbing; }
+.range-slider input[type="range"]::-moz-range-track { background: transparent; border: none; }
+.range-slider input[type="range"]::-moz-range-thumb {
+  pointer-events: auto;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--series-blue);
+  border: 2px solid var(--surface-1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  cursor: grab;
+}
+.range-slider input[type="range"]:focus-visible::-webkit-slider-thumb { outline: 2px solid var(--series-blue); outline-offset: 2px; }
+.range-slider input[type="range"]:focus-visible::-moz-range-thumb { outline: 2px solid var(--series-blue); outline-offset: 2px; }
+
+@media (max-width: 640px) {
+  .range-filter-row { gap: 8px; }
+  .range-slider { min-width: 160px; }
 }
 
 /* ---------- header ---------- */

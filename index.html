@@ -28,13 +28,23 @@
   </header>
 
   <div class="range-filter" role="group" aria-label="時間範圍篩選">
-    <span class="range-label">時間範圍</span>
-    <div class="range-btns" id="range-btns">
-      <button type="button" data-range="1">近 1 年</button>
-      <button type="button" data-range="3">近 3 年</button>
-      <button type="button" data-range="5">近 5 年</button>
-      <button type="button" data-range="10" aria-pressed="true">近 10 年</button>
-      <button type="button" data-range="all">全部</button>
+    <div class="range-filter-row">
+      <span class="range-label">時間範圍</span>
+      <div class="range-btns" id="range-btns">
+        <button type="button" data-range="1">近 1 年</button>
+        <button type="button" data-range="3">近 3 年</button>
+        <button type="button" data-range="5">近 5 年</button>
+        <button type="button" data-range="10" aria-pressed="true">近 10 年</button>
+        <button type="button" data-range="all">全部</button>
+      </div>
+    </div>
+    <div class="range-filter-row range-filter-custom">
+      <span class="range-label">自訂區間<br /><span class="range-slider-readout" id="range-slider-label"></span></span>
+      <div class="range-slider" id="range-slider">
+        <div class="range-slider-track"><div class="range-slider-fill" id="range-slider-fill"></div></div>
+        <input type="range" id="range-start" aria-label="區間起點" />
+        <input type="range" id="range-end" aria-label="區間終點" />
+      </div>
     </div>
   </div>
 
