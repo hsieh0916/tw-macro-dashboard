@@ -39,12 +39,12 @@ jobs:
           for i in 1 2 3 4 5; do
             python scripts/fetch_data.py
 
-            if git diff --quiet -- data/dashboard.json; then
+            if git diff --quiet -- data/ && [ -z "$(git status --porcelain data/)" ]; then
               echo "No data changes."
               exit 0
             fi
 
-            git add data/dashboard.json
+            git add data/
             git commit -m "chore: update macro data ($(date -u +'%Y-%m-%d %H:%M UTC'))"
 
             if git push; then

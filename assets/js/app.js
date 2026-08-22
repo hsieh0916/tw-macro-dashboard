@@ -670,6 +670,74 @@
     }
   }
 
+  // ---------- 台股恐慌與貪婪指數（本站仿 CNN 方法論、以台灣資料源計算，
+  // 同樣獨立於時間範圍篩選器——每日快照＋逐日累積的走勢，非台灣歷史區間瀏覽） ----------
+  const TFG_COMPONENTS = [
+    ["momentum", "動能（vs 125 日均線）"],
+    ["strength", "強度（52 週新高／新低家數）"],
+    ["breadth", "廣度（漲跌家數）"],
+    ["put_call", "選擇權賣權／買權比"],
+    ["capital_flow", "資金流向（外資買賣超，代替垃圾債需求）"],
+    ["volatility", "波動度（已實現波動率，代替VIX）"],
+    ["safe_haven", "避險需求（vs 長天期債券ETF）"],
+  ];
+
+  function renderTaiwanFearGreed(data) {
+    const fg = data.taiwan_fear_greed;
+    const scoreEl = document.getElementById("tfg-score-value");
+    const ratingEl = document.getElementById("tfg-score-rating");
+    const markerEl = document.getElementById("tfg-meter-main-marker");
+    const availEl = document.getElementById("tfg-availability");
+    const compsEl = document.getElementById("tfg-components");
+
+    if (!fg || fg.score == null) {
+      if (scoreEl) scoreEl.textContent = "—";
+      if (ratingEl) ratingEl.textContent = "目前無法取得資料";
+      if (availEl) availEl.innerHTML = "";
+      if (compsEl) compsEl.innerHTML = "";
+      return;
+    }
+
+    if (scoreEl) scoreEl.textContent = fmtNum(fg.score, 1);
+    if (ratingEl) ratingEl.textContent = FNG_RATING_ZH[fg.rating] || fg.rating;
+    if (markerEl) markerEl.style.left = Math.max(0, Math.min(100, fg.score)) + "%";
+
+    if (availEl) {
+      availEl.innerHTML = `<div class="fng-delta-item"><span>本次採用分項數</span><span class="value">${fg.components_available} / ${fg.components_total}</span></div>`;
+    }
+
+    if (compsEl) {
+      compsEl.innerHTML = TFG_COMPONENTS.map(([key, label]) => {
+        const c = fg.components && fg.components[key];
+        if (key === "strength" && c && c.status === "accumulating") {
+          return `<div class="fng-component">
+            <span class="fng-component-label">${label}</span>
+            <span class="fng-component-progress">資料累積中：${c.days_collected} / ${c.days_needed} 個交易日</span>
+            <span class="fng-component-na">—</span>
+          </div>`;
+        }
+        if (!c || c.score == null) {
+          return `<div class="fng-component"><span class="fng-component-label">${label}</span><div class="fng-meter fng-meter-sm"></div><span class="fng-component-na">—</span></div>`;
+        }
+        const pct = Math.max(0, Math.min(100, c.score));
+        return `<div class="fng-component">
+          <span class="fng-component-label">${label}</span>
+          <div class="fng-meter fng-meter-sm"><div class="fng-meter-marker" style="left:${pct}%"></div></div>
+          <span class="fng-component-score">${fmtNum(c.score, 0)}</span>
+        </div>`;
+      }).join("");
+    }
+
+    const hist = fg.historical || [];
+    if (hist.length) {
+      makeLineChart("chart-tfg-history", {
+        labels: hist.map((d) => d.date),
+        datasets: [{ label: "台股恐慌與貪婪指數", data: hist.map((d) => d.score), color: css("--series-blue") }],
+        yFormat: (v) => fmtInt(v),
+      });
+    }
+  }
+
   // ---------- footer meta ----------
   function renderMeta(data) {
     const el = document.getElementById("generated-at");
@@ -700,6 +768,7 @@
     renderMoneySupply(data);
     renderGDP(data);
     renderOthers(data);
+    renderTaiwanFearGreed(data);
     renderCnnFearGreed(data);
     renderMeta(data);
   }

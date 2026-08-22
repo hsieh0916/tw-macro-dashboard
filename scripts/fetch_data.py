@@ -27,7 +27,7 @@ import re
 import sys
 import tempfile
 import zipfile
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import certifi
 import requests
@@ -390,6 +390,281 @@ def fetch_cnn_fear_greed():
 
 
 # ---------------------------------------------------------------------------
+# 台股恐慌與貪婪指數 —— 仿照 CNN Fear & Greed 的方法論框架、改以台灣可公開
+# 程式化取得的資料源重新計算的 7 項分項指標（並非 CNN 的美股原始資料）：
+#   1. 動能     台股加權指數 vs 125 個交易日均線（沿用 fetch_taiex() 已抓的每日資料）
+#   2. 強度     52 週創新高／新低家數比。需先累積約一年（250 個交易日）的每日
+#               收盤價才會成熟，累積期間顯示「資料累積中」而非假造數值
+#   3. 廣度     當日上漲／下跌家數比（證交所盤後統計）
+#   4. 選擇權買賣權比   台指選擇權 Put/Call 成交量比（期交所，data.gov.tw dataset 11322）
+#   5. 資金流向   外資買賣超近 20 個交易日累計 —— 取代 CNN 的「垃圾債需求」：
+#               台灣沒有公開、可程式化取得的公司債／公債利差資料，但外資買賣
+#               超本身即是本站已強調的台股邊際資金指標，改用作資金需求的類比
+#   6. 波動度   台股加權指數近 20 個交易日已實現波動率（年化）—— 取代台指選擇權
+#               波動率指數（該指數僅開放付費訂閱，一般使用者無法取得）
+#   7. 避險需求   台股加權指數 vs 長天期美債ETF（00679B）近 20 個交易日報酬差 ——
+#               取代美國公債總報酬：台灣公債殖利率無穩定可程式化來源
+# 任一分項擷取失敗都只讓該分項顯示為空值，不影響其餘分項與綜合分數計算，
+# 也不影響頁面其餘台灣總經指標。
+# ---------------------------------------------------------------------------
+TWSE_BREADTH_HISTORY_PATH = os.path.join(ROOT, "data", "twse_breadth_history.json")
+BREADTH_WINDOW_DAYS = 250   # 52 週交易日，超過此天數的舊資料會被裁掉
+BREADTH_MIN_DAYS = 60       # 累積天數不足時不計算 52 週強度分項
+
+
+def _clamp(v, lo=0.0, hi=100.0):
+    return max(lo, min(hi, v))
+
+
+def _mean(xs):
+    xs = [x for x in xs if x is not None]
+    return sum(xs) / len(xs) if xs else None
+
+
+def _stdev(xs):
+    xs = [x for x in xs if x is not None]
+    n = len(xs)
+    if n < 2:
+        return None
+    m = sum(xs) / n
+    return (sum((x - m) ** 2 for x in xs) / (n - 1)) ** 0.5
+
+
+def _roc_to_iso(s):
+    """民國年月日字串（如 '1150821'）轉為 'YYYY-MM-DD'。"""
+    s = (s or "").strip().strip('"')
+    m = re.match(r"^(\d{2,3})(\d{2})(\d{2})$", s)
+    if not m:
+        return None
+    return f"{int(m.group(1)) + 1911}-{m.group(2)}-{m.group(3)}"
+
+
+def score_momentum(taiex_daily):
+    closes = [d["close"] for d in taiex_daily if d.get("close") is not None]
+    if len(closes) < 125:
+        return None
+    ma125 = _mean(closes[-125:])
+    dev_pct = (closes[-1] / ma125 - 1) * 100
+    return {"score": round(_clamp(50 + dev_pct * 5), 1), "vs_ma125_pct": round(dev_pct, 2)}
+
+
+def score_volatility(taiex_daily):
+    closes = [d["close"] for d in taiex_daily if d.get("close") is not None]
+    if len(closes) < 21:
+        return None
+    rets = [closes[i] / closes[i - 1] - 1 for i in range(len(closes) - 20, len(closes))]
+    sd = _stdev(rets)
+    if sd is None:
+        return None
+    vol_pct = sd * (252 ** 0.5) * 100
+    # 年化已實現波動率 10% 視為平靜（貪婪端）、40% 視為劇烈（恐慌端）；
+    # 波動度越高、CNN 方法論中越偏向恐慌，故分數與波動率反向。
+    return {"score": round(_clamp(100 - (vol_pct - 10) * (100 / 30)), 1), "realized_vol_annualized_pct": round(vol_pct, 1)}
+
+
+def score_safe_haven(taiex_daily):
+    log("fetching bond ETF 00679B daily (FinMind, safe-haven-demand proxy)")
+    rows = finmind_get("TaiwanStockPrice", data_id="00679B", start_date="2025-01-01")
+    bond_closes = [r["close"] for r in rows if r.get("close") is not None]
+    taiex_closes = [d["close"] for d in taiex_daily if d.get("close") is not None]
+    if len(bond_closes) < 21 or len(taiex_closes) < 21:
+        return None
+    taiex_ret = taiex_closes[-1] / taiex_closes[-21] - 1
+    bond_ret = bond_closes[-1] / bond_closes[-21] - 1
+    spread_pp = (taiex_ret - bond_ret) * 100
+    # 股票 20 日報酬領先公債 ETF 10 個百分點以上視為極度貪婪，落後 10 個百分點視為極度恐慌
+    return {"score": round(_clamp(50 + spread_pp * 5), 1), "taiex_20d_pct": round(taiex_ret * 100, 2), "bond_20d_pct": round(bond_ret * 100, 2)}
+
+
+def score_capital_flow():
+    log("fetching daily foreign investor flow (FinMind, junk-bond-demand proxy)")
+    since = (datetime.now(timezone.utc) - timedelta(days=45)).strftime("%Y-%m-%d")
+    rows = finmind_get("TaiwanStockTotalInstitutionalInvestors", start_date=since)
+    by_day = {}
+    for row in rows:
+        if row.get("name") != "Foreign_Investor":
+            continue
+        by_day[row["date"]] = by_day.get(row["date"], 0) + (row["buy"] - row["sell"])
+    days = sorted(by_day)
+    if len(days) < 10:
+        return None
+    net_100m = sum(by_day[d] for d in days[-20:]) / 1e8
+    # ±新台幣 3,000 億元的近 20 日累計淨額對應 0～100 全幅（量級參考近年外資單日進出規模）
+    return {"score": round(_clamp(50 + (net_100m / 3000) * 50), 1), "net_20d_100m": round(net_100m, 1)}
+
+
+def score_put_call():
+    log("fetching TAIFEX put/call volume ratio (dataset 11322)")
+    url = resolve_datagovtw_url(11322)
+    text = safe_get(url).content.decode("utf-8-sig")
+    rows = [r for r in csv.reader(io.StringIO(text)) if r and re.match(r"^\d{8}$", r[0].strip())]
+    if not rows:
+        return None
+    rows.sort(key=lambda r: r[0])
+    latest = rows[-1]
+    ratio = _num(latest[3]) if len(latest) > 3 else None
+    if ratio is None:
+        return None
+    # 比率 100 視為賣權買權量相當（中性）；每偏離 1 個百分點對應 1 分，
+    # 賣權相對偏多（比率>100）代表避險/看空需求較高，score 走向恐慌端
+    d = latest[0].strip()
+    date_iso = f"{d[:4]}-{d[4:6]}-{d[6:]}" if re.match(r"^\d{8}$", d) else None
+    return {"score": round(_clamp(50 - (ratio - 100)), 1), "put_call_ratio_pct": ratio, "date": date_iso}
+
+
+def score_breadth(iso_date):
+    log(f"fetching TWSE market breadth for {iso_date} (MI_INDEX)")
+    ymd = iso_date.replace("-", "")
+    r = safe_get(f"https://www.twse.com.tw/exchangeReport/MI_INDEX?response=json&date={ymd}&type=ALL")
+    j = r.json()
+    table = next((t for t in j.get("tables", []) if t.get("title") == "漲跌證券數合計"), None)
+    if not table:
+        return None
+    stock_col = table["fields"].index("股票")
+    rows = {row[0]: row[stock_col] for row in table["data"]}
+    up = _num(re.sub(r"\(.*\)", "", rows.get("上漲(漲停)", "")).replace(",", ""))
+    down = _num(re.sub(r"\(.*\)", "", rows.get("下跌(跌停)", "")).replace(",", ""))
+    if up is None or down is None or (up + down) == 0:
+        return None
+    return {"score": round(_clamp(up / (up + down) * 100), 1), "advances": int(up), "declines": int(down)}
+
+
+def _load_breadth_history():
+    if os.path.exists(TWSE_BREADTH_HISTORY_PATH):
+        try:
+            with open(TWSE_BREADTH_HISTORY_PATH, encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {"dates": [], "stocks": {}}
+
+
+def update_strength_accumulator():
+    """下載當日全市場個股收盤價，累加進 52 週滾動窗口；資料量足夠前回傳
+    status='accumulating'，之後才開始計算 52 週創新高／新低家數比。"""
+    log("fetching TWSE STOCK_DAY_ALL for 52-week strength accumulator")
+    text = safe_get("https://www.twse.com.tw/exchangeReport/STOCK_DAY_ALL?response=json").content.decode("utf-8-sig")
+    rows = list(csv.reader(io.StringIO(text)))
+    hist = _load_breadth_history()
+
+    today_iso = None
+    today_closes = {}
+    for row in rows[1:]:
+        if len(row) < 9:
+            continue
+        stock_id = row[1].strip()
+        if not re.match(r"^\d{4}$", stock_id):  # 僅計入 4 碼普通股，排除 ETF／權證等
+            continue
+        close = _num(row[8])
+        if close is None:
+            continue
+        if today_iso is None:
+            today_iso = _roc_to_iso(row[0])
+        today_closes[stock_id] = close
+
+    if not today_iso or not today_closes:
+        raise RuntimeError("STOCK_DAY_ALL 無可用資料")
+
+    if hist["dates"] and hist["dates"][-1] == today_iso:
+        log(f"  -> {today_iso} already recorded, skipping append")
+    else:
+        hist["dates"].append(today_iso)
+        all_ids = set(hist["stocks"]) | set(today_closes)
+        for sid in all_ids:
+            hist["stocks"].setdefault(sid, []).append(today_closes.get(sid))
+        if len(hist["dates"]) > BREADTH_WINDOW_DAYS:
+            drop = len(hist["dates"]) - BREADTH_WINDOW_DAYS
+            hist["dates"] = hist["dates"][drop:]
+            for sid in list(hist["stocks"]):
+                hist["stocks"][sid] = hist["stocks"][sid][drop:]
+                if not any(v is not None for v in hist["stocks"][sid]):
+                    del hist["stocks"][sid]  # 已下市且窗口內完全無資料
+
+        os.makedirs(os.path.dirname(TWSE_BREADTH_HISTORY_PATH), exist_ok=True)
+        with open(TWSE_BREADTH_HISTORY_PATH, "w", encoding="utf-8") as f:
+            json.dump(hist, f, separators=(",", ":"))
+        log(f"  -> appended {today_iso}, now {len(hist['dates'])} days x {len(hist['stocks'])} stocks")
+
+    n_days = len(hist["dates"])
+    if n_days < BREADTH_MIN_DAYS:
+        return {"score": None, "status": "accumulating", "days_collected": n_days, "days_needed": BREADTH_WINDOW_DAYS}
+
+    highs = lows = 0
+    for sid, closes in hist["stocks"].items():
+        window = [c for c in closes if c is not None]
+        if len(window) < BREADTH_MIN_DAYS or closes[-1] is None:
+            continue
+        last = closes[-1]
+        if last >= max(window):
+            highs += 1
+        elif last <= min(window):
+            lows += 1
+    total = highs + lows
+    status = "ready" if n_days >= BREADTH_WINDOW_DAYS else "accumulating"
+    return {
+        "score": round(_clamp(highs / total * 100), 1) if total else 50.0,
+        "status": status,
+        "days_collected": n_days,
+        "days_needed": BREADTH_WINDOW_DAYS,
+        "new_highs": highs,
+        "new_lows": lows,
+    }
+
+
+TFG_RATING_BANDS = [(25, "extreme fear"), (45, "fear"), (55, "neutral"), (75, "greed"), (101, "extreme greed")]
+
+
+def tfg_rating(score):
+    for upper, label in TFG_RATING_BANDS:
+        if score < upper:
+            return label
+    return "extreme greed"
+
+
+def fetch_taiwan_fear_greed(taiex_daily, existing):
+    components = {}
+
+    def safe_component(name, fn):
+        try:
+            components[name] = fn()
+        except Exception as e:
+            log(f"  -> taiwan_fear_greed.{name} failed: {e}")
+            components[name] = None
+
+    safe_component("momentum", lambda: score_momentum(taiex_daily))
+    safe_component("strength", update_strength_accumulator)
+    safe_component("put_call", score_put_call)
+    safe_component("capital_flow", score_capital_flow)
+    safe_component("volatility", lambda: score_volatility(taiex_daily))
+    safe_component("safe_haven", lambda: score_safe_haven(taiex_daily))
+
+    breadth_date = taiex_daily[-1]["date"] if taiex_daily else None
+    if breadth_date:
+        safe_component("breadth", lambda: score_breadth(breadth_date))
+    else:
+        components["breadth"] = None
+
+    available = [c["score"] for c in components.values() if c and c.get("score") is not None]
+    composite = round(sum(available) / len(available), 1) if available else None
+
+    hist = list(existing.get("taiwan_fear_greed", {}).get("historical", []))
+    today = taiex_daily[-1]["date"] if taiex_daily else datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    if composite is not None:
+        hist = [h for h in hist if h["date"] != today]
+        hist.append({"date": today, "score": composite})
+        hist = hist[-400:]
+
+    return {
+        "score": composite,
+        "rating": tfg_rating(composite) if composite is not None else None,
+        "components_available": len(available),
+        "components_total": len(components),
+        "components": components,
+        "historical": hist,
+    }
+
+
+# ---------------------------------------------------------------------------
 def main():
     existing = {}
     if os.path.exists(DATA_PATH):
@@ -427,6 +702,19 @@ def main():
     if outlook_warning:
         warnings.append(f"pmi_outlook：{outlook_warning}")
 
+    log("computing 台股恐慌與貪婪指數 (7 分項，見程式內註解說明各項取代邏輯)")
+    try:
+        taiex_daily = result.get("taiex", {}).get("daily_recent", [])
+        result["taiwan_fear_greed"] = fetch_taiwan_fear_greed(taiex_daily, existing)
+        n_ok = result["taiwan_fear_greed"]["components_available"]
+        if n_ok < result["taiwan_fear_greed"]["components_total"]:
+            warnings.append(f"taiwan_fear_greed：僅 {n_ok}/7 個分項本次成功計算，其餘沿用/留空")
+    except Exception as e:
+        log(f"ERROR computing taiwan_fear_greed: {e}")
+        warnings.append(f"taiwan_fear_greed 計算失敗，沿用舊資料：{e}")
+        if "taiwan_fear_greed" not in result:
+            result["taiwan_fear_greed"] = {}
+
     result["meta"] = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
         "warnings": warnings,
@@ -440,6 +728,7 @@ def main():
             "foreign_flow": {"name": "三大法人買賣金額統計—外資（經 FinMind 開放API）", "url": "https://finmindtrade.com/"},
             "fx_usdtwd": {"name": "銀行牌告美元／新台幣即期匯率（經 FinMind 開放API）", "url": "https://finmindtrade.com/"},
             "cnn_fear_greed": {"name": "CNN Business Fear & Greed Index（美股市場情緒，非官方端點）", "url": "https://edition.cnn.com/markets/fear-and-greed"},
+            "taiwan_fear_greed": {"name": "台股恐慌與貪婪指數（本站仿 CNN 方法論、以台灣資料源自行計算，非官方指數）", "url": "https://www.twse.com.tw/ 、 https://www.taifex.com.tw/ 、 https://finmindtrade.com/"},
         },
     }
 

@@ -187,6 +187,35 @@
     <div class="data-table-wrap" id="table-others" hidden></div>
   </section>
 
+  <!-- 台股恐慌與貪婪指數 -->
+  <section class="chart-card" id="card-tw-fng">
+    <h2>台股恐慌與貪婪指數 <span class="tag">本站計算・每日</span></h2>
+    <p class="card-desc">
+      仿照 CNN Business「Fear &amp; Greed Index」的方法論框架，改以<b>台灣可公開取得的資料</b>重新計算 7 項分項指標，綜合成單一 0～100 分數，反映台股投資人此刻偏向「恐慌」還是「貪婪」。
+      其中 3 項（動能、廣度、選擇權買賣權比）直接對應 CNN 原始定義；<b>資金流向、波動度、避險需求</b> 3 項因台灣沒有可程式化取得的公司債利差／公債殖利率資料，改用外資買賣超、台股已實現波動率、台股對長天期債券ETF的相對報酬作為合理替代；<b>強度（52 週新高/新低家數）</b>需先每日累積約一年的個股收盤價才會成熟，累積完成前顯示為資料蒐集中。此為本站自行計算之非官方指數，非 CNN 資料，僅供參考、不構成投資建議。
+    </p>
+
+    <div class="fng-summary">
+      <div class="fng-score">
+        <div class="fng-score-value" id="tfg-score-value">—</div>
+        <div class="fng-score-rating" id="tfg-score-rating">載入中…</div>
+      </div>
+      <div class="fng-meter-wrap">
+        <div class="fng-meter"><div class="fng-meter-marker" id="tfg-meter-main-marker" style="left:50%"></div></div>
+        <div class="fng-meter-scale"><span>0・極度恐慌</span><span>50・中性</span><span>100・極度貪婪</span></div>
+      </div>
+      <div class="fng-deltas" id="tfg-availability"></div>
+    </div>
+
+    <h3 style="font-size:13px;color:var(--text-secondary);margin:0 0 10px;">7 項分項指標（台灣）</h3>
+    <div class="fng-components" id="tfg-components"></div>
+
+    <div class="chart-block" style="margin-top:20px;">
+      <h3>綜合指數走勢（累積中，每日新增一筆）</h3>
+      <div class="chart-wrap"><canvas id="chart-tfg-history"></canvas></div>
+    </div>
+  </section>
+
   <!-- CNN Fear & Greed（美股市場情緒對照） -->
   <section class="chart-card" id="card-cnn-fng">
     <h2>美股 Fear &amp; Greed 指數對照 <span class="tag">CNN Business・每日（非官方端點）</span></h2>
@@ -226,6 +255,7 @@
       <li>中央銀行—貨幣總計數</li>
       <li>台灣證券交易所發行量加權股價指數、三大法人買賣金額統計、銀行牌告匯率（經 FinMind 公開API）</li>
       <li>CNN Business—Fear &amp; Greed Index（美股市場情緒，非官方端點）</li>
+      <li>台股恐慌與貪婪指數—本站仿 CNN 方法論自行計算（證交所、期交所、FinMind 開放資料）</li>
     </ul>
     <p>本網站為靜態彙整頁面，程式碼與資料擷取腳本公開於 <a href="https://github.com" id="repo-link" target="_blank" rel="noopener">GitHub</a>，歡迎檢視或回報資料異常。所有資料均取自政府公開資料平台（data.gov.tw）與各機關官方發布之公開資訊，並以 FinMind 公開 API 取得台股市場資料。</p>
     <p>© <span id="footer-year"></span> 台灣總經儀表板。資料每日自動更新，僅供參考，不構成投資建議。</p>

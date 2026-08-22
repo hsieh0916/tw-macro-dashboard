@@ -14849,9 +14849,10 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-08-22T08:24:39Z",
+    "generated_at": "2026-08-22T08:37:45Z",
     "warnings": [
-      "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）"
+      "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）",
+      "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
     ],
     "sources": {
       "gdp": {
@@ -14889,6 +14890,10 @@
       "cnn_fear_greed": {
         "name": "CNN Business Fear & Greed Index（美股市場情緒，非官方端點）",
         "url": "https://edition.cnn.com/markets/fear-and-greed"
+      },
+      "taiwan_fear_greed": {
+        "name": "台股恐慌與貪婪指數（本站仿 CNN 方法論、以台灣資料源自行計算，非官方指數）",
+        "url": "https://www.twse.com.tw/ 、 https://www.taifex.com.tw/ 、 https://finmindtrade.com/"
       }
     }
   },
@@ -15930,6 +15935,53 @@
       {
         "date": "2026-08-21",
         "score": 55.2
+      }
+    ]
+  },
+  "taiwan_fear_greed": {
+    "score": 60.1,
+    "rating": "greed",
+    "components_available": 6,
+    "components_total": 7,
+    "components": {
+      "momentum": {
+        "score": 100.0,
+        "vs_ma125_pct": 11.26
+      },
+      "strength": {
+        "score": null,
+        "status": "accumulating",
+        "days_collected": 1,
+        "days_needed": 250
+      },
+      "put_call": {
+        "score": 34.9,
+        "put_call_ratio_pct": 115.06,
+        "date": "2026-08-19"
+      },
+      "capital_flow": {
+        "score": 79.6,
+        "net_20d_100m": 1778.2
+      },
+      "volatility": {
+        "score": 2.3,
+        "realized_vol_annualized_pct": 39.3
+      },
+      "safe_haven": {
+        "score": 83.2,
+        "taiex_20d_pct": 3.6,
+        "bond_20d_pct": -3.04
+      },
+      "breadth": {
+        "score": 60.7,
+        "advances": 589,
+        "declines": 381
+      }
+    },
+    "historical": [
+      {
+        "date": "2026-08-21",
+        "score": 60.1
       }
     ]
   }

@@ -493,6 +493,7 @@ a { color: var(--series-blue); }
   color: var(--text-primary);
 }
 .fng-component-na { text-align: right; color: var(--text-muted); }
+.fng-component-progress { color: var(--text-muted); font-size: 12px; }
 @media (max-width: 640px) {
   .fng-component { grid-template-columns: 1fr 26px; grid-template-rows: auto auto; }
   .fng-component-label { grid-column: 1 / -1; }
