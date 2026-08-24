@@ -12346,14 +12346,10 @@
       },
       {
         "period": "2026-08",
-        "close": 45224.3
+        "close": 44762.3
       }
     ],
     "daily_recent": [
-      {
-        "date": "2025-07-29",
-        "close": 23201.52
-      },
       {
         "date": "2025-07-30",
         "close": 23461.72
@@ -13389,6 +13385,10 @@
       {
         "date": "2026-08-21",
         "close": 45224.29
+      },
+      {
+        "date": "2026-08-24",
+        "close": 44762.32
       }
     ]
   },
@@ -14095,7 +14095,7 @@
     },
     {
       "period": "2026-08",
-      "net_ntd_100m": 2602.7
+      "net_ntd_100m": 2445.2
     }
   ],
   "fx_usdtwd": [
@@ -15089,7 +15089,7 @@
     },
     {
       "period": "2026-08",
-      "usdtwd": 31.85
+      "usdtwd": 31.865
     }
   ],
   "pmi_outlook": [
@@ -15107,9 +15107,9 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-08-24T03:52:01Z",
+    "generated_at": "2026-08-24T09:42:30Z",
     "warnings": [
-      "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）",
+      "pmi_outlook：擷取失敗（無法讀取列表頁）：HTTPSConnectionPool(host='www.cier.edu.tw', port=443): Read timed out. (read timeout=30)",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
     ],
     "sources": {
@@ -15166,11 +15166,11 @@
   "cnn_fear_greed": {
     "score": 55.2,
     "rating": "greed",
-    "timestamp": "2026-08-21T23:59:58+00:00",
-    "previous_close": 52.5,
-    "previous_1_week": 64.0,
-    "previous_1_month": 43.4,
-    "previous_1_year": 52.6,
+    "timestamp": "2026-08-24T09:23:01+00:00",
+    "previous_close": 55.2,
+    "previous_1_week": 58.4,
+    "previous_1_month": 41.3,
+    "previous_1_year": 55.5,
     "components": {
       "market_momentum": {
         "score": 39,
@@ -16195,55 +16195,63 @@
         "score": 55.2
       },
       {
-        "date": "2026-08-21",
+        "date": "2026-08-24",
+        "score": 55.2
+      },
+      {
+        "date": "2026-08-24",
         "score": 55.2
       }
     ]
   },
   "taiwan_fear_greed": {
-    "score": 60.9,
+    "score": 56.1,
     "rating": "greed",
     "components_available": 6,
     "components_total": 7,
     "components": {
       "momentum": {
-        "score": 100.0,
-        "vs_ma125_pct": 11.26
+        "score": 99.4,
+        "vs_ma125_pct": 9.88
       },
       "strength": {
         "score": null,
         "status": "accumulating",
-        "days_collected": 1,
+        "days_collected": 2,
         "days_needed": 250
       },
       "put_call": {
-        "score": 39.3,
-        "put_call_ratio_pct": 110.65,
-        "date": "2026-08-21"
+        "score": 43.8,
+        "put_call_ratio_pct": 106.18,
+        "date": "2026-08-24"
       },
       "capital_flow": {
-        "score": 79.6,
-        "net_20d_100m": 1778.2
+        "score": 75.7,
+        "net_20d_100m": 1540.3
       },
       "volatility": {
-        "score": 2.3,
-        "realized_vol_annualized_pct": 39.3
+        "score": 1.5,
+        "realized_vol_annualized_pct": 39.5
       },
       "safe_haven": {
-        "score": 83.2,
-        "taiex_20d_pct": 3.6,
-        "bond_20d_pct": -3.04
+        "score": 82.6,
+        "taiex_20d_pct": 2.59,
+        "bond_20d_pct": -3.94
       },
       "breadth": {
-        "score": 60.7,
-        "advances": 589,
-        "declines": 381
+        "score": 33.4,
+        "advances": 319,
+        "declines": 637
       }
     },
     "historical": [
       {
         "date": "2026-08-21",
         "score": 60.9
+      },
+      {
+        "date": "2026-08-24",
+        "score": 56.1
       }
     ]
   },
