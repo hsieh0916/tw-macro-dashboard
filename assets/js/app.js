@@ -565,46 +565,135 @@
 
   // ---------- 台股點位估算模型（GDP／資金面回歸，統計參考用途，非投資建議，
   // 獨立於時間範圍篩選器——樣本涵蓋 2005 年至今全部季資料，不做時間窗裁切） ----------
+  const VM_ORDER = [
+    ["gdp_trend", "GDP 趨勢"],
+    ["gdp_liquidity", "GDP＋資金面"],
+    ["buffett_indicator", "巴菲特指標"],
+  ];
+
+  function vmFourthRow(m) {
+    if (m.r_squared != null) {
+      return `<div class="vm-card-row muted"><span>模型配適度 R²</span><span>${fmtNum(m.r_squared, 3)}（樣本 ${m.sample_quarters} 季）</span></div>`;
+    }
+    if (m.current_ratio_pct != null) {
+      return `<div class="vm-card-row muted"><span>目前比率／歷史均值</span><span>${fmtNum(m.current_ratio_pct, 0)}% / ${fmtNum(m.average_ratio_pct, 0)}%（樣本 ${m.sample_quarters} 季）</span></div>`;
+    }
+    return "";
+  }
+
   function renderValuationModels(data) {
     const vm = data.valuation_models;
     const wrap = document.getElementById("valuation-models");
-    const models = vm ? [["gdp_trend", vm.gdp_trend], ["gdp_liquidity", vm.gdp_liquidity]].filter(([, m]) => m) : [];
+    const models = vm ? VM_ORDER.map(([key, label]) => [key, label, vm[key]]).filter(([, , m]) => m) : [];
 
     if (!models.length) {
       if (wrap) wrap.innerHTML = '<p class="chart-note">目前無法計算（資料不足或本次擷取失敗）。</p>';
+      const sel = document.getElementById("vm-selector");
+      if (sel) sel.innerHTML = "";
       return;
     }
 
     if (wrap) {
-      wrap.innerHTML = models.map(([key, m]) => `
+      wrap.innerHTML = models.map(([key, , m]) => `
         <div class="vm-card">
           <div class="vm-card-title">${m.name}${key === "gdp_liquidity" ? '<span class="vm-badge">較完整</span>' : ""}</div>
           <div class="vm-card-method">${m.method}</div>
           <div class="vm-card-row"><span>模型推算點位</span><span class="vm-value">${fmtInt(m.estimated_index)}</span></div>
           <div class="vm-card-row"><span>實際點位（${vm.latest_period}）</span><span class="vm-value">${fmtInt(vm.actual_index)}</span></div>
           <div class="vm-card-row"><span>與模型偏離幅度</span><span class="vm-value">${fmtSigned(m.deviation_pct, 1)}%</span></div>
-          <div class="vm-card-row muted"><span>模型配適度 R²</span><span>${m.r_squared != null ? fmtNum(m.r_squared, 3) : "—"}（樣本 ${m.sample_quarters} 季）</span></div>
+          ${vmFourthRow(m)}
         </div>
       `).join("");
     }
 
-    const primary = vm.gdp_liquidity || vm.gdp_trend;
-    if (primary && primary.historical && primary.historical.length) {
-      makeLineChart("chart-valuation-history", {
-        labels: primary.historical.map((d) => d.period),
-        datasets: [
-          { label: "台股加權指數（實際，季底收盤）", data: primary.historical.map((d) => d.actual), color: css("--series-violet") },
-          { label: `模型推算水準（${primary.name}）`, data: primary.historical.map((d) => d.fitted), color: css("--text-muted"), dash: true },
-        ],
-        yFormat: (v) => fmtInt(v),
-      });
+    const sel = document.getElementById("vm-selector");
+    if (sel) {
+      sel.innerHTML = models.map(([key, label], i) => `<button type="button" data-vm-key="${key}" aria-pressed="${i === 0}">${label}</button>`).join("");
     }
 
-    wireTableToggle("toggle-valuation", "table-valuation", [
+    // 表格內容會隨選取的模型重新產生，因此不用共用的 wireTableToggle（它只在第一次
+    // 點擊時建表一次、之後固定）；改成自己管理，且事件監聽只註冊一次（用 dataset.wired
+    // 當旗標），避免每次 renderAll() 或每次切換模型都疊加重複的 click listener。
+    const vmColumns = [
       { key: "period", label: "季別" },
       { key: "actual", label: "實際收盤", fmt: fmtInt },
       { key: "fitted", label: "模型推算", fmt: fmtInt },
-    ], primary ? primary.historical : []);
+    ];
+    const tableBtn = document.getElementById("toggle-valuation");
+    const tableWrap = document.getElementById("table-valuation");
+    let current = models[0];
+
+    function renderVmTable() {
+      if (!tableWrap) return;
+      const rows = (current[2].historical || []).slice().reverse();
+      const table = document.createElement("table");
+      const thead = document.createElement("thead");
+      thead.innerHTML = "<tr>" + vmColumns.map((c) => `<th>${c.label}</th>`).join("") + "</tr>";
+      const tbody = document.createElement("tbody");
+      rows.forEach((row) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = vmColumns.map((c) => `<td>${c.fmt ? c.fmt(row[c.key]) : row[c.key] ?? "—"}</td>`).join("");
+        tbody.appendChild(tr);
+      });
+      table.appendChild(thead);
+      table.appendChild(tbody);
+      tableWrap.innerHTML = "";
+      tableWrap.appendChild(table);
+    }
+
+    function renderVmChart() {
+      const m = current[2];
+      if (m.historical && m.historical.length) {
+        // 切換模型時會在同一顆 canvas 上重繪；destroyAllCharts() 只在整頁 renderAll()
+        // 開頭跑一次，所以這裡切換模型時要自己先銷毀舊的 Chart.js 實例，否則 Chart.js
+        // 會因為 canvas 已被佔用而報錯或疊圖。
+        const existing = Chart.getChart("chart-valuation-history");
+        if (existing) {
+          existing.destroy();
+          const idx = activeCharts.indexOf(existing);
+          if (idx !== -1) activeCharts.splice(idx, 1);
+        }
+        makeLineChart("chart-valuation-history", {
+          labels: m.historical.map((d) => d.period),
+          datasets: [
+            { label: "台股加權指數（實際，季底收盤）", data: m.historical.map((d) => d.actual), color: css("--series-violet") },
+            { label: `模型推算水準（${m.name}）`, data: m.historical.map((d) => d.fitted), color: css("--text-muted"), dash: true },
+          ],
+          yFormat: (v) => fmtInt(v),
+        });
+      }
+    }
+
+    renderVmChart();
+    if (tableWrap && !tableWrap.hasAttribute("hidden")) renderVmTable();
+
+    if (tableBtn && !tableBtn.dataset.wired) {
+      tableBtn.dataset.wired = "1";
+      tableBtn.addEventListener("click", () => {
+        if (tableWrap.hasAttribute("hidden")) {
+          renderVmTable();
+          tableWrap.removeAttribute("hidden");
+          tableBtn.textContent = "隱藏資料表";
+        } else {
+          tableWrap.setAttribute("hidden", "");
+          tableBtn.textContent = "顯示資料表";
+        }
+      });
+    }
+
+    if (sel && !sel.dataset.wired) {
+      sel.dataset.wired = "1";
+      sel.addEventListener("click", (e) => {
+        const btn = e.target.closest("button[data-vm-key]");
+        if (!btn) return;
+        const found = models.find(([k]) => k === btn.dataset.vmKey);
+        if (!found) return;
+        current = found;
+        sel.querySelectorAll("button[data-vm-key]").forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
+        renderVmChart();
+        if (tableWrap && !tableWrap.hasAttribute("hidden")) renderVmTable();
+      });
+    }
   }
 
   // ---------- 其他股市連動指標：外資買賣超 + 匯率 ----------

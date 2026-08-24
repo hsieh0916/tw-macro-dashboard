@@ -15107,7 +15107,7 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-08-24T03:37:46Z",
+    "generated_at": "2026-08-24T03:49:53Z",
     "warnings": [
       "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
@@ -15154,8 +15154,12 @@
         "url": "https://www.twse.com.tw/ 、 https://www.taifex.com.tw/ 、 https://finmindtrade.com/"
       },
       "valuation_models": {
-        "name": "台股點位估算模型（本站以GDP／資金面資料回歸計算，統計參考用途、非投資建議）",
+        "name": "台股點位估算模型（本站以GDP／資金面／總市值資料回歸計算，統計參考用途、非投資建議）",
         "url": "https://data.gov.tw/dataset/6799"
+      },
+      "market_cap_weekly": {
+        "name": "台灣證券交易所—上市股票市值週報",
+        "url": "https://www.twse.com.tw/zh/trading/statistics/week.html"
       }
     }
   },
@@ -17125,6 +17129,4739 @@
           "fitted": 28114.6
         }
       ]
+    },
+    "buffett_indicator": {
+      "name": "巴菲特指標均值回歸",
+      "method": "以「上市總市值 ÷ 近四季名目GDP」比率的歷史均值為錨，假設總市值與加權指數同步變動，反推比率回歸均值時對應的指數水準",
+      "estimated_index": 18309.0,
+      "deviation_pct": 151.9,
+      "current_ratio_pct": 466.0,
+      "average_ratio_pct": 185.0,
+      "sample_quarters": 84,
+      "historical": [
+        {
+          "period": "2005-Q3",
+          "actual": 6118.6,
+          "fitted": 9255.2
+        },
+        {
+          "period": "2005-Q4",
+          "actual": 6548.3,
+          "fitted": 9330.2
+        },
+        {
+          "period": "2006-Q1",
+          "actual": 6614.0,
+          "fitted": 9350.2
+        },
+        {
+          "period": "2006-Q2",
+          "actual": 6704.4,
+          "fitted": 9316.0
+        },
+        {
+          "period": "2006-Q3",
+          "actual": 6883.1,
+          "fitted": 9418.9
+        },
+        {
+          "period": "2006-Q4",
+          "actual": 7823.7,
+          "fitted": 9390.5
+        },
+        {
+          "period": "2007-Q1",
+          "actual": 7884.4,
+          "fitted": 9541.2
+        },
+        {
+          "period": "2007-Q2",
+          "actual": 8883.2,
+          "fitted": 9638.1
+        },
+        {
+          "period": "2007-Q3",
+          "actual": 9476.5,
+          "fitted": 9762.2
+        },
+        {
+          "period": "2007-Q4",
+          "actual": 8506.3,
+          "fitted": 9912.9
+        },
+        {
+          "period": "2008-Q1",
+          "actual": 8572.6,
+          "fitted": 9772.1
+        },
+        {
+          "period": "2008-Q2",
+          "actual": 7523.5,
+          "fitted": 9888.4
+        },
+        {
+          "period": "2008-Q3",
+          "actual": 5719.3,
+          "fitted": 9397.9
+        },
+        {
+          "period": "2008-Q4",
+          "actual": 4591.2,
+          "fitted": 9515.0
+        },
+        {
+          "period": "2009-Q1",
+          "actual": 5210.8,
+          "fitted": 9118.8
+        },
+        {
+          "period": "2009-Q2",
+          "actual": 6432.2,
+          "fitted": 9263.1
+        },
+        {
+          "period": "2009-Q3",
+          "actual": 7509.2,
+          "fitted": 9448.7
+        },
+        {
+          "period": "2009-Q4",
+          "actual": 8188.1,
+          "fitted": 9303.8
+        },
+        {
+          "period": "2010-Q1",
+          "actual": 7920.1,
+          "fitted": 9539.4
+        },
+        {
+          "period": "2010-Q2",
+          "actual": 7329.4,
+          "fitted": 9545.1
+        },
+        {
+          "period": "2010-Q3",
+          "actual": 8237.8,
+          "fitted": 10014.7
+        },
+        {
+          "period": "2010-Q4",
+          "actual": 8972.5,
+          "fitted": 9800.9
+        },
+        {
+          "period": "2011-Q1",
+          "actual": 8683.3,
+          "fitted": 9973.8
+        },
+        {
+          "period": "2011-Q2",
+          "actual": 8652.6,
+          "fitted": 10021.5
+        },
+        {
+          "period": "2011-Q3",
+          "actual": 7225.4,
+          "fitted": 9815.8
+        },
+        {
+          "period": "2011-Q4",
+          "actual": 7072.1,
+          "fitted": 9709.3
+        },
+        {
+          "period": "2012-Q1",
+          "actual": 7933.0,
+          "fitted": 9685.2
+        },
+        {
+          "period": "2012-Q2",
+          "actual": 7296.3,
+          "fitted": 9719.4
+        },
+        {
+          "period": "2012-Q3",
+          "actual": 7715.2,
+          "fitted": 9747.5
+        },
+        {
+          "period": "2012-Q4",
+          "actual": 7699.5,
+          "fitted": 9793.0
+        },
+        {
+          "period": "2013-Q1",
+          "actual": 7918.6,
+          "fitted": 9780.8
+        },
+        {
+          "period": "2013-Q2",
+          "actual": 8062.2,
+          "fitted": 9852.9
+        },
+        {
+          "period": "2013-Q3",
+          "actual": 8173.9,
+          "fitted": 9813.5
+        },
+        {
+          "period": "2013-Q4",
+          "actual": 8611.5,
+          "fitted": 10014.3
+        },
+        {
+          "period": "2014-Q1",
+          "actual": 8849.3,
+          "fitted": 10141.1
+        },
+        {
+          "period": "2014-Q2",
+          "actual": 9393.1,
+          "fitted": 10260.1
+        },
+        {
+          "period": "2014-Q3",
+          "actual": 8966.9,
+          "fitted": 10244.5
+        },
+        {
+          "period": "2014-Q4",
+          "actual": 9307.3,
+          "fitted": 10519.5
+        },
+        {
+          "period": "2015-Q1",
+          "actual": 9586.4,
+          "fitted": 10692.3
+        },
+        {
+          "period": "2015-Q2",
+          "actual": 9323.0,
+          "fitted": 10520.5
+        },
+        {
+          "period": "2015-Q3",
+          "actual": 8181.2,
+          "fitted": 10779.4
+        },
+        {
+          "period": "2015-Q4",
+          "actual": 8338.1,
+          "fitted": 10735.6
+        },
+        {
+          "period": "2016-Q1",
+          "actual": 8744.8,
+          "fitted": 10828.1
+        },
+        {
+          "period": "2016-Q2",
+          "actual": 8666.6,
+          "fitted": 11081.4
+        },
+        {
+          "period": "2016-Q3",
+          "actual": 9166.9,
+          "fitted": 10888.0
+        },
+        {
+          "period": "2016-Q4",
+          "actual": 9253.5,
+          "fitted": 11028.5
+        },
+        {
+          "period": "2017-Q1",
+          "actual": 9811.5,
+          "fitted": 11008.2
+        },
+        {
+          "period": "2017-Q2",
+          "actual": 10395.1,
+          "fitted": 11036.7
+        },
+        {
+          "period": "2017-Q3",
+          "actual": 10383.9,
+          "fitted": 11102.5
+        },
+        {
+          "period": "2017-Q4",
+          "actual": 10642.9,
+          "fitted": 11140.5
+        },
+        {
+          "period": "2018-Q1",
+          "actual": 10919.5,
+          "fitted": 11170.4
+        },
+        {
+          "period": "2018-Q2",
+          "actual": 10836.9,
+          "fitted": 11294.9
+        },
+        {
+          "period": "2018-Q3",
+          "actual": 11006.3,
+          "fitted": 11283.3
+        },
+        {
+          "period": "2018-Q4",
+          "actual": 9727.4,
+          "fitted": 11305.4
+        },
+        {
+          "period": "2019-Q1",
+          "actual": 10641.0,
+          "fitted": 11342.2
+        },
+        {
+          "period": "2019-Q2",
+          "actual": 10730.8,
+          "fitted": 11411.2
+        },
+        {
+          "period": "2019-Q3",
+          "actual": 10829.7,
+          "fitted": 11483.2
+        },
+        {
+          "period": "2019-Q4",
+          "actual": 11997.1,
+          "fitted": 11474.8
+        },
+        {
+          "period": "2020-Q1",
+          "actual": 9708.1,
+          "fitted": 11652.7
+        },
+        {
+          "period": "2020-Q2",
+          "actual": 11621.2,
+          "fitted": 11672.6
+        },
+        {
+          "period": "2020-Q3",
+          "actual": 12515.6,
+          "fitted": 11909.3
+        },
+        {
+          "period": "2020-Q4",
+          "actual": 14732.5,
+          "fitted": 12152.8
+        },
+        {
+          "period": "2021-Q1",
+          "actual": 16431.1,
+          "fitted": 12573.4
+        },
+        {
+          "period": "2021-Q2",
+          "actual": 17755.5,
+          "fitted": 12937.9
+        },
+        {
+          "period": "2021-Q3",
+          "actual": 16934.8,
+          "fitted": 12628.6
+        },
+        {
+          "period": "2021-Q4",
+          "actual": 18218.8,
+          "fitted": 13038.0
+        },
+        {
+          "period": "2022-Q1",
+          "actual": 17693.5,
+          "fitted": 13203.5
+        },
+        {
+          "period": "2022-Q2",
+          "actual": 14825.7,
+          "fitted": 12901.0
+        },
+        {
+          "period": "2022-Q3",
+          "actual": 13424.6,
+          "fitted": 13449.9
+        },
+        {
+          "period": "2022-Q4",
+          "actual": 14137.7,
+          "fitted": 13482.5
+        },
+        {
+          "period": "2023-Q1",
+          "actual": 15868.1,
+          "fitted": 13359.9
+        },
+        {
+          "period": "2023-Q2",
+          "actual": 16915.5,
+          "fitted": 13438.8
+        },
+        {
+          "period": "2023-Q3",
+          "actual": 16353.7,
+          "fitted": 13586.5
+        },
+        {
+          "period": "2023-Q4",
+          "actual": 17930.8,
+          "fitted": 13770.5
+        },
+        {
+          "period": "2024-Q1",
+          "actual": 20294.5,
+          "fitted": 14117.1
+        },
+        {
+          "period": "2024-Q2",
+          "actual": 23032.2,
+          "fitted": 14410.5
+        },
+        {
+          "period": "2024-Q3",
+          "actual": 22224.5,
+          "fitted": 14261.9
+        },
+        {
+          "period": "2024-Q4",
+          "actual": 23035.1,
+          "fitted": 14688.6
+        },
+        {
+          "period": "2025-Q1",
+          "actual": 20695.9,
+          "fitted": 14481.5
+        },
+        {
+          "period": "2025-Q2",
+          "actual": 22256.0,
+          "fitted": 15193.5
+        },
+        {
+          "period": "2025-Q3",
+          "actual": 25820.5,
+          "fitted": 15877.7
+        },
+        {
+          "period": "2025-Q4",
+          "actual": 28963.6,
+          "fitted": 16537.0
+        },
+        {
+          "period": "2026-Q1",
+          "actual": 31723.0,
+          "fitted": 16313.1
+        },
+        {
+          "period": "2026-Q2",
+          "actual": 46125.9,
+          "fitted": 18309.5
+        }
+      ]
     }
-  }
+  },
+  "market_cap_weekly": [
+    {
+      "date": "2005-09-02",
+      "total_market_cap_100m": 144187.1
+    },
+    {
+      "date": "2005-09-09",
+      "total_market_cap_100m": 144296.5
+    },
+    {
+      "date": "2005-09-16",
+      "total_market_cap_100m": 142249.1
+    },
+    {
+      "date": "2005-09-23",
+      "total_market_cap_100m": 139797.9
+    },
+    {
+      "date": "2005-09-30",
+      "total_market_cap_100m": 144440.0
+    },
+    {
+      "date": "2005-10-07",
+      "total_market_cap_100m": 143704.0
+    },
+    {
+      "date": "2005-10-14",
+      "total_market_cap_100m": 141196.1
+    },
+    {
+      "date": "2005-10-21",
+      "total_market_cap_100m": 135772.8
+    },
+    {
+      "date": "2005-10-28",
+      "total_market_cap_100m": 133737.7
+    },
+    {
+      "date": "2005-11-04",
+      "total_market_cap_100m": 140356.7
+    },
+    {
+      "date": "2005-11-11",
+      "total_market_cap_100m": 144227.9
+    },
+    {
+      "date": "2005-11-18",
+      "total_market_cap_100m": 145010.5
+    },
+    {
+      "date": "2005-11-25",
+      "total_market_cap_100m": 145707.3
+    },
+    {
+      "date": "2005-12-02",
+      "total_market_cap_100m": 148238.9
+    },
+    {
+      "date": "2005-12-09",
+      "total_market_cap_100m": 149150.7
+    },
+    {
+      "date": "2005-12-16",
+      "total_market_cap_100m": 151205.2
+    },
+    {
+      "date": "2005-12-23",
+      "total_market_cap_100m": 155385.2
+    },
+    {
+      "date": "2005-12-30",
+      "total_market_cap_100m": 156272.9
+    },
+    {
+      "date": "2006-01-06",
+      "total_market_cap_100m": 159821.5
+    },
+    {
+      "date": "2006-01-13",
+      "total_market_cap_100m": 159605.0
+    },
+    {
+      "date": "2006-01-20",
+      "total_market_cap_100m": 154966.0
+    },
+    {
+      "date": "2006-01-25",
+      "total_market_cap_100m": 156103.7
+    },
+    {
+      "date": "2006-02-03",
+      "total_market_cap_100m": 157588.6
+    },
+    {
+      "date": "2006-02-10",
+      "total_market_cap_100m": 157576.7
+    },
+    {
+      "date": "2006-02-17",
+      "total_market_cap_100m": 159529.4
+    },
+    {
+      "date": "2006-02-24",
+      "total_market_cap_100m": 156448.7
+    },
+    {
+      "date": "2006-03-03",
+      "total_market_cap_100m": 156761.9
+    },
+    {
+      "date": "2006-03-10",
+      "total_market_cap_100m": 155347.9
+    },
+    {
+      "date": "2006-03-17",
+      "total_market_cap_100m": 157130.7
+    },
+    {
+      "date": "2006-03-24",
+      "total_market_cap_100m": 153447.4
+    },
+    {
+      "date": "2006-03-31",
+      "total_market_cap_100m": 159165.0
+    },
+    {
+      "date": "2006-04-07",
+      "total_market_cap_100m": 165444.1
+    },
+    {
+      "date": "2006-04-14",
+      "total_market_cap_100m": 169398.2
+    },
+    {
+      "date": "2006-04-21",
+      "total_market_cap_100m": 172925.4
+    },
+    {
+      "date": "2006-04-28",
+      "total_market_cap_100m": 174769.9
+    },
+    {
+      "date": "2006-05-05",
+      "total_market_cap_100m": 179757.9
+    },
+    {
+      "date": "2006-05-12",
+      "total_market_cap_100m": 177529.8
+    },
+    {
+      "date": "2006-05-19",
+      "total_market_cap_100m": 172735.2
+    },
+    {
+      "date": "2006-05-26",
+      "total_market_cap_100m": 168063.6
+    },
+    {
+      "date": "2006-06-02",
+      "total_market_cap_100m": 170140.1
+    },
+    {
+      "date": "2006-06-09",
+      "total_market_cap_100m": 157598.5
+    },
+    {
+      "date": "2006-06-16",
+      "total_market_cap_100m": 160795.8
+    },
+    {
+      "date": "2006-06-23",
+      "total_market_cap_100m": 157705.5
+    },
+    {
+      "date": "2006-06-30",
+      "total_market_cap_100m": 163857.0
+    },
+    {
+      "date": "2006-07-07",
+      "total_market_cap_100m": 162782.0
+    },
+    {
+      "date": "2006-07-14",
+      "total_market_cap_100m": 157177.6
+    },
+    {
+      "date": "2006-07-21",
+      "total_market_cap_100m": 156991.6
+    },
+    {
+      "date": "2006-07-28",
+      "total_market_cap_100m": 158481.5
+    },
+    {
+      "date": "2006-08-04",
+      "total_market_cap_100m": 157689.1
+    },
+    {
+      "date": "2006-08-11",
+      "total_market_cap_100m": 160996.7
+    },
+    {
+      "date": "2006-08-18",
+      "total_market_cap_100m": 164495.8
+    },
+    {
+      "date": "2006-08-25",
+      "total_market_cap_100m": 159787.5
+    },
+    {
+      "date": "2006-09-01",
+      "total_market_cap_100m": 162907.3
+    },
+    {
+      "date": "2006-09-08",
+      "total_market_cap_100m": 163924.9
+    },
+    {
+      "date": "2006-09-15",
+      "total_market_cap_100m": 163583.9
+    },
+    {
+      "date": "2006-09-22",
+      "total_market_cap_100m": 168670.5
+    },
+    {
+      "date": "2006-09-29",
+      "total_market_cap_100m": 168629.6
+    },
+    {
+      "date": "2006-10-05",
+      "total_market_cap_100m": 170866.9
+    },
+    {
+      "date": "2006-10-14",
+      "total_market_cap_100m": 172863.2
+    },
+    {
+      "date": "2006-10-20",
+      "total_market_cap_100m": 171933.1
+    },
+    {
+      "date": "2006-10-27",
+      "total_market_cap_100m": 174240.7
+    },
+    {
+      "date": "2006-11-03",
+      "total_market_cap_100m": 177051.5
+    },
+    {
+      "date": "2006-11-10",
+      "total_market_cap_100m": 177599.3
+    },
+    {
+      "date": "2006-11-17",
+      "total_market_cap_100m": 179646.2
+    },
+    {
+      "date": "2006-11-24",
+      "total_market_cap_100m": 183765.9
+    },
+    {
+      "date": "2006-12-01",
+      "total_market_cap_100m": 188344.5
+    },
+    {
+      "date": "2006-12-08",
+      "total_market_cap_100m": 188531.0
+    },
+    {
+      "date": "2006-12-15",
+      "total_market_cap_100m": 186171.6
+    },
+    {
+      "date": "2006-12-22",
+      "total_market_cap_100m": 188999.6
+    },
+    {
+      "date": "2006-12-29",
+      "total_market_cap_100m": 193769.8
+    },
+    {
+      "date": "2007-01-05",
+      "total_market_cap_100m": 193965.6
+    },
+    {
+      "date": "2007-01-12",
+      "total_market_cap_100m": 192113.1
+    },
+    {
+      "date": "2007-01-19",
+      "total_market_cap_100m": 193650.9
+    },
+    {
+      "date": "2007-01-26",
+      "total_market_cap_100m": 193299.2
+    },
+    {
+      "date": "2007-02-02",
+      "total_market_cap_100m": 192326.5
+    },
+    {
+      "date": "2007-02-09",
+      "total_market_cap_100m": 194372.1
+    },
+    {
+      "date": "2007-02-14",
+      "total_market_cap_100m": 193130.9
+    },
+    {
+      "date": "2007-03-03",
+      "total_market_cap_100m": 188739.8
+    },
+    {
+      "date": "2007-03-09",
+      "total_market_cap_100m": 187223.2
+    },
+    {
+      "date": "2007-03-16",
+      "total_market_cap_100m": 190932.3
+    },
+    {
+      "date": "2007-03-23",
+      "total_market_cap_100m": 194474.5
+    },
+    {
+      "date": "2007-04-04",
+      "total_market_cap_100m": 198125.2
+    },
+    {
+      "date": "2007-04-14",
+      "total_market_cap_100m": 198745.5
+    },
+    {
+      "date": "2007-04-20",
+      "total_market_cap_100m": 196235.3
+    },
+    {
+      "date": "2007-04-27",
+      "total_market_cap_100m": 196451.0
+    },
+    {
+      "date": "2007-05-04",
+      "total_market_cap_100m": 199327.2
+    },
+    {
+      "date": "2007-05-11",
+      "total_market_cap_100m": 198514.3
+    },
+    {
+      "date": "2007-05-18",
+      "total_market_cap_100m": 198834.0
+    },
+    {
+      "date": "2007-05-25",
+      "total_market_cap_100m": 201938.1
+    },
+    {
+      "date": "2007-06-01",
+      "total_market_cap_100m": 204226.4
+    },
+    {
+      "date": "2007-06-08",
+      "total_market_cap_100m": 205577.2
+    },
+    {
+      "date": "2007-06-15",
+      "total_market_cap_100m": 212312.9
+    },
+    {
+      "date": "2007-06-23",
+      "total_market_cap_100m": 218214.9
+    },
+    {
+      "date": "2007-06-29",
+      "total_market_cap_100m": 219869.0
+    },
+    {
+      "date": "2007-07-06",
+      "total_market_cap_100m": 227627.6
+    },
+    {
+      "date": "2007-07-13",
+      "total_market_cap_100m": 234421.3
+    },
+    {
+      "date": "2007-07-20",
+      "total_market_cap_100m": 236874.0
+    },
+    {
+      "date": "2007-07-27",
+      "total_market_cap_100m": 226406.1
+    },
+    {
+      "date": "2007-08-03",
+      "total_market_cap_100m": 224180.0
+    },
+    {
+      "date": "2007-08-10",
+      "total_market_cap_100m": 222285.9
+    },
+    {
+      "date": "2007-08-17",
+      "total_market_cap_100m": 201467.2
+    },
+    {
+      "date": "2007-08-24",
+      "total_market_cap_100m": 216366.5
+    },
+    {
+      "date": "2007-08-31",
+      "total_market_cap_100m": 223732.7
+    },
+    {
+      "date": "2007-09-07",
+      "total_market_cap_100m": 224680.6
+    },
+    {
+      "date": "2007-09-14",
+      "total_market_cap_100m": 225138.4
+    },
+    {
+      "date": "2007-09-21",
+      "total_market_cap_100m": 227003.8
+    },
+    {
+      "date": "2007-09-29",
+      "total_market_cap_100m": 236111.8
+    },
+    {
+      "date": "2007-10-05",
+      "total_market_cap_100m": 239910.3
+    },
+    {
+      "date": "2007-10-12",
+      "total_market_cap_100m": 236132.4
+    },
+    {
+      "date": "2007-10-19",
+      "total_market_cap_100m": 239238.6
+    },
+    {
+      "date": "2007-10-26",
+      "total_market_cap_100m": 239825.5
+    },
+    {
+      "date": "2007-11-02",
+      "total_market_cap_100m": 231718.3
+    },
+    {
+      "date": "2007-11-09",
+      "total_market_cap_100m": 224420.0
+    },
+    {
+      "date": "2007-11-16",
+      "total_market_cap_100m": 219728.0
+    },
+    {
+      "date": "2007-11-23",
+      "total_market_cap_100m": 209422.0
+    },
+    {
+      "date": "2007-11-30",
+      "total_market_cap_100m": 215943.6
+    },
+    {
+      "date": "2007-12-07",
+      "total_market_cap_100m": 219505.5
+    },
+    {
+      "date": "2007-12-14",
+      "total_market_cap_100m": 205564.3
+    },
+    {
+      "date": "2007-12-21",
+      "total_market_cap_100m": 201046.7
+    },
+    {
+      "date": "2007-12-28",
+      "total_market_cap_100m": 212134.0
+    },
+    {
+      "date": "2008-01-04",
+      "total_market_cap_100m": 208047.7
+    },
+    {
+      "date": "2008-01-11",
+      "total_market_cap_100m": 203526.5
+    },
+    {
+      "date": "2008-01-25",
+      "total_market_cap_100m": 196971.9
+    },
+    {
+      "date": "2008-02-01",
+      "total_market_cap_100m": 195085.1
+    },
+    {
+      "date": "2008-02-15",
+      "total_market_cap_100m": 200149.5
+    },
+    {
+      "date": "2008-02-22",
+      "total_market_cap_100m": 205840.4
+    },
+    {
+      "date": "2008-02-29",
+      "total_market_cap_100m": 213833.8
+    },
+    {
+      "date": "2008-03-07",
+      "total_market_cap_100m": 216832.2
+    },
+    {
+      "date": "2008-03-14",
+      "total_market_cap_100m": 207486.5
+    },
+    {
+      "date": "2008-03-21",
+      "total_market_cap_100m": 216546.9
+    },
+    {
+      "date": "2008-03-28",
+      "total_market_cap_100m": 219460.9
+    },
+    {
+      "date": "2008-04-03",
+      "total_market_cap_100m": 217945.0
+    },
+    {
+      "date": "2008-04-11",
+      "total_market_cap_100m": 225984.9
+    },
+    {
+      "date": "2008-04-18",
+      "total_market_cap_100m": 231188.6
+    },
+    {
+      "date": "2008-04-25",
+      "total_market_cap_100m": 226936.4
+    },
+    {
+      "date": "2008-05-02",
+      "total_market_cap_100m": 227557.1
+    },
+    {
+      "date": "2008-05-09",
+      "total_market_cap_100m": 223309.9
+    },
+    {
+      "date": "2008-05-16",
+      "total_market_cap_100m": 233604.8
+    },
+    {
+      "date": "2008-05-23",
+      "total_market_cap_100m": 224407.5
+    },
+    {
+      "date": "2008-05-30",
+      "total_market_cap_100m": 218919.8
+    },
+    {
+      "date": "2008-06-06",
+      "total_market_cap_100m": 222265.8
+    },
+    {
+      "date": "2008-06-13",
+      "total_market_cap_100m": 205992.9
+    },
+    {
+      "date": "2008-06-20",
+      "total_market_cap_100m": 200860.4
+    },
+    {
+      "date": "2008-06-27",
+      "total_market_cap_100m": 192031.0
+    },
+    {
+      "date": "2008-07-04",
+      "total_market_cap_100m": 183855.3
+    },
+    {
+      "date": "2008-07-11",
+      "total_market_cap_100m": 184329.5
+    },
+    {
+      "date": "2008-07-18",
+      "total_market_cap_100m": 173548.8
+    },
+    {
+      "date": "2008-07-25",
+      "total_market_cap_100m": 184187.8
+    },
+    {
+      "date": "2008-08-01",
+      "total_market_cap_100m": 178385.1
+    },
+    {
+      "date": "2008-08-08",
+      "total_market_cap_100m": 183695.6
+    },
+    {
+      "date": "2008-08-15",
+      "total_market_cap_100m": 183326.1
+    },
+    {
+      "date": "2008-08-22",
+      "total_market_cap_100m": 176236.0
+    },
+    {
+      "date": "2008-08-29",
+      "total_market_cap_100m": 179664.8
+    },
+    {
+      "date": "2008-09-05",
+      "total_market_cap_100m": 160930.5
+    },
+    {
+      "date": "2008-09-12",
+      "total_market_cap_100m": 161000.1
+    },
+    {
+      "date": "2008-09-19",
+      "total_market_cap_100m": 152398.4
+    },
+    {
+      "date": "2008-09-26",
+      "total_market_cap_100m": 151223.8
+    },
+    {
+      "date": "2008-10-03",
+      "total_market_cap_100m": 146409.3
+    },
+    {
+      "date": "2008-10-09",
+      "total_market_cap_100m": 130865.7
+    },
+    {
+      "date": "2008-10-17",
+      "total_market_cap_100m": 126527.9
+    },
+    {
+      "date": "2008-10-24",
+      "total_market_cap_100m": 116859.0
+    },
+    {
+      "date": "2008-10-31",
+      "total_market_cap_100m": 124031.9
+    },
+    {
+      "date": "2008-11-07",
+      "total_market_cap_100m": 120757.3
+    },
+    {
+      "date": "2008-11-14",
+      "total_market_cap_100m": 113381.1
+    },
+    {
+      "date": "2008-11-21",
+      "total_market_cap_100m": 106197.1
+    },
+    {
+      "date": "2008-11-28",
+      "total_market_cap_100m": 113561.3
+    },
+    {
+      "date": "2008-12-05",
+      "total_market_cap_100m": 107683.0
+    },
+    {
+      "date": "2008-12-12",
+      "total_market_cap_100m": 114192.7
+    },
+    {
+      "date": "2008-12-19",
+      "total_market_cap_100m": 119607.7
+    },
+    {
+      "date": "2008-12-26",
+      "total_market_cap_100m": 112848.2
+    },
+    {
+      "date": "2008-12-31",
+      "total_market_cap_100m": 117065.3
+    },
+    {
+      "date": "2009-01-10",
+      "total_market_cap_100m": 113947.2
+    },
+    {
+      "date": "2009-01-17",
+      "total_market_cap_100m": 111405.2
+    },
+    {
+      "date": "2009-01-21",
+      "total_market_cap_100m": 108398.1
+    },
+    {
+      "date": "2009-02-06",
+      "total_market_cap_100m": 114090.4
+    },
+    {
+      "date": "2009-02-13",
+      "total_market_cap_100m": 117227.5
+    },
+    {
+      "date": "2009-02-20",
+      "total_market_cap_100m": 113277.9
+    },
+    {
+      "date": "2009-02-27",
+      "total_market_cap_100m": 116347.8
+    },
+    {
+      "date": "2009-03-06",
+      "total_market_cap_100m": 118466.5
+    },
+    {
+      "date": "2009-03-13",
+      "total_market_cap_100m": 124429.4
+    },
+    {
+      "date": "2009-03-20",
+      "total_market_cap_100m": 126000.1
+    },
+    {
+      "date": "2009-03-27",
+      "total_market_cap_100m": 136345.7
+    },
+    {
+      "date": "2009-04-03",
+      "total_market_cap_100m": 139596.0
+    },
+    {
+      "date": "2009-04-10",
+      "total_market_cap_100m": 145811.4
+    },
+    {
+      "date": "2009-04-17",
+      "total_market_cap_100m": 145036.7
+    },
+    {
+      "date": "2009-04-24",
+      "total_market_cap_100m": 148001.0
+    },
+    {
+      "date": "2009-04-30",
+      "total_market_cap_100m": 150974.2
+    },
+    {
+      "date": "2009-05-08",
+      "total_market_cap_100m": 165743.3
+    },
+    {
+      "date": "2009-05-15",
+      "total_market_cap_100m": 163426.7
+    },
+    {
+      "date": "2009-05-22",
+      "total_market_cap_100m": 169628.0
+    },
+    {
+      "date": "2009-05-27",
+      "total_market_cap_100m": 173488.3
+    },
+    {
+      "date": "2009-06-06",
+      "total_market_cap_100m": 172735.5
+    },
+    {
+      "date": "2009-06-12",
+      "total_market_cap_100m": 162445.6
+    },
+    {
+      "date": "2009-06-19",
+      "total_market_cap_100m": 156930.8
+    },
+    {
+      "date": "2009-06-26",
+      "total_market_cap_100m": 162965.3
+    },
+    {
+      "date": "2009-07-03",
+      "total_market_cap_100m": 168033.6
+    },
+    {
+      "date": "2009-07-10",
+      "total_market_cap_100m": 170604.2
+    },
+    {
+      "date": "2009-07-17",
+      "total_market_cap_100m": 172749.1
+    },
+    {
+      "date": "2009-07-24",
+      "total_market_cap_100m": 175942.0
+    },
+    {
+      "date": "2009-07-31",
+      "total_market_cap_100m": 178655.9
+    },
+    {
+      "date": "2009-08-06",
+      "total_market_cap_100m": 179138.2
+    },
+    {
+      "date": "2009-08-14",
+      "total_market_cap_100m": 173748.3
+    },
+    {
+      "date": "2009-08-21",
+      "total_market_cap_100m": 168714.3
+    },
+    {
+      "date": "2009-08-28",
+      "total_market_cap_100m": 172831.0
+    },
+    {
+      "date": "2009-09-04",
+      "total_market_cap_100m": 181517.0
+    },
+    {
+      "date": "2009-09-11",
+      "total_market_cap_100m": 186212.8
+    },
+    {
+      "date": "2009-09-18",
+      "total_market_cap_100m": 191467.1
+    },
+    {
+      "date": "2009-09-25",
+      "total_market_cap_100m": 186852.8
+    },
+    {
+      "date": "2009-10-02",
+      "total_market_cap_100m": 188589.0
+    },
+    {
+      "date": "2009-10-09",
+      "total_market_cap_100m": 192757.2
+    },
+    {
+      "date": "2009-10-16",
+      "total_market_cap_100m": 196533.5
+    },
+    {
+      "date": "2009-10-23",
+      "total_market_cap_100m": 194863.1
+    },
+    {
+      "date": "2009-10-30",
+      "total_market_cap_100m": 187279.6
+    },
+    {
+      "date": "2009-11-06",
+      "total_market_cap_100m": 190622.4
+    },
+    {
+      "date": "2009-11-13",
+      "total_market_cap_100m": 195802.0
+    },
+    {
+      "date": "2009-11-20",
+      "total_market_cap_100m": 196637.5
+    },
+    {
+      "date": "2009-11-27",
+      "total_market_cap_100m": 191705.9
+    },
+    {
+      "date": "2009-12-04",
+      "total_market_cap_100m": 195799.5
+    },
+    {
+      "date": "2009-12-11",
+      "total_market_cap_100m": 199549.1
+    },
+    {
+      "date": "2009-12-18",
+      "total_market_cap_100m": 198792.2
+    },
+    {
+      "date": "2009-12-25",
+      "total_market_cap_100m": 204703.1
+    },
+    {
+      "date": "2009-12-31",
+      "total_market_cap_100m": 210331.8
+    },
+    {
+      "date": "2010-01-08",
+      "total_market_cap_100m": 212687.6
+    },
+    {
+      "date": "2010-01-15",
+      "total_market_cap_100m": 214715.1
+    },
+    {
+      "date": "2010-01-22",
+      "total_market_cap_100m": 204125.0
+    },
+    {
+      "date": "2010-01-29",
+      "total_market_cap_100m": 197043.7
+    },
+    {
+      "date": "2010-02-06",
+      "total_market_cap_100m": 186487.2
+    },
+    {
+      "date": "2010-02-10",
+      "total_market_cap_100m": 191803.5
+    },
+    {
+      "date": "2010-02-26",
+      "total_market_cap_100m": 191697.2
+    },
+    {
+      "date": "2010-03-05",
+      "total_market_cap_100m": 197439.9
+    },
+    {
+      "date": "2010-03-12",
+      "total_market_cap_100m": 199520.4
+    },
+    {
+      "date": "2010-03-19",
+      "total_market_cap_100m": 203445.5
+    },
+    {
+      "date": "2010-03-26",
+      "total_market_cap_100m": 203088.8
+    },
+    {
+      "date": "2010-04-02",
+      "total_market_cap_100m": 206902.8
+    },
+    {
+      "date": "2010-04-09",
+      "total_market_cap_100m": 208576.0
+    },
+    {
+      "date": "2010-04-16",
+      "total_market_cap_100m": 209100.6
+    },
+    {
+      "date": "2010-04-23",
+      "total_market_cap_100m": 206295.4
+    },
+    {
+      "date": "2010-04-30",
+      "total_market_cap_100m": 206458.6
+    },
+    {
+      "date": "2010-05-07",
+      "total_market_cap_100m": 195206.9
+    },
+    {
+      "date": "2010-05-14",
+      "total_market_cap_100m": 200524.9
+    },
+    {
+      "date": "2010-05-21",
+      "total_market_cap_100m": 186995.6
+    },
+    {
+      "date": "2010-05-28",
+      "total_market_cap_100m": 188482.8
+    },
+    {
+      "date": "2010-06-04",
+      "total_market_cap_100m": 189773.8
+    },
+    {
+      "date": "2010-06-11",
+      "total_market_cap_100m": 188627.1
+    },
+    {
+      "date": "2010-06-18",
+      "total_market_cap_100m": 193369.4
+    },
+    {
+      "date": "2010-06-25",
+      "total_market_cap_100m": 193012.0
+    },
+    {
+      "date": "2010-07-02",
+      "total_market_cap_100m": 189208.8
+    },
+    {
+      "date": "2010-07-09",
+      "total_market_cap_100m": 197344.9
+    },
+    {
+      "date": "2010-07-16",
+      "total_market_cap_100m": 197816.1
+    },
+    {
+      "date": "2010-07-23",
+      "total_market_cap_100m": 200418.3
+    },
+    {
+      "date": "2010-07-30",
+      "total_market_cap_100m": 200670.4
+    },
+    {
+      "date": "2010-08-06",
+      "total_market_cap_100m": 206051.9
+    },
+    {
+      "date": "2010-08-13",
+      "total_market_cap_100m": 204320.5
+    },
+    {
+      "date": "2010-08-20",
+      "total_market_cap_100m": 205311.8
+    },
+    {
+      "date": "2010-08-27",
+      "total_market_cap_100m": 200221.0
+    },
+    {
+      "date": "2010-09-03",
+      "total_market_cap_100m": 203100.9
+    },
+    {
+      "date": "2010-09-10",
+      "total_market_cap_100m": 204697.2
+    },
+    {
+      "date": "2010-09-17",
+      "total_market_cap_100m": 211704.8
+    },
+    {
+      "date": "2010-09-24",
+      "total_market_cap_100m": 211921.6
+    },
+    {
+      "date": "2010-10-01",
+      "total_market_cap_100m": 214162.6
+    },
+    {
+      "date": "2010-10-08",
+      "total_market_cap_100m": 214092.6
+    },
+    {
+      "date": "2010-10-15",
+      "total_market_cap_100m": 213175.0
+    },
+    {
+      "date": "2010-10-22",
+      "total_market_cap_100m": 212184.1
+    },
+    {
+      "date": "2010-10-29",
+      "total_market_cap_100m": 216550.1
+    },
+    {
+      "date": "2010-11-05",
+      "total_market_cap_100m": 220799.9
+    },
+    {
+      "date": "2010-11-12",
+      "total_market_cap_100m": 217749.6
+    },
+    {
+      "date": "2010-11-19",
+      "total_market_cap_100m": 217442.9
+    },
+    {
+      "date": "2010-11-26",
+      "total_market_cap_100m": 218558.8
+    },
+    {
+      "date": "2010-12-03",
+      "total_market_cap_100m": 227091.9
+    },
+    {
+      "date": "2010-12-10",
+      "total_market_cap_100m": 229564.5
+    },
+    {
+      "date": "2010-12-17",
+      "total_market_cap_100m": 232379.6
+    },
+    {
+      "date": "2010-12-24",
+      "total_market_cap_100m": 235208.6
+    },
+    {
+      "date": "2010-12-31",
+      "total_market_cap_100m": 238112.4
+    },
+    {
+      "date": "2011-01-07",
+      "total_market_cap_100m": 233096.9
+    },
+    {
+      "date": "2011-01-14",
+      "total_market_cap_100m": 237902.2
+    },
+    {
+      "date": "2011-01-21",
+      "total_market_cap_100m": 237506.6
+    },
+    {
+      "date": "2011-01-28",
+      "total_market_cap_100m": 242348.9
+    },
+    {
+      "date": "2011-02-11",
+      "total_market_cap_100m": 228408.1
+    },
+    {
+      "date": "2011-02-18",
+      "total_market_cap_100m": 234497.8
+    },
+    {
+      "date": "2011-02-25",
+      "total_market_cap_100m": 228262.3
+    },
+    {
+      "date": "2011-03-04",
+      "total_market_cap_100m": 233216.8
+    },
+    {
+      "date": "2011-03-11",
+      "total_market_cap_100m": 227513.1
+    },
+    {
+      "date": "2011-03-18",
+      "total_market_cap_100m": 222967.0
+    },
+    {
+      "date": "2011-03-25",
+      "total_market_cap_100m": 228709.0
+    },
+    {
+      "date": "2011-04-01",
+      "total_market_cap_100m": 231223.3
+    },
+    {
+      "date": "2011-04-08",
+      "total_market_cap_100m": 236272.3
+    },
+    {
+      "date": "2011-04-15",
+      "total_market_cap_100m": 231526.0
+    },
+    {
+      "date": "2011-04-22",
+      "total_market_cap_100m": 238305.9
+    },
+    {
+      "date": "2011-04-29",
+      "total_market_cap_100m": 239376.3
+    },
+    {
+      "date": "2011-05-06",
+      "total_market_cap_100m": 238454.8
+    },
+    {
+      "date": "2011-05-13",
+      "total_market_cap_100m": 239250.9
+    },
+    {
+      "date": "2011-05-20",
+      "total_market_cap_100m": 234848.0
+    },
+    {
+      "date": "2011-05-27",
+      "total_market_cap_100m": 234162.6
+    },
+    {
+      "date": "2011-06-03",
+      "total_market_cap_100m": 240441.9
+    },
+    {
+      "date": "2011-06-10",
+      "total_market_cap_100m": 234866.5
+    },
+    {
+      "date": "2011-06-17",
+      "total_market_cap_100m": 229574.3
+    },
+    {
+      "date": "2011-06-24",
+      "total_market_cap_100m": 226854.9
+    },
+    {
+      "date": "2011-07-01",
+      "total_market_cap_100m": 232438.6
+    },
+    {
+      "date": "2011-07-08",
+      "total_market_cap_100m": 232695.9
+    },
+    {
+      "date": "2011-07-15",
+      "total_market_cap_100m": 228061.6
+    },
+    {
+      "date": "2011-07-22",
+      "total_market_cap_100m": 233229.5
+    },
+    {
+      "date": "2011-07-29",
+      "total_market_cap_100m": 230785.1
+    },
+    {
+      "date": "2011-08-05",
+      "total_market_cap_100m": 209962.3
+    },
+    {
+      "date": "2011-08-12",
+      "total_market_cap_100m": 204255.3
+    },
+    {
+      "date": "2011-08-19",
+      "total_market_cap_100m": 196626.6
+    },
+    {
+      "date": "2011-08-26",
+      "total_market_cap_100m": 199352.8
+    },
+    {
+      "date": "2011-09-02",
+      "total_market_cap_100m": 207765.0
+    },
+    {
+      "date": "2011-09-09",
+      "total_market_cap_100m": 203906.3
+    },
+    {
+      "date": "2011-09-16",
+      "total_market_cap_100m": 203152.3
+    },
+    {
+      "date": "2011-09-23",
+      "total_market_cap_100m": 189032.0
+    },
+    {
+      "date": "2011-09-30",
+      "total_market_cap_100m": 193974.2
+    },
+    {
+      "date": "2011-10-07",
+      "total_market_cap_100m": 193725.1
+    },
+    {
+      "date": "2011-10-14",
+      "total_market_cap_100m": 197602.1
+    },
+    {
+      "date": "2011-10-21",
+      "total_market_cap_100m": 194900.4
+    },
+    {
+      "date": "2011-10-28",
+      "total_market_cap_100m": 204678.7
+    },
+    {
+      "date": "2011-11-04",
+      "total_market_cap_100m": 204839.2
+    },
+    {
+      "date": "2011-11-11",
+      "total_market_cap_100m": 198784.5
+    },
+    {
+      "date": "2011-11-18",
+      "total_market_cap_100m": 195508.5
+    },
+    {
+      "date": "2011-11-25",
+      "total_market_cap_100m": 183584.7
+    },
+    {
+      "date": "2011-12-02",
+      "total_market_cap_100m": 193363.6
+    },
+    {
+      "date": "2011-12-09",
+      "total_market_cap_100m": 186713.3
+    },
+    {
+      "date": "2011-12-16",
+      "total_market_cap_100m": 183985.1
+    },
+    {
+      "date": "2011-12-23",
+      "total_market_cap_100m": 192845.7
+    },
+    {
+      "date": "2011-12-30",
+      "total_market_cap_100m": 192170.0
+    },
+    {
+      "date": "2012-01-06",
+      "total_market_cap_100m": 193537.5
+    },
+    {
+      "date": "2012-01-13",
+      "total_market_cap_100m": 195330.2
+    },
+    {
+      "date": "2012-01-18",
+      "total_market_cap_100m": 196812.2
+    },
+    {
+      "date": "2012-02-04",
+      "total_market_cap_100m": 210646.8
+    },
+    {
+      "date": "2012-02-10",
+      "total_market_cap_100m": 213926.4
+    },
+    {
+      "date": "2012-02-17",
+      "total_market_cap_100m": 214955.7
+    },
+    {
+      "date": "2012-03-03",
+      "total_market_cap_100m": 220982.2
+    },
+    {
+      "date": "2012-03-09",
+      "total_market_cap_100m": 218629.3
+    },
+    {
+      "date": "2012-03-16",
+      "total_market_cap_100m": 219714.6
+    },
+    {
+      "date": "2012-03-23",
+      "total_market_cap_100m": 220317.9
+    },
+    {
+      "date": "2012-03-30",
+      "total_market_cap_100m": 216414.8
+    },
+    {
+      "date": "2012-04-06",
+      "total_market_cap_100m": 210248.9
+    },
+    {
+      "date": "2012-04-13",
+      "total_market_cap_100m": 212479.2
+    },
+    {
+      "date": "2012-04-20",
+      "total_market_cap_100m": 204790.7
+    },
+    {
+      "date": "2012-04-27",
+      "total_market_cap_100m": 204232.5
+    },
+    {
+      "date": "2012-05-04",
+      "total_market_cap_100m": 210304.6
+    },
+    {
+      "date": "2012-05-11",
+      "total_market_cap_100m": 202184.1
+    },
+    {
+      "date": "2012-05-18",
+      "total_market_cap_100m": 195309.6
+    },
+    {
+      "date": "2012-05-25",
+      "total_market_cap_100m": 193147.9
+    },
+    {
+      "date": "2012-06-01",
+      "total_market_cap_100m": 194099.8
+    },
+    {
+      "date": "2012-06-08",
+      "total_market_cap_100m": 191426.4
+    },
+    {
+      "date": "2012-06-15",
+      "total_market_cap_100m": 195710.8
+    },
+    {
+      "date": "2012-06-22",
+      "total_market_cap_100m": 197584.6
+    },
+    {
+      "date": "2012-06-29",
+      "total_market_cap_100m": 199597.9
+    },
+    {
+      "date": "2012-07-06",
+      "total_market_cap_100m": 201772.9
+    },
+    {
+      "date": "2012-07-13",
+      "total_market_cap_100m": 194580.0
+    },
+    {
+      "date": "2012-07-20",
+      "total_market_cap_100m": 196232.2
+    },
+    {
+      "date": "2012-07-27",
+      "total_market_cap_100m": 195136.5
+    },
+    {
+      "date": "2012-08-03",
+      "total_market_cap_100m": 197863.7
+    },
+    {
+      "date": "2012-08-10",
+      "total_market_cap_100m": 204023.0
+    },
+    {
+      "date": "2012-08-17",
+      "total_market_cap_100m": 204780.5
+    },
+    {
+      "date": "2012-08-24",
+      "total_market_cap_100m": 205670.5
+    },
+    {
+      "date": "2012-08-31",
+      "total_market_cap_100m": 203477.6
+    },
+    {
+      "date": "2012-09-07",
+      "total_market_cap_100m": 204345.5
+    },
+    {
+      "date": "2012-09-14",
+      "total_market_cap_100m": 212938.2
+    },
+    {
+      "date": "2012-09-21",
+      "total_market_cap_100m": 213386.9
+    },
+    {
+      "date": "2012-09-28",
+      "total_market_cap_100m": 212143.8
+    },
+    {
+      "date": "2012-10-05",
+      "total_market_cap_100m": 211757.2
+    },
+    {
+      "date": "2012-10-12",
+      "total_market_cap_100m": 204776.5
+    },
+    {
+      "date": "2012-10-19",
+      "total_market_cap_100m": 204032.7
+    },
+    {
+      "date": "2012-10-26",
+      "total_market_cap_100m": 196719.7
+    },
+    {
+      "date": "2012-11-02",
+      "total_market_cap_100m": 198905.8
+    },
+    {
+      "date": "2012-11-09",
+      "total_market_cap_100m": 201241.2
+    },
+    {
+      "date": "2012-11-16",
+      "total_market_cap_100m": 196811.0
+    },
+    {
+      "date": "2012-11-23",
+      "total_market_cap_100m": 202180.0
+    },
+    {
+      "date": "2012-11-30",
+      "total_market_cap_100m": 209151.4
+    },
+    {
+      "date": "2012-12-07",
+      "total_market_cap_100m": 211466.4
+    },
+    {
+      "date": "2012-12-14",
+      "total_market_cap_100m": 213086.0
+    },
+    {
+      "date": "2012-12-22",
+      "total_market_cap_100m": 209094.4
+    },
+    {
+      "date": "2012-12-28",
+      "total_market_cap_100m": 213474.4
+    },
+    {
+      "date": "2013-01-04",
+      "total_market_cap_100m": 216492.4
+    },
+    {
+      "date": "2013-01-11",
+      "total_market_cap_100m": 216974.3
+    },
+    {
+      "date": "2013-01-18",
+      "total_market_cap_100m": 214626.9
+    },
+    {
+      "date": "2013-01-25",
+      "total_market_cap_100m": 213472.5
+    },
+    {
+      "date": "2013-02-01",
+      "total_market_cap_100m": 218831.9
+    },
+    {
+      "date": "2013-02-06",
+      "total_market_cap_100m": 220223.6
+    },
+    {
+      "date": "2013-02-23",
+      "total_market_cap_100m": 222720.3
+    },
+    {
+      "date": "2013-03-01",
+      "total_market_cap_100m": 222278.4
+    },
+    {
+      "date": "2013-03-08",
+      "total_market_cap_100m": 223768.1
+    },
+    {
+      "date": "2013-03-15",
+      "total_market_cap_100m": 221284.1
+    },
+    {
+      "date": "2013-03-22",
+      "total_market_cap_100m": 217772.4
+    },
+    {
+      "date": "2013-03-29",
+      "total_market_cap_100m": 221285.2
+    },
+    {
+      "date": "2013-04-03",
+      "total_market_cap_100m": 221967.7
+    },
+    {
+      "date": "2013-04-12",
+      "total_market_cap_100m": 218639.7
+    },
+    {
+      "date": "2013-04-19",
+      "total_market_cap_100m": 221806.5
+    },
+    {
+      "date": "2013-04-26",
+      "total_market_cap_100m": 224366.5
+    },
+    {
+      "date": "2013-05-03",
+      "total_market_cap_100m": 227614.6
+    },
+    {
+      "date": "2013-05-10",
+      "total_market_cap_100m": 231559.0
+    },
+    {
+      "date": "2013-05-17",
+      "total_market_cap_100m": 234201.8
+    },
+    {
+      "date": "2013-05-24",
+      "total_market_cap_100m": 229724.2
+    },
+    {
+      "date": "2013-05-31",
+      "total_market_cap_100m": 231190.8
+    },
+    {
+      "date": "2013-06-07",
+      "total_market_cap_100m": 226765.5
+    },
+    {
+      "date": "2013-06-14",
+      "total_market_cap_100m": 222507.7
+    },
+    {
+      "date": "2013-06-21",
+      "total_market_cap_100m": 218581.7
+    },
+    {
+      "date": "2013-06-28",
+      "total_market_cap_100m": 226081.8
+    },
+    {
+      "date": "2013-07-05",
+      "total_market_cap_100m": 224424.6
+    },
+    {
+      "date": "2013-07-12",
+      "total_market_cap_100m": 230109.2
+    },
+    {
+      "date": "2013-07-19",
+      "total_market_cap_100m": 226148.3
+    },
+    {
+      "date": "2013-07-26",
+      "total_market_cap_100m": 228455.6
+    },
+    {
+      "date": "2013-08-02",
+      "total_market_cap_100m": 227084.9
+    },
+    {
+      "date": "2013-08-09",
+      "total_market_cap_100m": 220806.9
+    },
+    {
+      "date": "2013-08-16",
+      "total_market_cap_100m": 222833.3
+    },
+    {
+      "date": "2013-08-23",
+      "total_market_cap_100m": 221371.4
+    },
+    {
+      "date": "2013-08-30",
+      "total_market_cap_100m": 225604.7
+    },
+    {
+      "date": "2013-09-06",
+      "total_market_cap_100m": 229838.4
+    },
+    {
+      "date": "2013-09-14",
+      "total_market_cap_100m": 229317.0
+    },
+    {
+      "date": "2013-09-18",
+      "total_market_cap_100m": 231246.5
+    },
+    {
+      "date": "2013-09-27",
+      "total_market_cap_100m": 231915.3
+    },
+    {
+      "date": "2013-10-04",
+      "total_market_cap_100m": 235850.4
+    },
+    {
+      "date": "2013-10-11",
+      "total_market_cap_100m": 235522.6
+    },
+    {
+      "date": "2013-10-18",
+      "total_market_cap_100m": 238164.7
+    },
+    {
+      "date": "2013-10-25",
+      "total_market_cap_100m": 235609.1
+    },
+    {
+      "date": "2013-11-01",
+      "total_market_cap_100m": 237073.7
+    },
+    {
+      "date": "2013-11-08",
+      "total_market_cap_100m": 233085.2
+    },
+    {
+      "date": "2013-11-15",
+      "total_market_cap_100m": 231602.1
+    },
+    {
+      "date": "2013-11-22",
+      "total_market_cap_100m": 230023.9
+    },
+    {
+      "date": "2013-11-29",
+      "total_market_cap_100m": 238748.9
+    },
+    {
+      "date": "2013-12-06",
+      "total_market_cap_100m": 237757.7
+    },
+    {
+      "date": "2013-12-13",
+      "total_market_cap_100m": 238232.0
+    },
+    {
+      "date": "2013-12-20",
+      "total_market_cap_100m": 239199.9
+    },
+    {
+      "date": "2013-12-27",
+      "total_market_cap_100m": 242915.2
+    },
+    {
+      "date": "2014-01-03",
+      "total_market_cap_100m": 243381.3
+    },
+    {
+      "date": "2014-01-10",
+      "total_market_cap_100m": 242928.5
+    },
+    {
+      "date": "2014-01-17",
+      "total_market_cap_100m": 245112.4
+    },
+    {
+      "date": "2014-01-24",
+      "total_market_cap_100m": 245190.2
+    },
+    {
+      "date": "2014-01-27",
+      "total_market_cap_100m": 241348.4
+    },
+    {
+      "date": "2014-02-07",
+      "total_market_cap_100m": 238478.3
+    },
+    {
+      "date": "2014-02-14",
+      "total_market_cap_100m": 242175.6
+    },
+    {
+      "date": "2014-02-21",
+      "total_market_cap_100m": 244725.0
+    },
+    {
+      "date": "2014-02-28",
+      "total_market_cap_100m": 245608.4
+    },
+    {
+      "date": "2014-03-07",
+      "total_market_cap_100m": 247759.5
+    },
+    {
+      "date": "2014-03-14",
+      "total_market_cap_100m": 247028.7
+    },
+    {
+      "date": "2014-03-21",
+      "total_market_cap_100m": 243884.1
+    },
+    {
+      "date": "2014-03-28",
+      "total_market_cap_100m": 249621.5
+    },
+    {
+      "date": "2014-04-03",
+      "total_market_cap_100m": 253005.9
+    },
+    {
+      "date": "2014-04-11",
+      "total_market_cap_100m": 253912.3
+    },
+    {
+      "date": "2014-04-18",
+      "total_market_cap_100m": 255632.8
+    },
+    {
+      "date": "2014-04-25",
+      "total_market_cap_100m": 250354.5
+    },
+    {
+      "date": "2014-05-02",
+      "total_market_cap_100m": 253080.1
+    },
+    {
+      "date": "2014-05-09",
+      "total_market_cap_100m": 253751.5
+    },
+    {
+      "date": "2014-05-16",
+      "total_market_cap_100m": 253764.1
+    },
+    {
+      "date": "2014-05-23",
+      "total_market_cap_100m": 257344.0
+    },
+    {
+      "date": "2014-05-30",
+      "total_market_cap_100m": 259396.2
+    },
+    {
+      "date": "2014-06-06",
+      "total_market_cap_100m": 261100.2
+    },
+    {
+      "date": "2014-06-13",
+      "total_market_cap_100m": 262863.7
+    },
+    {
+      "date": "2014-06-20",
+      "total_market_cap_100m": 265093.6
+    },
+    {
+      "date": "2014-06-27",
+      "total_market_cap_100m": 266042.5
+    },
+    {
+      "date": "2014-07-04",
+      "total_market_cap_100m": 271911.1
+    },
+    {
+      "date": "2014-07-11",
+      "total_market_cap_100m": 271611.1
+    },
+    {
+      "date": "2014-07-18",
+      "total_market_cap_100m": 269033.0
+    },
+    {
+      "date": "2014-07-25",
+      "total_market_cap_100m": 270139.2
+    },
+    {
+      "date": "2014-08-01",
+      "total_market_cap_100m": 265204.0
+    },
+    {
+      "date": "2014-08-08",
+      "total_market_cap_100m": 259998.4
+    },
+    {
+      "date": "2014-08-15",
+      "total_market_cap_100m": 263479.9
+    },
+    {
+      "date": "2014-08-22",
+      "total_market_cap_100m": 268434.5
+    },
+    {
+      "date": "2014-08-29",
+      "total_market_cap_100m": 270518.2
+    },
+    {
+      "date": "2014-09-05",
+      "total_market_cap_100m": 269728.7
+    },
+    {
+      "date": "2014-09-12",
+      "total_market_cap_100m": 266717.5
+    },
+    {
+      "date": "2014-09-19",
+      "total_market_cap_100m": 265870.6
+    },
+    {
+      "date": "2014-09-26",
+      "total_market_cap_100m": 258570.5
+    },
+    {
+      "date": "2014-10-03",
+      "total_market_cap_100m": 261957.0
+    },
+    {
+      "date": "2014-10-09",
+      "total_market_cap_100m": 257602.5
+    },
+    {
+      "date": "2014-10-17",
+      "total_market_cap_100m": 244578.5
+    },
+    {
+      "date": "2014-10-24",
+      "total_market_cap_100m": 248530.9
+    },
+    {
+      "date": "2014-10-31",
+      "total_market_cap_100m": 258261.1
+    },
+    {
+      "date": "2014-11-07",
+      "total_market_cap_100m": 256615.2
+    },
+    {
+      "date": "2014-11-14",
+      "total_market_cap_100m": 258626.3
+    },
+    {
+      "date": "2014-11-21",
+      "total_market_cap_100m": 261698.1
+    },
+    {
+      "date": "2014-11-28",
+      "total_market_cap_100m": 264468.2
+    },
+    {
+      "date": "2014-12-05",
+      "total_market_cap_100m": 265041.6
+    },
+    {
+      "date": "2014-12-12",
+      "total_market_cap_100m": 259866.4
+    },
+    {
+      "date": "2014-12-19",
+      "total_market_cap_100m": 259500.3
+    },
+    {
+      "date": "2014-12-27",
+      "total_market_cap_100m": 266092.8
+    },
+    {
+      "date": "2015-01-09",
+      "total_market_cap_100m": 266173.9
+    },
+    {
+      "date": "2015-01-16",
+      "total_market_cap_100m": 264048.6
+    },
+    {
+      "date": "2015-01-23",
+      "total_market_cap_100m": 273682.2
+    },
+    {
+      "date": "2015-01-30",
+      "total_market_cap_100m": 270746.7
+    },
+    {
+      "date": "2015-02-06",
+      "total_market_cap_100m": 273766.3
+    },
+    {
+      "date": "2015-02-13",
+      "total_market_cap_100m": 275882.2
+    },
+    {
+      "date": "2015-02-26",
+      "total_market_cap_100m": 278593.0
+    },
+    {
+      "date": "2015-03-06",
+      "total_market_cap_100m": 279278.8
+    },
+    {
+      "date": "2015-03-13",
+      "total_market_cap_100m": 277374.4
+    },
+    {
+      "date": "2015-03-20",
+      "total_market_cap_100m": 282421.4
+    },
+    {
+      "date": "2015-03-27",
+      "total_market_cap_100m": 275478.1
+    },
+    {
+      "date": "2015-04-02",
+      "total_market_cap_100m": 278286.2
+    },
+    {
+      "date": "2015-04-10",
+      "total_market_cap_100m": 278799.5
+    },
+    {
+      "date": "2015-04-17",
+      "total_market_cap_100m": 277501.7
+    },
+    {
+      "date": "2015-04-24",
+      "total_market_cap_100m": 287437.6
+    },
+    {
+      "date": "2015-04-30",
+      "total_market_cap_100m": 284808.5
+    },
+    {
+      "date": "2015-05-08",
+      "total_market_cap_100m": 281090.6
+    },
+    {
+      "date": "2015-05-15",
+      "total_market_cap_100m": 277844.3
+    },
+    {
+      "date": "2015-05-22",
+      "total_market_cap_100m": 279609.1
+    },
+    {
+      "date": "2015-05-29",
+      "total_market_cap_100m": 281504.2
+    },
+    {
+      "date": "2015-06-05",
+      "total_market_cap_100m": 271075.9
+    },
+    {
+      "date": "2015-06-12",
+      "total_market_cap_100m": 270344.2
+    },
+    {
+      "date": "2015-06-18",
+      "total_market_cap_100m": 268296.3
+    },
+    {
+      "date": "2015-06-26",
+      "total_market_cap_100m": 275418.6
+    },
+    {
+      "date": "2015-07-03",
+      "total_market_cap_100m": 272438.7
+    },
+    {
+      "date": "2015-07-09",
+      "total_market_cap_100m": 259526.4
+    },
+    {
+      "date": "2015-07-17",
+      "total_market_cap_100m": 263611.4
+    },
+    {
+      "date": "2015-07-24",
+      "total_market_cap_100m": 255463.8
+    },
+    {
+      "date": "2015-07-31",
+      "total_market_cap_100m": 252754.9
+    },
+    {
+      "date": "2015-08-07",
+      "total_market_cap_100m": 246246.6
+    },
+    {
+      "date": "2015-08-14",
+      "total_market_cap_100m": 242281.3
+    },
+    {
+      "date": "2015-08-21",
+      "total_market_cap_100m": 227206.6
+    },
+    {
+      "date": "2015-08-28",
+      "total_market_cap_100m": 234014.8
+    },
+    {
+      "date": "2015-09-04",
+      "total_market_cap_100m": 233627.5
+    },
+    {
+      "date": "2015-09-11",
+      "total_market_cap_100m": 243005.5
+    },
+    {
+      "date": "2015-09-18",
+      "total_market_cap_100m": 247593.0
+    },
+    {
+      "date": "2015-09-25",
+      "total_market_cap_100m": 237976.5
+    },
+    {
+      "date": "2015-10-02",
+      "total_market_cap_100m": 242584.9
+    },
+    {
+      "date": "2015-10-08",
+      "total_market_cap_100m": 246683.2
+    },
+    {
+      "date": "2015-10-16",
+      "total_market_cap_100m": 251411.1
+    },
+    {
+      "date": "2015-10-23",
+      "total_market_cap_100m": 253499.6
+    },
+    {
+      "date": "2015-10-30",
+      "total_market_cap_100m": 250138.0
+    },
+    {
+      "date": "2015-11-06",
+      "total_market_cap_100m": 254475.1
+    },
+    {
+      "date": "2015-11-13",
+      "total_market_cap_100m": 243869.1
+    },
+    {
+      "date": "2015-11-20",
+      "total_market_cap_100m": 248109.0
+    },
+    {
+      "date": "2015-11-27",
+      "total_market_cap_100m": 246120.5
+    },
+    {
+      "date": "2015-12-04",
+      "total_market_cap_100m": 246150.5
+    },
+    {
+      "date": "2015-12-11",
+      "total_market_cap_100m": 237850.2
+    },
+    {
+      "date": "2015-12-18",
+      "total_market_cap_100m": 242175.8
+    },
+    {
+      "date": "2015-12-25",
+      "total_market_cap_100m": 245264.5
+    },
+    {
+      "date": "2015-12-31",
+      "total_market_cap_100m": 245036.4
+    },
+    {
+      "date": "2016-01-08",
+      "total_market_cap_100m": 231969.7
+    },
+    {
+      "date": "2016-01-15",
+      "total_market_cap_100m": 228097.3
+    },
+    {
+      "date": "2016-01-22",
+      "total_market_cap_100m": 227989.7
+    },
+    {
+      "date": "2016-01-30",
+      "total_market_cap_100m": 239639.5
+    },
+    {
+      "date": "2016-02-03",
+      "total_market_cap_100m": 237220.1
+    },
+    {
+      "date": "2016-02-19",
+      "total_market_cap_100m": 245079.6
+    },
+    {
+      "date": "2016-02-26",
+      "total_market_cap_100m": 247579.5
+    },
+    {
+      "date": "2016-03-04",
+      "total_market_cap_100m": 254449.4
+    },
+    {
+      "date": "2016-03-11",
+      "total_market_cap_100m": 256281.2
+    },
+    {
+      "date": "2016-03-18",
+      "total_market_cap_100m": 259395.3
+    },
+    {
+      "date": "2016-03-25",
+      "total_market_cap_100m": 256320.8
+    },
+    {
+      "date": "2016-04-01",
+      "total_market_cap_100m": 254948.4
+    },
+    {
+      "date": "2016-04-08",
+      "total_market_cap_100m": 251284.7
+    },
+    {
+      "date": "2016-04-15",
+      "total_market_cap_100m": 256032.7
+    },
+    {
+      "date": "2016-04-22",
+      "total_market_cap_100m": 251211.2
+    },
+    {
+      "date": "2016-04-29",
+      "total_market_cap_100m": 246286.0
+    },
+    {
+      "date": "2016-05-06",
+      "total_market_cap_100m": 239491.5
+    },
+    {
+      "date": "2016-05-13",
+      "total_market_cap_100m": 236757.4
+    },
+    {
+      "date": "2016-05-20",
+      "total_market_cap_100m": 239098.7
+    },
+    {
+      "date": "2016-05-27",
+      "total_market_cap_100m": 248817.6
+    },
+    {
+      "date": "2016-06-04",
+      "total_market_cap_100m": 253004.3
+    },
+    {
+      "date": "2016-06-08",
+      "total_market_cap_100m": 256642.8
+    },
+    {
+      "date": "2016-06-17",
+      "total_market_cap_100m": 252315.6
+    },
+    {
+      "date": "2016-06-24",
+      "total_market_cap_100m": 249682.1
+    },
+    {
+      "date": "2016-07-01",
+      "total_market_cap_100m": 257357.8
+    },
+    {
+      "date": "2016-07-07",
+      "total_market_cap_100m": 254517.5
+    },
+    {
+      "date": "2016-07-15",
+      "total_market_cap_100m": 263579.5
+    },
+    {
+      "date": "2016-07-22",
+      "total_market_cap_100m": 265581.8
+    },
+    {
+      "date": "2016-07-29",
+      "total_market_cap_100m": 264759.3
+    },
+    {
+      "date": "2016-08-05",
+      "total_market_cap_100m": 267925.1
+    },
+    {
+      "date": "2016-08-12",
+      "total_market_cap_100m": 269693.8
+    },
+    {
+      "date": "2016-08-19",
+      "total_market_cap_100m": 266316.4
+    },
+    {
+      "date": "2016-08-26",
+      "total_market_cap_100m": 269205.2
+    },
+    {
+      "date": "2016-09-02",
+      "total_market_cap_100m": 264980.9
+    },
+    {
+      "date": "2016-09-10",
+      "total_market_cap_100m": 266972.5
+    },
+    {
+      "date": "2016-09-14",
+      "total_market_cap_100m": 262544.7
+    },
+    {
+      "date": "2016-09-23",
+      "total_market_cap_100m": 273852.5
+    },
+    {
+      "date": "2016-09-30",
+      "total_market_cap_100m": 270457.4
+    },
+    {
+      "date": "2016-10-07",
+      "total_market_cap_100m": 273309.5
+    },
+    {
+      "date": "2016-10-14",
+      "total_market_cap_100m": 270321.8
+    },
+    {
+      "date": "2016-10-21",
+      "total_market_cap_100m": 274677.5
+    },
+    {
+      "date": "2016-10-28",
+      "total_market_cap_100m": 275190.3
+    },
+    {
+      "date": "2016-11-04",
+      "total_market_cap_100m": 268300.0
+    },
+    {
+      "date": "2016-11-11",
+      "total_market_cap_100m": 265097.2
+    },
+    {
+      "date": "2016-11-18",
+      "total_market_cap_100m": 266660.6
+    },
+    {
+      "date": "2016-11-25",
+      "total_market_cap_100m": 271102.9
+    },
+    {
+      "date": "2016-12-02",
+      "total_market_cap_100m": 272143.5
+    },
+    {
+      "date": "2016-12-09",
+      "total_market_cap_100m": 276400.6
+    },
+    {
+      "date": "2016-12-16",
+      "total_market_cap_100m": 274514.9
+    },
+    {
+      "date": "2016-12-23",
+      "total_market_cap_100m": 267308.5
+    },
+    {
+      "date": "2016-12-30",
+      "total_market_cap_100m": 272479.1
+    },
+    {
+      "date": "2017-01-06",
+      "total_market_cap_100m": 275988.9
+    },
+    {
+      "date": "2017-01-13",
+      "total_market_cap_100m": 276279.0
+    },
+    {
+      "date": "2017-01-20",
+      "total_market_cap_100m": 275442.2
+    },
+    {
+      "date": "2017-01-24",
+      "total_market_cap_100m": 278909.1
+    },
+    {
+      "date": "2017-02-03",
+      "total_market_cap_100m": 279158.1
+    },
+    {
+      "date": "2017-02-10",
+      "total_market_cap_100m": 285844.0
+    },
+    {
+      "date": "2017-02-18",
+      "total_market_cap_100m": 289217.6
+    },
+    {
+      "date": "2017-02-24",
+      "total_market_cap_100m": 288425.8
+    },
+    {
+      "date": "2017-03-03",
+      "total_market_cap_100m": 285441.7
+    },
+    {
+      "date": "2017-03-10",
+      "total_market_cap_100m": 284823.5
+    },
+    {
+      "date": "2017-03-17",
+      "total_market_cap_100m": 293319.6
+    },
+    {
+      "date": "2017-03-24",
+      "total_market_cap_100m": 293171.3
+    },
+    {
+      "date": "2017-03-31",
+      "total_market_cap_100m": 290575.2
+    },
+    {
+      "date": "2017-04-07",
+      "total_market_cap_100m": 292445.5
+    },
+    {
+      "date": "2017-04-14",
+      "total_market_cap_100m": 288323.8
+    },
+    {
+      "date": "2017-04-21",
+      "total_market_cap_100m": 287910.0
+    },
+    {
+      "date": "2017-04-28",
+      "total_market_cap_100m": 292460.6
+    },
+    {
+      "date": "2017-05-05",
+      "total_market_cap_100m": 293505.6
+    },
+    {
+      "date": "2017-05-12",
+      "total_market_cap_100m": 296010.1
+    },
+    {
+      "date": "2017-05-19",
+      "total_market_cap_100m": 294891.0
+    },
+    {
+      "date": "2017-05-26",
+      "total_market_cap_100m": 299479.7
+    },
+    {
+      "date": "2017-06-03",
+      "total_market_cap_100m": 301190.8
+    },
+    {
+      "date": "2017-06-09",
+      "total_market_cap_100m": 302461.4
+    },
+    {
+      "date": "2017-06-16",
+      "total_market_cap_100m": 301267.0
+    },
+    {
+      "date": "2017-06-23",
+      "total_market_cap_100m": 307775.6
+    },
+    {
+      "date": "2017-06-30",
+      "total_market_cap_100m": 308411.8
+    },
+    {
+      "date": "2017-07-07",
+      "total_market_cap_100m": 305622.8
+    },
+    {
+      "date": "2017-07-14",
+      "total_market_cap_100m": 309955.7
+    },
+    {
+      "date": "2017-07-21",
+      "total_market_cap_100m": 309740.9
+    },
+    {
+      "date": "2017-07-28",
+      "total_market_cap_100m": 309381.6
+    },
+    {
+      "date": "2017-08-04",
+      "total_market_cap_100m": 311939.0
+    },
+    {
+      "date": "2017-08-11",
+      "total_market_cap_100m": 306733.9
+    },
+    {
+      "date": "2017-08-18",
+      "total_market_cap_100m": 306515.8
+    },
+    {
+      "date": "2017-08-25",
+      "total_market_cap_100m": 312430.4
+    },
+    {
+      "date": "2017-09-01",
+      "total_market_cap_100m": 315016.8
+    },
+    {
+      "date": "2017-09-08",
+      "total_market_cap_100m": 315789.8
+    },
+    {
+      "date": "2017-09-15",
+      "total_market_cap_100m": 315014.7
+    },
+    {
+      "date": "2017-09-22",
+      "total_market_cap_100m": 311250.9
+    },
+    {
+      "date": "2017-09-30",
+      "total_market_cap_100m": 309425.4
+    },
+    {
+      "date": "2017-10-06",
+      "total_market_cap_100m": 313800.0
+    },
+    {
+      "date": "2017-10-13",
+      "total_market_cap_100m": 319404.6
+    },
+    {
+      "date": "2017-10-20",
+      "total_market_cap_100m": 319611.7
+    },
+    {
+      "date": "2017-10-27",
+      "total_market_cap_100m": 319261.6
+    },
+    {
+      "date": "2017-11-03",
+      "total_market_cap_100m": 322215.9
+    },
+    {
+      "date": "2017-11-10",
+      "total_market_cap_100m": 320265.8
+    },
+    {
+      "date": "2017-11-17",
+      "total_market_cap_100m": 319366.2
+    },
+    {
+      "date": "2017-11-24",
+      "total_market_cap_100m": 324256.3
+    },
+    {
+      "date": "2017-12-01",
+      "total_market_cap_100m": 316828.5
+    },
+    {
+      "date": "2017-12-08",
+      "total_market_cap_100m": 310887.9
+    },
+    {
+      "date": "2017-12-15",
+      "total_market_cap_100m": 313722.5
+    },
+    {
+      "date": "2017-12-22",
+      "total_market_cap_100m": 315112.8
+    },
+    {
+      "date": "2017-12-29",
+      "total_market_cap_100m": 318319.4
+    },
+    {
+      "date": "2018-01-05",
+      "total_market_cap_100m": 325587.6
+    },
+    {
+      "date": "2018-01-12",
+      "total_market_cap_100m": 325822.5
+    },
+    {
+      "date": "2018-01-19",
+      "total_market_cap_100m": 333786.3
+    },
+    {
+      "date": "2018-01-26",
+      "total_market_cap_100m": 333912.3
+    },
+    {
+      "date": "2018-02-02",
+      "total_market_cap_100m": 333436.5
+    },
+    {
+      "date": "2018-02-09",
+      "total_market_cap_100m": 311056.1
+    },
+    {
+      "date": "2018-02-12",
+      "total_market_cap_100m": 312507.3
+    },
+    {
+      "date": "2018-02-23",
+      "total_market_cap_100m": 323722.3
+    },
+    {
+      "date": "2018-03-02",
+      "total_market_cap_100m": 320847.4
+    },
+    {
+      "date": "2018-03-09",
+      "total_market_cap_100m": 325818.8
+    },
+    {
+      "date": "2018-03-16",
+      "total_market_cap_100m": 330678.1
+    },
+    {
+      "date": "2018-03-23",
+      "total_market_cap_100m": 324603.2
+    },
+    {
+      "date": "2018-03-31",
+      "total_market_cap_100m": 327484.8
+    },
+    {
+      "date": "2018-04-03",
+      "total_market_cap_100m": 324573.0
+    },
+    {
+      "date": "2018-04-13",
+      "total_market_cap_100m": 328910.1
+    },
+    {
+      "date": "2018-04-20",
+      "total_market_cap_100m": 323501.6
+    },
+    {
+      "date": "2018-04-27",
+      "total_market_cap_100m": 317258.5
+    },
+    {
+      "date": "2018-05-04",
+      "total_market_cap_100m": 314929.8
+    },
+    {
+      "date": "2018-05-11",
+      "total_market_cap_100m": 324753.4
+    },
+    {
+      "date": "2018-05-18",
+      "total_market_cap_100m": 323927.5
+    },
+    {
+      "date": "2018-05-25",
+      "total_market_cap_100m": 327266.3
+    },
+    {
+      "date": "2018-06-01",
+      "total_market_cap_100m": 327481.7
+    },
+    {
+      "date": "2018-06-08",
+      "total_market_cap_100m": 333699.4
+    },
+    {
+      "date": "2018-06-15",
+      "total_market_cap_100m": 331796.5
+    },
+    {
+      "date": "2018-06-22",
+      "total_market_cap_100m": 326197.9
+    },
+    {
+      "date": "2018-06-29",
+      "total_market_cap_100m": 324369.5
+    },
+    {
+      "date": "2018-07-06",
+      "total_market_cap_100m": 317610.0
+    },
+    {
+      "date": "2018-07-13",
+      "total_market_cap_100m": 325325.9
+    },
+    {
+      "date": "2018-07-20",
+      "total_market_cap_100m": 327466.1
+    },
+    {
+      "date": "2018-07-27",
+      "total_market_cap_100m": 331749.3
+    },
+    {
+      "date": "2018-08-03",
+      "total_market_cap_100m": 329868.0
+    },
+    {
+      "date": "2018-08-10",
+      "total_market_cap_100m": 329620.4
+    },
+    {
+      "date": "2018-08-17",
+      "total_market_cap_100m": 321114.1
+    },
+    {
+      "date": "2018-08-24",
+      "total_market_cap_100m": 324716.0
+    },
+    {
+      "date": "2018-08-31",
+      "total_market_cap_100m": 332411.2
+    },
+    {
+      "date": "2018-09-07",
+      "total_market_cap_100m": 325915.5
+    },
+    {
+      "date": "2018-09-14",
+      "total_market_cap_100m": 326536.4
+    },
+    {
+      "date": "2018-09-21",
+      "total_market_cap_100m": 329644.9
+    },
+    {
+      "date": "2018-09-28",
+      "total_market_cap_100m": 330575.2
+    },
+    {
+      "date": "2018-10-05",
+      "total_market_cap_100m": 316004.4
+    },
+    {
+      "date": "2018-10-12",
+      "total_market_cap_100m": 301785.4
+    },
+    {
+      "date": "2018-10-19",
+      "total_market_cap_100m": 299650.8
+    },
+    {
+      "date": "2018-10-26",
+      "total_market_cap_100m": 285972.8
+    },
+    {
+      "date": "2018-11-02",
+      "total_market_cap_100m": 298661.7
+    },
+    {
+      "date": "2018-11-09",
+      "total_market_cap_100m": 295857.0
+    },
+    {
+      "date": "2018-11-16",
+      "total_market_cap_100m": 294733.2
+    },
+    {
+      "date": "2018-11-23",
+      "total_market_cap_100m": 290524.8
+    },
+    {
+      "date": "2018-11-30",
+      "total_market_cap_100m": 297537.8
+    },
+    {
+      "date": "2018-12-07",
+      "total_market_cap_100m": 293842.7
+    },
+    {
+      "date": "2018-12-14",
+      "total_market_cap_100m": 294351.6
+    },
+    {
+      "date": "2018-12-22",
+      "total_market_cap_100m": 290777.4
+    },
+    {
+      "date": "2018-12-28",
+      "total_market_cap_100m": 293184.5
+    },
+    {
+      "date": "2019-01-04",
+      "total_market_cap_100m": 282896.8
+    },
+    {
+      "date": "2019-01-11",
+      "total_market_cap_100m": 294325.1
+    },
+    {
+      "date": "2019-01-18",
+      "total_market_cap_100m": 296673.5
+    },
+    {
+      "date": "2019-01-25",
+      "total_market_cap_100m": 300663.6
+    },
+    {
+      "date": "2019-01-30",
+      "total_market_cap_100m": 299198.8
+    },
+    {
+      "date": "2019-02-15",
+      "total_market_cap_100m": 303163.8
+    },
+    {
+      "date": "2019-02-22",
+      "total_market_cap_100m": 310889.1
+    },
+    {
+      "date": "2019-02-27",
+      "total_market_cap_100m": 312862.6
+    },
+    {
+      "date": "2019-03-08",
+      "total_market_cap_100m": 308563.7
+    },
+    {
+      "date": "2019-03-15",
+      "total_market_cap_100m": 314580.4
+    },
+    {
+      "date": "2019-03-22",
+      "total_market_cap_100m": 320561.7
+    },
+    {
+      "date": "2019-03-29",
+      "total_market_cap_100m": 321265.5
+    },
+    {
+      "date": "2019-04-03",
+      "total_market_cap_100m": 323225.9
+    },
+    {
+      "date": "2019-04-12",
+      "total_market_cap_100m": 326195.9
+    },
+    {
+      "date": "2019-04-19",
+      "total_market_cap_100m": 331113.5
+    },
+    {
+      "date": "2019-04-26",
+      "total_market_cap_100m": 330597.5
+    },
+    {
+      "date": "2019-05-03",
+      "total_market_cap_100m": 334913.2
+    },
+    {
+      "date": "2019-05-10",
+      "total_market_cap_100m": 323556.2
+    },
+    {
+      "date": "2019-05-17",
+      "total_market_cap_100m": 313679.4
+    },
+    {
+      "date": "2019-05-24",
+      "total_market_cap_100m": 312082.3
+    },
+    {
+      "date": "2019-05-31",
+      "total_market_cap_100m": 317170.5
+    },
+    {
+      "date": "2019-06-06",
+      "total_market_cap_100m": 314618.6
+    },
+    {
+      "date": "2019-06-14",
+      "total_market_cap_100m": 318071.5
+    },
+    {
+      "date": "2019-06-21",
+      "total_market_cap_100m": 326432.5
+    },
+    {
+      "date": "2019-06-28",
+      "total_market_cap_100m": 324244.7
+    },
+    {
+      "date": "2019-07-05",
+      "total_market_cap_100m": 325879.0
+    },
+    {
+      "date": "2019-07-12",
+      "total_market_cap_100m": 327045.1
+    },
+    {
+      "date": "2019-07-19",
+      "total_market_cap_100m": 328511.7
+    },
+    {
+      "date": "2019-07-26",
+      "total_market_cap_100m": 329078.3
+    },
+    {
+      "date": "2019-08-02",
+      "total_market_cap_100m": 318838.5
+    },
+    {
+      "date": "2019-08-08",
+      "total_market_cap_100m": 317294.9
+    },
+    {
+      "date": "2019-08-16",
+      "total_market_cap_100m": 315102.8
+    },
+    {
+      "date": "2019-08-23",
+      "total_market_cap_100m": 318631.9
+    },
+    {
+      "date": "2019-08-30",
+      "total_market_cap_100m": 321172.0
+    },
+    {
+      "date": "2019-09-06",
+      "total_market_cap_100m": 326185.8
+    },
+    {
+      "date": "2019-09-12",
+      "total_market_cap_100m": 327719.1
+    },
+    {
+      "date": "2019-09-20",
+      "total_market_cap_100m": 330858.2
+    },
+    {
+      "date": "2019-09-27",
+      "total_market_cap_100m": 327845.6
+    },
+    {
+      "date": "2019-10-04",
+      "total_market_cap_100m": 329842.8
+    },
+    {
+      "date": "2019-10-09",
+      "total_market_cap_100m": 329698.6
+    },
+    {
+      "date": "2019-10-18",
+      "total_market_cap_100m": 338544.1
+    },
+    {
+      "date": "2019-10-25",
+      "total_market_cap_100m": 342041.0
+    },
+    {
+      "date": "2019-11-01",
+      "total_market_cap_100m": 345205.8
+    },
+    {
+      "date": "2019-11-08",
+      "total_market_cap_100m": 350729.0
+    },
+    {
+      "date": "2019-11-15",
+      "total_market_cap_100m": 349135.3
+    },
+    {
+      "date": "2019-11-22",
+      "total_market_cap_100m": 350378.5
+    },
+    {
+      "date": "2019-11-29",
+      "total_market_cap_100m": 348091.4
+    },
+    {
+      "date": "2019-12-06",
+      "total_market_cap_100m": 351808.8
+    },
+    {
+      "date": "2019-12-13",
+      "total_market_cap_100m": 361831.0
+    },
+    {
+      "date": "2019-12-20",
+      "total_market_cap_100m": 362959.1
+    },
+    {
+      "date": "2019-12-27",
+      "total_market_cap_100m": 366969.1
+    },
+    {
+      "date": "2020-01-03",
+      "total_market_cap_100m": 367533.4
+    },
+    {
+      "date": "2020-01-10",
+      "total_market_cap_100m": 364975.1
+    },
+    {
+      "date": "2020-01-17",
+      "total_market_cap_100m": 367002.7
+    },
+    {
+      "date": "2020-01-20",
+      "total_market_cap_100m": 367844.7
+    },
+    {
+      "date": "2020-01-31",
+      "total_market_cap_100m": 349033.5
+    },
+    {
+      "date": "2020-02-07",
+      "total_market_cap_100m": 352598.9
+    },
+    {
+      "date": "2020-02-14",
+      "total_market_cap_100m": 358768.3
+    },
+    {
+      "date": "2020-02-21",
+      "total_market_cap_100m": 354884.2
+    },
+    {
+      "date": "2020-02-27",
+      "total_market_cap_100m": 343022.5
+    },
+    {
+      "date": "2020-03-06",
+      "total_market_cap_100m": 343938.3
+    },
+    {
+      "date": "2020-03-13",
+      "total_market_cap_100m": 307964.7
+    },
+    {
+      "date": "2020-03-20",
+      "total_market_cap_100m": 280850.8
+    },
+    {
+      "date": "2020-03-27",
+      "total_market_cap_100m": 294876.5
+    },
+    {
+      "date": "2020-04-01",
+      "total_market_cap_100m": 293841.4
+    },
+    {
+      "date": "2020-04-10",
+      "total_market_cap_100m": 308752.9
+    },
+    {
+      "date": "2020-04-17",
+      "total_market_cap_100m": 322104.8
+    },
+    {
+      "date": "2020-04-24",
+      "total_market_cap_100m": 314819.1
+    },
+    {
+      "date": "2020-04-30",
+      "total_market_cap_100m": 334283.5
+    },
+    {
+      "date": "2020-05-08",
+      "total_market_cap_100m": 331602.9
+    },
+    {
+      "date": "2020-05-15",
+      "total_market_cap_100m": 329003.5
+    },
+    {
+      "date": "2020-05-22",
+      "total_market_cap_100m": 328941.3
+    },
+    {
+      "date": "2020-05-29",
+      "total_market_cap_100m": 332896.7
+    },
+    {
+      "date": "2020-06-05",
+      "total_market_cap_100m": 349265.6
+    },
+    {
+      "date": "2020-06-12",
+      "total_market_cap_100m": 347901.4
+    },
+    {
+      "date": "2020-06-19",
+      "total_market_cap_100m": 351678.6
+    },
+    {
+      "date": "2020-06-24",
+      "total_market_cap_100m": 355012.2
+    },
+    {
+      "date": "2020-07-03",
+      "total_market_cap_100m": 362462.9
+    },
+    {
+      "date": "2020-07-10",
+      "total_market_cap_100m": 367451.4
+    },
+    {
+      "date": "2020-07-17",
+      "total_market_cap_100m": 370725.0
+    },
+    {
+      "date": "2020-07-24",
+      "total_market_cap_100m": 374453.9
+    },
+    {
+      "date": "2020-07-31",
+      "total_market_cap_100m": 385215.1
+    },
+    {
+      "date": "2020-08-07",
+      "total_market_cap_100m": 390092.8
+    },
+    {
+      "date": "2020-08-14",
+      "total_market_cap_100m": 389140.8
+    },
+    {
+      "date": "2020-08-21",
+      "total_market_cap_100m": 383485.4
+    },
+    {
+      "date": "2020-08-28",
+      "total_market_cap_100m": 387226.1
+    },
+    {
+      "date": "2020-09-04",
+      "total_market_cap_100m": 384600.9
+    },
+    {
+      "date": "2020-09-11",
+      "total_market_cap_100m": 385935.7
+    },
+    {
+      "date": "2020-09-18",
+      "total_market_cap_100m": 391975.0
+    },
+    {
+      "date": "2020-09-25",
+      "total_market_cap_100m": 372576.0
+    },
+    {
+      "date": "2020-09-30",
+      "total_market_cap_100m": 381129.1
+    },
+    {
+      "date": "2020-10-08",
+      "total_market_cap_100m": 392329.8
+    },
+    {
+      "date": "2020-10-16",
+      "total_market_cap_100m": 388492.0
+    },
+    {
+      "date": "2020-10-23",
+      "total_market_cap_100m": 393078.2
+    },
+    {
+      "date": "2020-10-30",
+      "total_market_cap_100m": 382464.3
+    },
+    {
+      "date": "2020-11-06",
+      "total_market_cap_100m": 395423.8
+    },
+    {
+      "date": "2020-11-13",
+      "total_market_cap_100m": 404528.9
+    },
+    {
+      "date": "2020-11-20",
+      "total_market_cap_100m": 417957.4
+    },
+    {
+      "date": "2020-11-27",
+      "total_market_cap_100m": 422559.1
+    },
+    {
+      "date": "2020-12-04",
+      "total_market_cap_100m": 430512.7
+    },
+    {
+      "date": "2020-12-11",
+      "total_market_cap_100m": 434428.3
+    },
+    {
+      "date": "2020-12-18",
+      "total_market_cap_100m": 434252.4
+    },
+    {
+      "date": "2020-12-25",
+      "total_market_cap_100m": 436969.3
+    },
+    {
+      "date": "2020-12-31",
+      "total_market_cap_100m": 449038.3
+    },
+    {
+      "date": "2021-01-08",
+      "total_market_cap_100m": 471185.9
+    },
+    {
+      "date": "2021-01-15",
+      "total_market_cap_100m": 475400.6
+    },
+    {
+      "date": "2021-01-22",
+      "total_market_cap_100m": 487773.0
+    },
+    {
+      "date": "2021-01-29",
+      "total_market_cap_100m": 461307.5
+    },
+    {
+      "date": "2021-02-05",
+      "total_market_cap_100m": 481567.4
+    },
+    {
+      "date": "2021-02-19",
+      "total_market_cap_100m": 497883.8
+    },
+    {
+      "date": "2021-02-26",
+      "total_market_cap_100m": 486265.8
+    },
+    {
+      "date": "2021-03-05",
+      "total_market_cap_100m": 483497.2
+    },
+    {
+      "date": "2021-03-12",
+      "total_market_cap_100m": 495622.2
+    },
+    {
+      "date": "2021-03-19",
+      "total_market_cap_100m": 490024.0
+    },
+    {
+      "date": "2021-03-26",
+      "total_market_cap_100m": 497615.9
+    },
+    {
+      "date": "2021-04-01",
+      "total_market_cap_100m": 505797.3
+    },
+    {
+      "date": "2021-04-09",
+      "total_market_cap_100m": 514485.6
+    },
+    {
+      "date": "2021-04-16",
+      "total_market_cap_100m": 523986.7
+    },
+    {
+      "date": "2021-04-23",
+      "total_market_cap_100m": 528334.7
+    },
+    {
+      "date": "2021-04-29",
+      "total_market_cap_100m": 536420.2
+    },
+    {
+      "date": "2021-05-07",
+      "total_market_cap_100m": 527934.9
+    },
+    {
+      "date": "2021-05-14",
+      "total_market_cap_100m": 483749.2
+    },
+    {
+      "date": "2021-05-21",
+      "total_market_cap_100m": 498146.2
+    },
+    {
+      "date": "2021-05-28",
+      "total_market_cap_100m": 515459.9
+    },
+    {
+      "date": "2021-06-04",
+      "total_market_cap_100m": 524602.5
+    },
+    {
+      "date": "2021-06-11",
+      "total_market_cap_100m": 526612.5
+    },
+    {
+      "date": "2021-06-18",
+      "total_market_cap_100m": 529814.3
+    },
+    {
+      "date": "2021-06-25",
+      "total_market_cap_100m": 535452.0
+    },
+    {
+      "date": "2021-07-02",
+      "total_market_cap_100m": 541921.5
+    },
+    {
+      "date": "2021-07-09",
+      "total_market_cap_100m": 541059.4
+    },
+    {
+      "date": "2021-07-16",
+      "total_market_cap_100m": 548235.0
+    },
+    {
+      "date": "2021-07-23",
+      "total_market_cap_100m": 538781.0
+    },
+    {
+      "date": "2021-07-30",
+      "total_market_cap_100m": 528936.4
+    },
+    {
+      "date": "2021-08-06",
+      "total_market_cap_100m": 537509.0
+    },
+    {
+      "date": "2021-08-13",
+      "total_market_cap_100m": 520916.2
+    },
+    {
+      "date": "2021-08-20",
+      "total_market_cap_100m": 501386.1
+    },
+    {
+      "date": "2021-08-27",
+      "total_market_cap_100m": 527903.5
+    },
+    {
+      "date": "2021-09-03",
+      "total_market_cap_100m": 537401.8
+    },
+    {
+      "date": "2021-09-10",
+      "total_market_cap_100m": 536720.2
+    },
+    {
+      "date": "2021-09-17",
+      "total_market_cap_100m": 530713.7
+    },
+    {
+      "date": "2021-09-24",
+      "total_market_cap_100m": 530285.8
+    },
+    {
+      "date": "2021-10-01",
+      "total_market_cap_100m": 509408.6
+    },
+    {
+      "date": "2021-10-08",
+      "total_market_cap_100m": 511796.6
+    },
+    {
+      "date": "2021-10-15",
+      "total_market_cap_100m": 516087.7
+    },
+    {
+      "date": "2021-10-22",
+      "total_market_cap_100m": 519369.5
+    },
+    {
+      "date": "2021-10-29",
+      "total_market_cap_100m": 522794.0
+    },
+    {
+      "date": "2021-11-12",
+      "total_market_cap_100m": 539125.2
+    },
+    {
+      "date": "2021-11-19",
+      "total_market_cap_100m": 548483.0
+    },
+    {
+      "date": "2021-11-26",
+      "total_market_cap_100m": 534839.5
+    },
+    {
+      "date": "2021-12-03",
+      "total_market_cap_100m": 544952.9
+    },
+    {
+      "date": "2021-12-10",
+      "total_market_cap_100m": 551574.5
+    },
+    {
+      "date": "2021-12-17",
+      "total_market_cap_100m": 551062.2
+    },
+    {
+      "date": "2021-12-24",
+      "total_market_cap_100m": 555829.1
+    },
+    {
+      "date": "2021-12-30",
+      "total_market_cap_100m": 562820.2
+    },
+    {
+      "date": "2022-01-07",
+      "total_market_cap_100m": 562371.6
+    },
+    {
+      "date": "2022-01-14",
+      "total_market_cap_100m": 570199.0
+    },
+    {
+      "date": "2022-01-21",
+      "total_market_cap_100m": 555064.3
+    },
+    {
+      "date": "2022-01-26",
+      "total_market_cap_100m": 547975.1
+    },
+    {
+      "date": "2022-02-11",
+      "total_market_cap_100m": 567676.3
+    },
+    {
+      "date": "2022-02-18",
+      "total_market_cap_100m": 565262.6
+    },
+    {
+      "date": "2022-02-25",
+      "total_market_cap_100m": 547426.8
+    },
+    {
+      "date": "2022-03-04",
+      "total_market_cap_100m": 549985.8
+    },
+    {
+      "date": "2022-03-11",
+      "total_market_cap_100m": 535727.2
+    },
+    {
+      "date": "2022-03-18",
+      "total_market_cap_100m": 541632.7
+    },
+    {
+      "date": "2022-03-25",
+      "total_market_cap_100m": 548450.8
+    },
+    {
+      "date": "2022-04-01",
+      "total_market_cap_100m": 546861.3
+    },
+    {
+      "date": "2022-04-08",
+      "total_market_cap_100m": 536258.7
+    },
+    {
+      "date": "2022-04-15",
+      "total_market_cap_100m": 527669.1
+    },
+    {
+      "date": "2022-04-22",
+      "total_market_cap_100m": 528060.5
+    },
+    {
+      "date": "2022-04-29",
+      "total_market_cap_100m": 514930.8
+    },
+    {
+      "date": "2022-05-06",
+      "total_market_cap_100m": 509350.2
+    },
+    {
+      "date": "2022-05-13",
+      "total_market_cap_100m": 491829.4
+    },
+    {
+      "date": "2022-05-20",
+      "total_market_cap_100m": 501519.7
+    },
+    {
+      "date": "2022-05-27",
+      "total_market_cap_100m": 505256.8
+    },
+    {
+      "date": "2022-06-02",
+      "total_market_cap_100m": 514124.4
+    },
+    {
+      "date": "2022-06-10",
+      "total_market_cap_100m": 511776.6
+    },
+    {
+      "date": "2022-06-17",
+      "total_market_cap_100m": 486588.5
+    },
+    {
+      "date": "2022-06-24",
+      "total_market_cap_100m": 476253.7
+    },
+    {
+      "date": "2022-07-01",
+      "total_market_cap_100m": 447573.1
+    },
+    {
+      "date": "2022-07-08",
+      "total_market_cap_100m": 451337.5
+    },
+    {
+      "date": "2022-07-15",
+      "total_market_cap_100m": 454087.3
+    },
+    {
+      "date": "2022-07-22",
+      "total_market_cap_100m": 466499.2
+    },
+    {
+      "date": "2022-07-29",
+      "total_market_cap_100m": 468213.5
+    },
+    {
+      "date": "2022-08-05",
+      "total_market_cap_100m": 469357.6
+    },
+    {
+      "date": "2022-08-12",
+      "total_market_cap_100m": 477321.5
+    },
+    {
+      "date": "2022-08-19",
+      "total_market_cap_100m": 481167.2
+    },
+    {
+      "date": "2022-08-26",
+      "total_market_cap_100m": 477111.9
+    },
+    {
+      "date": "2022-09-02",
+      "total_market_cap_100m": 458442.7
+    },
+    {
+      "date": "2022-09-08",
+      "total_market_cap_100m": 455898.2
+    },
+    {
+      "date": "2022-09-16",
+      "total_market_cap_100m": 455345.3
+    },
+    {
+      "date": "2022-09-23",
+      "total_market_cap_100m": 441225.8
+    },
+    {
+      "date": "2022-09-30",
+      "total_market_cap_100m": 419743.6
+    },
+    {
+      "date": "2022-10-07",
+      "total_market_cap_100m": 428404.7
+    },
+    {
+      "date": "2022-10-14",
+      "total_market_cap_100m": 410287.4
+    },
+    {
+      "date": "2022-10-21",
+      "total_market_cap_100m": 400694.7
+    },
+    {
+      "date": "2022-10-28",
+      "total_market_cap_100m": 399689.4
+    },
+    {
+      "date": "2022-11-04",
+      "total_market_cap_100m": 407310.0
+    },
+    {
+      "date": "2022-11-11",
+      "total_market_cap_100m": 437823.1
+    },
+    {
+      "date": "2022-11-18",
+      "total_market_cap_100m": 453266.2
+    },
+    {
+      "date": "2022-11-25",
+      "total_market_cap_100m": 461748.7
+    },
+    {
+      "date": "2022-12-02",
+      "total_market_cap_100m": 467938.5
+    },
+    {
+      "date": "2022-12-09",
+      "total_market_cap_100m": 460264.8
+    },
+    {
+      "date": "2022-12-16",
+      "total_market_cap_100m": 454835.5
+    },
+    {
+      "date": "2022-12-23",
+      "total_market_cap_100m": 446791.5
+    },
+    {
+      "date": "2022-12-30",
+      "total_market_cap_100m": 442660.3
+    },
+    {
+      "date": "2023-01-06",
+      "total_market_cap_100m": 450078.4
+    },
+    {
+      "date": "2023-01-13",
+      "total_market_cap_100m": 464111.8
+    },
+    {
+      "date": "2023-01-17",
+      "total_market_cap_100m": 467497.6
+    },
+    {
+      "date": "2023-02-03",
+      "total_market_cap_100m": 488349.0
+    },
+    {
+      "date": "2023-02-10",
+      "total_market_cap_100m": 487971.2
+    },
+    {
+      "date": "2023-02-17",
+      "total_market_cap_100m": 484741.3
+    },
+    {
+      "date": "2023-02-24",
+      "total_market_cap_100m": 485529.8
+    },
+    {
+      "date": "2023-03-03",
+      "total_market_cap_100m": 488810.9
+    },
+    {
+      "date": "2023-03-10",
+      "total_market_cap_100m": 486519.8
+    },
+    {
+      "date": "2023-03-17",
+      "total_market_cap_100m": 484658.2
+    },
+    {
+      "date": "2023-03-24",
+      "total_market_cap_100m": 499193.0
+    },
+    {
+      "date": "2023-03-31",
+      "total_market_cap_100m": 497816.1
+    },
+    {
+      "date": "2023-04-07",
+      "total_market_cap_100m": 497043.0
+    },
+    {
+      "date": "2023-04-14",
+      "total_market_cap_100m": 499986.8
+    },
+    {
+      "date": "2023-04-21",
+      "total_market_cap_100m": 489874.0
+    },
+    {
+      "date": "2023-04-28",
+      "total_market_cap_100m": 489133.3
+    },
+    {
+      "date": "2023-05-05",
+      "total_market_cap_100m": 490658.0
+    },
+    {
+      "date": "2023-05-12",
+      "total_market_cap_100m": 486810.2
+    },
+    {
+      "date": "2023-05-19",
+      "total_market_cap_100m": 507780.3
+    },
+    {
+      "date": "2023-05-26",
+      "total_market_cap_100m": 518062.0
+    },
+    {
+      "date": "2023-06-02",
+      "total_market_cap_100m": 524422.8
+    },
+    {
+      "date": "2023-06-09",
+      "total_market_cap_100m": 530066.3
+    },
+    {
+      "date": "2023-06-16",
+      "total_market_cap_100m": 542679.4
+    },
+    {
+      "date": "2023-06-21",
+      "total_market_cap_100m": 539995.0
+    },
+    {
+      "date": "2023-06-30",
+      "total_market_cap_100m": 531137.4
+    },
+    {
+      "date": "2023-07-07",
+      "total_market_cap_100m": 523449.7
+    },
+    {
+      "date": "2023-07-14",
+      "total_market_cap_100m": 542856.8
+    },
+    {
+      "date": "2023-07-21",
+      "total_market_cap_100m": 534970.7
+    },
+    {
+      "date": "2023-07-28",
+      "total_market_cap_100m": 543174.7
+    },
+    {
+      "date": "2023-08-04",
+      "total_market_cap_100m": 529223.6
+    },
+    {
+      "date": "2023-08-11",
+      "total_market_cap_100m": 521670.4
+    },
+    {
+      "date": "2023-08-18",
+      "total_market_cap_100m": 515009.0
+    },
+    {
+      "date": "2023-08-25",
+      "total_market_cap_100m": 518122.5
+    },
+    {
+      "date": "2023-09-01",
+      "total_market_cap_100m": 523291.1
+    },
+    {
+      "date": "2023-09-08",
+      "total_market_cap_100m": 521216.6
+    },
+    {
+      "date": "2023-09-15",
+      "total_market_cap_100m": 532046.0
+    },
+    {
+      "date": "2023-09-22",
+      "total_market_cap_100m": 514426.2
+    },
+    {
+      "date": "2023-09-28",
+      "total_market_cap_100m": 514670.8
+    },
+    {
+      "date": "2023-10-06",
+      "total_market_cap_100m": 519920.2
+    },
+    {
+      "date": "2023-10-13",
+      "total_market_cap_100m": 528082.8
+    },
+    {
+      "date": "2023-10-20",
+      "total_market_cap_100m": 518237.1
+    },
+    {
+      "date": "2023-10-27",
+      "total_market_cap_100m": 508809.3
+    },
+    {
+      "date": "2023-11-03",
+      "total_market_cap_100m": 520531.5
+    },
+    {
+      "date": "2023-11-10",
+      "total_market_cap_100m": 526496.1
+    },
+    {
+      "date": "2023-11-17",
+      "total_market_cap_100m": 543039.0
+    },
+    {
+      "date": "2023-11-24",
+      "total_market_cap_100m": 546660.4
+    },
+    {
+      "date": "2023-12-01",
+      "total_market_cap_100m": 551611.1
+    },
+    {
+      "date": "2023-12-08",
+      "total_market_cap_100m": 550127.4
+    },
+    {
+      "date": "2023-12-15",
+      "total_market_cap_100m": 559375.1
+    },
+    {
+      "date": "2023-12-22",
+      "total_market_cap_100m": 557903.8
+    },
+    {
+      "date": "2023-12-29",
+      "total_market_cap_100m": 568420.9
+    },
+    {
+      "date": "2024-01-05",
+      "total_market_cap_100m": 555557.9
+    },
+    {
+      "date": "2024-01-12",
+      "total_market_cap_100m": 555371.8
+    },
+    {
+      "date": "2024-01-19",
+      "total_market_cap_100m": 560768.4
+    },
+    {
+      "date": "2024-01-26",
+      "total_market_cap_100m": 571885.8
+    },
+    {
+      "date": "2024-02-02",
+      "total_market_cap_100m": 574038.7
+    },
+    {
+      "date": "2024-02-05",
+      "total_market_cap_100m": 575205.3
+    },
+    {
+      "date": "2024-02-16",
+      "total_market_cap_100m": 591359.5
+    },
+    {
+      "date": "2024-02-23",
+      "total_market_cap_100m": 600279.3
+    },
+    {
+      "date": "2024-03-01",
+      "total_market_cap_100m": 601757.0
+    },
+    {
+      "date": "2024-03-08",
+      "total_market_cap_100m": 628718.7
+    },
+    {
+      "date": "2024-03-15",
+      "total_market_cap_100m": 625502.2
+    },
+    {
+      "date": "2024-03-22",
+      "total_market_cap_100m": 642968.1
+    },
+    {
+      "date": "2024-03-29",
+      "total_market_cap_100m": 645128.0
+    },
+    {
+      "date": "2024-04-03",
+      "total_market_cap_100m": 646591.4
+    },
+    {
+      "date": "2024-04-12",
+      "total_market_cap_100m": 659213.8
+    },
+    {
+      "date": "2024-04-19",
+      "total_market_cap_100m": 621114.1
+    },
+    {
+      "date": "2024-04-26",
+      "total_market_cap_100m": 639907.4
+    },
+    {
+      "date": "2024-05-03",
+      "total_market_cap_100m": 646670.6
+    },
+    {
+      "date": "2024-05-10",
+      "total_market_cap_100m": 658791.9
+    },
+    {
+      "date": "2024-05-17",
+      "total_market_cap_100m": 676493.3
+    },
+    {
+      "date": "2024-05-24",
+      "total_market_cap_100m": 686220.6
+    },
+    {
+      "date": "2024-05-31",
+      "total_market_cap_100m": 673903.0
+    },
+    {
+      "date": "2024-06-07",
+      "total_market_cap_100m": 695735.4
+    },
+    {
+      "date": "2024-06-14",
+      "total_market_cap_100m": 716806.7
+    },
+    {
+      "date": "2024-06-21",
+      "total_market_cap_100m": 740668.7
+    },
+    {
+      "date": "2024-06-28",
+      "total_market_cap_100m": 733975.1
+    },
+    {
+      "date": "2024-07-05",
+      "total_market_cap_100m": 750745.6
+    },
+    {
+      "date": "2024-07-12",
+      "total_market_cap_100m": 762312.4
+    },
+    {
+      "date": "2024-07-19",
+      "total_market_cap_100m": 729433.3
+    },
+    {
+      "date": "2024-07-26",
+      "total_market_cap_100m": 705731.7
+    },
+    {
+      "date": "2024-08-02",
+      "total_market_cap_100m": 690438.1
+    },
+    {
+      "date": "2024-08-09",
+      "total_market_cap_100m": 685205.1
+    },
+    {
+      "date": "2024-08-16",
+      "total_market_cap_100m": 713295.6
+    },
+    {
+      "date": "2024-08-23",
+      "total_market_cap_100m": 707377.0
+    },
+    {
+      "date": "2024-08-30",
+      "total_market_cap_100m": 710860.4
+    },
+    {
+      "date": "2024-09-06",
+      "total_market_cap_100m": 684473.6
+    },
+    {
+      "date": "2024-09-13",
+      "total_market_cap_100m": 694796.6
+    },
+    {
+      "date": "2024-09-20",
+      "total_market_cap_100m": 707519.6
+    },
+    {
+      "date": "2024-09-27",
+      "total_market_cap_100m": 728720.3
+    },
+    {
+      "date": "2024-10-04",
+      "total_market_cap_100m": 713172.2
+    },
+    {
+      "date": "2024-10-11",
+      "total_market_cap_100m": 732283.4
+    },
+    {
+      "date": "2024-10-18",
+      "total_market_cap_100m": 750881.1
+    },
+    {
+      "date": "2024-10-25",
+      "total_market_cap_100m": 747547.3
+    },
+    {
+      "date": "2024-11-01",
+      "total_market_cap_100m": 729462.4
+    },
+    {
+      "date": "2024-11-08",
+      "total_market_cap_100m": 754106.5
+    },
+    {
+      "date": "2024-11-15",
+      "total_market_cap_100m": 728501.8
+    },
+    {
+      "date": "2024-11-22",
+      "total_market_cap_100m": 733655.2
+    },
+    {
+      "date": "2024-11-29",
+      "total_market_cap_100m": 713690.3
+    },
+    {
+      "date": "2024-12-06",
+      "total_market_cap_100m": 743916.0
+    },
+    {
+      "date": "2024-12-13",
+      "total_market_cap_100m": 738423.3
+    },
+    {
+      "date": "2024-12-20",
+      "total_market_cap_100m": 722293.2
+    },
+    {
+      "date": "2024-12-27",
+      "total_market_cap_100m": 746632.1
+    },
+    {
+      "date": "2025-01-03",
+      "total_market_cap_100m": 734997.9
+    },
+    {
+      "date": "2025-01-10",
+      "total_market_cap_100m": 738583.9
+    },
+    {
+      "date": "2025-01-17",
+      "total_market_cap_100m": 743144.6
+    },
+    {
+      "date": "2025-01-22",
+      "total_market_cap_100m": 755313.2
+    },
+    {
+      "date": "2025-02-07",
+      "total_market_cap_100m": 753958.4
+    },
+    {
+      "date": "2025-02-14",
+      "total_market_cap_100m": 743661.2
+    },
+    {
+      "date": "2025-02-21",
+      "total_market_cap_100m": 762132.5
+    },
+    {
+      "date": "2025-02-27",
+      "total_market_cap_100m": 740516.8
+    },
+    {
+      "date": "2025-03-07",
+      "total_market_cap_100m": 725641.4
+    },
+    {
+      "date": "2025-03-14",
+      "total_market_cap_100m": 706273.8
+    },
+    {
+      "date": "2025-03-21",
+      "total_market_cap_100m": 714073.7
+    },
+    {
+      "date": "2025-03-28",
+      "total_market_cap_100m": 694649.5
+    },
+    {
+      "date": "2025-04-02",
+      "total_market_cap_100m": 684889.9
+    },
+    {
+      "date": "2025-04-11",
+      "total_market_cap_100m": 628221.4
+    },
+    {
+      "date": "2025-04-18",
+      "total_market_cap_100m": 624006.6
+    },
+    {
+      "date": "2025-04-25",
+      "total_market_cap_100m": 639291.1
+    },
+    {
+      "date": "2025-05-02",
+      "total_market_cap_100m": 668579.2
+    },
+    {
+      "date": "2025-05-09",
+      "total_market_cap_100m": 672714.2
+    },
+    {
+      "date": "2025-05-16",
+      "total_market_cap_100m": 702427.3
+    },
+    {
+      "date": "2025-05-23",
+      "total_market_cap_100m": 696503.1
+    },
+    {
+      "date": "2025-05-29",
+      "total_market_cap_100m": 687062.8
+    },
+    {
+      "date": "2025-06-06",
+      "total_market_cap_100m": 697156.9
+    },
+    {
+      "date": "2025-06-13",
+      "total_market_cap_100m": 710689.9
+    },
+    {
+      "date": "2025-06-20",
+      "total_market_cap_100m": 710280.5
+    },
+    {
+      "date": "2025-06-27",
+      "total_market_cap_100m": 727373.8
+    },
+    {
+      "date": "2025-07-04",
+      "total_market_cap_100m": 726267.5
+    },
+    {
+      "date": "2025-07-11",
+      "total_market_cap_100m": 732823.4
+    },
+    {
+      "date": "2025-07-18",
+      "total_market_cap_100m": 753143.7
+    },
+    {
+      "date": "2025-07-25",
+      "total_market_cap_100m": 752973.6
+    },
+    {
+      "date": "2025-08-01",
+      "total_market_cap_100m": 755277.1
+    },
+    {
+      "date": "2025-08-08",
+      "total_market_cap_100m": 774156.2
+    },
+    {
+      "date": "2025-08-15",
+      "total_market_cap_100m": 784227.7
+    },
+    {
+      "date": "2025-08-22",
+      "total_market_cap_100m": 765946.1
+    },
+    {
+      "date": "2025-08-29",
+      "total_market_cap_100m": 780993.6
+    },
+    {
+      "date": "2025-09-05",
+      "total_market_cap_100m": 789450.1
+    },
+    {
+      "date": "2025-09-12",
+      "total_market_cap_100m": 821404.0
+    },
+    {
+      "date": "2025-09-19",
+      "total_market_cap_100m": 826563.5
+    },
+    {
+      "date": "2025-09-26",
+      "total_market_cap_100m": 827025.4
+    },
+    {
+      "date": "2025-10-03",
+      "total_market_cap_100m": 864311.7
+    },
+    {
+      "date": "2025-10-09",
+      "total_market_cap_100m": 881643.3
+    },
+    {
+      "date": "2025-10-17",
+      "total_market_cap_100m": 881788.4
+    },
+    {
+      "date": "2025-10-23",
+      "total_market_cap_100m": 889316.7
+    },
+    {
+      "date": "2025-10-31",
+      "total_market_cap_100m": 912251.8
+    },
+    {
+      "date": "2025-11-07",
+      "total_market_cap_100m": 894020.3
+    },
+    {
+      "date": "2025-11-14",
+      "total_market_cap_100m": 885893.9
+    },
+    {
+      "date": "2025-11-21",
+      "total_market_cap_100m": 855377.0
+    },
+    {
+      "date": "2025-11-28",
+      "total_market_cap_100m": 899453.8
+    },
+    {
+      "date": "2025-12-05",
+      "total_market_cap_100m": 910942.9
+    },
+    {
+      "date": "2025-12-12",
+      "total_market_cap_100m": 918369.1
+    },
+    {
+      "date": "2025-12-19",
+      "total_market_cap_100m": 902391.4
+    },
+    {
+      "date": "2025-12-26",
+      "total_market_cap_100m": 930343.9
+    },
+    {
+      "date": "2026-01-02",
+      "total_market_cap_100m": 956121.2
+    },
+    {
+      "date": "2026-01-09",
+      "total_market_cap_100m": 986906.2
+    },
+    {
+      "date": "2026-01-16",
+      "total_market_cap_100m": 1023510.5
+    },
+    {
+      "date": "2026-01-23",
+      "total_market_cap_100m": 1041754.1
+    },
+    {
+      "date": "2026-01-30",
+      "total_market_cap_100m": 1045230.6
+    },
+    {
+      "date": "2026-02-06",
+      "total_market_cap_100m": 1036208.0
+    },
+    {
+      "date": "2026-02-11",
+      "total_market_cap_100m": 1095367.7
+    },
+    {
+      "date": "2026-02-26",
+      "total_market_cap_100m": 1154101.8
+    },
+    {
+      "date": "2026-03-06",
+      "total_market_cap_100m": 1095272.9
+    },
+    {
+      "date": "2026-03-13",
+      "total_market_cap_100m": 1088805.9
+    },
+    {
+      "date": "2026-03-20",
+      "total_market_cap_100m": 1093481.6
+    },
+    {
+      "date": "2026-03-27",
+      "total_market_cap_100m": 1079795.0
+    },
+    {
+      "date": "2026-04-02",
+      "total_market_cap_100m": 1062966.8
+    },
+    {
+      "date": "2026-04-10",
+      "total_market_cap_100m": 1155589.9
+    },
+    {
+      "date": "2026-04-17",
+      "total_market_cap_100m": 1200594.2
+    },
+    {
+      "date": "2026-04-24",
+      "total_market_cap_100m": 1269631.1
+    },
+    {
+      "date": "2026-04-30",
+      "total_market_cap_100m": 1269524.7
+    },
+    {
+      "date": "2026-05-08",
+      "total_market_cap_100m": 1356971.9
+    },
+    {
+      "date": "2026-05-15",
+      "total_market_cap_100m": 1342983.7
+    },
+    {
+      "date": "2026-05-22",
+      "total_market_cap_100m": 1378811.8
+    },
+    {
+      "date": "2026-05-29",
+      "total_market_cap_100m": 1459129.4
+    },
+    {
+      "date": "2026-06-05",
+      "total_market_cap_100m": 1470302.5
+    },
+    {
+      "date": "2026-06-12",
+      "total_market_cap_100m": 1441068.0
+    },
+    {
+      "date": "2026-06-18",
+      "total_market_cap_100m": 1516057.7
+    },
+    {
+      "date": "2026-06-26",
+      "total_market_cap_100m": 1454557.0
+    },
+    {
+      "date": "2026-07-03",
+      "total_market_cap_100m": 1526612.7
+    },
+    {
+      "date": "2026-07-09",
+      "total_market_cap_100m": 1480387.7
+    },
+    {
+      "date": "2026-07-17",
+      "total_market_cap_100m": 1393624.1
+    },
+    {
+      "date": "2026-07-24",
+      "total_market_cap_100m": 1425792.7
+    },
+    {
+      "date": "2026-07-31",
+      "total_market_cap_100m": 1408481.8
+    },
+    {
+      "date": "2026-08-07",
+      "total_market_cap_100m": 1445568.1
+    },
+    {
+      "date": "2026-08-14",
+      "total_market_cap_100m": 1497384.9
+    },
+    {
+      "date": "2026-08-21",
+      "total_market_cap_100m": 1478388.1
+    }
+  ]
 }

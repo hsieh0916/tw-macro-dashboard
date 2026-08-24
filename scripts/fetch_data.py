@@ -673,6 +673,55 @@ def fetch_taiwan_fear_greed(taiex_daily, existing):
 
 
 # ---------------------------------------------------------------------------
+# 上市股票總市值（週資料，證交所「市值週報」）—— 供巴菲特指標模型使用
+# ---------------------------------------------------------------------------
+def fetch_twse_market_cap_weekly():
+    log("fetching TWSE weekly total listed market cap (市值週報)")
+    # xlrd 僅供此單一分項使用，故延遲載入：萬一環境缺少此套件，只會讓巴菲特指標
+    # 這一項模型計算失敗（被上層 try/except 接住），不會讓整個腳本無法啟動。
+    import xlrd
+    r = safe_get("https://www.twse.com.tw/staticFiles/inspection/inspection/week.zip")
+    zf = zipfile.ZipFile(io.BytesIO(r.content))
+    name = next(n for n in zf.namelist() if n.lower().endswith(".xls"))
+    wb = xlrd.open_workbook(file_contents=zf.read(name))
+    sh = wb.sheet_by_index(0)
+    out = []
+    for i in range(2, sh.nrows):  # 前兩列為標題／副標
+        row = sh.row_values(i)
+        if not row or not isinstance(row[0], (int, float)) or row[0] == "":
+            continue
+        try:
+            d = xlrd.xldate_as_datetime(row[0], wb.datemode)
+        except Exception:
+            continue
+        cap = _num(str(row[1])) if len(row) > 1 else None
+        if cap is None:
+            continue
+        out.append({"date": d.strftime("%Y-%m-%d"), "total_market_cap_100m": round(cap, 1)})
+    out.sort(key=lambda x: x["date"])
+    log(f"  -> {len(out)} weekly points, latest {out[-1] if out else None}")
+    return out
+
+
+def _nearest_weekly_on_or_before(weekly_rows, target_date):
+    best = None
+    for row in weekly_rows:
+        if row["date"] <= target_date:
+            best = row
+        else:
+            break
+    return best
+
+
+_QUARTER_END = {1: "03-31", 2: "06-30", 3: "09-30", 4: "12-31"}
+
+
+def _quarter_end_date(period):
+    y, q = period.split("-Q")
+    return f"{y}-{_QUARTER_END[int(q)]}"
+
+
+# ---------------------------------------------------------------------------
 # 台股點位估算模型 —— 以台灣名目GDP（及資金面資料）與台股加權指數的歷史關係，
 # 回歸推算「理論水準」供對照，而非預測未來股價。統計上的歷史相關性不代表因果，
 # 樣本數有限（僅 2005 年以來、TAIEX 資料涵蓋期間的季資料），模型係數也會隨每次
@@ -742,7 +791,7 @@ def ols_multi(rows_x, ys):
     return {"beta": beta, "r2": (1 - ss_res / ss_tot) if ss_tot > 0 else None}
 
 
-def compute_valuation_models(gdp_q, taiex_monthly, business_signal_monthly, money_supply_monthly):
+def compute_valuation_models(gdp_q, taiex_monthly, business_signal_monthly, money_supply_monthly, market_cap_weekly=None):
     taiex_q = {}
     for row in taiex_monthly:
         y, m = row["period"].split("-")
@@ -801,6 +850,45 @@ def compute_valuation_models(gdp_q, taiex_monthly, business_signal_monthly, mone
                 "historical": [{"period": p, "actual": round(taiex_q[p], 1), "fitted": round(predict2(p), 1)} for p in periods2],
             }
 
+    # ---- 模型三：巴菲特指標（上市總市值／近四季名目GDP）均值回歸 ----
+    # 與前兩個回歸模型性質不同：不是配適線性關係，而是假設「總市值/GDP」這個比率
+    # 長期會圍繞其歷史均值波動，用目前比率偏離均值的幅度，反推指數要回到多少點位
+    # 才會讓比率回到均值（隱含假設：總市值與加權指數同步變動）。
+    if market_cap_weekly:
+        gdp_by_period = {r["period"]: r["nominal_gdp_100m"] for r in gdp_q if r.get("nominal_gdp_100m") is not None}
+        gdp_periods_sorted = sorted(gdp_by_period)
+        trailing_gdp = {}
+        for i, p in enumerate(gdp_periods_sorted):
+            if i < 3:
+                continue
+            window = gdp_periods_sorted[i - 3:i + 1]
+            trailing_gdp[p] = sum(gdp_by_period[w] for w in window)
+
+        ratios = {}
+        for p in sorted(set(trailing_gdp) & set(taiex_q)):
+            cap_row = _nearest_weekly_on_or_before(market_cap_weekly, _quarter_end_date(p))
+            if not cap_row or trailing_gdp[p] <= 0:
+                continue
+            ratios[p] = cap_row["total_market_cap_100m"] / trailing_gdp[p] * 100
+
+        if latest in ratios and len(ratios) >= 12:
+            mean_ratio = sum(ratios.values()) / len(ratios)
+            current_ratio = ratios[latest]
+            est3 = actual_latest * (mean_ratio / current_ratio)
+            models["buffett_indicator"] = {
+                "name": "巴菲特指標均值回歸",
+                "method": "以「上市總市值 ÷ 近四季名目GDP」比率的歷史均值為錨，假設總市值與加權指數同步變動，反推比率回歸均值時對應的指數水準",
+                "estimated_index": round(est3, 0),
+                "deviation_pct": round((actual_latest / est3 - 1) * 100, 1),
+                "current_ratio_pct": round(current_ratio, 1),
+                "average_ratio_pct": round(mean_ratio, 1),
+                "sample_quarters": len(ratios),
+                "historical": [
+                    {"period": p, "actual": round(taiex_q[p], 1), "fitted": round(taiex_q[p] * mean_ratio / ratios[p], 1)}
+                    for p in sorted(ratios)
+                ],
+            }
+
     return models
 
 
@@ -826,6 +914,7 @@ def main():
         ("foreign_flow", fetch_foreign_flow),
         ("fx_usdtwd", fetch_fx),
         ("cnn_fear_greed", fetch_cnn_fear_greed),
+        ("market_cap_weekly", fetch_twse_market_cap_weekly),
     ]
     empty_defaults = {"taiex": {"monthly": [], "daily_recent": []}, "cnn_fear_greed": {}}
     for key, fn in fetchers:
@@ -855,13 +944,14 @@ def main():
         if "taiwan_fear_greed" not in result:
             result["taiwan_fear_greed"] = {}
 
-    log("computing 台股點位估算模型（GDP 趨勢回歸／GDP+資金面雙因子回歸）")
+    log("computing 台股點位估算模型（GDP 趨勢回歸／GDP+資金面雙因子回歸／巴菲特指標）")
     try:
         models = compute_valuation_models(
             result.get("gdp", []),
             result.get("taiex", {}).get("monthly", []),
             result.get("business_signal", []),
             result.get("money_supply", []),
+            result.get("market_cap_weekly", []),
         )
         if models:
             result["valuation_models"] = models
@@ -887,7 +977,8 @@ def main():
             "fx_usdtwd": {"name": "銀行牌告美元／新台幣即期匯率（經 FinMind 開放API）", "url": "https://finmindtrade.com/"},
             "cnn_fear_greed": {"name": "CNN Business Fear & Greed Index（美股市場情緒，非官方端點）", "url": "https://edition.cnn.com/markets/fear-and-greed"},
             "taiwan_fear_greed": {"name": "台股恐慌與貪婪指數（本站仿 CNN 方法論、以台灣資料源自行計算，非官方指數）", "url": "https://www.twse.com.tw/ 、 https://www.taifex.com.tw/ 、 https://finmindtrade.com/"},
-            "valuation_models": {"name": "台股點位估算模型（本站以GDP／資金面資料回歸計算，統計參考用途、非投資建議）", "url": "https://data.gov.tw/dataset/6799"},
+            "valuation_models": {"name": "台股點位估算模型（本站以GDP／資金面／總市值資料回歸計算，統計參考用途、非投資建議）", "url": "https://data.gov.tw/dataset/6799"},
+            "market_cap_weekly": {"name": "台灣證券交易所—上市股票市值週報", "url": "https://www.twse.com.tw/zh/trading/statistics/week.html"},
         },
     }
 

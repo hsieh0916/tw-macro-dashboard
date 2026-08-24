@@ -552,6 +552,15 @@ a { color: var(--series-blue); }
 }
 .vm-card-row.muted { font-size: 11.5px; color: var(--text-muted); }
 .vm-card-row.muted .vm-value { font-size: 11.5px; font-weight: 400; color: var(--text-muted); }
+.vm-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.vm-chart-header h3 { margin: 0; }
 
 /* ---------- signal-light strip ---------- */
 .signal-legend {

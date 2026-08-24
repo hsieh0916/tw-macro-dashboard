@@ -29,7 +29,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install dependencies
-        run: pip install requests certifi
+        run: pip install requests certifi xlrd
 
       - name: Fetch, commit & push (retried as a unit to survive concurrent runs)
         run: |
