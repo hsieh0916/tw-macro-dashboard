@@ -499,6 +499,60 @@ a { color: var(--series-blue); }
   .fng-component-label { grid-column: 1 / -1; }
 }
 
+/* ---------- valuation models (GDP regression) ---------- */
+.valuation-models {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+  margin: 4px 0;
+}
+.vm-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px 18px;
+}
+.vm-card-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.vm-badge {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--series-blue);
+  border: 1px solid var(--series-blue);
+  border-radius: 999px;
+  padding: 1px 8px;
+}
+.vm-card-method {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 6px 0 12px;
+}
+.vm-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 13px;
+  color: var(--text-secondary);
+  padding: 6px 0;
+  border-top: 1px solid var(--gridline);
+}
+.vm-card-row:first-of-type { border-top: none; }
+.vm-card-row .vm-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+.vm-card-row.muted { font-size: 11.5px; color: var(--text-muted); }
+.vm-card-row.muted .vm-value { font-size: 11.5px; font-weight: 400; color: var(--text-muted); }
+
 /* ---------- signal-light strip ---------- */
 .signal-legend {
   display: flex;

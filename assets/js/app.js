@@ -117,6 +117,7 @@
           borderColor: d.color,
           backgroundColor: d.fill ? d.color + "1a" : d.color,
           borderWidth: 2,
+          borderDash: d.dash ? [6, 4] : undefined,
           fill: !!d.fill,
           tension: 0.15,
           spanGaps: true,
@@ -562,6 +563,50 @@
     ], windowed);
   }
 
+  // ---------- 台股點位估算模型（GDP／資金面回歸，統計參考用途，非投資建議，
+  // 獨立於時間範圍篩選器——樣本涵蓋 2005 年至今全部季資料，不做時間窗裁切） ----------
+  function renderValuationModels(data) {
+    const vm = data.valuation_models;
+    const wrap = document.getElementById("valuation-models");
+    const models = vm ? [["gdp_trend", vm.gdp_trend], ["gdp_liquidity", vm.gdp_liquidity]].filter(([, m]) => m) : [];
+
+    if (!models.length) {
+      if (wrap) wrap.innerHTML = '<p class="chart-note">目前無法計算（資料不足或本次擷取失敗）。</p>';
+      return;
+    }
+
+    if (wrap) {
+      wrap.innerHTML = models.map(([key, m]) => `
+        <div class="vm-card">
+          <div class="vm-card-title">${m.name}${key === "gdp_liquidity" ? '<span class="vm-badge">較完整</span>' : ""}</div>
+          <div class="vm-card-method">${m.method}</div>
+          <div class="vm-card-row"><span>模型推算點位</span><span class="vm-value">${fmtInt(m.estimated_index)}</span></div>
+          <div class="vm-card-row"><span>實際點位（${vm.latest_period}）</span><span class="vm-value">${fmtInt(vm.actual_index)}</span></div>
+          <div class="vm-card-row"><span>與模型偏離幅度</span><span class="vm-value">${fmtSigned(m.deviation_pct, 1)}%</span></div>
+          <div class="vm-card-row muted"><span>模型配適度 R²</span><span>${m.r_squared != null ? fmtNum(m.r_squared, 3) : "—"}（樣本 ${m.sample_quarters} 季）</span></div>
+        </div>
+      `).join("");
+    }
+
+    const primary = vm.gdp_liquidity || vm.gdp_trend;
+    if (primary && primary.historical && primary.historical.length) {
+      makeLineChart("chart-valuation-history", {
+        labels: primary.historical.map((d) => d.period),
+        datasets: [
+          { label: "台股加權指數（實際，季底收盤）", data: primary.historical.map((d) => d.actual), color: css("--series-violet") },
+          { label: `模型推算水準（${primary.name}）`, data: primary.historical.map((d) => d.fitted), color: css("--text-muted"), dash: true },
+        ],
+        yFormat: (v) => fmtInt(v),
+      });
+    }
+
+    wireTableToggle("toggle-valuation", "table-valuation", [
+      { key: "period", label: "季別" },
+      { key: "actual", label: "實際收盤", fmt: fmtInt },
+      { key: "fitted", label: "模型推算", fmt: fmtInt },
+    ], primary ? primary.historical : []);
+  }
+
   // ---------- 其他股市連動指標：外資買賣超 + 匯率 ----------
   function renderOthers(data) {
     const taiexM = filterRange(data.taiex.monthly, RANGE_START_IDX, RANGE_END_IDX);
@@ -767,6 +812,7 @@
     renderPMI(data);
     renderMoneySupply(data);
     renderGDP(data);
+    renderValuationModels(data);
     renderOthers(data);
     renderTaiwanFearGreed(data);
     renderCnnFearGreed(data);

@@ -22,6 +22,7 @@
 import csv
 import io
 import json
+import math
 import os
 import re
 import sys
@@ -179,11 +180,11 @@ def fetch_pmi():
 # GDP 經濟成長率（年增率，季資料）  (主計總處 DGBAS)
 # ---------------------------------------------------------------------------
 def fetch_gdp():
-    log("fetching DGBAS quarterly GDP growth rate (na8101a1q.xml)")
+    log("fetching DGBAS quarterly GDP growth rate + nominal level (na8101a1q.xml)")
     url = "https://ws.dgbas.gov.tw/001/Upload/461/relfile/11525/230514/na8101a1q.xml"
     text = safe_get(url).content.decode("utf-8")
     blocks = re.findall(r"<Obs>.*?</Obs>", text, re.S)
-    out = []
+    by_period = {}
     for b in blocks:
         item = re.search(r"<Item>([^<]*)</Item>", b)
         period = re.search(r"<TIME_PERIOD>([^<]*)</TIME_PERIOD>", b)
@@ -192,15 +193,22 @@ def fetch_gdp():
         value = re.search(r"<Item_VALUE>([^<]*)</Item_VALUE>", b)
         if not (item and period and freq and typ and value):
             continue
-        if item.group(1) != "經濟成長率(%)" or freq.group(1) != "Q" or typ.group(1) != "原始值":
-            continue
-        v = _num(value.group(1))
-        if v is None:
+        if freq.group(1) != "Q" or typ.group(1) != "原始值":
             continue
         m = re.match(r"^(\d{4})Q(\d)$", period.group(1))
         if not m:
             continue
-        out.append({"period": f"{m.group(1)}-Q{m.group(2)}", "yoy_pct": round(v, 2)})
+        v = _num(value.group(1))
+        if v is None:
+            continue
+        p = f"{m.group(1)}-Q{m.group(2)}"
+        row = by_period.setdefault(p, {"period": p})
+        if item.group(1) == "經濟成長率(%)":
+            row["yoy_pct"] = round(v, 2)
+        elif item.group(1) == "國內生產毛額GDP(名目值，百萬元)":
+            row["nominal_gdp_100m"] = round(v / 100, 1)  # 百萬元 -> 億元，與站內其他金額單位一致
+
+    out = [row for row in by_period.values() if "yoy_pct" in row]
     out.sort(key=lambda x: x["period"])
     log(f"  -> {len(out)} quarterly points, latest {out[-1] if out else None}")
     return out
@@ -665,6 +673,138 @@ def fetch_taiwan_fear_greed(taiex_daily, existing):
 
 
 # ---------------------------------------------------------------------------
+# 台股點位估算模型 —— 以台灣名目GDP（及資金面資料）與台股加權指數的歷史關係，
+# 回歸推算「理論水準」供對照，而非預測未來股價。統計上的歷史相關性不代表因果，
+# 樣本數有限（僅 2005 年以來、TAIEX 資料涵蓋期間的季資料），模型係數也會隨每次
+# 重新擷取資料而重新估計、非固定公式；僅供教育與參考用途，不構成投資建議。
+# ---------------------------------------------------------------------------
+def quarterly_last(monthly_rows, key):
+    """月資料依季別取最後一筆（與前端 taiexQuarterly() 的「該季最後一筆覆蓋」邏輯一致）。"""
+    by_q = {}
+    for row in monthly_rows:
+        period = row.get("period")
+        v = row.get(key)
+        if period is None or v is None:
+            continue
+        y, m = period.split("-")
+        q = (int(m) - 1) // 3 + 1
+        by_q[f"{y}-Q{q}"] = v
+    return by_q
+
+
+def ols_simple(xs, ys):
+    n = len(xs)
+    if n < 12:
+        return None
+    mx, my = sum(xs) / n, sum(ys) / n
+    sxx = sum((x - mx) ** 2 for x in xs)
+    if sxx == 0:
+        return None
+    sxy = sum((x - mx) * (y - my) for x, y in zip(xs, ys))
+    b = sxy / sxx
+    a = my - b * mx
+    fitted = [a + b * x for x in xs]
+    ss_res = sum((y - f) ** 2 for y, f in zip(ys, fitted))
+    ss_tot = sum((y - my) ** 2 for y in ys)
+    return {"a": a, "b": b, "r2": (1 - ss_res / ss_tot) if ss_tot > 0 else None}
+
+
+def _solve_linear(A, b):
+    """高斯消去法（含部分主元）解線性方程組 Ax=b，供迴歸正規方程式使用（矩陣很小，無需 numpy）。"""
+    n = len(A)
+    M = [row[:] + [b[i]] for i, row in enumerate(A)]
+    for col in range(n):
+        pivot = max(range(col, n), key=lambda r: abs(M[r][col]))
+        if abs(M[pivot][col]) < 1e-9:
+            return None
+        M[col], M[pivot] = M[pivot], M[col]
+        pv = M[col][col]
+        M[col] = [v / pv for v in M[col]]
+        for r in range(n):
+            if r != col:
+                factor = M[r][col]
+                M[r] = [M[r][j] - factor * M[col][j] for j in range(n + 1)]
+    return [M[i][n] for i in range(n)]
+
+
+def ols_multi(rows_x, ys):
+    """rows_x 每筆已含截距項 1.0 於索引 0；回傳係數與 R²。"""
+    n, k = len(rows_x), len(rows_x[0])
+    XtX = [[sum(rows_x[i][a] * rows_x[i][b] for i in range(n)) for b in range(k)] for a in range(k)]
+    Xty = [sum(rows_x[i][a] * ys[i] for i in range(n)) for a in range(k)]
+    beta = _solve_linear(XtX, Xty)
+    if beta is None:
+        return None
+    fitted = [sum(beta[j] * rows_x[i][j] for j in range(k)) for i in range(n)]
+    my = sum(ys) / n
+    ss_res = sum((ys[i] - fitted[i]) ** 2 for i in range(n))
+    ss_tot = sum((y - my) ** 2 for y in ys)
+    return {"beta": beta, "r2": (1 - ss_res / ss_tot) if ss_tot > 0 else None}
+
+
+def compute_valuation_models(gdp_q, taiex_monthly, business_signal_monthly, money_supply_monthly):
+    taiex_q = {}
+    for row in taiex_monthly:
+        y, m = row["period"].split("-")
+        q = (int(m) - 1) // 3 + 1
+        taiex_q[f"{y}-Q{q}"] = row["close"]  # 升冪覆蓋 = 該季最後一筆收盤
+
+    gdp_nominal = {r["period"]: r["nominal_gdp_100m"] for r in gdp_q if r.get("nominal_gdp_100m") is not None}
+    m1b_m2_gap_q = quarterly_last(money_supply_monthly, "m1b_m2_gap")
+
+    periods = sorted(set(taiex_q) & set(gdp_nominal))
+    if len(periods) < 12:
+        return None
+    latest = periods[-1]
+    actual_latest = taiex_q[latest]
+
+    models = {"latest_period": latest, "actual_index": round(actual_latest, 0)}
+
+    # ---- 模型一：GDP 單因子趨勢回歸（log-linear） ----
+    xs = [math.log(gdp_nominal[p]) for p in periods]
+    ys = [math.log(taiex_q[p]) for p in periods]
+    fit = ols_simple(xs, ys)
+    if fit:
+        def predict1(p):
+            return math.exp(fit["a"] + fit["b"] * math.log(gdp_nominal[p]))
+        est = predict1(latest)
+        models["gdp_trend"] = {
+            "name": "GDP 單因子趨勢回歸",
+            "method": "台股加權指數與名目GDP的歷史對數線性關係，代入最新GDP推算指數理論水準",
+            "estimated_index": round(est, 0),
+            "deviation_pct": round((actual_latest / est - 1) * 100, 1),
+            "r_squared": round(fit["r2"], 3) if fit["r2"] is not None else None,
+            "sample_quarters": len(periods),
+            "historical": [{"period": p, "actual": round(taiex_q[p], 1), "fitted": round(predict1(p), 1)} for p in periods],
+        }
+
+    # ---- 模型二（較完整）：GDP＋資金面（M1B–M2 增速差）雙因子回歸 ----
+    periods2 = [p for p in periods if p in m1b_m2_gap_q]
+    if len(periods2) >= 12:
+        X = [[1.0, math.log(gdp_nominal[p]), m1b_m2_gap_q[p]] for p in periods2]
+        y2 = [math.log(taiex_q[p]) for p in periods2]
+        fit2 = ols_multi(X, y2)
+        if fit2:
+            beta = fit2["beta"]
+
+            def predict2(p):
+                return math.exp(beta[0] + beta[1] * math.log(gdp_nominal[p]) + beta[2] * m1b_m2_gap_q[p])
+
+            est2 = predict2(latest)
+            models["gdp_liquidity"] = {
+                "name": "GDP＋資金面雙因子回歸",
+                "method": "在GDP趨勢基礎上加入M1B–M2貨幣增速差（資金鬆緊代理變數）的雙因子對數線性回歸，較單看GDP更能反映資金環境對股價的影響",
+                "estimated_index": round(est2, 0),
+                "deviation_pct": round((actual_latest / est2 - 1) * 100, 1),
+                "r_squared": round(fit2["r2"], 3) if fit2["r2"] is not None else None,
+                "sample_quarters": len(periods2),
+                "historical": [{"period": p, "actual": round(taiex_q[p], 1), "fitted": round(predict2(p), 1)} for p in periods2],
+            }
+
+    return models
+
+
+# ---------------------------------------------------------------------------
 def main():
     existing = {}
     if os.path.exists(DATA_PATH):
@@ -715,6 +855,24 @@ def main():
         if "taiwan_fear_greed" not in result:
             result["taiwan_fear_greed"] = {}
 
+    log("computing 台股點位估算模型（GDP 趨勢回歸／GDP+資金面雙因子回歸）")
+    try:
+        models = compute_valuation_models(
+            result.get("gdp", []),
+            result.get("taiex", {}).get("monthly", []),
+            result.get("business_signal", []),
+            result.get("money_supply", []),
+        )
+        if models:
+            result["valuation_models"] = models
+        elif "valuation_models" not in result:
+            result["valuation_models"] = {}
+    except Exception as e:
+        log(f"ERROR computing valuation_models: {e}")
+        warnings.append(f"valuation_models 計算失敗，沿用舊資料：{e}")
+        if "valuation_models" not in result:
+            result["valuation_models"] = {}
+
     result["meta"] = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
         "warnings": warnings,
@@ -729,6 +887,7 @@ def main():
             "fx_usdtwd": {"name": "銀行牌告美元／新台幣即期匯率（經 FinMind 開放API）", "url": "https://finmindtrade.com/"},
             "cnn_fear_greed": {"name": "CNN Business Fear & Greed Index（美股市場情緒，非官方端點）", "url": "https://edition.cnn.com/markets/fear-and-greed"},
             "taiwan_fear_greed": {"name": "台股恐慌與貪婪指數（本站仿 CNN 方法論、以台灣資料源自行計算，非官方指數）", "url": "https://www.twse.com.tw/ 、 https://www.taifex.com.tw/ 、 https://finmindtrade.com/"},
+            "valuation_models": {"name": "台股點位估算模型（本站以GDP／資金面資料回歸計算，統計參考用途、非投資建議）", "url": "https://data.gov.tw/dataset/6799"},
         },
     }
 

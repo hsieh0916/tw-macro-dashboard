@@ -6725,1035 +6725,1293 @@
   "gdp": [
     {
       "period": "1962-Q1",
-      "yoy_pct": 8.88
+      "yoy_pct": 8.88,
+      "nominal_gdp_100m": 187.3
     },
     {
       "period": "1962-Q2",
-      "yoy_pct": 9.11
+      "yoy_pct": 9.11,
+      "nominal_gdp_100m": 191.5
     },
     {
       "period": "1962-Q3",
-      "yoy_pct": 12.39
+      "yoy_pct": 12.39,
+      "nominal_gdp_100m": 185.3
     },
     {
       "period": "1962-Q4",
-      "yoy_pct": 6.05
+      "yoy_pct": 6.05,
+      "nominal_gdp_100m": 220.0
     },
     {
       "period": "1963-Q1",
-      "yoy_pct": 14.38
+      "yoy_pct": 14.38,
+      "nominal_gdp_100m": 219.1
     },
     {
       "period": "1963-Q2",
-      "yoy_pct": 10.91
+      "yoy_pct": 10.91,
+      "nominal_gdp_100m": 215.8
     },
     {
       "period": "1963-Q3",
-      "yoy_pct": 7.35
+      "yoy_pct": 7.35,
+      "nominal_gdp_100m": 205.0
     },
     {
       "period": "1963-Q4",
-      "yoy_pct": 10.31
+      "yoy_pct": 10.31,
+      "nominal_gdp_100m": 247.4
     },
     {
       "period": "1964-Q1",
-      "yoy_pct": 12.94
+      "yoy_pct": 12.94,
+      "nominal_gdp_100m": 262.8
     },
     {
       "period": "1964-Q2",
-      "yoy_pct": 13.96
+      "yoy_pct": 13.96,
+      "nominal_gdp_100m": 255.4
     },
     {
       "period": "1964-Q3",
-      "yoy_pct": 13.4
+      "yoy_pct": 13.4,
+      "nominal_gdp_100m": 237.3
     },
     {
       "period": "1964-Q4",
-      "yoy_pct": 10.58
+      "yoy_pct": 10.58,
+      "nominal_gdp_100m": 281.1
     },
     {
       "period": "1965-Q1",
-      "yoy_pct": 10.33
+      "yoy_pct": 10.33,
+      "nominal_gdp_100m": 282.0
     },
     {
       "period": "1965-Q2",
-      "yoy_pct": 11.48
+      "yoy_pct": 11.48,
+      "nominal_gdp_100m": 286.0
     },
     {
       "period": "1965-Q3",
-      "yoy_pct": 12.92
+      "yoy_pct": 12.92,
+      "nominal_gdp_100m": 268.2
     },
     {
       "period": "1965-Q4",
-      "yoy_pct": 12.81
+      "yoy_pct": 12.81,
+      "nominal_gdp_100m": 311.4
     },
     {
       "period": "1966-Q1",
-      "yoy_pct": 6.62
+      "yoy_pct": 6.62,
+      "nominal_gdp_100m": 304.1
     },
     {
       "period": "1966-Q2",
-      "yoy_pct": 9.84
+      "yoy_pct": 9.84,
+      "nominal_gdp_100m": 313.8
     },
     {
       "period": "1966-Q3",
-      "yoy_pct": 13.3
+      "yoy_pct": 13.3,
+      "nominal_gdp_100m": 309.2
     },
     {
       "period": "1966-Q4",
-      "yoy_pct": 9.03
+      "yoy_pct": 9.03,
+      "nominal_gdp_100m": 355.6
     },
     {
       "period": "1967-Q1",
-      "yoy_pct": 12.3
+      "yoy_pct": 12.3,
+      "nominal_gdp_100m": 352.6
     },
     {
       "period": "1967-Q2",
-      "yoy_pct": 10.49
+      "yoy_pct": 10.49,
+      "nominal_gdp_100m": 356.6
     },
     {
       "period": "1967-Q3",
-      "yoy_pct": 8.95
+      "yoy_pct": 8.95,
+      "nominal_gdp_100m": 360.3
     },
     {
       "period": "1967-Q4",
-      "yoy_pct": 12.67
+      "yoy_pct": 12.67,
+      "nominal_gdp_100m": 414.0
     },
     {
       "period": "1968-Q1",
-      "yoy_pct": 8.44
+      "yoy_pct": 8.44,
+      "nominal_gdp_100m": 399.9
     },
     {
       "period": "1968-Q2",
-      "yoy_pct": 9.02
+      "yoy_pct": 9.02,
+      "nominal_gdp_100m": 415.9
     },
     {
       "period": "1968-Q3",
-      "yoy_pct": 12.89
+      "yoy_pct": 12.89,
+      "nominal_gdp_100m": 430.4
     },
     {
       "period": "1968-Q4",
-      "yoy_pct": 8.73
+      "yoy_pct": 8.73,
+      "nominal_gdp_100m": 483.8
     },
     {
       "period": "1969-Q1",
-      "yoy_pct": 11.56
+      "yoy_pct": 11.56,
+      "nominal_gdp_100m": 479.2
     },
     {
       "period": "1969-Q2",
-      "yoy_pct": 9.98
+      "yoy_pct": 9.98,
+      "nominal_gdp_100m": 487.3
     },
     {
       "period": "1969-Q3",
-      "yoy_pct": 9.89
+      "yoy_pct": 9.89,
+      "nominal_gdp_100m": 493.6
     },
     {
       "period": "1969-Q4",
-      "yoy_pct": 7.27
+      "yoy_pct": 7.27,
+      "nominal_gdp_100m": 546.9
     },
     {
       "period": "1970-Q1",
-      "yoy_pct": 8.07
+      "yoy_pct": 8.07,
+      "nominal_gdp_100m": 535.0
     },
     {
       "period": "1970-Q2",
-      "yoy_pct": 13.14
+      "yoy_pct": 13.14,
+      "nominal_gdp_100m": 572.0
     },
     {
       "period": "1970-Q3",
-      "yoy_pct": 11.32
+      "yoy_pct": 11.32,
+      "nominal_gdp_100m": 573.9
     },
     {
       "period": "1970-Q4",
-      "yoy_pct": 13.34
+      "yoy_pct": 13.34,
+      "nominal_gdp_100m": 633.2
     },
     {
       "period": "1971-Q1",
-      "yoy_pct": 13.58
+      "yoy_pct": 13.58,
+      "nominal_gdp_100m": 629.9
     },
     {
       "period": "1971-Q2",
-      "yoy_pct": 16.26
+      "yoy_pct": 16.26,
+      "nominal_gdp_100m": 670.9
     },
     {
       "period": "1971-Q3",
-      "yoy_pct": 14.54
+      "yoy_pct": 14.54,
+      "nominal_gdp_100m": 666.2
     },
     {
       "period": "1971-Q4",
-      "yoy_pct": 9.77
+      "yoy_pct": 9.77,
+      "nominal_gdp_100m": 723.9
     },
     {
       "period": "1972-Q1",
-      "yoy_pct": 14.41
+      "yoy_pct": 14.41,
+      "nominal_gdp_100m": 756.2
     },
     {
       "period": "1972-Q2",
-      "yoy_pct": 14.02
+      "yoy_pct": 14.02,
+      "nominal_gdp_100m": 804.9
     },
     {
       "period": "1972-Q3",
-      "yoy_pct": 12.29
+      "yoy_pct": 12.29,
+      "nominal_gdp_100m": 800.7
     },
     {
       "period": "1972-Q4",
-      "yoy_pct": 14.72
+      "yoy_pct": 14.72,
+      "nominal_gdp_100m": 863.3
     },
     {
       "period": "1973-Q1",
-      "yoy_pct": 14.35
+      "yoy_pct": 14.35,
+      "nominal_gdp_100m": 923.6
     },
     {
       "period": "1973-Q2",
-      "yoy_pct": 10.46
+      "yoy_pct": 10.46,
+      "nominal_gdp_100m": 980.0
     },
     {
       "period": "1973-Q3",
-      "yoy_pct": 14.94
+      "yoy_pct": 14.94,
+      "nominal_gdp_100m": 1054.8
     },
     {
       "period": "1973-Q4",
-      "yoy_pct": 11.79
+      "yoy_pct": 11.79,
+      "nominal_gdp_100m": 1226.2
     },
     {
       "period": "1974-Q1",
-      "yoy_pct": 7.01
+      "yoy_pct": 7.01,
+      "nominal_gdp_100m": 1380.5
     },
     {
       "period": "1974-Q2",
-      "yoy_pct": 3.47
+      "yoy_pct": 3.47,
+      "nominal_gdp_100m": 1428.4
     },
     {
       "period": "1974-Q3",
-      "yoy_pct": 0.11
+      "yoy_pct": 0.11,
+      "nominal_gdp_100m": 1377.3
     },
     {
       "period": "1974-Q4",
-      "yoy_pct": 0.34
+      "yoy_pct": 0.34,
+      "nominal_gdp_100m": 1414.7
     },
     {
       "period": "1975-Q1",
-      "yoy_pct": -2.8
+      "yoy_pct": -2.8,
+      "nominal_gdp_100m": 1396.8
     },
     {
       "period": "1975-Q2",
-      "yoy_pct": 4.5
+      "yoy_pct": 4.5,
+      "nominal_gdp_100m": 1477.6
     },
     {
       "period": "1975-Q3",
-      "yoy_pct": 10.66
+      "yoy_pct": 10.66,
+      "nominal_gdp_100m": 1519.4
     },
     {
       "period": "1975-Q4",
-      "yoy_pct": 12.38
+      "yoy_pct": 12.38,
+      "nominal_gdp_100m": 1623.9
     },
     {
       "period": "1976-Q1",
-      "yoy_pct": 15.96
+      "yoy_pct": 15.96,
+      "nominal_gdp_100m": 1683.0
     },
     {
       "period": "1976-Q2",
-      "yoy_pct": 14.28
+      "yoy_pct": 14.28,
+      "nominal_gdp_100m": 1774.6
     },
     {
       "period": "1976-Q3",
-      "yoy_pct": 12.83
+      "yoy_pct": 12.83,
+      "nominal_gdp_100m": 1819.4
     },
     {
       "period": "1976-Q4",
-      "yoy_pct": 14.2
+      "yoy_pct": 14.2,
+      "nominal_gdp_100m": 1938.3
     },
     {
       "period": "1977-Q1",
-      "yoy_pct": 11.98
+      "yoy_pct": 11.98,
+      "nominal_gdp_100m": 1942.5
     },
     {
       "period": "1977-Q2",
-      "yoy_pct": 13.97
+      "yoy_pct": 13.97,
+      "nominal_gdp_100m": 2095.3
     },
     {
       "period": "1977-Q3",
-      "yoy_pct": 9.19
+      "yoy_pct": 9.19,
+      "nominal_gdp_100m": 2111.9
     },
     {
       "period": "1977-Q4",
-      "yoy_pct": 10.65
+      "yoy_pct": 10.65,
+      "nominal_gdp_100m": 2306.2
     },
     {
       "period": "1978-Q1",
-      "yoy_pct": 12.9
+      "yoy_pct": 12.9,
+      "nominal_gdp_100m": 2288.6
     },
     {
       "period": "1978-Q2",
-      "yoy_pct": 12.35
+      "yoy_pct": 12.35,
+      "nominal_gdp_100m": 2480.4
     },
     {
       "period": "1978-Q3",
-      "yoy_pct": 17.26
+      "yoy_pct": 17.26,
+      "nominal_gdp_100m": 2589.0
     },
     {
       "period": "1978-Q4",
-      "yoy_pct": 11.92
+      "yoy_pct": 11.92,
+      "nominal_gdp_100m": 2756.3
     },
     {
       "period": "1979-Q1",
-      "yoy_pct": 10.73
+      "yoy_pct": 10.73,
+      "nominal_gdp_100m": 2796.1
     },
     {
       "period": "1979-Q2",
-      "yoy_pct": 9.93
+      "yoy_pct": 9.93,
+      "nominal_gdp_100m": 3002.7
     },
     {
       "period": "1979-Q3",
-      "yoy_pct": 7.63
+      "yoy_pct": 7.63,
+      "nominal_gdp_100m": 3115.8
     },
     {
       "period": "1979-Q4",
-      "yoy_pct": 7.3
+      "yoy_pct": 7.3,
+      "nominal_gdp_100m": 3280.4
     },
     {
       "period": "1980-Q1",
-      "yoy_pct": 7.91
+      "yoy_pct": 7.91,
+      "nominal_gdp_100m": 3499.4
     },
     {
       "period": "1980-Q2",
-      "yoy_pct": 8.39
+      "yoy_pct": 8.39,
+      "nominal_gdp_100m": 3738.7
     },
     {
       "period": "1980-Q3",
-      "yoy_pct": 7.84
+      "yoy_pct": 7.84,
+      "nominal_gdp_100m": 3836.4
     },
     {
       "period": "1980-Q4",
-      "yoy_pct": 8.01
+      "yoy_pct": 8.01,
+      "nominal_gdp_100m": 4150.5
     },
     {
       "period": "1981-Q1",
-      "yoy_pct": 7.19
+      "yoy_pct": 7.19,
+      "nominal_gdp_100m": 4228.0
     },
     {
       "period": "1981-Q2",
-      "yoy_pct": 7.06
+      "yoy_pct": 7.06,
+      "nominal_gdp_100m": 4513.9
     },
     {
       "period": "1981-Q3",
-      "yoy_pct": 8.35
+      "yoy_pct": 8.35,
+      "nominal_gdp_100m": 4596.8
     },
     {
       "period": "1981-Q4",
-      "yoy_pct": 5.88
+      "yoy_pct": 5.88,
+      "nominal_gdp_100m": 4705.6
     },
     {
       "period": "1982-Q1",
-      "yoy_pct": 4.52
+      "yoy_pct": 4.52,
+      "nominal_gdp_100m": 4617.7
     },
     {
       "period": "1982-Q2",
-      "yoy_pct": 5.2
+      "yoy_pct": 5.2,
+      "nominal_gdp_100m": 4882.3
     },
     {
       "period": "1982-Q3",
-      "yoy_pct": 4.72
+      "yoy_pct": 4.72,
+      "nominal_gdp_100m": 4895.0
     },
     {
       "period": "1982-Q4",
-      "yoy_pct": 4.79
+      "yoy_pct": 4.79,
+      "nominal_gdp_100m": 4985.1
     },
     {
       "period": "1983-Q1",
-      "yoy_pct": 4.27
+      "yoy_pct": 4.27,
+      "nominal_gdp_100m": 4953.6
     },
     {
       "period": "1983-Q2",
-      "yoy_pct": 8.39
+      "yoy_pct": 8.39,
+      "nominal_gdp_100m": 5481.6
     },
     {
       "period": "1983-Q3",
-      "yoy_pct": 11.29
+      "yoy_pct": 11.29,
+      "nominal_gdp_100m": 5547.7
     },
     {
       "period": "1983-Q4",
-      "yoy_pct": 11.78
+      "yoy_pct": 11.78,
+      "nominal_gdp_100m": 5711.5
     },
     {
       "period": "1984-Q1",
-      "yoy_pct": 11.89
+      "yoy_pct": 11.89,
+      "nominal_gdp_100m": 5621.2
     },
     {
       "period": "1984-Q2",
-      "yoy_pct": 11.68
+      "yoy_pct": 11.68,
+      "nominal_gdp_100m": 6197.0
     },
     {
       "period": "1984-Q3",
-      "yoy_pct": 9.75
+      "yoy_pct": 9.75,
+      "nominal_gdp_100m": 6204.7
     },
     {
       "period": "1984-Q4",
-      "yoy_pct": 7.26
+      "yoy_pct": 7.26,
+      "nominal_gdp_100m": 6159.5
     },
     {
       "period": "1985-Q1",
-      "yoy_pct": 5.67
+      "yoy_pct": 5.67,
+      "nominal_gdp_100m": 5982.2
     },
     {
       "period": "1985-Q2",
-      "yoy_pct": 4.24
+      "yoy_pct": 4.24,
+      "nominal_gdp_100m": 6415.1
     },
     {
       "period": "1985-Q3",
-      "yoy_pct": 3.57
+      "yoy_pct": 3.57,
+      "nominal_gdp_100m": 6388.9
     },
     {
       "period": "1985-Q4",
-      "yoy_pct": 5.81
+      "yoy_pct": 5.81,
+      "nominal_gdp_100m": 6564.3
     },
     {
       "period": "1986-Q1",
-      "yoy_pct": 10.18
+      "yoy_pct": 10.18,
+      "nominal_gdp_100m": 6836.2
     },
     {
       "period": "1986-Q2",
-      "yoy_pct": 9.55
+      "yoy_pct": 9.55,
+      "nominal_gdp_100m": 7342.8
     },
     {
       "period": "1986-Q3",
-      "yoy_pct": 12.32
+      "yoy_pct": 12.32,
+      "nominal_gdp_100m": 7614.4
     },
     {
       "period": "1986-Q4",
-      "yoy_pct": 13.79
+      "yoy_pct": 13.79,
+      "nominal_gdp_100m": 7861.1
     },
     {
       "period": "1987-Q1",
-      "yoy_pct": 13.12
+      "yoy_pct": 13.12,
+      "nominal_gdp_100m": 7857.5
     },
     {
       "period": "1987-Q2",
-      "yoy_pct": 14.25
+      "yoy_pct": 14.25,
+      "nominal_gdp_100m": 8315.0
     },
     {
       "period": "1987-Q3",
-      "yoy_pct": 13.61
+      "yoy_pct": 13.61,
+      "nominal_gdp_100m": 8616.5
     },
     {
       "period": "1987-Q4",
-      "yoy_pct": 10.24
+      "yoy_pct": 10.24,
+      "nominal_gdp_100m": 8660.3
     },
     {
       "period": "1988-Q1",
-      "yoy_pct": 8.71
+      "yoy_pct": 8.71,
+      "nominal_gdp_100m": 8464.0
     },
     {
       "period": "1988-Q2",
-      "yoy_pct": 7.19
+      "yoy_pct": 7.19,
+      "nominal_gdp_100m": 8876.6
     },
     {
       "period": "1988-Q3",
-      "yoy_pct": 7.9
+      "yoy_pct": 7.9,
+      "nominal_gdp_100m": 9270.9
     },
     {
       "period": "1988-Q4",
-      "yoy_pct": 8.34
+      "yoy_pct": 8.34,
+      "nominal_gdp_100m": 9545.2
     },
     {
       "period": "1989-Q1",
-      "yoy_pct": 9.09
+      "yoy_pct": 9.09,
+      "nominal_gdp_100m": 9485.0
     },
     {
       "period": "1989-Q2",
-      "yoy_pct": 9.21
+      "yoy_pct": 9.21,
+      "nominal_gdp_100m": 9919.4
     },
     {
       "period": "1989-Q3",
-      "yoy_pct": 8.72
+      "yoy_pct": 8.72,
+      "nominal_gdp_100m": 10236.3
     },
     {
       "period": "1989-Q4",
-      "yoy_pct": 7.94
+      "yoy_pct": 7.94,
+      "nominal_gdp_100m": 10683.9
     },
     {
       "period": "1990-Q1",
-      "yoy_pct": 7.42
+      "yoy_pct": 7.42,
+      "nominal_gdp_100m": 10714.0
     },
     {
       "period": "1990-Q2",
-      "yoy_pct": 4.05
+      "yoy_pct": 4.05,
+      "nominal_gdp_100m": 11010.5
     },
     {
       "period": "1990-Q3",
-      "yoy_pct": 4.16
+      "yoy_pct": 4.16,
+      "nominal_gdp_100m": 11144.4
     },
     {
       "period": "1990-Q4",
-      "yoy_pct": 6.64
+      "yoy_pct": 6.64,
+      "nominal_gdp_100m": 11874.0
     },
     {
       "period": "1991-Q1",
-      "yoy_pct": 7.02
+      "yoy_pct": 7.02,
+      "nominal_gdp_100m": 11915.6
     },
     {
       "period": "1991-Q2",
-      "yoy_pct": 8.64
+      "yoy_pct": 8.64,
+      "nominal_gdp_100m": 12356.2
     },
     {
       "period": "1991-Q3",
-      "yoy_pct": 9.21
+      "yoy_pct": 9.21,
+      "nominal_gdp_100m": 12591.9
     },
     {
       "period": "1991-Q4",
-      "yoy_pct": 8.53
+      "yoy_pct": 8.53,
+      "nominal_gdp_100m": 13316.5
     },
     {
       "period": "1992-Q1",
-      "yoy_pct": 10.53
+      "yoy_pct": 10.53,
+      "nominal_gdp_100m": 13482.7
     },
     {
       "period": "1992-Q2",
-      "yoy_pct": 8.51
+      "yoy_pct": 8.51,
+      "nominal_gdp_100m": 13800.3
     },
     {
       "period": "1992-Q3",
-      "yoy_pct": 7.94
+      "yoy_pct": 7.94,
+      "nominal_gdp_100m": 14017.8
     },
     {
       "period": "1992-Q4",
-      "yoy_pct": 6.52
+      "yoy_pct": 6.52,
+      "nominal_gdp_100m": 14792.8
     },
     {
       "period": "1993-Q1",
-      "yoy_pct": 6.77
+      "yoy_pct": 6.77,
+      "nominal_gdp_100m": 15018.1
     },
     {
       "period": "1993-Q2",
-      "yoy_pct": 7.09
+      "yoy_pct": 7.09,
+      "nominal_gdp_100m": 15307.2
     },
     {
       "period": "1993-Q3",
-      "yoy_pct": 6.58
+      "yoy_pct": 6.58,
+      "nominal_gdp_100m": 15500.9
     },
     {
       "period": "1993-Q4",
-      "yoy_pct": 6.82
+      "yoy_pct": 6.82,
+      "nominal_gdp_100m": 16175.3
     },
     {
       "period": "1994-Q1",
-      "yoy_pct": 5.99
+      "yoy_pct": 5.99,
+      "nominal_gdp_100m": 16266.0
     },
     {
       "period": "1994-Q2",
-      "yoy_pct": 7.7
+      "yoy_pct": 7.7,
+      "nominal_gdp_100m": 16728.5
     },
     {
       "period": "1994-Q3",
-      "yoy_pct": 7.0
+      "yoy_pct": 7.0,
+      "nominal_gdp_100m": 16891.0
     },
     {
       "period": "1994-Q4",
-      "yoy_pct": 9.2
+      "yoy_pct": 9.2,
+      "nominal_gdp_100m": 17908.5
     },
     {
       "period": "1995-Q1",
-      "yoy_pct": 7.54
+      "yoy_pct": 7.54,
+      "nominal_gdp_100m": 17641.0
     },
     {
       "period": "1995-Q2",
-      "yoy_pct": 6.47
+      "yoy_pct": 6.47,
+      "nominal_gdp_100m": 18098.3
     },
     {
       "period": "1995-Q3",
-      "yoy_pct": 6.97
+      "yoy_pct": 6.97,
+      "nominal_gdp_100m": 18517.5
     },
     {
       "period": "1995-Q4",
-      "yoy_pct": 5.15
+      "yoy_pct": 5.15,
+      "nominal_gdp_100m": 19653.7
     },
     {
       "period": "1996-Q1",
-      "yoy_pct": 5.77
+      "yoy_pct": 5.77,
+      "nominal_gdp_100m": 19285.8
     },
     {
       "period": "1996-Q2",
-      "yoy_pct": 5.75
+      "yoy_pct": 5.75,
+      "nominal_gdp_100m": 19722.5
     },
     {
       "period": "1996-Q3",
-      "yoy_pct": 6.2
+      "yoy_pct": 6.2,
+      "nominal_gdp_100m": 20206.0
     },
     {
       "period": "1996-Q4",
-      "yoy_pct": 6.93
+      "yoy_pct": 6.93,
+      "nominal_gdp_100m": 21098.7
     },
     {
       "period": "1997-Q1",
-      "yoy_pct": 5.69
+      "yoy_pct": 5.69,
+      "nominal_gdp_100m": 20893.5
     },
     {
       "period": "1997-Q2",
-      "yoy_pct": 5.53
+      "yoy_pct": 5.53,
+      "nominal_gdp_100m": 21060.1
     },
     {
       "period": "1997-Q3",
-      "yoy_pct": 6.18
+      "yoy_pct": 6.18,
+      "nominal_gdp_100m": 21661.6
     },
     {
       "period": "1997-Q4",
-      "yoy_pct": 6.74
+      "yoy_pct": 6.74,
+      "nominal_gdp_100m": 23436.3
     },
     {
       "period": "1998-Q1",
-      "yoy_pct": 4.73
+      "yoy_pct": 4.73,
+      "nominal_gdp_100m": 22783.9
     },
     {
       "period": "1998-Q2",
-      "yoy_pct": 4.27
+      "yoy_pct": 4.27,
+      "nominal_gdp_100m": 22916.1
     },
     {
       "period": "1998-Q3",
-      "yoy_pct": 4.75
+      "yoy_pct": 4.75,
+      "nominal_gdp_100m": 23459.6
     },
     {
       "period": "1998-Q4",
-      "yoy_pct": 3.16
+      "yoy_pct": 3.16,
+      "nominal_gdp_100m": 24503.8
     },
     {
       "period": "1999-Q1",
-      "yoy_pct": 6.26
+      "yoy_pct": 6.26,
+      "nominal_gdp_100m": 24089.9
     },
     {
       "period": "1999-Q2",
-      "yoy_pct": 7.24
+      "yoy_pct": 7.24,
+      "nominal_gdp_100m": 24068.0
     },
     {
       "period": "1999-Q3",
-      "yoy_pct": 5.86
+      "yoy_pct": 5.86,
+      "nominal_gdp_100m": 24288.8
     },
     {
       "period": "1999-Q4",
-      "yoy_pct": 7.53
+      "yoy_pct": 7.53,
+      "nominal_gdp_100m": 25598.4
     },
     {
       "period": "2000-Q1",
-      "yoy_pct": 6.02
+      "yoy_pct": 6.02,
+      "nominal_gdp_100m": 24930.7
     },
     {
       "period": "2000-Q2",
-      "yoy_pct": 6.27
+      "yoy_pct": 6.27,
+      "nominal_gdp_100m": 25085.3
     },
     {
       "period": "2000-Q3",
-      "yoy_pct": 7.19
+      "yoy_pct": 7.19,
+      "nominal_gdp_100m": 25935.9
     },
     {
       "period": "2000-Q4",
-      "yoy_pct": 5.78
+      "yoy_pct": 5.78,
+      "nominal_gdp_100m": 27333.7
     },
     {
       "period": "2001-Q1",
-      "yoy_pct": 1.45
+      "yoy_pct": 1.45,
+      "nominal_gdp_100m": 25241.3
     },
     {
       "period": "2001-Q2",
-      "yoy_pct": -2.55
+      "yoy_pct": -2.55,
+      "nominal_gdp_100m": 24402.3
     },
     {
       "period": "2001-Q3",
-      "yoy_pct": -4.06
+      "yoy_pct": -4.06,
+      "nominal_gdp_100m": 24757.0
     },
     {
       "period": "2001-Q4",
-      "yoy_pct": -0.3
+      "yoy_pct": -0.3,
+      "nominal_gdp_100m": 26793.7
     },
     {
       "period": "2002-Q1",
-      "yoy_pct": 1.82
+      "yoy_pct": 1.82,
+      "nominal_gdp_100m": 25805.5
     },
     {
       "period": "2002-Q2",
-      "yoy_pct": 6.75
+      "yoy_pct": 6.75,
+      "nominal_gdp_100m": 25859.6
     },
     {
       "period": "2002-Q3",
-      "yoy_pct": 7.02
+      "yoy_pct": 7.02,
+      "nominal_gdp_100m": 26619.5
     },
     {
       "period": "2002-Q4",
-      "yoy_pct": 6.22
+      "yoy_pct": 6.22,
+      "nominal_gdp_100m": 28024.5
     },
     {
       "period": "2003-Q1",
-      "yoy_pct": 5.17
+      "yoy_pct": 5.17,
+      "nominal_gdp_100m": 26526.7
     },
     {
       "period": "2003-Q2",
-      "yoy_pct": -1.15
+      "yoy_pct": -1.15,
+      "nominal_gdp_100m": 25731.0
     },
     {
       "period": "2003-Q3",
-      "yoy_pct": 5.41
+      "yoy_pct": 5.41,
+      "nominal_gdp_100m": 27552.1
     },
     {
       "period": "2003-Q4",
-      "yoy_pct": 7.26
+      "yoy_pct": 7.26,
+      "nominal_gdp_100m": 29430.4
     },
     {
       "period": "2004-Q1",
-      "yoy_pct": 6.93
+      "yoy_pct": 6.93,
+      "nominal_gdp_100m": 28074.0
     },
     {
       "period": "2004-Q2",
-      "yoy_pct": 10.8
+      "yoy_pct": 10.8,
+      "nominal_gdp_100m": 28244.6
     },
     {
       "period": "2004-Q3",
-      "yoy_pct": 7.05
+      "yoy_pct": 7.05,
+      "nominal_gdp_100m": 29523.0
     },
     {
       "period": "2004-Q4",
-      "yoy_pct": 3.6
+      "yoy_pct": 3.6,
+      "nominal_gdp_100m": 30120.9
     },
     {
       "period": "2005-Q1",
-      "yoy_pct": 3.76
+      "yoy_pct": 3.76,
+      "nominal_gdp_100m": 28881.8
     },
     {
       "period": "2005-Q2",
-      "yoy_pct": 4.82
+      "yoy_pct": 4.82,
+      "nominal_gdp_100m": 28760.9
     },
     {
       "period": "2005-Q3",
-      "yoy_pct": 5.07
+      "yoy_pct": 5.07,
+      "nominal_gdp_100m": 30345.7
     },
     {
       "period": "2005-Q4",
-      "yoy_pct": 7.63
+      "yoy_pct": 7.63,
+      "nominal_gdp_100m": 32378.3
     },
     {
       "period": "2006-Q1",
-      "yoy_pct": 6.05
+      "yoy_pct": 6.05,
+      "nominal_gdp_100m": 30152.5
     },
     {
       "period": "2006-Q2",
-      "yoy_pct": 5.64
+      "yoy_pct": 5.64,
+      "nominal_gdp_100m": 30206.3
     },
     {
       "period": "2006-Q3",
-      "yoy_pct": 7.19
+      "yoy_pct": 7.19,
+      "nominal_gdp_100m": 32004.9
     },
     {
       "period": "2006-Q4",
-      "yoy_pct": 4.33
+      "yoy_pct": 4.33,
+      "nominal_gdp_100m": 33362.2
     },
     {
       "period": "2007-Q1",
-      "yoy_pct": 5.64
+      "yoy_pct": 5.64,
+      "nominal_gdp_100m": 31647.4
     },
     {
       "period": "2007-Q2",
-      "yoy_pct": 7.12
+      "yoy_pct": 7.12,
+      "nominal_gdp_100m": 31942.8
     },
     {
       "period": "2007-Q3",
-      "yoy_pct": 7.97
+      "yoy_pct": 7.97,
+      "nominal_gdp_100m": 34534.0
     },
     {
       "period": "2007-Q4",
-      "yoy_pct": 6.58
+      "yoy_pct": 6.58,
+      "nominal_gdp_100m": 35515.0
     },
     {
       "period": "2008-Q1",
-      "yoy_pct": 7.66
+      "yoy_pct": 7.66,
+      "nominal_gdp_100m": 33245.2
     },
     {
       "period": "2008-Q2",
-      "yoy_pct": 5.66
+      "yoy_pct": 5.66,
+      "nominal_gdp_100m": 33144.9
     },
     {
       "period": "2008-Q3",
-      "yoy_pct": -1.39
+      "yoy_pct": -1.39,
+      "nominal_gdp_100m": 32423.9
     },
     {
       "period": "2008-Q4",
-      "yoy_pct": -7.36
+      "yoy_pct": -7.36,
+      "nominal_gdp_100m": 32337.0
     },
     {
       "period": "2009-Q1",
-      "yoy_pct": -7.87
+      "yoy_pct": -7.87,
+      "nominal_gdp_100m": 31078.9
     },
     {
       "period": "2009-Q2",
-      "yoy_pct": -5.92
+      "yoy_pct": -5.92,
+      "nominal_gdp_100m": 31028.7
     },
     {
       "period": "2009-Q3",
-      "yoy_pct": -1.14
+      "yoy_pct": -1.14,
+      "nominal_gdp_100m": 32653.3
     },
     {
       "period": "2009-Q4",
-      "yoy_pct": 8.58
+      "yoy_pct": 8.58,
+      "nominal_gdp_100m": 34433.6
     },
     {
       "period": "2010-Q1",
-      "yoy_pct": 11.55
+      "yoy_pct": 11.55,
+      "nominal_gdp_100m": 34116.4
     },
     {
       "period": "2010-Q2",
-      "yoy_pct": 12.02
+      "yoy_pct": 12.02,
+      "nominal_gdp_100m": 34678.3
     },
     {
       "period": "2010-Q3",
-      "yoy_pct": 11.54
+      "yoy_pct": 11.54,
+      "nominal_gdp_100m": 36043.5
     },
     {
       "period": "2010-Q4",
-      "yoy_pct": 6.34
+      "yoy_pct": 6.34,
+      "nominal_gdp_100m": 35765.2
     },
     {
       "period": "2011-Q1",
-      "yoy_pct": 6.72
+      "yoy_pct": 6.72,
+      "nominal_gdp_100m": 35523.3
     },
     {
       "period": "2011-Q2",
-      "yoy_pct": 4.16
+      "yoy_pct": 4.16,
+      "nominal_gdp_100m": 34703.9
     },
     {
       "period": "2011-Q3",
-      "yoy_pct": 3.28
+      "yoy_pct": 3.28,
+      "nominal_gdp_100m": 36459.8
     },
     {
       "period": "2011-Q4",
-      "yoy_pct": 0.89
+      "yoy_pct": 0.89,
+      "nominal_gdp_100m": 35935.0
     },
     {
       "period": "2012-Q1",
-      "yoy_pct": 1.09
+      "yoy_pct": 1.09,
+      "nominal_gdp_100m": 35732.3
     },
     {
       "period": "2012-Q2",
-      "yoy_pct": 1.04
+      "yoy_pct": 1.04,
+      "nominal_gdp_100m": 35605.8
     },
     {
       "period": "2012-Q3",
-      "yoy_pct": 2.18
+      "yoy_pct": 2.18,
+      "nominal_gdp_100m": 37616.7
     },
     {
       "period": "2012-Q4",
-      "yoy_pct": 4.48
+      "yoy_pct": 4.48,
+      "nominal_gdp_100m": 37822.8
     },
     {
       "period": "2013-Q1",
-      "yoy_pct": 1.5
+      "yoy_pct": 1.5,
+      "nominal_gdp_100m": 36708.9
     },
     {
       "period": "2013-Q2",
-      "yoy_pct": 2.68
+      "yoy_pct": 2.68,
+      "nominal_gdp_100m": 37212.5
     },
     {
       "period": "2013-Q3",
-      "yoy_pct": 1.95
+      "yoy_pct": 1.95,
+      "nominal_gdp_100m": 38773.5
     },
     {
       "period": "2013-Q4",
-      "yoy_pct": 3.73
+      "yoy_pct": 3.73,
+      "nominal_gdp_100m": 40012.3
     },
     {
       "period": "2014-Q1",
-      "yoy_pct": 4.69
+      "yoy_pct": 4.69,
+      "nominal_gdp_100m": 38641.8
     },
     {
       "period": "2014-Q2",
-      "yoy_pct": 4.92
+      "yoy_pct": 4.92,
+      "nominal_gdp_100m": 39665.8
     },
     {
       "period": "2014-Q3",
-      "yoy_pct": 4.9
+      "yoy_pct": 4.9,
+      "nominal_gdp_100m": 41374.8
     },
     {
       "period": "2014-Q4",
-      "yoy_pct": 4.38
+      "yoy_pct": 4.38,
+      "nominal_gdp_100m": 42898.1
     },
     {
       "period": "2015-Q1",
-      "yoy_pct": 4.79
+      "yoy_pct": 4.79,
+      "nominal_gdp_100m": 42159.8
     },
     {
       "period": "2015-Q2",
-      "yoy_pct": 1.89
+      "yoy_pct": 1.89,
+      "nominal_gdp_100m": 41577.1
     },
     {
       "period": "2015-Q3",
-      "yoy_pct": -0.28
+      "yoy_pct": -0.28,
+      "nominal_gdp_100m": 42866.5
     },
     {
       "period": "2015-Q4",
-      "yoy_pct": -0.2
+      "yoy_pct": -0.2,
+      "nominal_gdp_100m": 43947.4
     },
     {
       "period": "2016-Q1",
-      "yoy_pct": -0.09
+      "yoy_pct": -0.09,
+      "nominal_gdp_100m": 43182.5
     },
     {
       "period": "2016-Q2",
-      "yoy_pct": 1.69
+      "yoy_pct": 1.69,
+      "nominal_gdp_100m": 42586.0
     },
     {
       "period": "2016-Q3",
-      "yoy_pct": 3.0
+      "yoy_pct": 3.0,
+      "nominal_gdp_100m": 43938.7
     },
     {
       "period": "2016-Q4",
-      "yoy_pct": 3.92
+      "yoy_pct": 3.92,
+      "nominal_gdp_100m": 45845.4
     },
     {
       "period": "2017-Q1",
-      "yoy_pct": 3.72
+      "yoy_pct": 3.72,
+      "nominal_gdp_100m": 43868.6
     },
     {
       "period": "2017-Q2",
-      "yoy_pct": 2.79
+      "yoy_pct": 2.79,
+      "nominal_gdp_100m": 43360.2
     },
     {
       "period": "2017-Q3",
-      "yoy_pct": 3.98
+      "yoy_pct": 3.98,
+      "nominal_gdp_100m": 45771.6
     },
     {
       "period": "2017-Q4",
-      "yoy_pct": 4.12
+      "yoy_pct": 4.12,
+      "nominal_gdp_100m": 47123.5
     },
     {
       "period": "2018-Q1",
-      "yoy_pct": 3.43
+      "yoy_pct": 3.43,
+      "nominal_gdp_100m": 44845.3
     },
     {
       "period": "2018-Q2",
-      "yoy_pct": 3.43
+      "yoy_pct": 3.43,
+      "nominal_gdp_100m": 45018.4
     },
     {
       "period": "2018-Q3",
-      "yoy_pct": 2.52
+      "yoy_pct": 2.52,
+      "nominal_gdp_100m": 46213.1
     },
     {
       "period": "2018-Q4",
-      "yoy_pct": 2.33
+      "yoy_pct": 2.33,
+      "nominal_gdp_100m": 48123.6
     },
     {
       "period": "2019-Q1",
-      "yoy_pct": 2.08
+      "yoy_pct": 2.08,
+      "nominal_gdp_100m": 45760.0
     },
     {
       "period": "2019-Q2",
-      "yoy_pct": 2.96
+      "yoy_pct": 2.96,
+      "nominal_gdp_100m": 46297.6
     },
     {
       "period": "2019-Q3",
-      "yoy_pct": 3.41
+      "yoy_pct": 3.41,
+      "nominal_gdp_100m": 47741.7
     },
     {
       "period": "2019-Q4",
-      "yoy_pct": 3.68
+      "yoy_pct": 3.68,
+      "nominal_gdp_100m": 49941.7
     },
     {
       "period": "2020-Q1",
-      "yoy_pct": 3.21
+      "yoy_pct": 3.21,
+      "nominal_gdp_100m": 47354.7
     },
     {
       "period": "2020-Q2",
-      "yoy_pct": 0.55
+      "yoy_pct": 0.55,
+      "nominal_gdp_100m": 47723.8
     },
     {
       "period": "2020-Q3",
-      "yoy_pct": 4.23
+      "yoy_pct": 4.23,
+      "nominal_gdp_100m": 51030.3
     },
     {
       "period": "2020-Q4",
-      "yoy_pct": 5.48
+      "yoy_pct": 5.48,
+      "nominal_gdp_100m": 54128.8
     },
     {
       "period": "2021-Q1",
-      "yoy_pct": 9.62
+      "yoy_pct": 9.62,
+      "nominal_gdp_100m": 52963.6
     },
     {
       "period": "2021-Q2",
-      "yoy_pct": 8.28
+      "yoy_pct": 8.28,
+      "nominal_gdp_100m": 52795.6
     },
     {
       "period": "2021-Q3",
-      "yoy_pct": 4.32
+      "yoy_pct": 4.32,
+      "nominal_gdp_100m": 53882.5
     },
     {
       "period": "2021-Q4",
-      "yoy_pct": 5.1
+      "yoy_pct": 5.1,
+      "nominal_gdp_100m": 58091.2
     },
     {
       "period": "2022-Q1",
-      "yoy_pct": 3.85
+      "yoy_pct": 3.85,
+      "nominal_gdp_100m": 56476.6
     },
     {
       "period": "2022-Q2",
-      "yoy_pct": 3.51
+      "yoy_pct": 3.51,
+      "nominal_gdp_100m": 55580.5
     },
     {
       "period": "2022-Q3",
-      "yoy_pct": 4.06
+      "yoy_pct": 4.06,
+      "nominal_gdp_100m": 57185.4
     },
     {
       "period": "2022-Q4",
-      "yoy_pct": -0.43
+      "yoy_pct": -0.43,
+      "nominal_gdp_100m": 58961.9
     },
     {
       "period": "2023-Q1",
-      "yoy_pct": -3.58
+      "yoy_pct": -3.58,
+      "nominal_gdp_100m": 54845.1
     },
     {
       "period": "2023-Q2",
-      "yoy_pct": 1.42
+      "yoy_pct": 1.42,
+      "nominal_gdp_100m": 57117.7
     },
     {
       "period": "2023-Q3",
-      "yoy_pct": 1.56
+      "yoy_pct": 1.56,
+      "nominal_gdp_100m": 60219.6
     },
     {
       "period": "2023-Q4",
-      "yoy_pct": 4.74
+      "yoy_pct": 4.74,
+      "nominal_gdp_100m": 63801.1
     },
     {
       "period": "2024-Q1",
-      "yoy_pct": 7.16
+      "yoy_pct": 7.16,
+      "nominal_gdp_100m": 61452.4
     },
     {
       "period": "2024-Q2",
-      "yoy_pct": 5.33
+      "yoy_pct": 5.33,
+      "nominal_gdp_100m": 62776.1
     },
     {
       "period": "2024-Q3",
-      "yoy_pct": 4.66
+      "yoy_pct": 4.66,
+      "nominal_gdp_100m": 64765.2
     },
     {
       "period": "2024-Q4",
-      "yoy_pct": 4.13
+      "yoy_pct": 4.13,
+      "nominal_gdp_100m": 68377.1
     },
     {
       "period": "2025-Q1",
-      "yoy_pct": 5.54
+      "yoy_pct": 5.54,
+      "nominal_gdp_100m": 66839.8
     },
     {
       "period": "2025-Q2",
-      "yoy_pct": 7.71
+      "yoy_pct": 7.71,
+      "nominal_gdp_100m": 68448.3
     },
     {
       "period": "2025-Q3",
-      "yoy_pct": 8.42
+      "yoy_pct": 8.42,
+      "nominal_gdp_100m": 71254.1
     },
     {
       "period": "2025-Q4",
-      "yoy_pct": 12.95
+      "yoy_pct": 12.95,
+      "nominal_gdp_100m": 80609.0
     },
     {
       "period": "2026-Q1",
-      "yoy_pct": 15.43
+      "yoy_pct": 15.43,
+      "nominal_gdp_100m": 79856.8
     },
     {
       "period": "2026-Q2",
-      "yoy_pct": 12.93
+      "yoy_pct": 12.93,
+      "nominal_gdp_100m": 80402.1
     }
   ],
   "money_supply": [
@@ -14849,7 +15107,7 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-08-23T09:23:19Z",
+    "generated_at": "2026-08-24T03:35:23Z",
     "warnings": [
       "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
@@ -14894,6 +15152,10 @@
       "taiwan_fear_greed": {
         "name": "台股恐慌與貪婪指數（本站仿 CNN 方法論、以台灣資料源自行計算，非官方指數）",
         "url": "https://www.twse.com.tw/ 、 https://www.taifex.com.tw/ 、 https://finmindtrade.com/"
+      },
+      "valuation_models": {
+        "name": "台股點位估算模型（本站以GDP／資金面資料回歸計算，統計參考用途、非投資建議）",
+        "url": "https://data.gov.tw/dataset/6799"
       }
     }
   },
@@ -15935,7 +16197,7 @@
     ]
   },
   "taiwan_fear_greed": {
-    "score": 60.1,
+    "score": 60.9,
     "rating": "greed",
     "components_available": 6,
     "components_total": 7,
@@ -15951,9 +16213,9 @@
         "days_needed": 250
       },
       "put_call": {
-        "score": 34.9,
-        "put_call_ratio_pct": 115.06,
-        "date": "2026-08-19"
+        "score": 39.3,
+        "put_call_ratio_pct": 110.65,
+        "date": "2026-08-21"
       },
       "capital_flow": {
         "score": 79.6,
@@ -15977,8 +16239,892 @@
     "historical": [
       {
         "date": "2026-08-21",
-        "score": 60.1
+        "score": 60.9
       }
     ]
+  },
+  "valuation_models": {
+    "latest_period": "2026-Q2",
+    "actual_index": 46126.0,
+    "gdp_trend": {
+      "name": "GDP 單因子趨勢回歸",
+      "method": "台股加權指數與名目GDP的歷史對數線性關係，代入最新GDP推算指數理論水準",
+      "estimated_index": 28166.0,
+      "deviation_pct": 63.8,
+      "r_squared": 0.9,
+      "sample_quarters": 86,
+      "historical": [
+        {
+          "period": "2005-Q1",
+          "actual": 6005.9,
+          "fitted": 5492.3
+        },
+        {
+          "period": "2005-Q2",
+          "actual": 6241.9,
+          "fitted": 5455.6
+        },
+        {
+          "period": "2005-Q3",
+          "actual": 6118.6,
+          "fitted": 5943.4
+        },
+        {
+          "period": "2005-Q4",
+          "actual": 6548.3,
+          "fitted": 6591.7
+        },
+        {
+          "period": "2006-Q1",
+          "actual": 6614.0,
+          "fitted": 5883.1
+        },
+        {
+          "period": "2006-Q2",
+          "actual": 6704.4,
+          "fitted": 5899.9
+        },
+        {
+          "period": "2006-Q3",
+          "actual": 6883.1,
+          "fitted": 6470.7
+        },
+        {
+          "period": "2006-Q4",
+          "actual": 7823.7,
+          "fitted": 6914.4
+        },
+        {
+          "period": "2007-Q1",
+          "actual": 7884.4,
+          "fitted": 6355.7
+        },
+        {
+          "period": "2007-Q2",
+          "actual": 8883.2,
+          "fitted": 6450.7
+        },
+        {
+          "period": "2007-Q3",
+          "actual": 9476.5,
+          "fitted": 7306.3
+        },
+        {
+          "period": "2007-Q4",
+          "actual": 8506.3,
+          "fitted": 7640.5
+        },
+        {
+          "period": "2008-Q1",
+          "actual": 8572.6,
+          "fitted": 6875.8
+        },
+        {
+          "period": "2008-Q2",
+          "actual": 7523.5,
+          "fitted": 6842.7
+        },
+        {
+          "period": "2008-Q3",
+          "actual": 5719.3,
+          "fitted": 6606.5
+        },
+        {
+          "period": "2008-Q4",
+          "actual": 4591.2,
+          "fitted": 6578.3
+        },
+        {
+          "period": "2009-Q1",
+          "actual": 5210.8,
+          "fitted": 6174.4
+        },
+        {
+          "period": "2009-Q2",
+          "actual": 6432.2,
+          "fitted": 6158.5
+        },
+        {
+          "period": "2009-Q3",
+          "actual": 7509.2,
+          "fitted": 6681.3
+        },
+        {
+          "period": "2009-Q4",
+          "actual": 8188.1,
+          "fitted": 7272.4
+        },
+        {
+          "period": "2010-Q1",
+          "actual": 7920.1,
+          "fitted": 7165.7
+        },
+        {
+          "period": "2010-Q2",
+          "actual": 7329.4,
+          "fitted": 7355.1
+        },
+        {
+          "period": "2010-Q3",
+          "actual": 8237.8,
+          "fitted": 7822.8
+        },
+        {
+          "period": "2010-Q4",
+          "actual": 8972.5,
+          "fitted": 7726.6
+        },
+        {
+          "period": "2011-Q1",
+          "actual": 8683.3,
+          "fitted": 7643.3
+        },
+        {
+          "period": "2011-Q2",
+          "actual": 8652.6,
+          "fitted": 7363.7
+        },
+        {
+          "period": "2011-Q3",
+          "actual": 7225.4,
+          "fitted": 7967.6
+        },
+        {
+          "period": "2011-Q4",
+          "actual": 7072.1,
+          "fitted": 7785.2
+        },
+        {
+          "period": "2012-Q1",
+          "actual": 7933.0,
+          "fitted": 7715.2
+        },
+        {
+          "period": "2012-Q2",
+          "actual": 7296.3,
+          "fitted": 7671.7
+        },
+        {
+          "period": "2012-Q3",
+          "actual": 7715.2,
+          "fitted": 8375.1
+        },
+        {
+          "period": "2012-Q4",
+          "actual": 7699.5,
+          "fitted": 8448.5
+        },
+        {
+          "period": "2013-Q1",
+          "actual": 7918.6,
+          "fitted": 8054.7
+        },
+        {
+          "period": "2013-Q2",
+          "actual": 8062.2,
+          "fitted": 8231.8
+        },
+        {
+          "period": "2013-Q3",
+          "actual": 8173.9,
+          "fitted": 8790.1
+        },
+        {
+          "period": "2013-Q4",
+          "actual": 8611.5,
+          "fitted": 9242.7
+        },
+        {
+          "period": "2014-Q1",
+          "actual": 8849.3,
+          "fitted": 8742.4
+        },
+        {
+          "period": "2014-Q2",
+          "actual": 9393.1,
+          "fitted": 9115.3
+        },
+        {
+          "period": "2014-Q3",
+          "actual": 8966.9,
+          "fitted": 9750.4
+        },
+        {
+          "period": "2014-Q4",
+          "actual": 9307.3,
+          "fitted": 10329.8
+        },
+        {
+          "period": "2015-Q1",
+          "actual": 9586.4,
+          "fitted": 10047.4
+        },
+        {
+          "period": "2015-Q2",
+          "actual": 9323.0,
+          "fitted": 9826.6
+        },
+        {
+          "period": "2015-Q3",
+          "actual": 8181.2,
+          "fitted": 10317.7
+        },
+        {
+          "period": "2015-Q4",
+          "actual": 8338.1,
+          "fitted": 10736.2
+        },
+        {
+          "period": "2016-Q1",
+          "actual": 8744.8,
+          "fitted": 10439.4
+        },
+        {
+          "period": "2016-Q2",
+          "actual": 8666.6,
+          "fitted": 10210.1
+        },
+        {
+          "period": "2016-Q3",
+          "actual": 9166.9,
+          "fitted": 10732.8
+        },
+        {
+          "period": "2016-Q4",
+          "actual": 9253.5,
+          "fitted": 11486.1
+        },
+        {
+          "period": "2017-Q1",
+          "actual": 9811.5,
+          "fitted": 10705.5
+        },
+        {
+          "period": "2017-Q2",
+          "actual": 10395.1,
+          "fitted": 10508.1
+        },
+        {
+          "period": "2017-Q3",
+          "actual": 10383.9,
+          "fitted": 11456.6
+        },
+        {
+          "period": "2017-Q4",
+          "actual": 10642.9,
+          "fitted": 12001.6
+        },
+        {
+          "period": "2018-Q1",
+          "actual": 10919.5,
+          "fitted": 11088.6
+        },
+        {
+          "period": "2018-Q2",
+          "actual": 10836.9,
+          "fitted": 11157.0
+        },
+        {
+          "period": "2018-Q3",
+          "actual": 11006.3,
+          "fitted": 11633.5
+        },
+        {
+          "period": "2018-Q4",
+          "actual": 9727.4,
+          "fitted": 12410.9
+        },
+        {
+          "period": "2019-Q1",
+          "actual": 10641.0,
+          "fitted": 11451.9
+        },
+        {
+          "period": "2019-Q2",
+          "actual": 10730.8,
+          "fitted": 11667.5
+        },
+        {
+          "period": "2019-Q3",
+          "actual": 10829.7,
+          "fitted": 12254.0
+        },
+        {
+          "period": "2019-Q4",
+          "actual": 11997.1,
+          "fitted": 13168.0
+        },
+        {
+          "period": "2020-Q1",
+          "actual": 9708.1,
+          "fitted": 12095.8
+        },
+        {
+          "period": "2020-Q2",
+          "actual": 11621.2,
+          "fitted": 12246.7
+        },
+        {
+          "period": "2020-Q3",
+          "actual": 12515.6,
+          "fitted": 13629.3
+        },
+        {
+          "period": "2020-Q4",
+          "actual": 14732.5,
+          "fitted": 14974.4
+        },
+        {
+          "period": "2021-Q1",
+          "actual": 16431.1,
+          "fitted": 14463.0
+        },
+        {
+          "period": "2021-Q2",
+          "actual": 17755.5,
+          "fitted": 14389.8
+        },
+        {
+          "period": "2021-Q3",
+          "actual": 16934.8,
+          "fitted": 14865.7
+        },
+        {
+          "period": "2021-Q4",
+          "actual": 18218.8,
+          "fitted": 16762.6
+        },
+        {
+          "period": "2022-Q1",
+          "actual": 17693.5,
+          "fitted": 16024.8
+        },
+        {
+          "period": "2022-Q2",
+          "actual": 14825.7,
+          "fitted": 15620.8
+        },
+        {
+          "period": "2022-Q3",
+          "actual": 13424.6,
+          "fitted": 16347.2
+        },
+        {
+          "period": "2022-Q4",
+          "actual": 14137.7,
+          "fitted": 17165.5
+        },
+        {
+          "period": "2023-Q1",
+          "actual": 15868.1,
+          "fitted": 15292.1
+        },
+        {
+          "period": "2023-Q2",
+          "actual": 16915.5,
+          "fitted": 16316.3
+        },
+        {
+          "period": "2023-Q3",
+          "actual": 16353.7,
+          "fitted": 17753.9
+        },
+        {
+          "period": "2023-Q4",
+          "actual": 17930.8,
+          "fitted": 19469.6
+        },
+        {
+          "period": "2024-Q1",
+          "actual": 20294.5,
+          "fitted": 18337.8
+        },
+        {
+          "period": "2024-Q2",
+          "actual": 23032.2,
+          "fitted": 18972.5
+        },
+        {
+          "period": "2024-Q3",
+          "actual": 22224.5,
+          "fitted": 19941.4
+        },
+        {
+          "period": "2024-Q4",
+          "actual": 23035.1,
+          "fitted": 21746.5
+        },
+        {
+          "period": "2025-Q1",
+          "actual": 20695.9,
+          "fitted": 20971.1
+        },
+        {
+          "period": "2025-Q2",
+          "actual": 22256.0,
+          "fitted": 21782.7
+        },
+        {
+          "period": "2025-Q3",
+          "actual": 25820.5,
+          "fitted": 23225.8
+        },
+        {
+          "period": "2025-Q4",
+          "actual": 28963.6,
+          "fitted": 28282.2
+        },
+        {
+          "period": "2026-Q1",
+          "actual": 31723.0,
+          "fitted": 27862.0
+        },
+        {
+          "period": "2026-Q2",
+          "actual": 46125.9,
+          "fitted": 28166.4
+        }
+      ]
+    },
+    "gdp_liquidity": {
+      "name": "GDP＋資金面雙因子回歸",
+      "method": "在GDP趨勢基礎上加入M1B–M2貨幣增速差（資金鬆緊代理變數）的雙因子對數線性回歸，較單看GDP更能反映資金環境對股價的影響",
+      "estimated_index": 28115.0,
+      "deviation_pct": 64.1,
+      "r_squared": 0.905,
+      "sample_quarters": 86,
+      "historical": [
+        {
+          "period": "2005-Q1",
+          "actual": 6005.9,
+          "fitted": 5451.2
+        },
+        {
+          "period": "2005-Q2",
+          "actual": 6241.9,
+          "fitted": 5413.4
+        },
+        {
+          "period": "2005-Q3",
+          "actual": 6118.6,
+          "fitted": 5804.9
+        },
+        {
+          "period": "2005-Q4",
+          "actual": 6548.3,
+          "fitted": 6497.4
+        },
+        {
+          "period": "2006-Q1",
+          "actual": 6614.0,
+          "fitted": 5703.4
+        },
+        {
+          "period": "2006-Q2",
+          "actual": 6704.4,
+          "fitted": 5706.9
+        },
+        {
+          "period": "2006-Q3",
+          "actual": 6883.1,
+          "fitted": 6374.4
+        },
+        {
+          "period": "2006-Q4",
+          "actual": 7823.7,
+          "fitted": 6776.9
+        },
+        {
+          "period": "2007-Q1",
+          "actual": 7884.4,
+          "fitted": 6372.8
+        },
+        {
+          "period": "2007-Q2",
+          "actual": 8883.2,
+          "fitted": 6510.8
+        },
+        {
+          "period": "2007-Q3",
+          "actual": 9476.5,
+          "fitted": 7319.6
+        },
+        {
+          "period": "2007-Q4",
+          "actual": 8506.3,
+          "fitted": 7486.1
+        },
+        {
+          "period": "2008-Q1",
+          "actual": 8572.6,
+          "fitted": 6632.2
+        },
+        {
+          "period": "2008-Q2",
+          "actual": 7523.5,
+          "fitted": 6488.7
+        },
+        {
+          "period": "2008-Q3",
+          "actual": 5719.3,
+          "fitted": 6188.0
+        },
+        {
+          "period": "2008-Q4",
+          "actual": 4591.2,
+          "fitted": 6127.5
+        },
+        {
+          "period": "2009-Q1",
+          "actual": 5210.8,
+          "fitted": 6084.1
+        },
+        {
+          "period": "2009-Q2",
+          "actual": 6432.2,
+          "fitted": 6459.3
+        },
+        {
+          "period": "2009-Q3",
+          "actual": 7509.2,
+          "fitted": 7266.2
+        },
+        {
+          "period": "2009-Q4",
+          "actual": 8188.1,
+          "fitted": 8398.6
+        },
+        {
+          "period": "2010-Q1",
+          "actual": 7920.1,
+          "fitted": 7833.3
+        },
+        {
+          "period": "2010-Q2",
+          "actual": 7329.4,
+          "fitted": 7709.9
+        },
+        {
+          "period": "2010-Q3",
+          "actual": 8237.8,
+          "fitted": 8094.6
+        },
+        {
+          "period": "2010-Q4",
+          "actual": 8972.5,
+          "fitted": 7804.5
+        },
+        {
+          "period": "2011-Q1",
+          "actual": 8683.3,
+          "fitted": 7696.8
+        },
+        {
+          "period": "2011-Q2",
+          "actual": 8652.6,
+          "fitted": 7327.8
+        },
+        {
+          "period": "2011-Q3",
+          "actual": 7225.4,
+          "fitted": 7844.5
+        },
+        {
+          "period": "2011-Q4",
+          "actual": 7072.1,
+          "fitted": 7592.2
+        },
+        {
+          "period": "2012-Q1",
+          "actual": 7933.0,
+          "fitted": 7525.9
+        },
+        {
+          "period": "2012-Q2",
+          "actual": 7296.3,
+          "fitted": 7521.1
+        },
+        {
+          "period": "2012-Q3",
+          "actual": 7715.2,
+          "fitted": 8277.8
+        },
+        {
+          "period": "2012-Q4",
+          "actual": 7699.5,
+          "fitted": 8421.8
+        },
+        {
+          "period": "2013-Q1",
+          "actual": 7918.6,
+          "fitted": 8080.5
+        },
+        {
+          "period": "2013-Q2",
+          "actual": 8062.2,
+          "fitted": 8304.8
+        },
+        {
+          "period": "2013-Q3",
+          "actual": 8173.9,
+          "fitted": 8804.7
+        },
+        {
+          "period": "2013-Q4",
+          "actual": 8611.5,
+          "fitted": 9295.5
+        },
+        {
+          "period": "2014-Q1",
+          "actual": 8849.3,
+          "fitted": 8772.2
+        },
+        {
+          "period": "2014-Q2",
+          "actual": 9393.1,
+          "fitted": 9093.5
+        },
+        {
+          "period": "2014-Q3",
+          "actual": 8966.9,
+          "fitted": 9767.2
+        },
+        {
+          "period": "2014-Q4",
+          "actual": 9307.3,
+          "fitted": 10216.9
+        },
+        {
+          "period": "2015-Q1",
+          "actual": 9586.4,
+          "fitted": 9877.2
+        },
+        {
+          "period": "2015-Q2",
+          "actual": 9323.0,
+          "fitted": 9690.7
+        },
+        {
+          "period": "2015-Q3",
+          "actual": 8181.2,
+          "fitted": 10204.0
+        },
+        {
+          "period": "2015-Q4",
+          "actual": 8338.1,
+          "fitted": 10692.8
+        },
+        {
+          "period": "2016-Q1",
+          "actual": 8744.8,
+          "fitted": 10421.6
+        },
+        {
+          "period": "2016-Q2",
+          "actual": 8666.6,
+          "fitted": 10177.4
+        },
+        {
+          "period": "2016-Q3",
+          "actual": 9166.9,
+          "fitted": 10753.4
+        },
+        {
+          "period": "2016-Q4",
+          "actual": 9253.5,
+          "fitted": 11538.9
+        },
+        {
+          "period": "2017-Q1",
+          "actual": 9811.5,
+          "fitted": 10643.6
+        },
+        {
+          "period": "2017-Q2",
+          "actual": 10395.1,
+          "fitted": 10480.7
+        },
+        {
+          "period": "2017-Q3",
+          "actual": 10383.9,
+          "fitted": 11409.9
+        },
+        {
+          "period": "2017-Q4",
+          "actual": 10642.9,
+          "fitted": 11872.8
+        },
+        {
+          "period": "2018-Q1",
+          "actual": 10919.5,
+          "fitted": 11106.3
+        },
+        {
+          "period": "2018-Q2",
+          "actual": 10836.9,
+          "fitted": 11162.4
+        },
+        {
+          "period": "2018-Q3",
+          "actual": 11006.3,
+          "fitted": 11679.6
+        },
+        {
+          "period": "2018-Q4",
+          "actual": 9727.4,
+          "fitted": 12557.5
+        },
+        {
+          "period": "2019-Q1",
+          "actual": 10641.0,
+          "fitted": 11661.7
+        },
+        {
+          "period": "2019-Q2",
+          "actual": 10730.8,
+          "fitted": 11907.7
+        },
+        {
+          "period": "2019-Q3",
+          "actual": 10829.7,
+          "fitted": 12477.6
+        },
+        {
+          "period": "2019-Q4",
+          "actual": 11997.1,
+          "fitted": 13321.6
+        },
+        {
+          "period": "2020-Q1",
+          "actual": 9708.1,
+          "fitted": 12215.7
+        },
+        {
+          "period": "2020-Q2",
+          "actual": 11621.2,
+          "fitted": 12492.3
+        },
+        {
+          "period": "2020-Q3",
+          "actual": 12515.6,
+          "fitted": 13952.6
+        },
+        {
+          "period": "2020-Q4",
+          "actual": 14732.5,
+          "fitted": 15638.3
+        },
+        {
+          "period": "2021-Q1",
+          "actual": 16431.1,
+          "fitted": 15256.7
+        },
+        {
+          "period": "2021-Q2",
+          "actual": 17755.5,
+          "fitted": 15090.6
+        },
+        {
+          "period": "2021-Q3",
+          "actual": 16934.8,
+          "fitted": 15396.5
+        },
+        {
+          "period": "2021-Q4",
+          "actual": 18218.8,
+          "fitted": 17191.5
+        },
+        {
+          "period": "2022-Q1",
+          "actual": 17693.5,
+          "fitted": 16142.0
+        },
+        {
+          "period": "2022-Q2",
+          "actual": 14825.7,
+          "fitted": 15463.7
+        },
+        {
+          "period": "2022-Q3",
+          "actual": 13424.6,
+          "fitted": 16082.1
+        },
+        {
+          "period": "2022-Q4",
+          "actual": 14137.7,
+          "fitted": 16650.7
+        },
+        {
+          "period": "2023-Q1",
+          "actual": 15868.1,
+          "fitted": 14718.5
+        },
+        {
+          "period": "2023-Q2",
+          "actual": 16915.5,
+          "fitted": 15831.6
+        },
+        {
+          "period": "2023-Q3",
+          "actual": 16353.7,
+          "fitted": 17327.5
+        },
+        {
+          "period": "2023-Q4",
+          "actual": 17930.8,
+          "fitted": 19131.9
+        },
+        {
+          "period": "2024-Q1",
+          "actual": 20294.5,
+          "fitted": 18133.9
+        },
+        {
+          "period": "2024-Q2",
+          "actual": 23032.2,
+          "fitted": 18741.7
+        },
+        {
+          "period": "2024-Q3",
+          "actual": 22224.5,
+          "fitted": 19678.1
+        },
+        {
+          "period": "2024-Q4",
+          "actual": 23035.1,
+          "fitted": 21402.7
+        },
+        {
+          "period": "2025-Q1",
+          "actual": 20695.9,
+          "fitted": 20476.1
+        },
+        {
+          "period": "2025-Q2",
+          "actual": 22256.0,
+          "fitted": 21589.2
+        },
+        {
+          "period": "2025-Q3",
+          "actual": 25820.5,
+          "fitted": 23123.3
+        },
+        {
+          "period": "2025-Q4",
+          "actual": 28963.6,
+          "fitted": 28196.5
+        },
+        {
+          "period": "2026-Q1",
+          "actual": 31723.0,
+          "fitted": 28118.9
+        },
+        {
+          "period": "2026-Q2",
+          "actual": 46125.9,
+          "fitted": 28114.6
+        }
+      ]
+    }
   }
 }
