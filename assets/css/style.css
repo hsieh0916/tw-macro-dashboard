@@ -145,6 +145,7 @@ a { color: var(--series-blue); }
 }
 .range-btns {
   display: inline-flex;
+  flex-wrap: wrap;
   gap: 2px;
   padding: 3px;
   border: 1px solid var(--border);
@@ -527,6 +528,10 @@ a { color: var(--series-blue); }
   border: 1px solid var(--series-blue);
   border-radius: 999px;
   padding: 1px 8px;
+}
+.vm-badge.warn {
+  color: var(--status-warning);
+  border-color: var(--status-warning);
 }
 .vm-card-method {
   font-size: 12px;

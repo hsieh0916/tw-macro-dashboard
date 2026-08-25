@@ -722,6 +722,61 @@ def _quarter_end_date(period):
 
 
 # ---------------------------------------------------------------------------
+# 上市公司本益比（月資料，證交所「市場交易月報」）—— 供本益比均值回歸模型使用。
+# 每月報表檔只附「近 3 個年度＋當月」4 欄快照，無法一次取得完整歷史，因此完整
+# 歷史改由 scripts/backfill_pe_history.py 一次性回填進 data/dashboard.json 的
+# pe_history 欄位（已回填 2007-01 起、詳見該腳本），這裡每次執行只補抓「最新一
+# 個月」疊加上去，避免每天重覆下載解析兩百多個月的歷史檔案。
+# ---------------------------------------------------------------------------
+def fetch_month_pe_ratio(ym):
+    """ym 格式 'YYYYMM'。回傳當月本益比（倍），查無資料回傳 None。"""
+    import xlrd  # 延遲載入，理由同 fetch_twse_market_cap_weekly()
+
+    url = f"https://www.twse.com.tw/staticFiles/inspection/inspection/02/001/{ym}_C02001.zip"
+    r = requests.get(url, headers=UA, timeout=TIMEOUT, verify=ca_bundle())
+    if r.status_code != 200 or not r.content.startswith(b"PK"):
+        return None
+    zf = zipfile.ZipFile(io.BytesIO(r.content))
+    names = [n for n in zf.namelist() if n.lower().endswith((".xls", ".xlsx"))]
+    if not names:
+        return None
+    wb = xlrd.open_workbook(file_contents=zf.read(names[0]))
+    sheet = next((s for s in wb.sheets() if "本益比" in s.name), None)
+    if sheet is None:
+        return None
+    for r_idx in range(sheet.nrows):
+        row = sheet.row_values(r_idx)
+        # 本益比列的其餘欄位是最近 3 個年度＋當月的快照，取最後一欄＝當月數值；
+        # 用 startswith 而非 in 比對，避免命中同一工作表標題列裡也含「本益比」字樣
+        if row and str(row[0]).strip().startswith("本益比") and len(row) > 1:
+            val = row[-1]
+            return round(val, 2) if isinstance(val, (int, float)) and val > 0 else None
+    return None
+
+
+def fetch_pe_history(existing_pe_history):
+    log("fetching latest TWSE monthly PE ratio (市場交易月報, incremental on top of seeded history)")
+    hist = {r["period"]: r["pe_ratio"] for r in existing_pe_history if r.get("pe_ratio") is not None}
+    now = datetime.now(timezone.utc)
+    candidates = [(now.year, now.month)]
+    prev_month = now.month - 1 or 12
+    prev_year = now.year if now.month > 1 else now.year - 1
+    candidates.append((prev_year, prev_month))
+    for y, m in candidates:
+        try:
+            val = fetch_month_pe_ratio(f"{y}{m:02d}")
+        except Exception as e:
+            log(f"  -> {y}-{m:02d} failed: {e}")
+            val = None
+        if val is not None:
+            hist[f"{y}-{m:02d}"] = val
+            log(f"  -> {y}-{m:02d} = {val}")
+    out = [{"period": p, "pe_ratio": v} for p, v in sorted(hist.items())]
+    log(f"  -> {len(out)} monthly points total, latest {out[-1] if out else None}")
+    return out
+
+
+# ---------------------------------------------------------------------------
 # 台股點位估算模型 —— 以台灣名目GDP（及資金面資料）與台股加權指數的歷史關係，
 # 回歸推算「理論水準」供對照，而非預測未來股價。統計上的歷史相關性不代表因果，
 # 樣本數有限（僅 2005 年以來、TAIEX 資料涵蓋期間的季資料），模型係數也會隨每次
@@ -791,7 +846,10 @@ def ols_multi(rows_x, ys):
     return {"beta": beta, "r2": (1 - ss_res / ss_tot) if ss_tot > 0 else None}
 
 
-def compute_valuation_models(gdp_q, taiex_monthly, business_signal_monthly, money_supply_monthly, market_cap_weekly=None):
+def compute_valuation_models(gdp_q, taiex_monthly, business_signal_monthly, money_supply_monthly,
+                              market_cap_weekly=None, pmi_monthly=None, pe_history=None):
+    pmi_monthly = pmi_monthly or []
+    pe_history = pe_history or []
     taiex_q = {}
     for row in taiex_monthly:
         y, m = row["period"].split("-")
@@ -821,6 +879,8 @@ def compute_valuation_models(gdp_q, taiex_monthly, business_signal_monthly, mone
             "name": "GDP 單因子趨勢回歸",
             "method": "台股加權指數與名目GDP的歷史對數線性關係，代入最新GDP推算指數理論水準",
             "estimated_index": round(est, 0),
+            "actual_index": round(actual_latest, 0),
+            "latest_period": latest,
             "deviation_pct": round((actual_latest / est - 1) * 100, 1),
             "r_squared": round(fit["r2"], 3) if fit["r2"] is not None else None,
             "sample_quarters": len(periods),
@@ -844,6 +904,8 @@ def compute_valuation_models(gdp_q, taiex_monthly, business_signal_monthly, mone
                 "name": "GDP＋資金面雙因子回歸",
                 "method": "在GDP趨勢基礎上加入M1B–M2貨幣增速差（資金鬆緊代理變數）的雙因子對數線性回歸，較單看GDP更能反映資金環境對股價的影響",
                 "estimated_index": round(est2, 0),
+                "actual_index": round(actual_latest, 0),
+                "latest_period": latest,
                 "deviation_pct": round((actual_latest / est2 - 1) * 100, 1),
                 "r_squared": round(fit2["r2"], 3) if fit2["r2"] is not None else None,
                 "sample_quarters": len(periods2),
@@ -879,6 +941,8 @@ def compute_valuation_models(gdp_q, taiex_monthly, business_signal_monthly, mone
                 "name": "巴菲特指標均值回歸",
                 "method": "以「上市總市值 ÷ 近四季名目GDP」比率的歷史均值為錨，假設總市值與加權指數同步變動，反推比率回歸均值時對應的指數水準",
                 "estimated_index": round(est3, 0),
+                "actual_index": round(actual_latest, 0),
+                "latest_period": latest,
                 "deviation_pct": round((actual_latest / est3 - 1) * 100, 1),
                 "current_ratio_pct": round(current_ratio, 1),
                 "average_ratio_pct": round(mean_ratio, 1),
@@ -887,6 +951,102 @@ def compute_valuation_models(gdp_q, taiex_monthly, business_signal_monthly, mone
                     {"period": p, "actual": round(taiex_q[p], 1), "fitted": round(taiex_q[p] * mean_ratio / ratios[p], 1)}
                     for p in sorted(ratios)
                 ],
+            }
+
+    # ---- 模型四：本益比（P/E）均值回歸 ----
+    # 與巴菲特指標同樣是均值回歸手法，但錨定「整體上市公司本益比」的歷史均值而非
+    # 市值／GDP 比率——本益比是傳統上最常見的股市評價指標，直接反映「用幾年獲利
+    # 換回本金」，理論上比GDP或市值更貼近「股價相對於獲利是否合理」這個問題。
+    pe_by_period = {r["period"]: r["pe_ratio"] for r in pe_history if r.get("pe_ratio") is not None}
+    taiex_m_map = {r["period"]: r["close"] for r in taiex_monthly}
+    pe_periods = sorted(set(pe_by_period) & set(taiex_m_map))
+    if len(pe_periods) >= 24 and pe_periods[-1] in pe_by_period:
+        latest_pe_period = pe_periods[-1]
+        actual_pe_latest = taiex_m_map[latest_pe_period]
+        mean_pe = sum(pe_by_period[p] for p in pe_periods) / len(pe_periods)
+        current_pe = pe_by_period[latest_pe_period]
+        if current_pe > 0:
+            est4 = actual_pe_latest * (mean_pe / current_pe)
+            models["pe_ratio"] = {
+                "name": "本益比均值回歸",
+                "method": "以整體上市公司本益比（股價÷每股盈餘）的歷史均值為錨，假設本益比會回歸長期均值，反推指數回到均值本益比時對應的水準——傳統上最常見的股市評價角度",
+                "estimated_index": round(est4, 0),
+                "actual_index": round(actual_pe_latest, 0),
+                "latest_period": latest_pe_period,
+                "deviation_pct": round((actual_pe_latest / est4 - 1) * 100, 1),
+                "current_ratio_pct": round(current_pe, 1),
+                "average_ratio_pct": round(mean_pe, 1),
+                "sample_quarters": len(pe_periods),
+                "sample_unit": "月",
+                "historical": [
+                    {"period": p, "actual": round(taiex_m_map[p], 1), "fitted": round(taiex_m_map[p] * mean_pe / pe_by_period[p], 1)}
+                    for p in pe_periods
+                ],
+            }
+
+    # ---- 模型五：景氣信號＋PMI 月頻回歸 ----
+    # 與模型一、二不同：景氣對策信號分數與PMI都是「景氣循環位置」指標（有界、隨
+    # 循環擺動），不像GDP或加權指數本身具有長期複合成長趨勢，因此配適度(R²)通常
+    # 會明顯低於GDP模型——這是誠實的統計結果，反映的是短中期景氣位置的相對意涵，
+    # 而非長期價值錨定；優點是月資料更新頻率高於GDP（季資料），更即時。
+    signal_m = {r["period"]: r["score"] for r in business_signal_monthly if r.get("score") is not None}
+    pmi_m = {r["period"]: r["pmi"] for r in pmi_monthly if r.get("pmi") is not None}
+    periods_m = sorted(set(taiex_m_map) & set(signal_m) & set(pmi_m))
+    if len(periods_m) >= 24:
+        Xm = [[1.0, signal_m[p], pmi_m[p]] for p in periods_m]
+        ym_log = [math.log(taiex_m_map[p]) for p in periods_m]
+        fit_m = ols_multi(Xm, ym_log)
+        if fit_m:
+            betam = fit_m["beta"]
+
+            def predict_m(p):
+                return math.exp(betam[0] + betam[1] * signal_m[p] + betam[2] * pmi_m[p])
+
+            latest_m = periods_m[-1]
+            actual_m = taiex_m_map[latest_m]
+            est_m = predict_m(latest_m)
+            models["cycle_monthly"] = {
+                "name": "景氣信號＋PMI 月頻回歸",
+                "method": "以景氣對策信號綜合分數與製造業PMI為預測變數的月頻回歸，更新頻率高於GDP（季資料）；但兩者是有界的景氣循環指標、不具長期成長趨勢，配適度通常明顯低於GDP模型，僅反映短中期景氣位置的相對意涵",
+                "estimated_index": round(est_m, 0),
+                "actual_index": round(actual_m, 0),
+                "latest_period": latest_m,
+                "deviation_pct": round((actual_m / est_m - 1) * 100, 1),
+                "r_squared": round(fit_m["r2"], 3) if fit_m["r2"] is not None else None,
+                "sample_quarters": len(periods_m),
+                "sample_unit": "月",
+                "historical": [{"period": p, "actual": round(taiex_m_map[p], 1), "fitted": round(predict_m(p), 1)} for p in periods_m],
+            }
+
+    # ---- 模型六：GDP＋資金面＋PMI＋景氣信號 綜合多因子回歸 ----
+    # 涵蓋面最廣，但變數之間高度相關（PMI、景氣信號、資金面往往同向變動）、樣本數
+    # 有限（僅 2005 年以來的季資料），過度配適（overfitting）風險也最高：R² 偏高
+    # 不代表模型更可靠，反而可能只是「變數夠多、什麼都能配出高R²」的假象。
+    pmi_q = quarterly_last(pmi_monthly, "pmi")
+    signal_q = quarterly_last(business_signal_monthly, "score")
+    periods6 = [p for p in periods if p in m1b_m2_gap_q and p in pmi_q and p in signal_q]
+    if len(periods6) >= 16:
+        X6 = [[1.0, math.log(gdp_nominal[p]), m1b_m2_gap_q[p], pmi_q[p], signal_q[p]] for p in periods6]
+        y6 = [math.log(taiex_q[p]) for p in periods6]
+        fit6 = ols_multi(X6, y6)
+        if fit6:
+            beta6 = fit6["beta"]
+
+            def predict6(p):
+                return math.exp(beta6[0] + beta6[1] * math.log(gdp_nominal[p]) + beta6[2] * m1b_m2_gap_q[p]
+                                 + beta6[3] * pmi_q[p] + beta6[4] * signal_q[p])
+
+            est6 = predict6(latest)
+            models["comprehensive"] = {
+                "name": "GDP＋資金面＋PMI＋景氣信號 綜合回歸",
+                "method": "同時納入名目GDP、M1B–M2增速差、PMI、景氣對策信號分數 4 項預測變數的多因子回歸，涵蓋面最廣；但變數間高度相關、樣本有限，過度配適風險也最高，R² 偏高不必然代表更可靠——建議只當作其他模型的對照，不要單獨依賴",
+                "estimated_index": round(est6, 0),
+                "actual_index": round(actual_latest, 0),
+                "latest_period": latest,
+                "deviation_pct": round((actual_latest / est6 - 1) * 100, 1),
+                "r_squared": round(fit6["r2"], 3) if fit6["r2"] is not None else None,
+                "sample_quarters": len(periods6),
+                "historical": [{"period": p, "actual": round(taiex_q[p], 1), "fitted": round(predict6(p), 1)} for p in periods6],
             }
 
     return models
@@ -944,7 +1104,15 @@ def main():
         if "taiwan_fear_greed" not in result:
             result["taiwan_fear_greed"] = {}
 
-    log("computing 台股點位估算模型（GDP 趨勢回歸／GDP+資金面雙因子回歸／巴菲特指標）")
+    try:
+        result["pe_history"] = fetch_pe_history(existing.get("pe_history", []))
+    except Exception as e:
+        log(f"ERROR fetching pe_history: {e}")
+        warnings.append(f"pe_history 擷取失敗，沿用舊資料：{e}")
+        if "pe_history" not in result:
+            result["pe_history"] = []
+
+    log("computing 台股點位估算模型（GDP趨勢／GDP+資金面／巴菲特指標／本益比／景氣+PMI／綜合多因子）")
     try:
         models = compute_valuation_models(
             result.get("gdp", []),
@@ -952,6 +1120,8 @@ def main():
             result.get("business_signal", []),
             result.get("money_supply", []),
             result.get("market_cap_weekly", []),
+            result.get("pmi", []),
+            result.get("pe_history", []),
         )
         if models:
             result["valuation_models"] = models
@@ -979,6 +1149,7 @@ def main():
             "taiwan_fear_greed": {"name": "台股恐慌與貪婪指數（本站仿 CNN 方法論、以台灣資料源自行計算，非官方指數）", "url": "https://www.twse.com.tw/ 、 https://www.taifex.com.tw/ 、 https://finmindtrade.com/"},
             "valuation_models": {"name": "台股點位估算模型（本站以GDP／資金面／總市值資料回歸計算，統計參考用途、非投資建議）", "url": "https://data.gov.tw/dataset/6799"},
             "market_cap_weekly": {"name": "台灣證券交易所—上市股票市值週報", "url": "https://www.twse.com.tw/zh/trading/statistics/week.html"},
+            "pe_history": {"name": "台灣證券交易所—市場交易月報（本益比、殖利率）", "url": "https://www.twse.com.tw/zh/trading/statistics/index02.html"},
         },
     }
 

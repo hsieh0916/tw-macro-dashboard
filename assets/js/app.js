@@ -569,14 +569,18 @@
     ["gdp_trend", "GDP 趨勢"],
     ["gdp_liquidity", "GDP＋資金面"],
     ["buffett_indicator", "巴菲特指標"],
+    ["pe_ratio", "本益比"],
+    ["cycle_monthly", "景氣＋PMI"],
+    ["comprehensive", "綜合多因子"],
   ];
 
   function vmFourthRow(m) {
+    const unit = m.sample_unit || "季";
     if (m.r_squared != null) {
-      return `<div class="vm-card-row muted"><span>模型配適度 R²</span><span>${fmtNum(m.r_squared, 3)}（樣本 ${m.sample_quarters} 季）</span></div>`;
+      return `<div class="vm-card-row muted"><span>模型配適度 R²</span><span>${fmtNum(m.r_squared, 3)}（樣本 ${m.sample_quarters} ${unit}）</span></div>`;
     }
     if (m.current_ratio_pct != null) {
-      return `<div class="vm-card-row muted"><span>目前比率／歷史均值</span><span>${fmtNum(m.current_ratio_pct, 0)}% / ${fmtNum(m.average_ratio_pct, 0)}%（樣本 ${m.sample_quarters} 季）</span></div>`;
+      return `<div class="vm-card-row muted"><span>目前比率／歷史均值</span><span>${fmtNum(m.current_ratio_pct, 0)}% / ${fmtNum(m.average_ratio_pct, 0)}%（樣本 ${m.sample_quarters} ${unit}）</span></div>`;
     }
     return "";
   }
@@ -593,13 +597,18 @@
       return;
     }
 
+    const VM_BADGE = {
+      gdp_liquidity: '<span class="vm-badge">較完整</span>',
+      comprehensive: '<span class="vm-badge warn">過度配適風險</span>',
+    };
+
     if (wrap) {
       wrap.innerHTML = models.map(([key, , m]) => `
         <div class="vm-card">
-          <div class="vm-card-title">${m.name}${key === "gdp_liquidity" ? '<span class="vm-badge">較完整</span>' : ""}</div>
+          <div class="vm-card-title">${m.name}${VM_BADGE[key] || ""}</div>
           <div class="vm-card-method">${m.method}</div>
           <div class="vm-card-row"><span>模型推算點位</span><span class="vm-value">${fmtInt(m.estimated_index)}</span></div>
-          <div class="vm-card-row"><span>實際點位（${vm.latest_period}）</span><span class="vm-value">${fmtInt(vm.actual_index)}</span></div>
+          <div class="vm-card-row"><span>實際點位（${m.latest_period}）</span><span class="vm-value">${fmtInt(m.actual_index)}</span></div>
           <div class="vm-card-row"><span>與模型偏離幅度</span><span class="vm-value">${fmtSigned(m.deviation_pct, 1)}%</span></div>
           ${vmFourthRow(m)}
         </div>
@@ -614,17 +623,18 @@
     // 表格內容會隨選取的模型重新產生，因此不用共用的 wireTableToggle（它只在第一次
     // 點擊時建表一次、之後固定）；改成自己管理，且事件監聽只註冊一次（用 dataset.wired
     // 當旗標），避免每次 renderAll() 或每次切換模型都疊加重複的 click listener。
-    const vmColumns = [
-      { key: "period", label: "季別" },
-      { key: "actual", label: "實際收盤", fmt: fmtInt },
-      { key: "fitted", label: "模型推算", fmt: fmtInt },
-    ];
     const tableBtn = document.getElementById("toggle-valuation");
     const tableWrap = document.getElementById("table-valuation");
     let current = models[0];
 
     function renderVmTable() {
       if (!tableWrap) return;
+      const isMonthly = current[2].sample_unit === "月";
+      const vmColumns = [
+        { key: "period", label: isMonthly ? "月份" : "季別" },
+        { key: "actual", label: "實際收盤", fmt: fmtInt },
+        { key: "fitted", label: "模型推算", fmt: fmtInt },
+      ];
       const rows = (current[2].historical || []).slice().reverse();
       const table = document.createElement("table");
       const thead = document.createElement("thead");
@@ -653,10 +663,11 @@
           const idx = activeCharts.indexOf(existing);
           if (idx !== -1) activeCharts.splice(idx, 1);
         }
+        const closeLabel = m.sample_unit === "月" ? "台股加權指數（實際，月收盤）" : "台股加權指數（實際，季底收盤）";
         makeLineChart("chart-valuation-history", {
           labels: m.historical.map((d) => d.period),
           datasets: [
-            { label: "台股加權指數（實際，季底收盤）", data: m.historical.map((d) => d.actual), color: css("--series-violet") },
+            { label: closeLabel, data: m.historical.map((d) => d.actual), color: css("--series-violet") },
             { label: `模型推算水準（${m.name}）`, data: m.historical.map((d) => d.fitted), color: css("--text-muted"), dash: true },
           ],
           yFormat: (v) => fmtInt(v),
