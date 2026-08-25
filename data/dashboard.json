@@ -12346,14 +12346,10 @@
       },
       {
         "period": "2026-08",
-        "close": 44762.3
+        "close": 45169.5
       }
     ],
     "daily_recent": [
-      {
-        "date": "2025-07-30",
-        "close": 23461.72
-      },
       {
         "date": "2025-07-31",
         "close": 23542.52
@@ -13389,6 +13385,10 @@
       {
         "date": "2026-08-24",
         "close": 44762.32
+      },
+      {
+        "date": "2026-08-25",
+        "close": 45169.46
       }
     ]
   },
@@ -14095,7 +14095,7 @@
     },
     {
       "period": "2026-08",
-      "net_ntd_100m": 2445.2
+      "net_ntd_100m": 2437.5
     }
   ],
   "fx_usdtwd": [
@@ -15089,7 +15089,7 @@
     },
     {
       "period": "2026-08",
-      "usdtwd": 31.865
+      "usdtwd": 31.87
     }
   ],
   "pmi_outlook": [
@@ -15107,9 +15107,9 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-08-24T09:42:30Z",
+    "generated_at": "2026-08-25T09:31:15Z",
     "warnings": [
-      "pmi_outlook：擷取失敗（無法讀取列表頁）：HTTPSConnectionPool(host='www.cier.edu.tw', port=443): Read timed out. (read timeout=30)",
+      "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
     ],
     "sources": {
@@ -15164,32 +15164,32 @@
     }
   },
   "cnn_fear_greed": {
-    "score": 55.2,
-    "rating": "greed",
-    "timestamp": "2026-08-24T09:23:01+00:00",
-    "previous_close": 55.2,
-    "previous_1_week": 58.4,
+    "score": 54.6,
+    "rating": "neutral",
+    "timestamp": "2026-08-25T09:15:01+00:00",
+    "previous_close": 55.0,
+    "previous_1_week": 55.1,
     "previous_1_month": 41.3,
-    "previous_1_year": 55.5,
+    "previous_1_year": 53.9,
     "components": {
       "market_momentum": {
-        "score": 39,
+        "score": 35.8,
         "rating": "fear"
       },
       "stock_price_strength": {
-        "score": 29.4,
+        "score": 26.6,
         "rating": "fear"
       },
       "stock_price_breadth": {
-        "score": 57.6,
+        "score": 59.4,
         "rating": "greed"
       },
       "put_call_options": {
-        "score": 43.4,
-        "rating": "fear"
+        "score": 50.4,
+        "rating": "neutral"
       },
       "junk_bond_demand": {
-        "score": 95.8,
+        "score": 93.8,
         "rating": "extreme greed"
       },
       "market_volatility": {
@@ -15197,7 +15197,7 @@
         "rating": "neutral"
       },
       "safe_haven_demand": {
-        "score": 71,
+        "score": 66.6,
         "rating": "greed"
       }
     },
@@ -16192,32 +16192,36 @@
       },
       {
         "date": "2026-08-21",
-        "score": 55.2
+        "score": 54.5
       },
       {
         "date": "2026-08-24",
-        "score": 55.2
+        "score": 54.6
       },
       {
-        "date": "2026-08-24",
-        "score": 55.2
+        "date": "2026-08-25",
+        "score": 54.6
+      },
+      {
+        "date": "2026-08-25",
+        "score": 54.6
       }
     ]
   },
   "taiwan_fear_greed": {
-    "score": 56.1,
+    "score": 65.5,
     "rating": "greed",
     "components_available": 6,
     "components_total": 7,
     "components": {
       "momentum": {
-        "score": 99.4,
-        "vs_ma125_pct": 9.88
+        "score": 100.0,
+        "vs_ma125_pct": 10.63
       },
       "strength": {
         "score": null,
         "status": "accumulating",
-        "days_collected": 2,
+        "days_collected": 3,
         "days_needed": 250
       },
       "put_call": {
@@ -16226,22 +16230,22 @@
         "date": "2026-08-24"
       },
       "capital_flow": {
-        "score": 75.7,
-        "net_20d_100m": 1540.3
+        "score": 90.1,
+        "net_20d_100m": 2407.4
       },
       "volatility": {
-        "score": 1.5,
-        "realized_vol_annualized_pct": 39.5
+        "score": 15.8,
+        "realized_vol_annualized_pct": 35.3
       },
       "safe_haven": {
-        "score": 82.6,
-        "taiex_20d_pct": 2.59,
-        "bond_20d_pct": -3.94
+        "score": 100.0,
+        "taiex_20d_pct": 8.57,
+        "bond_20d_pct": -3.79
       },
       "breadth": {
-        "score": 33.4,
-        "advances": 319,
-        "declines": 637
+        "score": 43.1,
+        "advances": 416,
+        "declines": 549
       }
     },
     "historical": [
@@ -16252,6 +16256,10 @@
       {
         "date": "2026-08-24",
         "score": 56.1
+      },
+      {
+        "date": "2026-08-25",
+        "score": 65.5
       }
     ]
   },
