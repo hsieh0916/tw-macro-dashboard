@@ -15107,9 +15107,8 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-08-25T10:35:44Z",
+    "generated_at": "2026-08-25T10:37:11Z",
     "warnings": [
-      "market_cap_weekly 擷取失敗，沿用舊資料：File is not a zip file",
       "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
     ],
@@ -15171,7 +15170,7 @@
   "cnn_fear_greed": {
     "score": 54.6,
     "rating": "neutral",
-    "timestamp": "2026-08-25T10:15:16+00:00",
+    "timestamp": "2026-08-25T10:20:16+00:00",
     "previous_close": 55.0,
     "previous_1_week": 55.1,
     "previous_1_month": 41.3,
