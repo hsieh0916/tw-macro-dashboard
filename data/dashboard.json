@@ -11312,9 +11312,16 @@
     {
       "period": "2026-06",
       "m1a_yoy": 7.53,
-      "m1b_yoy": 8.16,
-      "m2_yoy": 8.05,
-      "m1b_m2_gap": 0.1
+      "m1b_yoy": 8.14,
+      "m2_yoy": 8.04,
+      "m1b_m2_gap": 0.09
+    },
+    {
+      "period": "2026-07",
+      "m1a_yoy": 9.7,
+      "m1b_yoy": 6.12,
+      "m2_yoy": 6.58,
+      "m1b_m2_gap": -0.47
     }
   ],
   "taiex": {
@@ -12357,14 +12364,10 @@
       },
       {
         "period": "2026-08",
-        "close": 45975.2
+        "close": 46331.4
       }
     ],
     "daily_recent": [
-      {
-        "date": "2025-08-04",
-        "close": 23378.94
-      },
       {
         "date": "2025-08-05",
         "close": 23660.59
@@ -13400,6 +13403,10 @@
       {
         "date": "2026-08-27",
         "close": 45975.22
+      },
+      {
+        "date": "2026-08-28",
+        "close": 46331.45
       }
     ]
   },
@@ -14106,7 +14113,7 @@
     },
     {
       "period": "2026-08",
-      "net_ntd_100m": 3294.6
+      "net_ntd_100m": 3712.1
     }
   ],
   "fx_usdtwd": [
@@ -15100,7 +15107,7 @@
     },
     {
       "period": "2026-08",
-      "usdtwd": 31.69
+      "usdtwd": 31.615
     }
   ],
   "pmi_outlook": [
@@ -15118,7 +15125,7 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-08-27T19:24:35Z",
+    "generated_at": "2026-08-28T20:38:43Z",
     "warnings": [
       "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
@@ -15179,32 +15186,32 @@
     }
   },
   "cnn_fear_greed": {
-    "score": 57.9,
-    "rating": "greed",
-    "timestamp": "2026-08-27T19:20:13+00:00",
-    "previous_close": 55.2,
-    "previous_1_week": 53.1,
-    "previous_1_month": 37.6,
-    "previous_1_year": 59.1,
+    "score": 54.4,
+    "rating": "neutral",
+    "timestamp": "2026-08-28T20:20:01+00:00",
+    "previous_close": 58.2,
+    "previous_1_week": 54.5,
+    "previous_1_month": 37.9,
+    "previous_1_year": 64.4,
     "components": {
       "market_momentum": {
-        "score": 42.4,
+        "score": 40,
         "rating": "fear"
       },
       "stock_price_strength": {
-        "score": 28.2,
+        "score": 29,
         "rating": "fear"
       },
       "stock_price_breadth": {
-        "score": 62.4,
+        "score": 58.8,
         "rating": "greed"
       },
       "put_call_options": {
-        "score": 81.8,
-        "rating": "extreme greed"
+        "score": 73.2,
+        "rating": "greed"
       },
       "junk_bond_demand": {
-        "score": 86.4,
+        "score": 90.2,
         "rating": "extreme greed"
       },
       "market_volatility": {
@@ -15212,15 +15219,11 @@
         "rating": "neutral"
       },
       "safe_haven_demand": {
-        "score": 55,
-        "rating": "neutral"
+        "score": 39.8,
+        "rating": "fear"
       }
     },
     "historical": [
-      {
-        "date": "2025-08-27",
-        "score": 59.1
-      },
       {
         "date": "2025-08-28",
         "score": 64.4
@@ -16215,52 +16218,56 @@
       },
       {
         "date": "2026-08-27",
-        "score": 58.0
+        "score": 55.4
       },
       {
-        "date": "2026-08-27",
-        "score": 57.9
+        "date": "2026-08-28",
+        "score": 54.4
+      },
+      {
+        "date": "2026-08-28",
+        "score": 54.4
       }
     ]
   },
   "taiwan_fear_greed": {
-    "score": 68.0,
-    "rating": "greed",
+    "score": 77.6,
+    "rating": "extreme greed",
     "components_available": 6,
     "components_total": 7,
     "components": {
       "momentum": {
         "score": 100.0,
-        "vs_ma125_pct": 12.13
+        "vs_ma125_pct": 12.76
       },
       "strength": {
         "score": null,
         "status": "accumulating",
-        "days_collected": 5,
+        "days_collected": 6,
         "days_needed": 250
       },
       "put_call": {
-        "score": 28.2,
-        "put_call_ratio_pct": 121.76,
-        "date": "2026-08-27"
+        "score": 49.3,
+        "put_call_ratio_pct": 100.72,
+        "date": "2026-08-28"
       },
       "capital_flow": {
         "score": 100.0,
-        "net_20d_100m": 3970.1
+        "net_20d_100m": 3712.1
       },
       "volatility": {
-        "score": 28.2,
-        "realized_vol_annualized_pct": 31.6
+        "score": 79.2,
+        "realized_vol_annualized_pct": 16.2
       },
       "safe_haven": {
         "score": 100.0,
-        "taiex_20d_pct": 15.13,
-        "bond_20d_pct": -1.77
+        "taiex_20d_pct": 7.45,
+        "bond_20d_pct": -3.11
       },
       "breadth": {
-        "score": 51.3,
-        "advances": 497,
-        "declines": 472
+        "score": 37.1,
+        "advances": 361,
+        "declines": 611
       }
     },
     "historical": [
@@ -16283,6 +16290,10 @@
       {
         "date": "2026-08-27",
         "score": 68.0
+      },
+      {
+        "date": "2026-08-28",
+        "score": 77.6
       }
     ]
   },
@@ -16734,7 +16745,7 @@
     "gdp_liquidity": {
       "name": "GDP＋資金面雙因子回歸",
       "method": "在GDP趨勢基礎上加入M1B–M2貨幣增速差（資金鬆緊代理變數）的雙因子對數線性回歸，較單看GDP更能反映資金環境對股價的影響",
-      "estimated_index": 28115.0,
+      "estimated_index": 28113.0,
       "actual_index": 46126.0,
       "latest_period": "2026-Q2",
       "deviation_pct": 64.1,
@@ -16764,7 +16775,7 @@
         {
           "period": "2006-Q1",
           "actual": 6614.0,
-          "fitted": 5703.4
+          "fitted": 5703.5
         },
         {
           "period": "2006-Q2",
@@ -16774,12 +16785,12 @@
         {
           "period": "2006-Q3",
           "actual": 6883.1,
-          "fitted": 6374.4
+          "fitted": 6374.5
         },
         {
           "period": "2006-Q4",
           "actual": 7823.7,
-          "fitted": 6776.9
+          "fitted": 6777.0
         },
         {
           "period": "2007-Q1",
@@ -16799,27 +16810,27 @@
         {
           "period": "2007-Q4",
           "actual": 8506.3,
-          "fitted": 7486.1
+          "fitted": 7486.2
         },
         {
           "period": "2008-Q1",
           "actual": 8572.6,
-          "fitted": 6632.2
+          "fitted": 6632.3
         },
         {
           "period": "2008-Q2",
           "actual": 7523.5,
-          "fitted": 6488.7
+          "fitted": 6488.8
         },
         {
           "period": "2008-Q3",
           "actual": 5719.3,
-          "fitted": 6188.0
+          "fitted": 6188.1
         },
         {
           "period": "2008-Q4",
           "actual": 4591.2,
-          "fitted": 6127.5
+          "fitted": 6127.7
         },
         {
           "period": "2009-Q1",
@@ -16829,37 +16840,37 @@
         {
           "period": "2009-Q2",
           "actual": 6432.2,
-          "fitted": 6459.3
+          "fitted": 6459.2
         },
         {
           "period": "2009-Q3",
           "actual": 7509.2,
-          "fitted": 7266.2
+          "fitted": 7265.9
         },
         {
           "period": "2009-Q4",
           "actual": 8188.1,
-          "fitted": 8398.6
+          "fitted": 8398.1
         },
         {
           "period": "2010-Q1",
           "actual": 7920.1,
-          "fitted": 7833.3
+          "fitted": 7833.0
         },
         {
           "period": "2010-Q2",
           "actual": 7329.4,
-          "fitted": 7709.9
+          "fitted": 7709.7
         },
         {
           "period": "2010-Q3",
           "actual": 8237.8,
-          "fitted": 8094.6
+          "fitted": 8094.5
         },
         {
           "period": "2010-Q4",
           "actual": 8972.5,
-          "fitted": 7804.5
+          "fitted": 7804.4
         },
         {
           "period": "2011-Q1",
@@ -16874,27 +16885,27 @@
         {
           "period": "2011-Q3",
           "actual": 7225.4,
-          "fitted": 7844.5
+          "fitted": 7844.6
         },
         {
           "period": "2011-Q4",
           "actual": 7072.1,
-          "fitted": 7592.2
+          "fitted": 7592.3
         },
         {
           "period": "2012-Q1",
           "actual": 7933.0,
-          "fitted": 7525.9
+          "fitted": 7526.0
         },
         {
           "period": "2012-Q2",
           "actual": 7296.3,
-          "fitted": 7521.1
+          "fitted": 7521.2
         },
         {
           "period": "2012-Q3",
           "actual": 7715.2,
-          "fitted": 8277.8
+          "fitted": 8277.9
         },
         {
           "period": "2012-Q4",
@@ -16909,7 +16920,7 @@
         {
           "period": "2013-Q2",
           "actual": 8062.2,
-          "fitted": 8304.8
+          "fitted": 8304.7
         },
         {
           "period": "2013-Q3",
@@ -16944,17 +16955,17 @@
         {
           "period": "2015-Q1",
           "actual": 9586.4,
-          "fitted": 9877.2
+          "fitted": 9877.3
         },
         {
           "period": "2015-Q2",
           "actual": 9323.0,
-          "fitted": 9690.7
+          "fitted": 9690.8
         },
         {
           "period": "2015-Q3",
           "actual": 8181.2,
-          "fitted": 10204.0
+          "fitted": 10204.1
         },
         {
           "period": "2015-Q4",
@@ -16989,7 +17000,7 @@
         {
           "period": "2017-Q2",
           "actual": 10395.1,
-          "fitted": 10480.7
+          "fitted": 10480.8
         },
         {
           "period": "2017-Q3",
@@ -17024,17 +17035,17 @@
         {
           "period": "2019-Q1",
           "actual": 10641.0,
-          "fitted": 11661.7
+          "fitted": 11661.6
         },
         {
           "period": "2019-Q2",
           "actual": 10730.8,
-          "fitted": 11907.7
+          "fitted": 11907.6
         },
         {
           "period": "2019-Q3",
           "actual": 10829.7,
-          "fitted": 12477.6
+          "fitted": 12477.5
         },
         {
           "period": "2019-Q4",
@@ -17049,37 +17060,37 @@
         {
           "period": "2020-Q2",
           "actual": 11621.2,
-          "fitted": 12492.3
+          "fitted": 12492.2
         },
         {
           "period": "2020-Q3",
           "actual": 12515.6,
-          "fitted": 13952.6
+          "fitted": 13952.5
         },
         {
           "period": "2020-Q4",
           "actual": 14732.5,
-          "fitted": 15638.3
+          "fitted": 15638.1
         },
         {
           "period": "2021-Q1",
           "actual": 16431.1,
-          "fitted": 15256.7
+          "fitted": 15256.4
         },
         {
           "period": "2021-Q2",
           "actual": 17755.5,
-          "fitted": 15090.6
+          "fitted": 15090.3
         },
         {
           "period": "2021-Q3",
           "actual": 16934.8,
-          "fitted": 15396.5
+          "fitted": 15396.3
         },
         {
           "period": "2021-Q4",
           "actual": 18218.8,
-          "fitted": 17191.5
+          "fitted": 17191.3
         },
         {
           "period": "2022-Q1",
@@ -17089,87 +17100,87 @@
         {
           "period": "2022-Q2",
           "actual": 14825.7,
-          "fitted": 15463.7
+          "fitted": 15463.8
         },
         {
           "period": "2022-Q3",
           "actual": 13424.6,
-          "fitted": 16082.1
+          "fitted": 16082.3
         },
         {
           "period": "2022-Q4",
           "actual": 14137.7,
-          "fitted": 16650.7
+          "fitted": 16651.0
         },
         {
           "period": "2023-Q1",
           "actual": 15868.1,
-          "fitted": 14718.5
+          "fitted": 14718.8
         },
         {
           "period": "2023-Q2",
           "actual": 16915.5,
-          "fitted": 15831.6
+          "fitted": 15831.8
         },
         {
           "period": "2023-Q3",
           "actual": 16353.7,
-          "fitted": 17327.5
+          "fitted": 17327.8
         },
         {
           "period": "2023-Q4",
           "actual": 17930.8,
-          "fitted": 19131.9
+          "fitted": 19132.1
         },
         {
           "period": "2024-Q1",
           "actual": 20294.5,
-          "fitted": 18133.9
+          "fitted": 18134.0
         },
         {
           "period": "2024-Q2",
           "actual": 23032.2,
-          "fitted": 18741.7
+          "fitted": 18741.8
         },
         {
           "period": "2024-Q3",
           "actual": 22224.5,
-          "fitted": 19678.1
+          "fitted": 19678.2
         },
         {
           "period": "2024-Q4",
           "actual": 23035.1,
-          "fitted": 21402.7
+          "fitted": 21403.0
         },
         {
           "period": "2025-Q1",
           "actual": 20695.9,
-          "fitted": 20476.1
+          "fitted": 20476.4
         },
         {
           "period": "2025-Q2",
           "actual": 22256.0,
-          "fitted": 21589.2
+          "fitted": 21589.4
         },
         {
           "period": "2025-Q3",
           "actual": 25820.5,
-          "fitted": 23123.3
+          "fitted": 23123.4
         },
         {
           "period": "2025-Q4",
           "actual": 28963.6,
-          "fitted": 28196.5
+          "fitted": 28196.6
         },
         {
           "period": "2026-Q1",
           "actual": 31723.0,
-          "fitted": 28118.9
+          "fitted": 28119.0
         },
         {
           "period": "2026-Q2",
           "actual": 46125.9,
-          "fitted": 28114.6
+          "fitted": 28112.9
         }
       ]
     },
@@ -19596,7 +19607,7 @@
     "comprehensive": {
       "name": "GDP＋資金面＋PMI＋景氣信號 綜合回歸",
       "method": "同時納入名目GDP、M1B–M2增速差、PMI、景氣對策信號分數 4 項預測變數的多因子回歸，涵蓋面最廣；但變數間高度相關、樣本有限，過度配適風險也最高，R² 偏高不必然代表更可靠——建議只當作其他模型的對照，不要單獨依賴",
-      "estimated_index": 34398.0,
+      "estimated_index": 34400.0,
       "actual_index": 46126.0,
       "latest_period": "2026-Q2",
       "deviation_pct": 34.1,
@@ -19606,12 +19617,12 @@
         {
           "period": "2012-Q3",
           "actual": 7715.2,
-          "fitted": 7471.6
+          "fitted": 7471.8
         },
         {
           "period": "2012-Q4",
           "actual": 7699.5,
-          "fitted": 7752.4
+          "fitted": 7752.6
         },
         {
           "period": "2013-Q1",
@@ -19636,32 +19647,32 @@
         {
           "period": "2014-Q1",
           "actual": 8849.3,
-          "fitted": 8261.5
+          "fitted": 8261.7
         },
         {
           "period": "2014-Q2",
           "actual": 9393.1,
-          "fitted": 8800.8
+          "fitted": 8801.1
         },
         {
           "period": "2014-Q3",
           "actual": 8966.9,
-          "fitted": 9417.5
+          "fitted": 9417.7
         },
         {
           "period": "2014-Q4",
           "actual": 9307.3,
-          "fitted": 9605.6
+          "fitted": 9605.9
         },
         {
           "period": "2015-Q1",
           "actual": 9586.4,
-          "fitted": 9351.3
+          "fitted": 9351.6
         },
         {
           "period": "2015-Q2",
           "actual": 9323.0,
-          "fitted": 8501.6
+          "fitted": 8501.7
         },
         {
           "period": "2015-Q3",
@@ -19671,12 +19682,12 @@
         {
           "period": "2015-Q4",
           "actual": 8338.1,
-          "fitted": 9076.8
+          "fitted": 9076.7
         },
         {
           "period": "2016-Q1",
           "actual": 8744.8,
-          "fitted": 8919.6
+          "fitted": 8919.5
         },
         {
           "period": "2016-Q2",
@@ -19691,27 +19702,27 @@
         {
           "period": "2016-Q4",
           "actual": 9253.5,
-          "fitted": 11365.1
+          "fitted": 11365.2
         },
         {
           "period": "2017-Q1",
           "actual": 9811.5,
-          "fitted": 10402.0
+          "fitted": 10402.2
         },
         {
           "period": "2017-Q2",
           "actual": 10395.1,
-          "fitted": 9774.0
+          "fitted": 9774.1
         },
         {
           "period": "2017-Q3",
           "actual": 10383.9,
-          "fitted": 11541.8
+          "fitted": 11542.1
         },
         {
           "period": "2017-Q4",
           "actual": 10642.9,
-          "fitted": 11548.3
+          "fitted": 11548.5
         },
         {
           "period": "2018-Q1",
@@ -19721,7 +19732,7 @@
         {
           "period": "2018-Q2",
           "actual": 10836.9,
-          "fitted": 10421.2
+          "fitted": 10421.3
         },
         {
           "period": "2018-Q3",
@@ -19731,82 +19742,82 @@
         {
           "period": "2018-Q4",
           "actual": 9727.4,
-          "fitted": 10569.5
+          "fitted": 10569.1
         },
         {
           "period": "2019-Q1",
           "actual": 10641.0,
-          "fitted": 10111.5
+          "fitted": 10111.1
         },
         {
           "period": "2019-Q2",
           "actual": 10730.8,
-          "fitted": 10362.2
+          "fitted": 10361.7
         },
         {
           "period": "2019-Q3",
           "actual": 10829.7,
-          "fitted": 10793.6
+          "fitted": 10793.1
         },
         {
           "period": "2019-Q4",
           "actual": 11997.1,
-          "fitted": 12944.5
+          "fitted": 12944.4
         },
         {
           "period": "2020-Q1",
           "actual": 9708.1,
-          "fitted": 10943.0
+          "fitted": 10942.7
         },
         {
           "period": "2020-Q2",
           "actual": 11621.2,
-          "fitted": 10673.5
+          "fitted": 10673.0
         },
         {
           "period": "2020-Q3",
           "actual": 12515.6,
-          "fitted": 13338.7
+          "fitted": 13338.2
         },
         {
           "period": "2020-Q4",
           "actual": 14732.5,
-          "fitted": 15679.9
+          "fitted": 15679.0
         },
         {
           "period": "2021-Q1",
           "actual": 16431.1,
-          "fitted": 15947.4
+          "fitted": 15946.5
         },
         {
           "period": "2021-Q2",
           "actual": 17755.5,
-          "fitted": 16017.5
+          "fitted": 16016.7
         },
         {
           "period": "2021-Q3",
           "actual": 16934.8,
-          "fitted": 16138.3
+          "fitted": 16137.7
         },
         {
           "period": "2021-Q4",
           "actual": 18218.8,
-          "fitted": 18608.7
+          "fitted": 18608.2
         },
         {
           "period": "2022-Q1",
           "actual": 17693.5,
-          "fitted": 16761.1
+          "fitted": 16761.0
         },
         {
           "period": "2022-Q2",
           "actual": 14825.7,
-          "fitted": 15734.7
+          "fitted": 15734.9
         },
         {
           "period": "2022-Q3",
           "actual": 13424.6,
-          "fitted": 14645.5
+          "fitted": 14645.4
         },
         {
           "period": "2022-Q4",
@@ -19816,12 +19827,12 @@
         {
           "period": "2023-Q1",
           "actual": 15868.1,
-          "fitted": 13228.2
+          "fitted": 13228.5
         },
         {
           "period": "2023-Q2",
           "actual": 16915.5,
-          "fitted": 14391.8
+          "fitted": 14391.9
         },
         {
           "period": "2023-Q3",
@@ -19836,52 +19847,52 @@
         {
           "period": "2024-Q1",
           "actual": 20294.5,
-          "fitted": 19100.2
+          "fitted": 19100.5
         },
         {
           "period": "2024-Q2",
           "actual": 23032.2,
-          "fitted": 21640.3
+          "fitted": 21641.0
         },
         {
           "period": "2024-Q3",
           "actual": 22224.5,
-          "fitted": 21650.2
+          "fitted": 21650.6
         },
         {
           "period": "2024-Q4",
           "actual": 23035.1,
-          "fitted": 24895.2
+          "fitted": 24896.0
         },
         {
           "period": "2025-Q1",
           "actual": 20695.9,
-          "fitted": 23680.8
+          "fitted": 23681.8
         },
         {
           "period": "2025-Q2",
           "actual": 22256.0,
-          "fitted": 22575.3
+          "fitted": 22575.2
         },
         {
           "period": "2025-Q3",
           "actual": 25820.5,
-          "fitted": 25186.9
+          "fitted": 25186.8
         },
         {
           "period": "2025-Q4",
           "actual": 28963.6,
-          "fitted": 33011.4
+          "fitted": 33011.3
         },
         {
           "period": "2026-Q1",
           "actual": 31723.0,
-          "fitted": 32434.8
+          "fitted": 32434.1
         },
         {
           "period": "2026-Q2",
           "actual": 46125.9,
-          "fitted": 34397.8
+          "fitted": 34400.3
         }
       ]
     }
@@ -24186,6 +24197,10 @@
     {
       "date": "2026-08-21",
       "total_market_cap_100m": 1478388.1
+    },
+    {
+      "date": "2026-08-28",
+      "total_market_cap_100m": 1514509.6
     }
   ],
   "pe_history": [
