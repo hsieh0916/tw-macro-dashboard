@@ -12373,14 +12373,10 @@
       },
       {
         "period": "2026-09",
-        "close": 46551.1
+        "close": 47326.3
       }
     ],
     "daily_recent": [
-      {
-        "date": "2025-08-12",
-        "close": 24158.36
-      },
       {
         "date": "2025-08-13",
         "close": 24370.02
@@ -13416,6 +13412,10 @@
       {
         "date": "2026-09-04",
         "close": 46551.13
+      },
+      {
+        "date": "2026-09-07",
+        "close": 47326.27
       }
     ]
   },
@@ -14126,7 +14126,7 @@
     },
     {
       "period": "2026-09",
-      "net_ntd_100m": -565.8
+      "net_ntd_100m": 317.3
     }
   ],
   "fx_usdtwd": [
@@ -15124,7 +15124,7 @@
     },
     {
       "period": "2026-09",
-      "usdtwd": 31.63
+      "usdtwd": 31.545
     }
   ],
   "pmi_outlook": [
@@ -15142,7 +15142,7 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-09-06T12:34:17Z",
+    "generated_at": "2026-09-07T14:43:39Z",
     "warnings": [
       "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
@@ -16244,43 +16244,43 @@
     ]
   },
   "taiwan_fear_greed": {
-    "score": 81.9,
-    "rating": "extreme greed",
+    "score": 73.0,
+    "rating": "greed",
     "components_available": 6,
     "components_total": 7,
     "components": {
       "momentum": {
         "score": 100.0,
-        "vs_ma125_pct": 11.94
+        "vs_ma125_pct": 13.47
       },
       "strength": {
         "score": null,
         "status": "accumulating",
-        "days_collected": 11,
+        "days_collected": 12,
         "days_needed": 250
       },
       "put_call": {
-        "score": 51.5,
-        "put_call_ratio_pct": 98.45,
-        "date": "2026-09-04"
+        "score": 26.1,
+        "put_call_ratio_pct": 123.89,
+        "date": "2026-09-07"
       },
       "capital_flow": {
-        "score": 95.6,
-        "net_20d_100m": 2735.5
+        "score": 100.0,
+        "net_20d_100m": 3101.1
       },
       "volatility": {
-        "score": 77.8,
+        "score": 77.5,
         "realized_vol_annualized_pct": 16.7
       },
       "safe_haven": {
-        "score": 88.2,
-        "taiex_20d_pct": 5.26,
-        "bond_20d_pct": -2.39
+        "score": 93.1,
+        "taiex_20d_pct": 5.34,
+        "bond_20d_pct": -3.28
       },
       "breadth": {
-        "score": 78.4,
-        "advances": 762,
-        "declines": 210
+        "score": 41.4,
+        "advances": 404,
+        "declines": 573
       }
     },
     "historical": [
@@ -16327,6 +16327,10 @@
       {
         "date": "2026-09-04",
         "score": 81.9
+      },
+      {
+        "date": "2026-09-07",
+        "score": 73.0
       }
     ]
   },
@@ -17653,1129 +17657,1134 @@
     "pe_ratio": {
       "name": "本益比均值回歸",
       "method": "以整體上市公司本益比（股價÷每股盈餘）的歷史均值為錨，假設本益比會回歸長期均值，反推指數回到均值本益比時對應的水準——傳統上最常見的股市評價角度",
-      "estimated_index": 30835.0,
-      "actual_index": 43120.0,
-      "latest_period": "2026-07",
-      "deviation_pct": 39.8,
-      "current_ratio_pct": 29.1,
-      "average_ratio_pct": 20.8,
-      "sample_quarters": 223,
+      "estimated_index": 37570.0,
+      "actual_index": 46128.0,
+      "latest_period": "2026-08",
+      "deviation_pct": 22.8,
+      "current_ratio_pct": 25.6,
+      "average_ratio_pct": 20.9,
+      "sample_quarters": 224,
       "sample_unit": "月",
       "historical": [
         {
           "period": "2007-04",
           "actual": 7875.4,
-          "fitted": 9176.3
+          "fitted": 9185.6
         },
         {
           "period": "2007-05",
           "actual": 8144.9,
-          "fitted": 9192.3
+          "fitted": 9201.7
         },
         {
           "period": "2007-06",
           "actual": 8883.2,
-          "fitted": 9139.7
+          "fitted": 9149.1
         },
         {
           "period": "2007-07",
           "actual": 9287.2,
-          "fitted": 9097.4
+          "fitted": 9106.7
         },
         {
           "period": "2007-08",
           "actual": 8982.2,
-          "fitted": 10001.8
+          "fitted": 10012.1
         },
         {
           "period": "2007-09",
           "actual": 9476.5,
-          "fitted": 10125.0
+          "fitted": 10135.3
         },
         {
           "period": "2007-10",
           "actual": 9711.4,
-          "fitted": 11462.9
+          "fitted": 11474.6
         },
         {
           "period": "2007-11",
           "actual": 8586.4,
-          "fitted": 11652.6
+          "fitted": 11664.5
         },
         {
           "period": "2007-12",
           "actual": 8506.3,
-          "fitted": 11581.6
+          "fitted": 11593.5
         },
         {
           "period": "2008-01",
           "actual": 7521.1,
-          "fitted": 11553.3
+          "fitted": 11565.1
         },
         {
           "period": "2008-02",
           "actual": 8412.8,
-          "fitted": 11491.8
+          "fitted": 11503.6
         },
         {
           "period": "2008-03",
           "actual": 8572.6,
-          "fitted": 11513.9
+          "fitted": 11525.7
         },
         {
           "period": "2008-04",
           "actual": 8919.9,
-          "fitted": 12428.9
+          "fitted": 12441.6
         },
         {
           "period": "2008-05",
           "actual": 8619.1,
-          "fitted": 12255.5
+          "fitted": 12268.0
         },
         {
           "period": "2008-06",
           "actual": 7523.5,
-          "fitted": 12242.6
+          "fitted": 12255.1
         },
         {
           "period": "2008-07",
           "actual": 7024.1,
-          "fitted": 12232.1
+          "fitted": 12244.6
         },
         {
           "period": "2008-08",
           "actual": 7046.1,
-          "fitted": 11722.0
+          "fitted": 11734.0
         },
         {
           "period": "2008-09",
           "actual": 5719.3,
-          "fitted": 11757.3
+          "fitted": 11769.3
         },
         {
           "period": "2008-10",
           "actual": 4870.7,
-          "fitted": 9953.9
+          "fitted": 9964.1
         },
         {
           "period": "2008-11",
           "actual": 4460.5,
-          "fitted": 9756.5
+          "fitted": 9766.5
         },
         {
           "period": "2008-12",
           "actual": 4591.2,
-          "fitted": 9765.7
+          "fitted": 9775.7
         },
         {
           "period": "2009-01",
           "actual": 4248.0,
-          "fitted": 9784.5
+          "fitted": 9794.5
         },
         {
           "period": "2009-02",
           "actual": 4557.1,
-          "fitted": 9803.2
+          "fitted": 9813.2
         },
         {
           "period": "2009-03",
           "actual": 5210.8,
-          "fitted": 7820.0
+          "fitted": 7828.0
         },
         {
           "period": "2009-04",
           "actual": 5992.6,
-          "fitted": 2987.7
+          "fitted": 2990.8
         },
         {
           "period": "2009-05",
           "actual": 6890.4,
-          "fitted": 2312.2
+          "fitted": 2314.5
         },
         {
           "period": "2009-06",
           "actual": 6432.2,
-          "fitted": 2308.5
+          "fitted": 2310.9
         },
         {
           "period": "2009-07",
           "actual": 7077.7,
-          "fitted": 2322.7
+          "fitted": 2325.0
         },
         {
           "period": "2009-08",
           "actual": 6825.9,
-          "fitted": 1371.2
+          "fitted": 1372.6
         },
         {
           "period": "2009-09",
           "actual": 7509.2,
-          "fitted": 1562.6
+          "fitted": 1564.2
         },
         {
           "period": "2009-10",
           "actual": 7340.1,
-          "fitted": 2072.7
+          "fitted": 2074.8
         },
         {
           "period": "2009-11",
           "actual": 7582.2,
-          "fitted": 1613.6
+          "fitted": 1615.2
         },
         {
           "period": "2009-12",
           "actual": 8188.1,
-          "fitted": 1544.1
+          "fitted": 1545.6
         },
         {
           "period": "2010-01",
           "actual": 7640.4,
-          "fitted": 1277.0
+          "fitted": 1278.3
         },
         {
           "period": "2010-02",
           "actual": 7436.1,
-          "fitted": 1454.8
+          "fitted": 1456.3
         },
         {
           "period": "2010-03",
           "actual": 7920.1,
-          "fitted": 4088.5
+          "fitted": 4092.7
         },
         {
           "period": "2010-04",
           "actual": 8004.2,
-          "fitted": 9264.2
+          "fitted": 9273.7
         },
         {
           "period": "2010-05",
           "actual": 7374.0,
-          "fitted": 9430.2
+          "fitted": 9439.8
         },
         {
           "period": "2010-06",
           "actual": 7329.4,
-          "fitted": 9489.6
+          "fitted": 9499.3
         },
         {
           "period": "2010-07",
           "actual": 7760.6,
-          "fitted": 9515.9
+          "fitted": 9525.6
         },
         {
           "period": "2010-08",
           "actual": 7616.3,
-          "fitted": 11180.4
+          "fitted": 11191.9
         },
         {
           "period": "2010-09",
           "actual": 8237.8,
-          "fitted": 11172.3
+          "fitted": 11183.7
         },
         {
           "period": "2010-10",
           "actual": 8287.1,
-          "fitted": 11807.6
+          "fitted": 11819.7
         },
         {
           "period": "2010-11",
           "actual": 8372.5,
-          "fitted": 11721.0
+          "fitted": 11733.0
         },
         {
           "period": "2010-12",
           "actual": 8972.5,
-          "fitted": 11660.4
+          "fitted": 11672.3
         },
         {
           "period": "2011-01",
           "actual": 9145.4,
-          "fitted": 11617.1
+          "fitted": 11629.0
         },
         {
           "period": "2011-02",
           "actual": 8599.6,
-          "fitted": 11572.6
+          "fitted": 11584.4
         },
         {
           "period": "2011-03",
           "actual": 8683.3,
-          "fitted": 11971.2
+          "fitted": 11983.4
         },
         {
           "period": "2011-04",
           "actual": 9007.9,
-          "fitted": 11277.5
+          "fitted": 11289.0
         },
         {
           "period": "2011-05",
           "actual": 8988.8,
-          "fitted": 11432.1
+          "fitted": 11443.8
         },
         {
           "period": "2011-06",
           "actual": 8652.6,
-          "fitted": 11379.4
+          "fitted": 11391.1
         },
         {
           "period": "2011-07",
           "actual": 8644.2,
-          "fitted": 11361.2
+          "fitted": 11372.8
         },
         {
           "period": "2011-08",
           "actual": 7741.4,
-          "fitted": 10444.7
+          "fitted": 10455.3
         },
         {
           "period": "2011-09",
           "actual": 7225.4,
-          "fitted": 10750.5
+          "fitted": 10761.5
         },
         {
           "period": "2011-10",
           "actual": 7587.7,
-          "fitted": 9425.9
+          "fitted": 9435.5
         },
         {
           "period": "2011-11",
           "actual": 6904.1,
-          "fitted": 9412.5
+          "fitted": 9422.1
         },
         {
           "period": "2011-12",
           "actual": 7072.1,
-          "fitted": 9354.0
+          "fitted": 9363.5
         },
         {
           "period": "2012-01",
           "actual": 7517.1,
-          "fitted": 9360.5
+          "fitted": 9370.1
         },
         {
           "period": "2012-02",
           "actual": 8121.4,
-          "fitted": 9347.9
+          "fitted": 9357.5
         },
         {
           "period": "2012-03",
           "actual": 7933.0,
-          "fitted": 7996.3
+          "fitted": 8004.5
         },
         {
           "period": "2012-04",
           "actual": 7501.7,
-          "fitted": 6882.6
+          "fitted": 6889.7
         },
         {
           "period": "2012-05",
           "actual": 7301.5,
-          "fitted": 7023.5
+          "fitted": 7030.7
         },
         {
           "period": "2012-06",
           "actual": 7296.3,
-          "fitted": 7015.3
+          "fitted": 7022.5
         },
         {
           "period": "2012-07",
           "actual": 7270.5,
-          "fitted": 6971.2
+          "fitted": 6978.3
         },
         {
           "period": "2012-08",
           "actual": 7397.1,
-          "fitted": 6301.3
+          "fitted": 6307.8
         },
         {
           "period": "2012-09",
           "actual": 7715.2,
-          "fitted": 6379.4
+          "fitted": 6385.9
         },
         {
           "period": "2012-10",
           "actual": 7166.1,
-          "fitted": 6639.0
+          "fitted": 6645.8
         },
         {
           "period": "2012-11",
           "actual": 7580.2,
-          "fitted": 6810.8
+          "fitted": 6817.7
         },
         {
           "period": "2012-12",
           "actual": 7699.5,
-          "fitted": 6794.9
+          "fitted": 6801.9
         },
         {
           "period": "2013-01",
           "actual": 7850.0,
-          "fitted": 6818.1
+          "fitted": 6825.0
         },
         {
           "period": "2013-02",
           "actual": 7898.0,
-          "fitted": 6981.9
+          "fitted": 6989.1
         },
         {
           "period": "2013-03",
           "actual": 7918.6,
-          "fitted": 7775.0
+          "fitted": 7783.0
         },
         {
           "period": "2013-04",
           "actual": 8093.7,
-          "fitted": 7767.7
+          "fitted": 7775.6
         },
         {
           "period": "2013-05",
           "actual": 8254.8,
-          "fitted": 8552.3
+          "fitted": 8561.0
         },
         {
           "period": "2013-06",
           "actual": 8062.2,
-          "fitted": 8548.2
+          "fitted": 8556.9
         },
         {
           "period": "2013-07",
           "actual": 8107.9,
-          "fitted": 8510.1
+          "fitted": 8518.8
         },
         {
           "period": "2013-08",
           "actual": 8021.9,
-          "fitted": 9218.1
+          "fitted": 9227.6
         },
         {
           "period": "2013-09",
           "actual": 8173.9,
-          "fitted": 9235.0
+          "fitted": 9244.4
         },
         {
           "period": "2013-10",
           "actual": 8450.1,
-          "fitted": 9183.7
+          "fitted": 9193.1
         },
         {
           "period": "2013-11",
           "actual": 8406.8,
-          "fitted": 9990.9
+          "fitted": 10001.1
         },
         {
           "period": "2013-12",
           "actual": 8611.5,
-          "fitted": 9950.5
+          "fitted": 9960.7
         },
         {
           "period": "2014-01",
           "actual": 8462.6,
-          "fitted": 9545.6
+          "fitted": 9555.4
         },
         {
           "period": "2014-02",
           "actual": 8639.6,
-          "fitted": 9661.6
+          "fitted": 9671.5
         },
         {
           "period": "2014-03",
           "actual": 8849.3,
-          "fitted": 10510.8
+          "fitted": 10521.5
         },
         {
           "period": "2014-04",
           "actual": 8791.4,
-          "fitted": 10513.9
+          "fitted": 10524.7
         },
         {
           "period": "2014-05",
           "actual": 9075.9,
-          "fitted": 10658.5
+          "fitted": 10669.4
         },
         {
           "period": "2014-06",
           "actual": 9393.1,
-          "fitted": 10652.9
+          "fitted": 10663.8
         },
         {
           "period": "2014-11",
           "actual": 9187.1,
-          "fitted": 12549.5
+          "fitted": 12562.4
         },
         {
           "period": "2014-12",
           "actual": 9307.3,
-          "fitted": 12581.8
+          "fitted": 12594.7
         },
         {
           "period": "2015-01",
           "actual": 9361.9,
-          "fitted": 12557.9
+          "fitted": 12570.7
         },
         {
           "period": "2015-02",
           "actual": 9622.1,
-          "fitted": 12931.9
+          "fitted": 12945.1
         },
         {
           "period": "2015-03",
           "actual": 9586.4,
-          "fitted": 12711.8
+          "fitted": 12724.8
         },
         {
           "period": "2015-04",
           "actual": 9820.0,
-          "fitted": 12730.0
+          "fitted": 12743.0
         },
         {
           "period": "2015-05",
           "actual": 9701.1,
-          "fitted": 13374.3
+          "fitted": 13388.0
         },
         {
           "period": "2015-06",
           "actual": 9323.0,
-          "fitted": 13347.4
+          "fitted": 13361.1
         },
         {
           "period": "2015-07",
           "actual": 8665.3,
-          "fitted": 13320.7
+          "fitted": 13334.3
         },
         {
           "period": "2015-08",
           "actual": 8174.9,
-          "fitted": 13578.2
+          "fitted": 13592.1
         },
         {
           "period": "2015-09",
           "actual": 8181.2,
-          "fitted": 13599.5
+          "fitted": 13613.4
         },
         {
           "period": "2015-10",
           "actual": 8554.3,
-          "fitted": 13560.1
+          "fitted": 13573.9
         },
         {
           "period": "2015-11",
           "actual": 8320.6,
-          "fitted": 12924.3
+          "fitted": 12937.5
         },
         {
           "period": "2015-12",
           "actual": 8338.1,
-          "fitted": 12912.9
+          "fitted": 12926.2
         },
         {
           "period": "2016-01",
           "actual": 8145.2,
-          "fitted": 12931.2
+          "fitted": 12944.5
         },
         {
           "period": "2016-02",
           "actual": 8411.2,
-          "fitted": 12550.6
+          "fitted": 12563.4
         },
         {
           "period": "2016-03",
           "actual": 8744.8,
-          "fitted": 12408.8
+          "fitted": 12421.5
         },
         {
           "period": "2016-04",
           "actual": 8377.9,
-          "fitted": 12438.6
+          "fitted": 12451.3
         },
         {
           "period": "2016-05",
           "actual": 8535.6,
-          "fitted": 11629.1
+          "fitted": 11641.0
         },
         {
           "period": "2016-06",
           "actual": 8666.6,
-          "fitted": 11632.7
+          "fitted": 11644.6
         },
         {
           "period": "2016-07",
           "actual": 8984.4,
-          "fitted": 11625.1
+          "fitted": 11637.0
         },
         {
           "period": "2016-08",
           "actual": 9068.9,
-          "fitted": 11042.2
+          "fitted": 11053.5
         },
         {
           "period": "2016-09",
           "actual": 9166.9,
-          "fitted": 11058.1
+          "fitted": 11069.4
         },
         {
           "period": "2016-10",
           "actual": 9290.1,
-          "fitted": 11084.9
+          "fitted": 11096.2
         },
         {
           "period": "2016-11",
           "actual": 9240.7,
-          "fitted": 11534.3
+          "fitted": 11546.1
         },
         {
           "period": "2016-12",
           "actual": 9253.5,
-          "fitted": 11683.2
+          "fitted": 11695.2
         },
         {
           "period": "2017-01",
           "actual": 9448.0,
-          "fitted": 11681.2
+          "fitted": 11693.1
         },
         {
           "period": "2017-02",
           "actual": 9750.5,
-          "fitted": 11865.1
+          "fitted": 11877.3
         },
         {
           "period": "2017-03",
           "actual": 9811.5,
-          "fitted": 12703.2
+          "fitted": 12716.2
         },
         {
           "period": "2017-04",
           "actual": 9872.0,
-          "fitted": 12813.4
+          "fitted": 12826.5
         },
         {
           "period": "2017-05",
           "actual": 10040.7,
-          "fitted": 13365.2
+          "fitted": 13378.9
         },
         {
           "period": "2017-06",
           "actual": 10395.1,
-          "fitted": 13359.2
+          "fitted": 13372.9
         },
         {
           "period": "2017-07",
           "actual": 10427.3,
-          "fitted": 13253.5
+          "fitted": 13267.1
         },
         {
           "period": "2017-08",
           "actual": 10585.8,
-          "fitted": 13562.5
+          "fitted": 13576.4
         },
         {
           "period": "2017-09",
           "actual": 10383.9,
-          "fitted": 13553.7
+          "fitted": 13567.6
         },
         {
           "period": "2017-10",
           "actual": 10793.8,
-          "fitted": 13481.0
+          "fitted": 13494.8
         },
         {
           "period": "2017-11",
           "actual": 10560.4,
-          "fitted": 14202.1
+          "fitted": 14216.6
         },
         {
           "period": "2017-12",
           "actual": 10642.9,
-          "fitted": 14166.8
+          "fitted": 14181.3
         },
         {
           "period": "2018-01",
           "actual": 11103.8,
-          "fitted": 14156.5
+          "fitted": 14171.0
         },
         {
           "period": "2018-02",
           "actual": 10815.5,
-          "fitted": 14143.7
+          "fitted": 14158.1
         },
         {
           "period": "2018-03",
           "actual": 10919.5,
-          "fitted": 14609.6
+          "fitted": 14624.5
         },
         {
           "period": "2018-04",
           "actual": 10657.9,
-          "fitted": 14463.8
+          "fitted": 14478.6
         },
         {
           "period": "2018-05",
           "actual": 10875.0,
-          "fitted": 15122.8
+          "fitted": 15138.2
         },
         {
           "period": "2018-06",
           "actual": 10836.9,
-          "fitted": 15110.1
+          "fitted": 15125.5
         },
         {
           "period": "2018-07",
           "actual": 11057.5,
-          "fitted": 15154.1
+          "fitted": 15169.6
         },
         {
           "period": "2018-08",
           "actual": 11063.9,
-          "fitted": 15807.2
+          "fitted": 15823.4
         },
         {
           "period": "2018-09",
           "actual": 11006.3,
-          "fitted": 15746.5
+          "fitted": 15762.6
         },
         {
           "period": "2018-10",
           "actual": 9802.1,
-          "fitted": 15351.3
+          "fitted": 15367.0
         },
         {
           "period": "2018-11",
           "actual": 9888.0,
-          "fitted": 15245.3
+          "fitted": 15260.9
         },
         {
           "period": "2018-12",
           "actual": 9727.4,
-          "fitted": 15915.9
+          "fitted": 15932.2
         },
         {
           "period": "2019-01",
           "actual": 9932.3,
-          "fitted": 15913.9
+          "fitted": 15930.1
         },
         {
           "period": "2019-02",
           "actual": 10389.2,
-          "fitted": 15761.5
+          "fitted": 15777.7
         },
         {
           "period": "2019-03",
           "actual": 10641.0,
-          "fitted": 14573.7
+          "fitted": 14588.6
         },
         {
           "period": "2019-04",
           "actual": 10967.7,
-          "fitted": 14589.8
+          "fitted": 14604.7
         },
         {
           "period": "2019-05",
           "actual": 10498.5,
-          "fitted": 13815.8
+          "fitted": 13829.9
         },
         {
           "period": "2019-06",
           "actual": 10730.8,
-          "fitted": 13816.2
+          "fitted": 13830.3
         },
         {
           "period": "2019-07",
           "actual": 10823.8,
-          "fitted": 13774.3
+          "fitted": 13788.4
         },
         {
           "period": "2019-08",
           "actual": 10618.0,
-          "fitted": 13042.6
+          "fitted": 13055.9
         },
         {
           "period": "2019-09",
           "actual": 10829.7,
-          "fitted": 13033.8
+          "fitted": 13047.2
         },
         {
           "period": "2019-10",
           "actual": 11358.7,
-          "fitted": 12973.9
+          "fitted": 12987.1
         },
         {
           "period": "2019-11",
           "actual": 11489.6,
-          "fitted": 12787.1
+          "fitted": 12800.1
         },
         {
           "period": "2019-12",
           "actual": 11997.1,
-          "fitted": 12778.8
+          "fitted": 12791.8
         },
         {
           "period": "2020-01",
           "actual": 11495.1,
-          "fitted": 12813.7
+          "fitted": 12826.8
         },
         {
           "period": "2020-02",
           "actual": 11292.2,
-          "fitted": 12751.2
+          "fitted": 12764.2
         },
         {
           "period": "2020-03",
           "actual": 9708.1,
-          "fitted": 12865.0
+          "fitted": 12878.1
         },
         {
           "period": "2020-04",
           "actual": 10992.1,
-          "fitted": 12843.7
+          "fitted": 12856.8
         },
         {
           "period": "2020-05",
           "actual": 10942.2,
-          "fitted": 12289.4
+          "fitted": 12301.9
         },
         {
           "period": "2020-06",
           "actual": 11621.2,
-          "fitted": 12278.0
+          "fitted": 12290.5
         },
         {
           "period": "2020-07",
           "actual": 12664.8,
-          "fitted": 12324.9
+          "fitted": 12337.5
         },
         {
           "period": "2020-08",
           "actual": 12591.5,
-          "fitted": 12704.3
+          "fitted": 12717.3
         },
         {
           "period": "2020-09",
           "actual": 12515.6,
-          "fitted": 12720.1
+          "fitted": 12733.1
         },
         {
           "period": "2020-10",
           "actual": 12546.3,
-          "fitted": 12889.5
+          "fitted": 12902.7
         },
         {
           "period": "2020-11",
           "actual": 13722.9,
-          "fitted": 13839.1
+          "fitted": 13853.3
         },
         {
           "period": "2020-12",
           "actual": 14732.5,
-          "fitted": 13728.2
+          "fitted": 13742.2
         },
         {
           "period": "2021-01",
           "actual": 15138.3,
-          "fitted": 13720.0
+          "fitted": 13734.0
         },
         {
           "period": "2021-02",
           "actual": 15953.8,
-          "fitted": 14181.6
+          "fitted": 14196.1
         },
         {
           "period": "2021-03",
           "actual": 16431.1,
-          "fitted": 15812.9
+          "fitted": 15829.1
         },
         {
           "period": "2021-04",
           "actual": 17566.7,
-          "fitted": 16025.3
+          "fitted": 16041.7
         },
         {
           "period": "2021-05",
           "actual": 17068.4,
-          "fitted": 19954.7
+          "fitted": 19975.1
         },
         {
           "period": "2021-06",
           "actual": 17755.5,
-          "fitted": 19920.1
+          "fitted": 19940.4
         },
         {
           "period": "2021-07",
           "actual": 17247.4,
-          "fitted": 19962.4
+          "fitted": 19982.8
         },
         {
           "period": "2021-08",
           "actual": 17490.3,
-          "fitted": 22987.8
+          "fitted": 23011.3
         },
         {
           "period": "2021-09",
           "actual": 16934.8,
-          "fitted": 22952.3
+          "fitted": 22975.8
         },
         {
           "period": "2022-02",
           "actual": 17652.2,
-          "fitted": 25894.5
+          "fitted": 25921.0
         },
         {
           "period": "2022-03",
           "actual": 17693.5,
-          "fitted": 27421.7
+          "fitted": 27449.8
         },
         {
           "period": "2022-04",
           "actual": 16592.2,
-          "fitted": 27559.0
+          "fitted": 27587.2
         },
         {
           "period": "2022-05",
           "actual": 16807.8,
-          "fitted": 28484.5
+          "fitted": 28513.7
         },
         {
           "period": "2022-06",
           "actual": 14825.7,
-          "fitted": 28457.0
+          "fitted": 28486.1
         },
         {
           "period": "2022-07",
           "actual": 15000.1,
-          "fitted": 28633.5
+          "fitted": 28662.8
         },
         {
           "period": "2022-08",
           "actual": 15095.4,
-          "fitted": 28736.5
+          "fitted": 28765.9
         },
         {
           "period": "2022-09",
           "actual": 13424.6,
-          "fitted": 28730.7
+          "fitted": 28760.0
         },
         {
           "period": "2022-10",
           "actual": 12949.8,
-          "fitted": 28747.5
+          "fitted": 28776.9
         },
         {
           "period": "2022-11",
           "actual": 14879.5,
-          "fitted": 28403.3
+          "fitted": 28432.4
         },
         {
           "period": "2022-12",
           "actual": 14137.7,
-          "fitted": 28363.9
+          "fitted": 28392.9
         },
         {
           "period": "2023-01",
           "actual": 15265.2,
-          "fitted": 28335.2
+          "fitted": 28364.2
         },
         {
           "period": "2023-02",
           "actual": 15503.8,
-          "fitted": 28324.1
+          "fitted": 28353.0
         },
         {
           "period": "2023-03",
           "actual": 15868.1,
-          "fitted": 25058.5
+          "fitted": 25084.1
         },
         {
           "period": "2023-04",
           "actual": 15579.2,
-          "fitted": 24923.2
+          "fitted": 24948.7
         },
         {
           "period": "2023-05",
           "actual": 16579.0,
-          "fitted": 21425.3
+          "fitted": 21447.2
         },
         {
           "period": "2023-06",
           "actual": 16915.5,
-          "fitted": 21421.9
+          "fitted": 21443.8
         },
         {
           "period": "2023-07",
           "actual": 17145.4,
-          "fitted": 21273.6
+          "fitted": 21295.4
         },
         {
           "period": "2023-08",
           "actual": 16634.5,
-          "fitted": 19167.9
+          "fitted": 19187.5
         },
         {
           "period": "2023-09",
           "actual": 16353.7,
-          "fitted": 19162.1
+          "fitted": 19181.7
         },
         {
           "period": "2023-10",
           "actual": 16001.3,
-          "fitted": 19027.3
+          "fitted": 19046.7
         },
         {
           "period": "2023-11",
           "actual": 17433.8,
-          "fitted": 17744.6
+          "fitted": 17762.7
         },
         {
           "period": "2023-12",
           "actual": 17930.8,
-          "fitted": 17697.4
+          "fitted": 17715.5
         },
         {
           "period": "2024-01",
           "actual": 17889.6,
-          "fitted": 17615.0
+          "fitted": 17633.0
         },
         {
           "period": "2024-02",
           "actual": 18966.8,
-          "fitted": 17219.7
+          "fitted": 17237.3
         },
         {
           "period": "2024-03",
           "actual": 20294.5,
-          "fitted": 17978.8
+          "fitted": 17997.1
         },
         {
           "period": "2024-04",
           "actual": 20396.6,
-          "fitted": 17962.3
+          "fitted": 17980.7
         },
         {
           "period": "2024-05",
           "actual": 21174.2,
-          "fitted": 19686.8
+          "fitted": 19706.9
         },
         {
           "period": "2024-06",
           "actual": 23032.2,
-          "fitted": 19676.5
+          "fitted": 19696.7
         },
         {
           "period": "2024-07",
           "actual": 22199.3,
-          "fitted": 19641.2
+          "fitted": 19661.3
         },
         {
           "period": "2024-08",
           "actual": 22268.1,
-          "fitted": 21380.9
+          "fitted": 21402.8
         },
         {
           "period": "2024-09",
           "actual": 22224.5,
-          "fitted": 21368.6
+          "fitted": 21390.4
         },
         {
           "period": "2024-10",
           "actual": 22820.4,
-          "fitted": 21360.3
+          "fitted": 21382.1
         },
         {
           "period": "2024-11",
           "actual": 22262.5,
-          "fitted": 22615.2
+          "fitted": 22638.3
         },
         {
           "period": "2024-12",
           "actual": 23035.1,
-          "fitted": 22553.7
+          "fitted": 22576.8
         },
         {
           "period": "2025-01",
           "actual": 23525.4,
-          "fitted": 22546.6
+          "fitted": 22569.7
         },
         {
           "period": "2025-02",
           "actual": 23053.2,
-          "fitted": 23487.1
+          "fitted": 23511.1
         },
         {
           "period": "2025-03",
           "actual": 20695.9,
-          "fitted": 24965.7
+          "fitted": 24991.2
         },
         {
           "period": "2025-04",
           "actual": 20235.0,
-          "fitted": 24973.4
+          "fitted": 24998.9
         },
         {
           "period": "2025-05",
           "actual": 21347.3,
-          "fitted": 26098.9
+          "fitted": 26125.6
         },
         {
           "period": "2025-06",
           "actual": 22256.0,
-          "fitted": 26092.7
+          "fitted": 26119.4
         },
         {
           "period": "2025-07",
           "actual": 23542.5,
-          "fitted": 25979.1
+          "fitted": 26005.7
         },
         {
           "period": "2025-08",
           "actual": 24233.1,
-          "fitted": 25194.0
+          "fitted": 25219.8
         },
         {
           "period": "2025-09",
           "actual": 25820.5,
-          "fitted": 25186.2
+          "fitted": 25212.0
         },
         {
           "period": "2025-11",
           "actual": 27626.5,
-          "fitted": 26010.7
+          "fitted": 26037.3
         },
         {
           "period": "2025-12",
           "actual": 28963.6,
-          "fitted": 26001.2
+          "fitted": 26027.8
         },
         {
           "period": "2026-01",
           "actual": 32063.8,
-          "fitted": 25865.8
+          "fitted": 25892.2
         },
         {
           "period": "2026-02",
           "actual": 35414.5,
-          "fitted": 26883.4
+          "fitted": 26910.9
         },
         {
           "period": "2026-03",
           "actual": 31723.0,
-          "fitted": 27347.7
+          "fitted": 27375.7
         },
         {
           "period": "2026-04",
           "actual": 38926.6,
-          "fitted": 27741.1
+          "fitted": 27769.5
         },
         {
           "period": "2026-05",
           "actual": 44732.9,
-          "fitted": 30274.7
+          "fitted": 30305.6
         },
         {
           "period": "2026-06",
           "actual": 46125.9,
-          "fitted": 30254.8
+          "fitted": 30285.7
         },
         {
           "period": "2026-07",
           "actual": 43119.8,
-          "fitted": 30834.8
+          "fitted": 30866.4
+        },
+        {
+          "period": "2026-08",
+          "actual": 46128.5,
+          "fitted": 37569.7
         }
       ]
     },
@@ -25132,6 +25141,10 @@
     {
       "period": "2026-07",
       "pe_ratio": 29.15
+    },
+    {
+      "period": "2026-08",
+      "pe_ratio": 25.62
     }
   ]
 }
