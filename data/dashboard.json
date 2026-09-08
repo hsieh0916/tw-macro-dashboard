@@ -12373,14 +12373,10 @@
       },
       {
         "period": "2026-09",
-        "close": 47326.3
+        "close": 47105.8
       }
     ],
     "daily_recent": [
-      {
-        "date": "2025-08-13",
-        "close": 24370.02
-      },
       {
         "date": "2025-08-14",
         "close": 24238.1
@@ -13416,6 +13412,10 @@
       {
         "date": "2026-09-07",
         "close": 47326.27
+      },
+      {
+        "date": "2026-09-08",
+        "close": 47105.78
       }
     ]
   },
@@ -14126,7 +14126,7 @@
     },
     {
       "period": "2026-09",
-      "net_ntd_100m": 317.3
+      "net_ntd_100m": 450.0
     }
   ],
   "fx_usdtwd": [
@@ -15124,7 +15124,7 @@
     },
     {
       "period": "2026-09",
-      "usdtwd": 31.545
+      "usdtwd": 31.54
     }
   ],
   "pmi_outlook": [
@@ -15142,7 +15142,7 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-09-07T14:43:39Z",
+    "generated_at": "2026-09-08T13:15:39Z",
     "warnings": [
       "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
@@ -15205,11 +15205,11 @@
   "cnn_fear_greed": {
     "score": 41.9,
     "rating": "fear",
-    "timestamp": "2026-09-04T23:59:43+00:00",
-    "previous_close": 35.2,
-    "previous_1_week": 52.3,
-    "previous_1_month": 60.0,
-    "previous_1_year": 61.2,
+    "timestamp": "2026-09-08T12:55:31+00:00",
+    "previous_close": 41.9,
+    "previous_1_week": 30.9,
+    "previous_1_month": 64.4,
+    "previous_1_year": 58.2,
     "components": {
       "market_momentum": {
         "score": 36.6,
@@ -16238,7 +16238,11 @@
         "score": 41.9
       },
       {
-        "date": "2026-09-04",
+        "date": "2026-09-08",
+        "score": 41.9
+      },
+      {
+        "date": "2026-09-08",
         "score": 41.9
       }
     ]
@@ -16251,36 +16255,36 @@
     "components": {
       "momentum": {
         "score": 100.0,
-        "vs_ma125_pct": 13.47
+        "vs_ma125_pct": 12.63
       },
       "strength": {
         "score": null,
         "status": "accumulating",
-        "days_collected": 12,
+        "days_collected": 13,
         "days_needed": 250
       },
       "put_call": {
-        "score": 26.1,
-        "put_call_ratio_pct": 123.89,
-        "date": "2026-09-07"
+        "score": 46.6,
+        "put_call_ratio_pct": 103.43,
+        "date": "2026-09-08"
       },
       "capital_flow": {
         "score": 100.0,
-        "net_20d_100m": 3101.1
+        "net_20d_100m": 3010.5
       },
       "volatility": {
-        "score": 77.5,
-        "realized_vol_annualized_pct": 16.7
+        "score": 76.9,
+        "realized_vol_annualized_pct": 16.9
       },
       "safe_haven": {
-        "score": 93.1,
-        "taiex_20d_pct": 5.34,
-        "bond_20d_pct": -3.28
+        "score": 85.7,
+        "taiex_20d_pct": 4.4,
+        "bond_20d_pct": -2.74
       },
       "breadth": {
-        "score": 41.4,
-        "advances": 404,
-        "declines": 573
+        "score": 28.6,
+        "advances": 282,
+        "declines": 705
       }
     },
     "historical": [
@@ -16330,6 +16334,10 @@
       },
       {
         "date": "2026-09-07",
+        "score": 73.0
+      },
+      {
+        "date": "2026-09-08",
         "score": 73.0
       }
     ]
