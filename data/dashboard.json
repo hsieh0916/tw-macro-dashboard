@@ -12373,14 +12373,10 @@
       },
       {
         "period": "2026-09",
-        "close": 48157.3
+        "close": 48024.6
       }
     ],
     "daily_recent": [
-      {
-        "date": "2025-08-29",
-        "close": 24233.1
-      },
       {
         "date": "2025-09-01",
         "close": 24071.73
@@ -13416,6 +13412,10 @@
       {
         "date": "2026-09-23",
         "close": 48157.29
+      },
+      {
+        "date": "2026-09-24",
+        "close": 48024.6
       }
     ]
   },
@@ -14126,7 +14126,7 @@
     },
     {
       "period": "2026-09",
-      "net_ntd_100m": 229.7
+      "net_ntd_100m": -100.0
     }
   ],
   "fx_usdtwd": [
@@ -15124,7 +15124,7 @@
     },
     {
       "period": "2026-09",
-      "usdtwd": 31.7
+      "usdtwd": 31.78
     }
   ],
   "pmi_outlook": [
@@ -15142,7 +15142,7 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-09-23T14:03:03Z",
+    "generated_at": "2026-09-24T13:59:01Z",
     "warnings": [
       "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
@@ -15203,20 +15203,20 @@
     }
   },
   "cnn_fear_greed": {
-    "score": 38.7,
+    "score": 34.2,
     "rating": "fear",
-    "timestamp": "2026-09-23T13:55:57+00:00",
-    "previous_close": 35.2,
-    "previous_1_week": 27.3,
-    "previous_1_month": 54.7,
-    "previous_1_year": 56.8,
+    "timestamp": "2026-09-24T13:54:13+00:00",
+    "previous_close": 34.7,
+    "previous_1_week": 28.3,
+    "previous_1_month": 55.0,
+    "previous_1_year": 54.6,
     "components": {
       "market_momentum": {
-        "score": 35.4,
+        "score": 29.2,
         "rating": "fear"
       },
       "stock_price_strength": {
-        "score": 1.6,
+        "score": 0,
         "rating": "extreme fear"
       },
       "stock_price_breadth": {
@@ -15224,11 +15224,11 @@
         "rating": "extreme fear"
       },
       "put_call_options": {
-        "score": 71.4,
+        "score": 64,
         "rating": "greed"
       },
       "junk_bond_demand": {
-        "score": 50,
+        "score": 51.6,
         "rating": "neutral"
       },
       "market_volatility": {
@@ -15236,15 +15236,11 @@
         "rating": "neutral"
       },
       "safe_haven_demand": {
-        "score": 59.6,
-        "rating": "greed"
+        "score": 45.4,
+        "rating": "neutral"
       }
     },
     "historical": [
-      {
-        "date": "2025-09-23",
-        "score": 56.8
-      },
       {
         "date": "2025-09-24",
         "score": 54.6
@@ -16243,52 +16239,56 @@
       },
       {
         "date": "2026-09-23",
-        "score": 38.2
+        "score": 32.5
       },
       {
-        "date": "2026-09-23",
-        "score": 38.7
+        "date": "2026-09-24",
+        "score": 34.3
+      },
+      {
+        "date": "2026-09-24",
+        "score": 34.2
       }
     ]
   },
   "taiwan_fear_greed": {
-    "score": 70.2,
+    "score": 64.3,
     "rating": "greed",
     "components_available": 6,
     "components_total": 7,
     "components": {
       "momentum": {
         "score": 100.0,
-        "vs_ma125_pct": 12.02
+        "vs_ma125_pct": 11.41
       },
       "strength": {
         "score": null,
         "status": "accumulating",
-        "days_collected": 24,
+        "days_collected": 25,
         "days_needed": 250
       },
       "put_call": {
-        "score": 54.2,
-        "put_call_ratio_pct": 95.84,
-        "date": "2026-09-23"
+        "score": 28.9,
+        "put_call_ratio_pct": 121.11,
+        "date": "2026-09-24"
       },
       "capital_flow": {
-        "score": 66.6,
-        "net_20d_100m": 994.2
+        "score": 52.9,
+        "net_20d_100m": 173.6
       },
       "volatility": {
-        "score": 76.0,
-        "realized_vol_annualized_pct": 17.2
+        "score": 75.7,
+        "realized_vol_annualized_pct": 17.3
       },
       "safe_haven": {
-        "score": 83.6,
-        "taiex_20d_pct": 5.07,
-        "bond_20d_pct": -1.65
+        "score": 86.9,
+        "taiex_20d_pct": 4.46,
+        "bond_20d_pct": -2.92
       },
       "breadth": {
-        "score": 40.8,
-        "advances": 388,
-        "declines": 562
+        "score": 41.4,
+        "advances": 386,
+        "declines": 546
       }
     },
     "historical": [
@@ -16387,6 +16387,10 @@
       {
         "date": "2026-09-23",
         "score": 70.2
+      },
+      {
+        "date": "2026-09-24",
+        "score": 64.3
       }
     ]
   },
@@ -24311,6 +24315,10 @@
     {
       "date": "2026-09-18",
       "total_market_cap_100m": 1543193.8
+    },
+    {
+      "date": "2026-09-24",
+      "total_market_cap_100m": 1570760.0
     }
   ],
   "pe_history": [
