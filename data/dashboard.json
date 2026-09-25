@@ -15142,7 +15142,7 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-09-24T13:59:01Z",
+    "generated_at": "2026-09-25T14:23:32Z",
     "warnings": [
       "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
@@ -15203,16 +15203,16 @@
     }
   },
   "cnn_fear_greed": {
-    "score": 34.2,
+    "score": 37.7,
     "rating": "fear",
-    "timestamp": "2026-09-24T13:54:13+00:00",
-    "previous_close": 34.7,
-    "previous_1_week": 28.3,
-    "previous_1_month": 55.0,
-    "previous_1_year": 54.6,
+    "timestamp": "2026-09-25T14:19:08+00:00",
+    "previous_close": 36.1,
+    "previous_1_week": 30.4,
+    "previous_1_month": 59.6,
+    "previous_1_year": 50.7,
     "components": {
       "market_momentum": {
-        "score": 29.2,
+        "score": 32.4,
         "rating": "fear"
       },
       "stock_price_strength": {
@@ -15224,27 +15224,23 @@
         "rating": "extreme fear"
       },
       "put_call_options": {
-        "score": 64,
+        "score": 67.8,
         "rating": "greed"
       },
       "junk_bond_demand": {
-        "score": 51.6,
-        "rating": "neutral"
+        "score": 62,
+        "rating": "greed"
       },
       "market_volatility": {
         "score": 50,
         "rating": "neutral"
       },
       "safe_haven_demand": {
-        "score": 45.4,
+        "score": 51.8,
         "rating": "neutral"
       }
     },
     "historical": [
-      {
-        "date": "2025-09-24",
-        "score": 54.6
-      },
       {
         "date": "2025-09-25",
         "score": 50.7
@@ -16243,11 +16239,15 @@
       },
       {
         "date": "2026-09-24",
-        "score": 34.3
+        "score": 35.7
       },
       {
-        "date": "2026-09-24",
-        "score": 34.2
+        "date": "2026-09-25",
+        "score": 37.7
+      },
+      {
+        "date": "2026-09-25",
+        "score": 37.7
       }
     ]
   },
