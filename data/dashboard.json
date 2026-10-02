@@ -12400,14 +12400,10 @@
       },
       {
         "period": "2026-10",
-        "close": 48353.5
+        "close": 48475.7
       }
     ],
     "daily_recent": [
-      {
-        "date": "2025-09-04",
-        "close": 24179.85
-      },
       {
         "date": "2025-09-05",
         "close": 24494.58
@@ -13443,6 +13439,10 @@
       {
         "date": "2026-10-01",
         "close": 48353.49
+      },
+      {
+        "date": "2026-10-02",
+        "close": 48475.74
       }
     ]
   },
@@ -14157,7 +14157,7 @@
     },
     {
       "period": "2026-10",
-      "net_ntd_100m": 219.4
+      "net_ntd_100m": 245.6
     }
   ],
   "fx_usdtwd": [
@@ -15159,7 +15159,7 @@
     },
     {
       "period": "2026-10",
-      "usdtwd": 31.855
+      "usdtwd": 31.845
     }
   ],
   "pmi_outlook": [
@@ -15174,12 +15174,15 @@
     {
       "period": "2026-07",
       "value": 64.5
+    },
+    {
+      "period": "2026-09",
+      "value": 62.4
     }
   ],
   "meta": {
-    "generated_at": "2026-10-01T15:57:11Z",
+    "generated_at": "2026-10-02T15:17:42Z",
     "warnings": [
-      "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
     ],
     "sources": {
@@ -15238,32 +15241,32 @@
     }
   },
   "cnn_fear_greed": {
-    "score": 26.5,
+    "score": 31.3,
     "rating": "fear",
-    "timestamp": "2026-10-01T15:52:45+00:00",
-    "previous_close": 30.8,
-    "previous_1_week": 35.7,
-    "previous_1_month": 44.9,
-    "previous_1_year": 52.5,
+    "timestamp": "2026-10-02T15:15:00+00:00",
+    "previous_close": 28.1,
+    "previous_1_week": 36.9,
+    "previous_1_month": 46.1,
+    "previous_1_year": 54.5,
     "components": {
       "market_momentum": {
-        "score": 23.8,
-        "rating": "extreme fear"
+        "score": 38.8,
+        "rating": "fear"
       },
       "stock_price_strength": {
-        "score": 0.4,
+        "score": 0.8,
         "rating": "extreme fear"
       },
       "stock_price_breadth": {
-        "score": 0,
+        "score": 0.8,
         "rating": "extreme fear"
       },
       "put_call_options": {
-        "score": 36.8,
+        "score": 37,
         "rating": "fear"
       },
       "junk_bond_demand": {
-        "score": 42,
+        "score": 43.4,
         "rating": "fear"
       },
       "market_volatility": {
@@ -15271,15 +15274,11 @@
         "rating": "neutral"
       },
       "safe_haven_demand": {
-        "score": 32.8,
-        "rating": "fear"
+        "score": 48,
+        "rating": "neutral"
       }
     },
     "historical": [
-      {
-        "date": "2025-10-01",
-        "score": 52.5
-      },
       {
         "date": "2025-10-02",
         "score": 54.5
@@ -16278,52 +16277,56 @@
       },
       {
         "date": "2026-10-01",
-        "score": 26.5
+        "score": 28.9
       },
       {
-        "date": "2026-10-01",
-        "score": 26.5
+        "date": "2026-10-02",
+        "score": 31.3
+      },
+      {
+        "date": "2026-10-02",
+        "score": 31.3
       }
     ]
   },
   "taiwan_fear_greed": {
-    "score": 67.6,
+    "score": 74.2,
     "rating": "greed",
     "components_available": 6,
     "components_total": 7,
     "components": {
       "momentum": {
         "score": 100.0,
-        "vs_ma125_pct": 11.21
+        "vs_ma125_pct": 11.18
       },
       "strength": {
         "score": null,
         "status": "accumulating",
-        "days_collected": 28,
+        "days_collected": 29,
         "days_needed": 250
       },
       "put_call": {
-        "score": 58.9,
-        "put_call_ratio_pct": 91.11,
-        "date": "2026-10-01"
+        "score": 60.8,
+        "put_call_ratio_pct": 89.16,
+        "date": "2026-10-02"
       },
       "capital_flow": {
-        "score": 42.3,
-        "net_20d_100m": -465.0
+        "score": 57.9,
+        "net_20d_100m": 474.8
       },
       "volatility": {
-        "score": 77.7,
-        "realized_vol_annualized_pct": 16.7
+        "score": 82.6,
+        "realized_vol_annualized_pct": 15.2
       },
       "safe_haven": {
-        "score": 83.5,
-        "taiex_20d_pct": 2.99,
-        "bond_20d_pct": -3.71
+        "score": 95.3,
+        "taiex_20d_pct": 5.01,
+        "bond_20d_pct": -4.05
       },
       "breadth": {
-        "score": 43.4,
-        "advances": 422,
-        "declines": 551
+        "score": 48.8,
+        "advances": 483,
+        "declines": 506
       }
     },
     "historical": [
@@ -16438,6 +16441,10 @@
       {
         "date": "2026-10-01",
         "score": 67.6
+      },
+      {
+        "date": "2026-10-02",
+        "score": 74.2
       }
     ]
   },
@@ -24371,6 +24378,10 @@
     {
       "date": "2026-09-24",
       "total_market_cap_100m": 1570760.0
+    },
+    {
+      "date": "2026-10-02",
+      "total_market_cap_100m": 1585593.4
     }
   ],
   "pe_history": [
