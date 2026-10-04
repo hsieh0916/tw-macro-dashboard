@@ -15181,8 +15181,9 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-10-03T14:07:18Z",
+    "generated_at": "2026-10-04T14:34:39Z",
     "warnings": [
+      "market_cap_weekly 擷取失敗，沿用舊資料：File is not a zip file",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
     ],
     "sources": {
@@ -15279,10 +15280,6 @@
       }
     },
     "historical": [
-      {
-        "date": "2025-10-03",
-        "score": 52.6
-      },
       {
         "date": "2025-10-06",
         "score": 54.0
