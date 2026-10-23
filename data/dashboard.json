@@ -15159,7 +15159,7 @@
     },
     {
       "period": "2026-10",
-      "usdtwd": 32.54
+      "usdtwd": 32.505
     }
   ],
   "pmi_outlook": [
@@ -15181,7 +15181,7 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-10-22T14:18:43Z",
+    "generated_at": "2026-10-23T14:01:42Z",
     "warnings": [
       "gdp 擷取失敗，沿用舊資料：HTTPSConnectionPool(host='ws.dgbas.gov.tw', port=443): Max retries exceeded with url: /001/Upload/461/relfile/11525/230514/na8101a1q.xml (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
@@ -15242,48 +15242,44 @@
     }
   },
   "cnn_fear_greed": {
-    "score": 25.5,
-    "rating": "fear",
-    "timestamp": "2026-10-22T14:16:41+00:00",
-    "previous_close": 31.4,
-    "previous_1_week": 30.3,
-    "previous_1_month": 35.0,
-    "previous_1_year": 26.4,
+    "score": 19.3,
+    "rating": "extreme fear",
+    "timestamp": "2026-10-23T13:58:07+00:00",
+    "previous_close": 19.8,
+    "previous_1_week": 22.1,
+    "previous_1_month": 32.5,
+    "previous_1_year": 27.6,
     "components": {
       "market_momentum": {
-        "score": 27.8,
-        "rating": "fear"
+        "score": 18.4,
+        "rating": "extreme fear"
       },
       "stock_price_strength": {
-        "score": 17.6,
+        "score": 18.8,
         "rating": "extreme fear"
       },
       "stock_price_breadth": {
-        "score": 20.4,
+        "score": 22.6,
         "rating": "extreme fear"
       },
       "put_call_options": {
-        "score": 24.6,
+        "score": 21.2,
         "rating": "extreme fear"
       },
       "junk_bond_demand": {
-        "score": 38.2,
+        "score": 32.6,
         "rating": "fear"
       },
       "market_volatility": {
-        "score": 39.2,
-        "rating": "fear"
+        "score": 12.1,
+        "rating": "extreme fear"
       },
       "safe_haven_demand": {
-        "score": 10.6,
+        "score": 9.2,
         "rating": "extreme fear"
       }
     },
     "historical": [
-      {
-        "date": "2025-10-22",
-        "score": 26.4
-      },
       {
         "date": "2025-10-23",
         "score": 27.6
@@ -16282,11 +16278,15 @@
       },
       {
         "date": "2026-10-22",
-        "score": 25.5
+        "score": 19.4
       },
       {
-        "date": "2026-10-22",
-        "score": 25.5
+        "date": "2026-10-23",
+        "score": 19.3
+      },
+      {
+        "date": "2026-10-23",
+        "score": 19.3
       }
     ]
   },
