@@ -15181,7 +15181,7 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-10-23T14:01:42Z",
+    "generated_at": "2026-10-24T13:03:53Z",
     "warnings": [
       "gdp 擷取失敗，沿用舊資料：HTTPSConnectionPool(host='ws.dgbas.gov.tw', port=443): Max retries exceeded with url: /001/Upload/461/relfile/11525/230514/na8101a1q.xml (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
@@ -15242,24 +15242,24 @@
     }
   },
   "cnn_fear_greed": {
-    "score": 19.3,
+    "score": 21.0,
     "rating": "extreme fear",
-    "timestamp": "2026-10-23T13:58:07+00:00",
+    "timestamp": "2026-10-23T23:59:44+00:00",
     "previous_close": 19.8,
     "previous_1_week": 22.1,
     "previous_1_month": 32.5,
     "previous_1_year": 27.6,
     "components": {
       "market_momentum": {
-        "score": 18.4,
+        "score": 17.6,
         "rating": "extreme fear"
       },
       "stock_price_strength": {
-        "score": 18.8,
+        "score": 18.6,
         "rating": "extreme fear"
       },
       "stock_price_breadth": {
-        "score": 22.6,
+        "score": 23.4,
         "rating": "extreme fear"
       },
       "put_call_options": {
@@ -15267,11 +15267,11 @@
         "rating": "extreme fear"
       },
       "junk_bond_demand": {
-        "score": 32.6,
+        "score": 40.2,
         "rating": "fear"
       },
       "market_volatility": {
-        "score": 12.1,
+        "score": 16.7,
         "rating": "extreme fear"
       },
       "safe_haven_demand": {
@@ -15280,10 +15280,6 @@
       }
     },
     "historical": [
-      {
-        "date": "2025-10-23",
-        "score": 27.6
-      },
       {
         "date": "2025-10-24",
         "score": 32.5
@@ -16282,11 +16278,11 @@
       },
       {
         "date": "2026-10-23",
-        "score": 19.3
+        "score": 21.0
       },
       {
         "date": "2026-10-23",
-        "score": 19.3
+        "score": 21.0
       }
     ]
   },
