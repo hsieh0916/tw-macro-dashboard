@@ -15181,7 +15181,7 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-10-24T13:03:53Z",
+    "generated_at": "2026-10-25T13:31:53Z",
     "warnings": [
       "gdp 擷取失敗，沿用舊資料：HTTPSConnectionPool(host='ws.dgbas.gov.tw', port=443): Max retries exceeded with url: /001/Upload/461/relfile/11525/230514/na8101a1q.xml (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))",
       "taiwan_fear_greed：僅 6/7 個分項本次成功計算，其餘沿用/留空"
@@ -15280,10 +15280,6 @@
       }
     },
     "historical": [
-      {
-        "date": "2025-10-24",
-        "score": 32.5
-      },
       {
         "date": "2025-10-27",
         "score": 37.3
