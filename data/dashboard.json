@@ -12400,14 +12400,10 @@
       },
       {
         "period": "2026-10",
-        "close": 46096.2
+        "close": 47035.6
       }
     ],
     "daily_recent": [
-      {
-        "date": "2025-09-25",
-        "close": 26023.85
-      },
       {
         "date": "2025-09-26",
         "close": 25580.32
@@ -13443,6 +13439,10 @@
       {
         "date": "2026-10-27",
         "close": 46096.23
+      },
+      {
+        "date": "2026-10-28",
+        "close": 47035.58
       }
     ]
   },
@@ -14157,7 +14157,7 @@
     },
     {
       "period": "2026-10",
-      "net_ntd_100m": -8289.9
+      "net_ntd_100m": -8130.3
     }
   ],
   "fx_usdtwd": [
@@ -15159,7 +15159,7 @@
     },
     {
       "period": "2026-10",
-      "usdtwd": 32.455
+      "usdtwd": 32.42
     }
   ],
   "pmi_outlook": [
@@ -15181,7 +15181,7 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-10-27T15:06:00Z",
+    "generated_at": "2026-10-28T15:42:00Z",
     "warnings": [
       "gdp 擷取失敗，沿用舊資料：HTTPSConnectionPool(host='ws.dgbas.gov.tw', port=443): Max retries exceeded with url: /001/Upload/461/relfile/11525/230514/na8101a1q.xml (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)')))",
       "taiwan_fear_greed：僅 5/7 個分項本次成功計算，其餘沿用/留空"
@@ -15242,48 +15242,44 @@
     }
   },
   "cnn_fear_greed": {
-    "score": 31.9,
+    "score": 34.7,
     "rating": "fear",
-    "timestamp": "2026-10-27T14:59:49+00:00",
-    "previous_close": 27.1,
-    "previous_1_week": 29.6,
-    "previous_1_month": 36.9,
-    "previous_1_year": 37.3,
+    "timestamp": "2026-10-28T15:36:49+00:00",
+    "previous_close": 33.6,
+    "previous_1_week": 30.3,
+    "previous_1_month": 32.4,
+    "previous_1_year": 39.3,
     "components": {
       "market_momentum": {
-        "score": 31.4,
+        "score": 40.4,
         "rating": "fear"
       },
       "stock_price_strength": {
-        "score": 28,
+        "score": 30,
         "rating": "fear"
       },
       "stock_price_breadth": {
-        "score": 27.6,
+        "score": 29,
         "rating": "fear"
       },
       "put_call_options": {
-        "score": 31.2,
-        "rating": "fear"
+        "score": 24.6,
+        "rating": "extreme fear"
       },
       "junk_bond_demand": {
-        "score": 42.6,
-        "rating": "fear"
+        "score": 53.8,
+        "rating": "neutral"
       },
       "market_volatility": {
         "score": 50,
         "rating": "neutral"
       },
       "safe_haven_demand": {
-        "score": 12.8,
+        "score": 15.8,
         "rating": "extreme fear"
       }
     },
     "historical": [
-      {
-        "date": "2025-10-27",
-        "score": 37.3
-      },
       {
         "date": "2025-10-28",
         "score": 39.3
@@ -16150,47 +16146,47 @@
       },
       {
         "date": "2026-09-10",
-        "score": 32.2
+        "score": 31.9
       },
       {
         "date": "2026-09-11",
-        "score": 32.7
+        "score": 33.1
       },
       {
         "date": "2026-09-14",
-        "score": 31.0
+        "score": 32.1
       },
       {
         "date": "2026-09-15",
-        "score": 28.0
+        "score": 29.3
       },
       {
         "date": "2026-09-16",
-        "score": 27.3
+        "score": 27.0
       },
       {
         "date": "2026-09-17",
-        "score": 28.3
+        "score": 29.5
       },
       {
         "date": "2026-09-18",
-        "score": 30.4
+        "score": 28.5
       },
       {
         "date": "2026-09-21",
-        "score": 34.2
+        "score": 33.9
       },
       {
         "date": "2026-09-22",
-        "score": 35.0
+        "score": 35.2
       },
       {
         "date": "2026-09-23",
-        "score": 32.5
+        "score": 33.7
       },
       {
         "date": "2026-09-24",
-        "score": 35.7
+        "score": 34.5
       },
       {
         "date": "2026-09-25",
@@ -16198,11 +16194,11 @@
       },
       {
         "date": "2026-09-28",
-        "score": 34.4
+        "score": 32.4
       },
       {
         "date": "2026-09-29",
-        "score": 28.9
+        "score": 31.1
       },
       {
         "date": "2026-09-30",
@@ -16210,120 +16206,124 @@
       },
       {
         "date": "2026-10-01",
-        "score": 29.0
+        "score": 29.2
       },
       {
         "date": "2026-10-02",
-        "score": 40.0
+        "score": 38.2
       },
       {
         "date": "2026-10-05",
-        "score": 43.7
+        "score": 43.1
       },
       {
         "date": "2026-10-06",
-        "score": 46.8
+        "score": 47.0
       },
       {
         "date": "2026-10-07",
-        "score": 42.1
+        "score": 44.7
       },
       {
         "date": "2026-10-08",
-        "score": 39.8
+        "score": 39.2
       },
       {
         "date": "2026-10-09",
-        "score": 46.5
+        "score": 43.5
       },
       {
         "date": "2026-10-12",
-        "score": 46.3
+        "score": 45.2
       },
       {
         "date": "2026-10-13",
-        "score": 44.1
+        "score": 45.6
       },
       {
         "date": "2026-10-14",
-        "score": 26.7
+        "score": 28.8
       },
       {
         "date": "2026-10-15",
-        "score": 30.3
+        "score": 32.0
       },
       {
         "date": "2026-10-16",
-        "score": 22.1
+        "score": 18.2
       },
       {
         "date": "2026-10-19",
-        "score": 20.8
+        "score": 19.5
       },
       {
         "date": "2026-10-20",
-        "score": 29.6
+        "score": 28.7
       },
       {
         "date": "2026-10-21",
-        "score": 27.2
+        "score": 30.3
       },
       {
         "date": "2026-10-22",
-        "score": 19.4
+        "score": 20.0
       },
       {
         "date": "2026-10-23",
-        "score": 23.0
+        "score": 16.7
       },
       {
         "date": "2026-10-26",
-        "score": 29.3
+        "score": 29.8
       },
       {
         "date": "2026-10-27",
-        "score": 31.7
+        "score": 32.9
       },
       {
-        "date": "2026-10-27",
-        "score": 31.9
+        "date": "2026-10-28",
+        "score": 34.8
+      },
+      {
+        "date": "2026-10-28",
+        "score": 34.7
       }
     ]
   },
   "taiwan_fear_greed": {
-    "score": 38.3,
-    "rating": "fear",
+    "score": 46.8,
+    "rating": "neutral",
     "components_available": 5,
     "components_total": 7,
     "components": {
       "momentum": {
-        "score": 62.8,
-        "vs_ma125_pct": 2.56
+        "score": 72.5,
+        "vs_ma125_pct": 4.5
       },
       "strength": {
         "score": null,
         "status": "accumulating",
-        "days_collected": 43,
+        "days_collected": 44,
         "days_needed": 250
       },
       "put_call": null,
       "capital_flow": {
         "score": 0.0,
-        "net_20d_100m": -8563.7
+        "net_20d_100m": -8777.2
       },
       "volatility": {
-        "score": 64.8,
-        "realized_vol_annualized_pct": 20.6
+        "score": 60.7,
+        "realized_vol_annualized_pct": 21.8
       },
       "safe_haven": {
-        "score": 16.7,
-        "taiex_20d_pct": -3.56,
-        "bond_20d_pct": 3.09
+        "score": 28.8,
+        "taiex_20d_pct": -2.33,
+        "bond_20d_pct": 1.91
       },
       "breadth": {
-        "score": 47.0,
-        "advances": 464,
-        "declines": 523
+        "score": 71.8,
+        "advances": 714,
+        "declines": 280
       }
     },
     "historical": [
@@ -16498,6 +16498,10 @@
       {
         "date": "2026-10-27",
         "score": 38.3
+      },
+      {
+        "date": "2026-10-28",
+        "score": 46.8
       }
     ]
   },
