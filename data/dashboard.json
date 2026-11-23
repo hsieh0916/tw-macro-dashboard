@@ -12427,14 +12427,10 @@
       },
       {
         "period": "2026-11",
-        "close": 36033.3
+        "close": 36811.9
       }
     ],
     "daily_recent": [
-      {
-        "date": "2025-10-27",
-        "close": 27993.63
-      },
       {
         "date": "2025-10-28",
         "close": 27949.11
@@ -13470,6 +13466,10 @@
       {
         "date": "2026-11-20",
         "close": 36033.29
+      },
+      {
+        "date": "2026-11-23",
+        "close": 36811.89
       }
     ]
   },
@@ -14188,7 +14188,7 @@
     },
     {
       "period": "2026-11",
-      "net_ntd_100m": -8398.3
+      "net_ntd_100m": -8687.8
     }
   ],
   "fx_usdtwd": [
@@ -15194,7 +15194,7 @@
     },
     {
       "period": "2026-11",
-      "usdtwd": 32.94
+      "usdtwd": 32.9
     }
   ],
   "pmi_outlook": [
@@ -15220,7 +15220,7 @@
     }
   ],
   "meta": {
-    "generated_at": "2026-11-22T16:51:29Z",
+    "generated_at": "2026-11-23T20:49:47Z",
     "warnings": [
       "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）"
     ],
@@ -15280,40 +15280,40 @@
     }
   },
   "cnn_fear_greed": {
-    "score": 9.7,
+    "score": 17.6,
     "rating": "extreme fear",
-    "timestamp": "2026-11-20T23:59:52+00:00",
-    "previous_close": 18.7,
-    "previous_1_week": 37.4,
-    "previous_1_month": 28.7,
-    "previous_1_year": 5.2,
+    "timestamp": "2026-11-23T20:45:57+00:00",
+    "previous_close": 9.7,
+    "previous_1_week": 31.1,
+    "previous_1_month": 16.7,
+    "previous_1_year": 5.7,
     "components": {
       "market_momentum": {
-        "score": 0.2,
+        "score": 4,
         "rating": "extreme fear"
       },
       "stock_price_strength": {
-        "score": 27.2,
+        "score": 28.4,
         "rating": "fear"
       },
       "stock_price_breadth": {
-        "score": 20,
+        "score": 17.4,
         "rating": "extreme fear"
       },
       "put_call_options": {
-        "score": 2,
+        "score": 6.8,
         "rating": "extreme fear"
       },
       "junk_bond_demand": {
-        "score": 16.2,
+        "score": 21.6,
         "rating": "extreme fear"
       },
       "market_volatility": {
-        "score": 1.3,
-        "rating": "extreme fear"
+        "score": 38.3,
+        "rating": "fear"
       },
       "safe_haven_demand": {
-        "score": 0.8,
+        "score": 6.8,
         "rating": "extreme fear"
       }
     },
@@ -16312,54 +16312,58 @@
       },
       {
         "date": "2026-11-20",
-        "score": 9.7
+        "score": 18.6
       },
       {
-        "date": "2026-11-20",
-        "score": 9.7
+        "date": "2026-11-23",
+        "score": 17.6
+      },
+      {
+        "date": "2026-11-23",
+        "score": 17.6
       }
     ]
   },
   "taiwan_fear_greed": {
-    "score": 10.4,
+    "score": 23.0,
     "rating": "extreme fear",
     "components_available": 7,
     "components_total": 7,
     "components": {
       "momentum": {
         "score": 0.0,
-        "vs_ma125_pct": -20.26
+        "vs_ma125_pct": -18.47
       },
       "strength": {
-        "score": 0.1,
+        "score": 0.9,
         "status": "accumulating",
-        "days_collected": 61,
+        "days_collected": 62,
         "days_needed": 250,
-        "new_highs": 1,
-        "new_lows": 905
+        "new_highs": 3,
+        "new_lows": 347
       },
       "put_call": {
-        "score": 71.0,
-        "put_call_ratio_pct": 78.96,
-        "date": "2026-11-20"
+        "score": 95.8,
+        "put_call_ratio_pct": 54.21,
+        "date": "2026-11-23"
       },
       "capital_flow": {
         "score": 0.0,
-        "net_20d_100m": -10947.8
+        "net_20d_100m": -10421.5
       },
       "volatility": {
         "score": 0.0,
-        "realized_vol_annualized_pct": 49.0
+        "realized_vol_annualized_pct": 50.4
       },
       "safe_haven": {
         "score": 0.0,
-        "taiex_20d_pct": -23.15,
-        "bond_20d_pct": 1.47
+        "taiex_20d_pct": -20.05,
+        "bond_20d_pct": 1.23
       },
       "breadth": {
-        "score": 1.5,
-        "advances": 16,
-        "declines": 1058
+        "score": 64.3,
+        "advances": 652,
+        "declines": 362
       }
     },
     "historical": [
@@ -16602,6 +16606,10 @@
       {
         "date": "2026-11-20",
         "score": 10.4
+      },
+      {
+        "date": "2026-11-23",
+        "score": 23.0
       }
     ]
   },
