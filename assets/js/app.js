@@ -343,7 +343,7 @@
         sub: `綜合分數 ${fmtInt(latestBS.score)} 分・${lm.desc}`,
       },
       {
-        label: "GDP 經濟成長率（年增率，" + latestGDP.period + "）",
+        label: "GDP 經濟成長率（年增率，" + latestGDP.period + (latestGDP.estimate ? "・" + latestGDP.estimate : "") + "）",
         value: fmtNum(latestGDP.yoy_pct, 2),
         unit: "%",
         delta: prevGDP ? fmtSigned(latestGDP.yoy_pct - prevGDP.yoy_pct, 2) + " pp（前季）" : null,
@@ -532,7 +532,7 @@
     const full = data.gdp;
     const windowed = filterRange(full, RANGE_START_IDX, RANGE_END_IDX);
     makeBarChart("chart-gdp", {
-      labels: windowed.map((d) => d.period),
+      labels: windowed.map((d) => d.period + (d.estimate ? "（" + d.estimate + "）" : "")),
       data: windowed.map((d) => d.yoy_pct),
       color: css("--series-blue"),
       negColor: css("--series-red"),
@@ -560,7 +560,7 @@
     wireTableToggle("toggle-gdp", "table-gdp", [
       { key: "period", label: "季別" },
       { key: "yoy_pct", label: "經濟成長率(年增率)", fmt: (v) => fmtPct(v) },
-    ], windowed);
+    ], windowed.map((d) => (d.estimate ? { ...d, period: d.period + "（" + d.estimate + "）" } : d)));
   }
 
   // ---------- 台股點位估算模型（GDP／資金面回歸，統計參考用途，非投資建議，

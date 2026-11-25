@@ -209,9 +209,24 @@ def fetch_gdp():
             row["nominal_gdp_100m"] = round(v / 100, 1)  # 百萬元 -> 億元，與站內其他金額單位一致
 
     out = [row for row in by_period.values() if "yoy_pct" in row]
+    # 概估值（每季結束後約 1 個月以新聞稿發布）不會出現在上述 XML，XML 要等約 1 個月後的
+    # 「初步統計」才更新。為了讓網站及時反映，若 XML 尚無該季，就補上手動維護的概估值並標記；
+    # 一旦 XML 出現該季（初步統計），自動以 XML 數值為準，下表條目即可移除。
+    # 概估僅有實質成長率、無名目 GDP，故不影響以名目 GDP 計算的估值模型。
+    have = {row["period"] for row in out}
+    for p, yoy in GDP_ADVANCE_ESTIMATES.items():
+        if p not in have:
+            out.append({"period": p, "yoy_pct": yoy, "estimate": "概估"})
     out.sort(key=lambda x: x["period"])
     log(f"  -> {len(out)} quarterly points, latest {out[-1] if out else None}")
     return out
+
+
+# 主計總處新聞稿公布之 GDP 概估值（實質年增率 %）。來源：
+# 2026-Q3：主計總處 2026-10-30 發布概估 14.36%
+GDP_ADVANCE_ESTIMATES = {
+    "2026-Q3": 14.36,
+}
 
 
 # ---------------------------------------------------------------------------
