@@ -15227,11 +15227,7 @@
     }
   ],
   "meta": {
-<<<<<<< Updated upstream
-    "generated_at": "2026-11-25T13:02:49Z",
-=======
-    "generated_at": "2026-11-25T13:09:33Z",
->>>>>>> Stashed changes
+    "generated_at": "2026-11-25T13:10:23Z",
     "warnings": [
       "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）"
     ],
@@ -15291,9 +15287,9 @@
     }
   },
   "cnn_fear_greed": {
-    "score": 11.9,
+    "score": 12.3,
     "rating": "extreme fear",
-    "timestamp": "2026-11-25T12:49:16+00:00",
+    "timestamp": "2026-11-25T12:54:16+00:00",
     "previous_close": 17.4,
     "previous_1_week": 29.9,
     "previous_1_month": 16.7,
@@ -15312,7 +15308,7 @@
         "rating": "extreme fear"
       },
       "put_call_options": {
-        "score": 4.6,
+        "score": 7.2,
         "rating": "extreme fear"
       },
       "junk_bond_demand": {
@@ -16327,15 +16323,15 @@
       },
       {
         "date": "2026-11-24",
-        "score": 11.9
+        "score": 12.3
       },
       {
         "date": "2026-11-25",
-        "score": 11.9
+        "score": 12.3
       },
       {
         "date": "2026-11-25",
-        "score": 11.9
+        "score": 12.3
       }
     ]
   },
