@@ -589,6 +589,7 @@
     const vm = data.valuation_models;
     const wrap = document.getElementById("valuation-models");
     const models = vm ? VM_ORDER.map(([key, label]) => [key, label, vm[key]]).filter(([, , m]) => m) : [];
+    const estGdp = new Set((data.gdp || []).filter((d) => d.nominal_estimated).map((d) => d.period));
 
     if (!models.length) {
       if (wrap) wrap.innerHTML = '<p class="chart-note">目前無法計算（資料不足或本次擷取失敗）。</p>';
@@ -611,6 +612,7 @@
           <div class="vm-card-row"><span>實際點位（${m.latest_period}）</span><span class="vm-value">${fmtInt(m.actual_index)}</span></div>
           <div class="vm-card-row"><span>與模型偏離幅度</span><span class="vm-value">${fmtSigned(m.deviation_pct, 1)}%</span></div>
           ${vmFourthRow(m)}
+          ${estGdp.has(m.latest_period) ? `<div class="vm-card-row muted"><span>註：${m.latest_period} GDP 為概估值，名目GDP依平減指數推估，初步統計公布後自動更新</span></div>` : ""}
         </div>
       `).join("");
     }
@@ -958,7 +960,16 @@
       endInput.min = startIdx;
     }
     updateRangeVisual();
-    if (persist) localStorage.setItem("tw-macro-range", JSON.stringify([indexToPeriod(startIdx), indexToPeriod(endIdx)]));
+    // 終點落在最新一期時存成 "latest"＋區間長度，下次資料更新（如新一季GDP）時區間會自動往後滑，
+    // 不會被凍結在當初存檔的月份而把新資料濾掉
+    if (persist) {
+      try {
+        const val = endIdx === TIMELINE_MAX
+          ? { v: 2, end: "latest", span: endIdx - startIdx }
+          : { v: 2, start: indexToPeriod(startIdx), end: indexToPeriod(endIdx) };
+        localStorage.setItem("tw-macro-range", JSON.stringify(val));
+      } catch { /* 無痕模式等情況下 localStorage 不可用，略過 */ }
+    }
     if (rerender && LAST_DATA) renderAll(LAST_DATA);
   }
 
@@ -1021,9 +1032,20 @@
     if (startIdx == null || endIdx == null) {
       try {
         const saved = JSON.parse(localStorage.getItem("tw-macro-range"));
-        if (Array.isArray(saved) && saved.length === 2) {
-          startIdx = periodToIndex(saved[0]);
-          endIdx = periodToIndex(saved[1]);
+        if (saved && saved.v === 2 && saved.end === "latest" && Number.isFinite(saved.span)) {
+          endIdx = TIMELINE_MAX;
+          startIdx = TIMELINE_MAX - saved.span;
+        } else if (saved && saved.v === 2) {
+          startIdx = periodToIndex(saved.start);
+          endIdx = periodToIndex(saved.end);
+        } else if (Array.isArray(saved) && saved.length === 2) {
+          // 舊格式 [起, 訖]：無法分辨當初是否選「至最新」，絕大多數情況是，故保留區間長度、終點對齊最新
+          const s = periodToIndex(saved[0]);
+          const e = periodToIndex(saved[1]);
+          if (s != null && e != null) {
+            endIdx = TIMELINE_MAX;
+            startIdx = TIMELINE_MAX - (e - s);
+          }
         }
       } catch { /* 忽略壞掉的 localStorage 內容，改用預設值 */ }
     }

@@ -212,11 +212,29 @@ def fetch_gdp():
     # 概估值（每季結束後約 1 個月以新聞稿發布）不會出現在上述 XML，XML 要等約 1 個月後的
     # 「初步統計」才更新。為了讓網站及時反映，若 XML 尚無該季，就補上手動維護的概估值並標記；
     # 一旦 XML 出現該季（初步統計），自動以 XML 數值為準，下表條目即可移除。
-    # 概估僅有實質成長率、無名目 GDP，故不影響以名目 GDP 計算的估值模型。
-    have = {row["period"] for row in out}
-    for p, yoy in GDP_ADVANCE_ESTIMATES.items():
-        if p not in have:
-            out.append({"period": p, "yoy_pct": yoy, "estimate": "概估"})
+    # 概估僅有實質成長率、無名目 GDP，名目值以下方方式推估。
+    # 估值模型需要名目 GDP：以「去年同季名目值 ×(1+實質成長率)×(1+最近一季 XML 的 GDP 平減指數年增率)」
+    # 推估，並標記 nominal_estimated，待初步統計公布後由 XML 實際值取代。
+    out.sort(key=lambda x: x["period"])
+    have = {row["period"]: row for row in out}
+    deflator_yoy = None
+    for row in reversed(out):
+        y, q = row["period"].split("-Q")
+        prev = have.get(f"{int(y) - 1}-Q{q}")
+        if row.get("nominal_gdp_100m") and prev and prev.get("nominal_gdp_100m"):
+            deflator_yoy = (row["nominal_gdp_100m"] / prev["nominal_gdp_100m"]) / (1 + row["yoy_pct"] / 100) - 1
+            break
+    for p, yoy in sorted(GDP_ADVANCE_ESTIMATES.items()):
+        if p in have:
+            continue
+        row = {"period": p, "yoy_pct": yoy, "estimate": "概估"}
+        y, q = p.split("-Q")
+        prev = have.get(f"{int(y) - 1}-Q{q}")
+        if deflator_yoy is not None and prev and prev.get("nominal_gdp_100m"):
+            row["nominal_gdp_100m"] = round(prev["nominal_gdp_100m"] * (1 + yoy / 100) * (1 + deflator_yoy), 1)
+            row["nominal_estimated"] = True
+        out.append(row)
+        have[p] = row
     out.sort(key=lambda x: x["period"])
     log(f"  -> {len(out)} quarterly points, latest {out[-1] if out else None}")
     return out

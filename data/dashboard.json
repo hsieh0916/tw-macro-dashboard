@@ -8064,7 +8064,9 @@
     {
       "period": "2026-Q3",
       "yoy_pct": 14.36,
-      "estimate": "概估"
+      "estimate": "概估",
+      "nominal_gdp_100m": 84757.7,
+      "nominal_estimated": true
     }
   ],
   "money_supply": [
@@ -15225,7 +15227,11 @@
     }
   ],
   "meta": {
+<<<<<<< Updated upstream
     "generated_at": "2026-11-25T13:02:49Z",
+=======
+    "generated_at": "2026-11-25T13:09:33Z",
+>>>>>>> Stashed changes
     "warnings": [
       "pmi_outlook：本次未能自動擷取到最新一期數值，已沿用前次資料（來源網頁格式可能變動）"
     ],
@@ -15285,9 +15291,9 @@
     }
   },
   "cnn_fear_greed": {
-    "score": 11.6,
+    "score": 11.9,
     "rating": "extreme fear",
-    "timestamp": "2026-11-25T12:44:13+00:00",
+    "timestamp": "2026-11-25T12:49:16+00:00",
     "previous_close": 17.4,
     "previous_1_week": 29.9,
     "previous_1_month": 16.7,
@@ -15306,7 +15312,7 @@
         "rating": "extreme fear"
       },
       "put_call_options": {
-        "score": 2.2,
+        "score": 4.6,
         "rating": "extreme fear"
       },
       "junk_bond_demand": {
@@ -16321,15 +16327,15 @@
       },
       {
         "date": "2026-11-24",
-        "score": 11.6
+        "score": 11.9
       },
       {
         "date": "2026-11-25",
-        "score": 11.6
+        "score": 11.9
       },
       {
         "date": "2026-11-25",
-        "score": 11.6
+        "score": 11.9
       }
     ]
   },
@@ -16631,1322 +16637,1337 @@
     ]
   },
   "valuation_models": {
-    "latest_period": "2026-Q2",
-    "actual_index": 46126.0,
+    "latest_period": "2026-Q3",
+    "actual_index": 47940.0,
     "gdp_trend": {
       "name": "GDP 單因子趨勢回歸",
       "method": "台股加權指數與名目GDP的歷史對數線性關係，代入最新GDP推算指數理論水準",
-      "estimated_index": 28166.0,
-      "actual_index": 46126.0,
-      "latest_period": "2026-Q2",
-      "deviation_pct": 63.8,
-      "r_squared": 0.9,
-      "sample_quarters": 86,
+      "estimated_index": 31758.0,
+      "actual_index": 47940.0,
+      "latest_period": "2026-Q3",
+      "deviation_pct": 51.0,
+      "r_squared": 0.902,
+      "sample_quarters": 87,
       "historical": [
         {
           "period": "2005-Q1",
           "actual": 6005.9,
-          "fitted": 5492.3
+          "fitted": 5415.2
         },
         {
           "period": "2005-Q2",
           "actual": 6241.9,
-          "fitted": 5455.6
+          "fitted": 5378.0
         },
         {
           "period": "2005-Q3",
           "actual": 6118.6,
-          "fitted": 5943.4
+          "fitted": 5873.5
         },
         {
           "period": "2005-Q4",
           "actual": 6548.3,
-          "fitted": 6591.7
+          "fitted": 6533.7
         },
         {
           "period": "2006-Q1",
           "actual": 6614.0,
-          "fitted": 5883.1
+          "fitted": 5812.2
         },
         {
           "period": "2006-Q2",
           "actual": 6704.4,
-          "fitted": 5899.9
+          "fitted": 5829.2
         },
         {
           "period": "2006-Q3",
           "actual": 6883.1,
-          "fitted": 6470.7
+          "fitted": 6410.4
         },
         {
           "period": "2006-Q4",
           "actual": 7823.7,
-          "fitted": 6914.4
+          "fitted": 6863.1
         },
         {
           "period": "2007-Q1",
           "actual": 7884.4,
-          "fitted": 6355.7
+          "fitted": 6293.2
         },
         {
           "period": "2007-Q2",
           "actual": 8883.2,
-          "fitted": 6450.7
+          "fitted": 6390.0
         },
         {
           "period": "2007-Q3",
           "actual": 9476.5,
-          "fitted": 7306.3
+          "fitted": 7263.7
         },
         {
           "period": "2007-Q4",
           "actual": 8506.3,
-          "fitted": 7640.5
+          "fitted": 7605.8
         },
         {
           "period": "2008-Q1",
           "actual": 8572.6,
-          "fitted": 6875.8
+          "fitted": 6823.6
         },
         {
           "period": "2008-Q2",
           "actual": 7523.5,
-          "fitted": 6842.7
+          "fitted": 6789.8
         },
         {
           "period": "2008-Q3",
           "actual": 5719.3,
-          "fitted": 6606.5
+          "fitted": 6548.9
         },
         {
           "period": "2008-Q4",
           "actual": 4591.2,
-          "fitted": 6578.3
+          "fitted": 6520.0
         },
         {
           "period": "2009-Q1",
           "actual": 5210.8,
-          "fitted": 6174.4
+          "fitted": 6108.5
         },
         {
           "period": "2009-Q2",
           "actual": 6432.2,
-          "fitted": 6158.5
+          "fitted": 6092.3
         },
         {
           "period": "2009-Q3",
           "actual": 7509.2,
-          "fitted": 6681.3
+          "fitted": 6625.2
         },
         {
           "period": "2009-Q4",
           "actual": 8188.1,
-          "fitted": 7272.4
+          "fitted": 7229.0
         },
         {
           "period": "2010-Q1",
           "actual": 7920.1,
-          "fitted": 7165.7
+          "fitted": 7119.9
         },
         {
           "period": "2010-Q2",
           "actual": 7329.4,
-          "fitted": 7355.1
+          "fitted": 7313.6
         },
         {
           "period": "2010-Q3",
           "actual": 8237.8,
-          "fitted": 7822.8
+          "fitted": 7792.6
         },
         {
           "period": "2010-Q4",
           "actual": 8972.5,
-          "fitted": 7726.6
+          "fitted": 7694.0
         },
         {
           "period": "2011-Q1",
           "actual": 8683.3,
-          "fitted": 7643.3
+          "fitted": 7608.7
         },
         {
           "period": "2011-Q2",
           "actual": 8652.6,
-          "fitted": 7363.7
+          "fitted": 7322.5
         },
         {
           "period": "2011-Q3",
           "actual": 7225.4,
-          "fitted": 7967.6
+          "fitted": 7941.1
         },
         {
           "period": "2011-Q4",
           "actual": 7072.1,
-          "fitted": 7785.2
+          "fitted": 7754.1
         },
         {
           "period": "2012-Q1",
           "actual": 7933.0,
-          "fitted": 7715.2
+          "fitted": 7682.4
         },
         {
           "period": "2012-Q2",
           "actual": 7296.3,
-          "fitted": 7671.7
+          "fitted": 7637.8
         },
         {
           "period": "2012-Q3",
           "actual": 7715.2,
-          "fitted": 8375.1
+          "fitted": 8359.3
         },
         {
           "period": "2012-Q4",
           "actual": 7699.5,
-          "fitted": 8448.5
+          "fitted": 8434.7
         },
         {
           "period": "2013-Q1",
           "actual": 7918.6,
-          "fitted": 8054.7
+          "fitted": 8030.4
         },
         {
           "period": "2013-Q2",
           "actual": 8062.2,
-          "fitted": 8231.8
+          "fitted": 8212.2
         },
         {
           "period": "2013-Q3",
           "actual": 8173.9,
-          "fitted": 8790.1
+          "fitted": 8785.8
         },
         {
           "period": "2013-Q4",
           "actual": 8611.5,
-          "fitted": 9242.7
+          "fitted": 9251.8
         },
         {
           "period": "2014-Q1",
           "actual": 8849.3,
-          "fitted": 8742.4
+          "fitted": 8736.9
         },
         {
           "period": "2014-Q2",
           "actual": 9393.1,
-          "fitted": 9115.3
+          "fitted": 9120.5
         },
         {
           "period": "2014-Q3",
           "actual": 8966.9,
-          "fitted": 9750.4
+          "fitted": 9775.1
         },
         {
           "period": "2014-Q4",
           "actual": 9307.3,
-          "fitted": 10329.8
+          "fitted": 10373.4
         },
         {
           "period": "2015-Q1",
           "actual": 9586.4,
-          "fitted": 10047.4
+          "fitted": 10081.7
         },
         {
           "period": "2015-Q2",
           "actual": 9323.0,
-          "fitted": 9826.6
+          "fitted": 9853.7
         },
         {
           "period": "2015-Q3",
           "actual": 8181.2,
-          "fitted": 10317.7
+          "fitted": 10360.8
         },
         {
           "period": "2015-Q4",
           "actual": 8338.1,
-          "fitted": 10736.2
+          "fitted": 10793.6
         },
         {
           "period": "2016-Q1",
           "actual": 8744.8,
-          "fitted": 10439.4
+          "fitted": 10486.6
         },
         {
           "period": "2016-Q2",
           "actual": 8666.6,
-          "fitted": 10210.1
+          "fitted": 10249.7
         },
         {
           "period": "2016-Q3",
           "actual": 9166.9,
-          "fitted": 10732.8
+          "fitted": 10790.0
         },
         {
           "period": "2016-Q4",
           "actual": 9253.5,
-          "fitted": 11486.1
+          "fitted": 11570.1
         },
         {
           "period": "2017-Q1",
           "actual": 9811.5,
-          "fitted": 10705.5
+          "fitted": 10761.8
         },
         {
           "period": "2017-Q2",
           "actual": 10395.1,
-          "fitted": 10508.1
+          "fitted": 10557.6
         },
         {
           "period": "2017-Q3",
           "actual": 10383.9,
-          "fitted": 11456.6
+          "fitted": 11539.5
         },
         {
           "period": "2017-Q4",
           "actual": 10642.9,
-          "fitted": 12001.6
+          "fitted": 12104.8
         },
         {
           "period": "2018-Q1",
           "actual": 10919.5,
-          "fitted": 11088.6
+          "fitted": 11158.3
         },
         {
           "period": "2018-Q2",
           "actual": 10836.9,
-          "fitted": 11157.0
+          "fitted": 11229.1
         },
         {
           "period": "2018-Q3",
           "actual": 11006.3,
-          "fitted": 11633.5
+          "fitted": 11722.9
         },
         {
           "period": "2018-Q4",
           "actual": 9727.4,
-          "fitted": 12410.9
+          "fitted": 12529.8
         },
         {
           "period": "2019-Q1",
           "actual": 10641.0,
-          "fitted": 11451.9
+          "fitted": 11534.7
         },
         {
           "period": "2019-Q2",
           "actual": 10730.8,
-          "fitted": 11667.5
+          "fitted": 11758.2
         },
         {
           "period": "2019-Q3",
           "actual": 10829.7,
-          "fitted": 12254.0
+          "fitted": 12366.8
         },
         {
           "period": "2019-Q4",
           "actual": 11997.1,
-          "fitted": 13168.0
+          "fitted": 13317.0
         },
         {
           "period": "2020-Q1",
           "actual": 9708.1,
-          "fitted": 12095.8
+          "fitted": 12202.5
         },
         {
           "period": "2020-Q2",
           "actual": 11621.2,
-          "fitted": 12246.7
+          "fitted": 12359.2
         },
         {
           "period": "2020-Q3",
           "actual": 12515.6,
-          "fitted": 13629.3
+          "fitted": 13797.3
         },
         {
           "period": "2020-Q4",
           "actual": 14732.5,
-          "fitted": 14974.4
+          "fitted": 15200.4
         },
         {
           "period": "2021-Q1",
           "actual": 16431.1,
-          "fitted": 14463.0
+          "fitted": 14666.5
         },
         {
           "period": "2021-Q2",
           "actual": 17755.5,
-          "fitted": 14389.8
+          "fitted": 14590.2
         },
         {
           "period": "2021-Q3",
           "actual": 16934.8,
-          "fitted": 14865.7
+          "fitted": 15087.0
         },
         {
           "period": "2021-Q4",
           "actual": 18218.8,
-          "fitted": 16762.6
+          "fitted": 17071.4
         },
         {
           "period": "2022-Q1",
           "actual": 17693.5,
-          "fitted": 16024.8
+          "fitted": 16298.8
         },
         {
           "period": "2022-Q2",
           "actual": 14825.7,
-          "fitted": 15620.8
+          "fitted": 15876.0
         },
         {
           "period": "2022-Q3",
           "actual": 13424.6,
-          "fitted": 16347.2
+          "fitted": 16636.2
         },
         {
           "period": "2022-Q4",
           "actual": 14137.7,
-          "fitted": 17165.5
+          "fitted": 17493.9
         },
         {
           "period": "2023-Q1",
           "actual": 15868.1,
-          "fitted": 15292.1
+          "fitted": 15532.4
         },
         {
           "period": "2023-Q2",
           "actual": 16915.5,
-          "fitted": 16316.3
+          "fitted": 16603.9
         },
         {
           "period": "2023-Q3",
           "actual": 16353.7,
-          "fitted": 17753.9
+          "fitted": 18111.2
         },
         {
           "period": "2023-Q4",
           "actual": 17930.8,
-          "fitted": 19469.6
+          "fitted": 19914.6
         },
         {
           "period": "2024-Q1",
           "actual": 20294.5,
-          "fitted": 18337.8
+          "fitted": 18724.4
         },
         {
           "period": "2024-Q2",
           "actual": 23032.2,
-          "fitted": 18972.5
+          "fitted": 19391.7
         },
         {
           "period": "2024-Q3",
           "actual": 22224.5,
-          "fitted": 19941.4
+          "fitted": 20411.5
         },
         {
           "period": "2024-Q4",
           "actual": 23035.1,
-          "fitted": 21746.5
+          "fitted": 22315.2
         },
         {
           "period": "2025-Q1",
           "actual": 20695.9,
-          "fitted": 20971.1
+          "fitted": 21496.8
         },
         {
           "period": "2025-Q2",
           "actual": 22256.0,
-          "fitted": 21782.7
+          "fitted": 22353.4
         },
         {
           "period": "2025-Q3",
           "actual": 25820.5,
-          "fitted": 23225.8
+          "fitted": 23878.7
         },
         {
           "period": "2025-Q4",
           "actual": 28963.6,
-          "fitted": 28282.2
+          "fitted": 29244.0
         },
         {
           "period": "2026-Q1",
           "actual": 31723.0,
-          "fitted": 27862.0
+          "fitted": 28797.0
         },
         {
           "period": "2026-Q2",
           "actual": 46125.9,
-          "fitted": 28166.4
+          "fitted": 29120.8
+        },
+        {
+          "period": "2026-Q3",
+          "actual": 47940.1,
+          "fitted": 31757.7
         }
       ]
     },
     "gdp_liquidity": {
       "name": "GDP＋資金面雙因子回歸",
       "method": "在GDP趨勢基礎上加入M1B–M2貨幣增速差（資金鬆緊代理變數）的雙因子對數線性回歸，較單看GDP更能反映資金環境對股價的影響",
-      "estimated_index": 28113.0,
-      "actual_index": 46126.0,
-      "latest_period": "2026-Q2",
-      "deviation_pct": 64.1,
-      "r_squared": 0.905,
-      "sample_quarters": 86,
+      "estimated_index": 31641.0,
+      "actual_index": 47940.0,
+      "latest_period": "2026-Q3",
+      "deviation_pct": 51.5,
+      "r_squared": 0.906,
+      "sample_quarters": 87,
       "historical": [
         {
           "period": "2005-Q1",
           "actual": 6005.9,
-          "fitted": 5451.2
+          "fitted": 5374.9
         },
         {
           "period": "2005-Q2",
           "actual": 6241.9,
-          "fitted": 5413.4
+          "fitted": 5336.6
         },
         {
           "period": "2005-Q3",
           "actual": 6118.6,
-          "fitted": 5804.9
+          "fitted": 5738.9
         },
         {
           "period": "2005-Q4",
           "actual": 6548.3,
-          "fitted": 6497.4
+          "fitted": 6441.7
         },
         {
           "period": "2006-Q1",
           "actual": 6614.0,
-          "fitted": 5703.5
+          "fitted": 5637.8
         },
         {
           "period": "2006-Q2",
           "actual": 6704.4,
-          "fitted": 5706.9
+          "fitted": 5642.0
         },
         {
           "period": "2006-Q3",
           "actual": 6883.1,
-          "fitted": 6374.5
+          "fitted": 6316.5
         },
         {
           "period": "2006-Q4",
           "actual": 7823.7,
-          "fitted": 6777.0
+          "fitted": 6729.1
         },
         {
           "period": "2007-Q1",
           "actual": 7884.4,
-          "fitted": 6372.8
+          "fitted": 6309.1
         },
         {
           "period": "2007-Q2",
           "actual": 8883.2,
-          "fitted": 6510.8
+          "fitted": 6447.6
         },
         {
           "period": "2007-Q3",
           "actual": 9476.5,
-          "fitted": 7319.6
+          "fitted": 7276.3
         },
         {
           "period": "2007-Q4",
           "actual": 8506.3,
-          "fitted": 7486.2
+          "fitted": 7455.1
         },
         {
           "period": "2008-Q1",
           "actual": 8572.6,
-          "fitted": 6632.3
+          "fitted": 6586.7
         },
         {
           "period": "2008-Q2",
           "actual": 7523.5,
-          "fitted": 6488.8
+          "fitted": 6445.5
         },
         {
           "period": "2008-Q3",
           "actual": 5719.3,
-          "fitted": 6188.1
+          "fitted": 6142.2
         },
         {
           "period": "2008-Q4",
           "actual": 4591.2,
-          "fitted": 6127.7
+          "fitted": 6082.2
         },
         {
           "period": "2009-Q1",
           "actual": 5210.8,
-          "fitted": 6084.1
+          "fitted": 6020.5
         },
         {
           "period": "2009-Q2",
           "actual": 6432.2,
-          "fitted": 6459.2
+          "fitted": 6382.6
         },
         {
           "period": "2009-Q3",
           "actual": 7509.2,
-          "fitted": 7265.9
+          "fitted": 7191.4
         },
         {
           "period": "2009-Q4",
           "actual": 8188.1,
-          "fitted": 8398.1
+          "fitted": 8322.0
         },
         {
           "period": "2010-Q1",
           "actual": 7920.1,
-          "fitted": 7833.0
+          "fitted": 7767.8
         },
         {
           "period": "2010-Q2",
           "actual": 7329.4,
-          "fitted": 7709.7
+          "fitted": 7658.2
         },
         {
           "period": "2010-Q3",
           "actual": 8237.8,
-          "fitted": 8094.5
+          "fitted": 8057.2
         },
         {
           "period": "2010-Q4",
           "actual": 8972.5,
-          "fitted": 7804.4
+          "fitted": 7769.6
         },
         {
           "period": "2011-Q1",
           "actual": 8683.3,
-          "fitted": 7696.8
+          "fitted": 7660.5
         },
         {
           "period": "2011-Q2",
           "actual": 8652.6,
-          "fitted": 7327.8
+          "fitted": 7287.1
         },
         {
           "period": "2011-Q3",
           "actual": 7225.4,
-          "fitted": 7844.6
+          "fitted": 7820.8
         },
         {
           "period": "2011-Q4",
           "actual": 7072.1,
-          "fitted": 7592.3
+          "fitted": 7565.7
         },
         {
           "period": "2012-Q1",
           "actual": 7933.0,
-          "fitted": 7526.0
+          "fitted": 7497.6
         },
         {
           "period": "2012-Q2",
           "actual": 7296.3,
-          "fitted": 7521.2
+          "fitted": 7490.8
         },
         {
           "period": "2012-Q3",
           "actual": 7715.2,
-          "fitted": 8277.9
+          "fitted": 8264.2
         },
         {
           "period": "2012-Q4",
           "actual": 7699.5,
-          "fitted": 8421.8
+          "fitted": 8408.6
         },
         {
           "period": "2013-Q1",
           "actual": 7918.6,
-          "fitted": 8080.5
+          "fitted": 8055.4
         },
         {
           "period": "2013-Q2",
           "actual": 8062.2,
-          "fitted": 8304.7
+          "fitted": 8283.2
         },
         {
           "period": "2013-Q3",
           "actual": 8173.9,
-          "fitted": 8804.7
+          "fitted": 8800.1
         },
         {
           "period": "2013-Q4",
           "actual": 8611.5,
-          "fitted": 9295.5
+          "fitted": 9303.5
         },
         {
           "period": "2014-Q1",
           "actual": 8849.3,
-          "fitted": 8772.2
+          "fitted": 8765.9
         },
         {
           "period": "2014-Q2",
           "actual": 9393.1,
-          "fitted": 9093.5
+          "fitted": 9099.2
         },
         {
           "period": "2014-Q3",
           "actual": 8966.9,
-          "fitted": 9767.2
+          "fitted": 9791.8
         },
         {
           "period": "2014-Q4",
           "actual": 9307.3,
-          "fitted": 10216.9
+          "fitted": 10262.8
         },
         {
           "period": "2015-Q1",
           "actual": 9586.4,
-          "fitted": 9877.3
+          "fitted": 9914.9
         },
         {
           "period": "2015-Q2",
           "actual": 9323.0,
-          "fitted": 9690.8
+          "fitted": 9720.7
         },
         {
           "period": "2015-Q3",
           "actual": 8181.2,
-          "fitted": 10204.1
+          "fitted": 10249.5
         },
         {
           "period": "2015-Q4",
           "actual": 8338.1,
-          "fitted": 10692.8
+          "fitted": 10751.3
         },
         {
           "period": "2016-Q1",
           "actual": 8744.8,
-          "fitted": 10421.6
+          "fitted": 10469.6
         },
         {
           "period": "2016-Q2",
           "actual": 8666.6,
-          "fitted": 10177.4
+          "fitted": 10217.9
         },
         {
           "period": "2016-Q3",
           "actual": 9166.9,
-          "fitted": 10753.4
+          "fitted": 10810.8
         },
         {
           "period": "2016-Q4",
           "actual": 9253.5,
-          "fitted": 11538.9
+          "fitted": 11622.9
         },
         {
           "period": "2017-Q1",
           "actual": 9811.5,
-          "fitted": 10643.6
+          "fitted": 10701.4
         },
         {
           "period": "2017-Q2",
           "actual": 10395.1,
-          "fitted": 10480.8
+          "fitted": 10531.2
         },
         {
           "period": "2017-Q3",
           "actual": 10383.9,
-          "fitted": 11409.9
+          "fitted": 11494.2
         },
         {
           "period": "2017-Q4",
           "actual": 10642.9,
-          "fitted": 11872.8
+          "fitted": 11978.6
         },
         {
           "period": "2018-Q1",
           "actual": 10919.5,
-          "fitted": 11106.3
+          "fitted": 11176.3
         },
         {
           "period": "2018-Q2",
           "actual": 10836.9,
-          "fitted": 11162.4
+          "fitted": 11235.1
         },
         {
           "period": "2018-Q3",
           "actual": 11006.3,
-          "fitted": 11679.6
+          "fitted": 11769.1
         },
         {
           "period": "2018-Q4",
           "actual": 9727.4,
-          "fitted": 12557.5
+          "fitted": 12675.7
         },
         {
           "period": "2019-Q1",
           "actual": 10641.0,
-          "fitted": 11661.6
+          "fitted": 11742.1
         },
         {
           "period": "2019-Q2",
           "actual": 10730.8,
-          "fitted": 11907.6
+          "fitted": 11995.8
         },
         {
           "period": "2019-Q3",
           "actual": 10829.7,
-          "fitted": 12477.5
+          "fitted": 12588.6
         },
         {
           "period": "2019-Q4",
           "actual": 11997.1,
-          "fitted": 13321.6
+          "fitted": 13470.3
         },
         {
           "period": "2020-Q1",
           "actual": 9708.1,
-          "fitted": 12215.7
+          "fitted": 12321.8
         },
         {
           "period": "2020-Q2",
           "actual": 11621.2,
-          "fitted": 12492.2
+          "fitted": 12602.7
         },
         {
           "period": "2020-Q3",
           "actual": 12515.6,
-          "fitted": 13952.5
+          "fitted": 14118.9
         },
         {
           "period": "2020-Q4",
           "actual": 14732.5,
-          "fitted": 15638.1
+          "fitted": 15861.6
         },
         {
           "period": "2021-Q1",
           "actual": 16431.1,
-          "fitted": 15256.4
+          "fitted": 15455.5
         },
         {
           "period": "2021-Q2",
           "actual": 17755.5,
-          "fitted": 15090.3
+          "fitted": 15286.8
         },
         {
           "period": "2021-Q3",
           "actual": 16934.8,
-          "fitted": 15396.3
+          "fitted": 15615.8
         },
         {
           "period": "2021-Q4",
           "actual": 18218.8,
-          "fitted": 17191.3
+          "fitted": 17501.5
         },
         {
           "period": "2022-Q1",
           "actual": 17693.5,
-          "fitted": 16142.0
+          "fitted": 16417.9
         },
         {
           "period": "2022-Q2",
           "actual": 14825.7,
-          "fitted": 15463.8
+          "fitted": 15722.2
         },
         {
           "period": "2022-Q3",
           "actual": 13424.6,
-          "fitted": 16082.3
+          "fitted": 16374.9
         },
         {
           "period": "2022-Q4",
           "actual": 14137.7,
-          "fitted": 16651.0
+          "fitted": 16983.4
         },
         {
           "period": "2023-Q1",
           "actual": 15868.1,
-          "fitted": 14718.8
+          "fitted": 14964.3
         },
         {
           "period": "2023-Q2",
           "actual": 16915.5,
-          "fitted": 15831.8
+          "fitted": 16123.7
         },
         {
           "period": "2023-Q3",
           "actual": 16353.7,
-          "fitted": 17327.8
+          "fitted": 17688.8
         },
         {
           "period": "2023-Q4",
           "actual": 17930.8,
-          "fitted": 19132.1
+          "fitted": 19580.7
         },
         {
           "period": "2024-Q1",
           "actual": 20294.5,
-          "fitted": 18134.0
+          "fitted": 18524.2
         },
         {
           "period": "2024-Q2",
           "actual": 23032.2,
-          "fitted": 18741.8
+          "fitted": 19164.6
         },
         {
           "period": "2024-Q3",
           "actual": 22224.5,
-          "fitted": 19678.2
+          "fitted": 20152.0
         },
         {
           "period": "2024-Q4",
           "actual": 23035.1,
-          "fitted": 21403.0
+          "fitted": 21975.1
         },
         {
           "period": "2025-Q1",
           "actual": 20695.9,
-          "fitted": 20476.4
+          "fitted": 21005.0
         },
         {
           "period": "2025-Q2",
           "actual": 22256.0,
-          "fitted": 21589.4
+          "fitted": 22164.3
         },
         {
           "period": "2025-Q3",
           "actual": 25820.5,
-          "fitted": 23123.4
+          "fitted": 23781.6
         },
         {
           "period": "2025-Q4",
           "actual": 28963.6,
-          "fitted": 28196.6
+          "fitted": 29166.1
         },
         {
           "period": "2026-Q1",
           "actual": 31723.0,
-          "fitted": 28119.0
+          "fitted": 29065.4
         },
         {
           "period": "2026-Q2",
           "actual": 46125.9,
-          "fitted": 28112.9
+          "fitted": 29075.3
+        },
+        {
+          "period": "2026-Q3",
+          "actual": 47940.1,
+          "fitted": 31641.1
         }
       ]
     },
     "buffett_indicator": {
       "name": "巴菲特指標均值回歸",
       "method": "以「上市總市值 ÷ 近四季名目GDP」比率的歷史均值為錨，假設總市值與加權指數同步變動，反推比率回歸均值時對應的指數水準",
-      "estimated_index": 18309.0,
-      "actual_index": 46126.0,
-      "latest_period": "2026-Q2",
-      "deviation_pct": 151.9,
-      "current_ratio_pct": 466.0,
-      "average_ratio_pct": 185.0,
-      "sample_quarters": 84,
+      "estimated_index": 18732.0,
+      "actual_index": 47940.0,
+      "latest_period": "2026-Q3",
+      "deviation_pct": 155.9,
+      "current_ratio_pct": 482.4,
+      "average_ratio_pct": 188.5,
+      "sample_quarters": 85,
       "historical": [
         {
           "period": "2005-Q3",
           "actual": 6118.6,
-          "fitted": 9255.2
+          "fitted": 9430.3
         },
         {
           "period": "2005-Q4",
           "actual": 6548.3,
-          "fitted": 9330.2
+          "fitted": 9506.6
         },
         {
           "period": "2006-Q1",
           "actual": 6614.0,
-          "fitted": 9350.2
+          "fitted": 9527.1
         },
         {
           "period": "2006-Q2",
           "actual": 6704.4,
-          "fitted": 9316.0
+          "fitted": 9492.2
         },
         {
           "period": "2006-Q3",
           "actual": 6883.1,
-          "fitted": 9418.9
+          "fitted": 9597.1
         },
         {
           "period": "2006-Q4",
           "actual": 7823.7,
-          "fitted": 9390.5
+          "fitted": 9568.1
         },
         {
           "period": "2007-Q1",
           "actual": 7884.4,
-          "fitted": 9541.2
+          "fitted": 9721.6
         },
         {
           "period": "2007-Q2",
           "actual": 8883.2,
-          "fitted": 9638.1
+          "fitted": 9820.3
         },
         {
           "period": "2007-Q3",
           "actual": 9476.5,
-          "fitted": 9762.2
+          "fitted": 9946.9
         },
         {
           "period": "2007-Q4",
           "actual": 8506.3,
-          "fitted": 9912.9
+          "fitted": 10100.4
         },
         {
           "period": "2008-Q1",
           "actual": 8572.6,
-          "fitted": 9772.1
+          "fitted": 9956.9
         },
         {
           "period": "2008-Q2",
           "actual": 7523.5,
-          "fitted": 9888.4
+          "fitted": 10075.4
         },
         {
           "period": "2008-Q3",
           "actual": 5719.3,
-          "fitted": 9397.9
+          "fitted": 9575.6
         },
         {
           "period": "2008-Q4",
           "actual": 4591.2,
-          "fitted": 9515.0
+          "fitted": 9694.9
         },
         {
           "period": "2009-Q1",
           "actual": 5210.8,
-          "fitted": 9118.8
+          "fitted": 9291.3
         },
         {
           "period": "2009-Q2",
           "actual": 6432.2,
-          "fitted": 9263.1
+          "fitted": 9438.3
         },
         {
           "period": "2009-Q3",
           "actual": 7509.2,
-          "fitted": 9448.7
+          "fitted": 9627.4
         },
         {
           "period": "2009-Q4",
           "actual": 8188.1,
-          "fitted": 9303.8
+          "fitted": 9479.8
         },
         {
           "period": "2010-Q1",
           "actual": 7920.1,
-          "fitted": 9539.4
+          "fitted": 9719.8
         },
         {
           "period": "2010-Q2",
           "actual": 7329.4,
-          "fitted": 9545.1
+          "fitted": 9725.7
         },
         {
           "period": "2010-Q3",
           "actual": 8237.8,
-          "fitted": 10014.7
+          "fitted": 10204.1
         },
         {
           "period": "2010-Q4",
           "actual": 8972.5,
-          "fitted": 9800.9
+          "fitted": 9986.3
         },
         {
           "period": "2011-Q1",
           "actual": 8683.3,
-          "fitted": 9973.8
+          "fitted": 10162.4
         },
         {
           "period": "2011-Q2",
           "actual": 8652.6,
-          "fitted": 10021.5
+          "fitted": 10211.1
         },
         {
           "period": "2011-Q3",
           "actual": 7225.4,
-          "fitted": 9815.8
+          "fitted": 10001.4
         },
         {
           "period": "2011-Q4",
           "actual": 7072.1,
-          "fitted": 9709.3
+          "fitted": 9892.9
         },
         {
           "period": "2012-Q1",
           "actual": 7933.0,
-          "fitted": 9685.2
+          "fitted": 9868.4
         },
         {
           "period": "2012-Q2",
           "actual": 7296.3,
-          "fitted": 9719.4
+          "fitted": 9903.3
         },
         {
           "period": "2012-Q3",
           "actual": 7715.2,
-          "fitted": 9747.5
+          "fitted": 9931.8
         },
         {
           "period": "2012-Q4",
           "actual": 7699.5,
-          "fitted": 9793.0
+          "fitted": 9978.2
         },
         {
           "period": "2013-Q1",
           "actual": 7918.6,
-          "fitted": 9780.8
+          "fitted": 9965.8
         },
         {
           "period": "2013-Q2",
           "actual": 8062.2,
-          "fitted": 9852.9
+          "fitted": 10039.2
         },
         {
           "period": "2013-Q3",
           "actual": 8173.9,
-          "fitted": 9813.5
+          "fitted": 9999.1
         },
         {
           "period": "2013-Q4",
           "actual": 8611.5,
-          "fitted": 10014.3
+          "fitted": 10203.7
         },
         {
           "period": "2014-Q1",
           "actual": 8849.3,
-          "fitted": 10141.1
+          "fitted": 10333.0
         },
         {
           "period": "2014-Q2",
           "actual": 9393.1,
-          "fitted": 10260.1
+          "fitted": 10454.2
         },
         {
           "period": "2014-Q3",
           "actual": 8966.9,
-          "fitted": 10244.5
+          "fitted": 10438.3
         },
         {
           "period": "2014-Q4",
           "actual": 9307.3,
-          "fitted": 10519.5
+          "fitted": 10718.5
         },
         {
           "period": "2015-Q1",
           "actual": 9586.4,
-          "fitted": 10692.3
+          "fitted": 10894.6
         },
         {
           "period": "2015-Q2",
           "actual": 9323.0,
-          "fitted": 10520.5
+          "fitted": 10719.4
         },
         {
           "period": "2015-Q3",
           "actual": 8181.2,
-          "fitted": 10779.4
+          "fitted": 10983.3
         },
         {
           "period": "2015-Q4",
           "actual": 8338.1,
-          "fitted": 10735.6
+          "fitted": 10938.7
         },
         {
           "period": "2016-Q1",
           "actual": 8744.8,
-          "fitted": 10828.1
+          "fitted": 11032.9
         },
         {
           "period": "2016-Q2",
           "actual": 8666.6,
-          "fitted": 11081.4
+          "fitted": 11291.0
         },
         {
           "period": "2016-Q3",
           "actual": 9166.9,
-          "fitted": 10888.0
+          "fitted": 11093.9
         },
         {
           "period": "2016-Q4",
           "actual": 9253.5,
-          "fitted": 11028.5
+          "fitted": 11237.1
         },
         {
           "period": "2017-Q1",
           "actual": 9811.5,
-          "fitted": 11008.2
+          "fitted": 11216.4
         },
         {
           "period": "2017-Q2",
           "actual": 10395.1,
-          "fitted": 11036.7
+          "fitted": 11245.5
         },
         {
           "period": "2017-Q3",
           "actual": 10383.9,
-          "fitted": 11102.5
+          "fitted": 11312.5
         },
         {
           "period": "2017-Q4",
           "actual": 10642.9,
-          "fitted": 11140.5
+          "fitted": 11351.2
         },
         {
           "period": "2018-Q1",
           "actual": 10919.5,
-          "fitted": 11170.4
+          "fitted": 11381.7
         },
         {
           "period": "2018-Q2",
           "actual": 10836.9,
-          "fitted": 11294.9
+          "fitted": 11508.5
         },
         {
           "period": "2018-Q3",
           "actual": 11006.3,
-          "fitted": 11283.3
+          "fitted": 11496.7
         },
         {
           "period": "2018-Q4",
           "actual": 9727.4,
-          "fitted": 11305.4
+          "fitted": 11519.2
         },
         {
           "period": "2019-Q1",
           "actual": 10641.0,
-          "fitted": 11342.2
+          "fitted": 11556.7
         },
         {
           "period": "2019-Q2",
           "actual": 10730.8,
-          "fitted": 11411.2
+          "fitted": 11627.0
         },
         {
           "period": "2019-Q3",
           "actual": 10829.7,
-          "fitted": 11483.2
+          "fitted": 11700.4
         },
         {
           "period": "2019-Q4",
           "actual": 11997.1,
-          "fitted": 11474.8
+          "fitted": 11691.9
         },
         {
           "period": "2020-Q1",
           "actual": 9708.1,
-          "fitted": 11652.7
+          "fitted": 11873.1
         },
         {
           "period": "2020-Q2",
           "actual": 11621.2,
-          "fitted": 11672.6
+          "fitted": 11893.3
         },
         {
           "period": "2020-Q3",
           "actual": 12515.6,
-          "fitted": 11909.3
+          "fitted": 12134.5
         },
         {
           "period": "2020-Q4",
           "actual": 14732.5,
-          "fitted": 12152.8
+          "fitted": 12382.7
         },
         {
           "period": "2021-Q1",
           "actual": 16431.1,
-          "fitted": 12573.4
+          "fitted": 12811.2
         },
         {
           "period": "2021-Q2",
           "actual": 17755.5,
-          "fitted": 12937.9
+          "fitted": 13182.6
         },
         {
           "period": "2021-Q3",
           "actual": 16934.8,
-          "fitted": 12628.6
+          "fitted": 12867.5
         },
         {
           "period": "2021-Q4",
           "actual": 18218.8,
-          "fitted": 13038.0
+          "fitted": 13284.6
         },
         {
           "period": "2022-Q1",
           "actual": 17693.5,
-          "fitted": 13203.5
+          "fitted": 13453.2
         },
         {
           "period": "2022-Q2",
           "actual": 14825.7,
-          "fitted": 12901.0
+          "fitted": 13145.0
         },
         {
           "period": "2022-Q3",
           "actual": 13424.6,
-          "fitted": 13449.9
+          "fitted": 13704.3
         },
         {
           "period": "2022-Q4",
           "actual": 14137.7,
-          "fitted": 13482.5
+          "fitted": 13737.5
         },
         {
           "period": "2023-Q1",
           "actual": 15868.1,
-          "fitted": 13359.9
+          "fitted": 13612.5
         },
         {
           "period": "2023-Q2",
           "actual": 16915.5,
-          "fitted": 13438.8
+          "fitted": 13693.0
         },
         {
           "period": "2023-Q3",
           "actual": 16353.7,
-          "fitted": 13586.5
+          "fitted": 13843.5
         },
         {
           "period": "2023-Q4",
           "actual": 17930.8,
-          "fitted": 13770.5
+          "fitted": 14030.9
         },
         {
           "period": "2024-Q1",
           "actual": 20294.5,
-          "fitted": 14117.1
+          "fitted": 14384.1
         },
         {
           "period": "2024-Q2",
           "actual": 23032.2,
-          "fitted": 14410.5
+          "fitted": 14683.1
         },
         {
           "period": "2024-Q3",
           "actual": 22224.5,
-          "fitted": 14261.9
+          "fitted": 14531.6
         },
         {
           "period": "2024-Q4",
           "actual": 23035.1,
-          "fitted": 14688.6
+          "fitted": 14966.4
         },
         {
           "period": "2025-Q1",
           "actual": 20695.9,
-          "fitted": 14481.5
+          "fitted": 14755.4
         },
         {
           "period": "2025-Q2",
           "actual": 22256.0,
-          "fitted": 15193.5
+          "fitted": 15480.9
         },
         {
           "period": "2025-Q3",
           "actual": 25820.5,
-          "fitted": 15877.7
+          "fitted": 16178.1
         },
         {
           "period": "2025-Q4",
           "actual": 28963.6,
-          "fitted": 16537.0
+          "fitted": 16849.8
         },
         {
           "period": "2026-Q1",
           "actual": 31723.0,
-          "fitted": 16313.1
+          "fitted": 16621.6
         },
         {
           "period": "2026-Q2",
           "actual": 46125.9,
-          "fitted": 18309.5
+          "fitted": 18655.8
+        },
+        {
+          "period": "2026-Q3",
+          "actual": 47940.1,
+          "fitted": 18731.9
         }
       ]
     },
@@ -19965,292 +19986,297 @@
     "comprehensive": {
       "name": "GDP＋資金面＋PMI＋景氣信號 綜合回歸",
       "method": "同時納入名目GDP、M1B–M2增速差、PMI、景氣對策信號分數 4 項預測變數的多因子回歸，涵蓋面最廣；但變數間高度相關、樣本有限，過度配適風險也最高，R² 偏高不必然代表更可靠——建議只當作其他模型的對照，不要單獨依賴",
-      "estimated_index": 34400.0,
-      "actual_index": 46126.0,
-      "latest_period": "2026-Q2",
-      "deviation_pct": 34.1,
-      "r_squared": 0.957,
-      "sample_quarters": 56,
+      "estimated_index": 40079.0,
+      "actual_index": 47940.0,
+      "latest_period": "2026-Q3",
+      "deviation_pct": 19.6,
+      "r_squared": 0.96,
+      "sample_quarters": 57,
       "historical": [
         {
           "period": "2012-Q3",
           "actual": 7715.2,
-          "fitted": 7471.8
+          "fitted": 7340.7
         },
         {
           "period": "2012-Q4",
           "actual": 7699.5,
-          "fitted": 7752.6
+          "fitted": 7711.1
         },
         {
           "period": "2013-Q1",
           "actual": 7918.6,
-          "fitted": 6991.6
+          "fitted": 6918.1
         },
         {
           "period": "2013-Q2",
           "actual": 8062.2,
-          "fitted": 7475.4
+          "fitted": 7351.4
         },
         {
           "period": "2013-Q3",
           "actual": 8173.9,
-          "fitted": 7879.7
+          "fitted": 7848.5
         },
         {
           "period": "2013-Q4",
           "actual": 8611.5,
-          "fitted": 8601.8
+          "fitted": 8526.6
         },
         {
           "period": "2014-Q1",
           "actual": 8849.3,
-          "fitted": 8261.7
+          "fitted": 8221.4
         },
         {
           "period": "2014-Q2",
           "actual": 9393.1,
-          "fitted": 8801.1
+          "fitted": 8800.5
         },
         {
           "period": "2014-Q3",
           "actual": 8966.9,
-          "fitted": 9417.7
+          "fitted": 9331.3
         },
         {
           "period": "2014-Q4",
           "actual": 9307.3,
-          "fitted": 9605.9
+          "fitted": 9573.2
         },
         {
           "period": "2015-Q1",
           "actual": 9586.4,
-          "fitted": 9351.6
+          "fitted": 9291.3
         },
         {
           "period": "2015-Q2",
           "actual": 9323.0,
-          "fitted": 8501.7
+          "fitted": 8415.0
         },
         {
           "period": "2015-Q3",
           "actual": 8181.2,
-          "fitted": 8706.7
+          "fitted": 8601.6
         },
         {
           "period": "2015-Q4",
           "actual": 8338.1,
-          "fitted": 9076.7
+          "fitted": 9022.7
         },
         {
           "period": "2016-Q1",
           "actual": 8744.8,
-          "fitted": 8919.5
+          "fitted": 8788.3
         },
         {
           "period": "2016-Q2",
           "actual": 8666.6,
-          "fitted": 9228.2
+          "fitted": 9196.5
         },
         {
           "period": "2016-Q3",
           "actual": 9166.9,
-          "fitted": 10106.5
+          "fitted": 10177.4
         },
         {
           "period": "2016-Q4",
           "actual": 9253.5,
-          "fitted": 11365.2
+          "fitted": 11384.8
         },
         {
           "period": "2017-Q1",
           "actual": 9811.5,
-          "fitted": 10402.2
+          "fitted": 10625.8
         },
         {
           "period": "2017-Q2",
           "actual": 10395.1,
-          "fitted": 9774.1
+          "fitted": 9801.8
         },
         {
           "period": "2017-Q3",
           "actual": 10383.9,
-          "fitted": 11542.1
+          "fitted": 11692.6
         },
         {
           "period": "2017-Q4",
           "actual": 10642.9,
-          "fitted": 11548.5
+          "fitted": 11860.8
         },
         {
           "period": "2018-Q1",
           "actual": 10919.5,
-          "fitted": 10454.6
+          "fitted": 10529.5
         },
         {
           "period": "2018-Q2",
           "actual": 10836.9,
-          "fitted": 10421.3
+          "fitted": 10502.9
         },
         {
           "period": "2018-Q3",
           "actual": 11006.3,
-          "fitted": 10819.4
+          "fitted": 10874.7
         },
         {
           "period": "2018-Q4",
           "actual": 9727.4,
-          "fitted": 10569.1
+          "fitted": 10440.8
         },
         {
           "period": "2019-Q1",
           "actual": 10641.0,
-          "fitted": 10111.1
+          "fitted": 9978.9
         },
         {
           "period": "2019-Q2",
           "actual": 10730.8,
-          "fitted": 10361.7
+          "fitted": 10186.2
         },
         {
           "period": "2019-Q3",
           "actual": 10829.7,
-          "fitted": 10793.1
+          "fitted": 10723.7
         },
         {
           "period": "2019-Q4",
           "actual": 11997.1,
-          "fitted": 12944.4
+          "fitted": 13048.6
         },
         {
           "period": "2020-Q1",
           "actual": 9708.1,
-          "fitted": 10942.7
+          "fitted": 10977.1
         },
         {
           "period": "2020-Q2",
           "actual": 11621.2,
-          "fitted": 10673.0
+          "fitted": 10508.4
         },
         {
           "period": "2020-Q3",
           "actual": 12515.6,
-          "fitted": 13338.2
+          "fitted": 13496.6
         },
         {
           "period": "2020-Q4",
           "actual": 14732.5,
-          "fitted": 15679.0
+          "fitted": 15917.4
         },
         {
           "period": "2021-Q1",
           "actual": 16431.1,
-          "fitted": 15946.5
+          "fitted": 16095.5
         },
         {
           "period": "2021-Q2",
           "actual": 17755.5,
-          "fitted": 16016.7
+          "fitted": 16247.1
         },
         {
           "period": "2021-Q3",
           "actual": 16934.8,
-          "fitted": 16137.7
+          "fitted": 16153.5
         },
         {
           "period": "2021-Q4",
           "actual": 18218.8,
-          "fitted": 18608.2
+          "fitted": 18841.7
         },
         {
           "period": "2022-Q1",
           "actual": 17693.5,
-          "fitted": 16761.0
+          "fitted": 17054.4
         },
         {
           "period": "2022-Q2",
           "actual": 14825.7,
-          "fitted": 15734.9
+          "fitted": 15910.9
         },
         {
           "period": "2022-Q3",
           "actual": 13424.6,
-          "fitted": 14645.4
+          "fitted": 14621.9
         },
         {
           "period": "2022-Q4",
           "actual": 14137.7,
-          "fitted": 14831.1
+          "fitted": 14906.1
         },
         {
           "period": "2023-Q1",
           "actual": 15868.1,
-          "fitted": 13228.5
+          "fitted": 13417.3
         },
         {
           "period": "2023-Q2",
           "actual": 16915.5,
-          "fitted": 14391.9
+          "fitted": 14625.7
         },
         {
           "period": "2023-Q3",
           "actual": 16353.7,
-          "fitted": 16287.1
+          "fitted": 16510.1
         },
         {
           "period": "2023-Q4",
           "actual": 17930.8,
-          "fitted": 18676.7
+          "fitted": 18789.8
         },
         {
           "period": "2024-Q1",
           "actual": 20294.5,
-          "fitted": 19100.5
+          "fitted": 19016.8
         },
         {
           "period": "2024-Q2",
           "actual": 23032.2,
-          "fitted": 21641.0
+          "fitted": 21801.0
         },
         {
           "period": "2024-Q3",
           "actual": 22224.5,
-          "fitted": 21650.6
+          "fitted": 21653.0
         },
         {
           "period": "2024-Q4",
           "actual": 23035.1,
-          "fitted": 24896.0
+          "fitted": 25011.6
         },
         {
           "period": "2025-Q1",
           "actual": 20695.9,
-          "fitted": 23681.8
+          "fitted": 24128.2
         },
         {
           "period": "2025-Q2",
           "actual": 22256.0,
-          "fitted": 22575.2
+          "fitted": 22797.0
         },
         {
           "period": "2025-Q3",
           "actual": 25820.5,
-          "fitted": 25186.8
+          "fitted": 25232.9
         },
         {
           "period": "2025-Q4",
           "actual": 28963.6,
-          "fitted": 33011.3
+          "fitted": 33911.5
         },
         {
           "period": "2026-Q1",
           "actual": 31723.0,
-          "fitted": 32434.1
+          "fitted": 33192.2
         },
         {
           "period": "2026-Q2",
           "actual": 46125.9,
-          "fitted": 34400.3
+          "fitted": 35802.4
+        },
+        {
+          "period": "2026-Q3",
+          "actual": 47940.1,
+          "fitted": 40078.5
         }
       ]
     }
